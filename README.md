@@ -1,5 +1,8 @@
 # Instalar el proyecto
-1. Git clone 
+1. Clonar el repositorio del proyecto o descargar el zip 
+    ````shell script
+    git clone https://github.com/Anderson-Pozo/django-cdi.git
+    ````
 2. Crear entorno virtual en la ruta principal del proyecto
     ````shell script
     python -m venv venv
