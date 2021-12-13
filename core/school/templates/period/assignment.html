@@ -1,0 +1,80 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block head_form %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'period/js/assignment.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
+          data-url="{{ list_url }}">
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {% if action == 'add' %}
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                    {% endif %}
+                    {{ title }}
+                </h3>
+                <div class="card-tools">
+                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+                </div>
+            </div>
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    <input type="hidden" name="action" id="action" value="{{ action }}">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Profesor:</label>
+                                {{ form.contract }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="control-label">Seleccionar todo:</label><br>
+                                <input type="checkbox" class="check" value="" name="stateall">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-book"></i> Materias
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <table width="100%" class="table table-bordered" id="tblMatter">
+                                <thead>
+                                <tr>
+                                    <th>Materia</th>
+                                    <th>Nivel</th>
+                                    <th>Selección</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save" aria-hidden="true"></i> Guardar registro
+                </button>
+                <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

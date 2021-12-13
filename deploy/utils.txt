@@ -1,0 +1,64 @@
+// EXPORTAR UNA BASE DE DATOS
+python manage.py dumpdata --indent 2 > deploy/backup.json
+
+// RESTAURAR UNA BASE DE DATOS
+python manage.py loaddata deploy/backupempty.json
+python manage.py loaddata deploy/web.json
+
+// RESET INCREMENT SQLITE
+sqlite3 nombre_base
+delete from auth_permission;
+delete from sqlite_sequence where name='auth_permission';
+delete from django_content_type;
+delete from sqlite_sequence where name='django_content_type';
+
+UPDATE sqlite_sequence SET seq = 0 WHERE name = 'tab';
+
+// RESET INCREMENT MYSQL
+delete from auth_permission;
+ALTER TABLE auth_permission AUTO_INCREMENT = 1;
+delete from django_content_type;
+ALTER TABLE django_content_type AUTO_INCREMENT = 1;
+
+// RESET INCREMENT POSTGRESQL
+sudo -u postgres psql -d nombre_base
+use nombre_base;
+delete from public.auth_permission;
+ALTER SEQUENCE public.auth_permission_id_seq RESTART WITH 1;
+delete from public.django_content_type;
+ALTER SEQUENCE public.django_content_type_id_seq RESTART WITH 1;
+
+// RESET DATA
+
+delete from school_assistance;
+delete from sqlite_sequence where name='school_assistance';
+delete from school_qualifications;
+delete from sqlite_sequence where name='school_qualifications';
+delete from school_activities;
+delete from sqlite_sequence where name='school_activities';
+delete from school_psychologicalorientation;
+delete from sqlite_sequence where name='school_psychologicalorientation';
+delete from school_resources;
+delete from sqlite_sequence where name='school_resources';
+delete from school_tutorials;
+delete from sqlite_sequence where name='school_tutorials';
+delete from school_matriculationdetail;
+delete from sqlite_sequence where name='school_matriculationdetail';
+delete from school_matriculation;
+delete from sqlite_sequence where name='school_matriculation';
+delete from school_perioddetail;
+delete from sqlite_sequence where name='school_perioddetail';
+delete from school_period;
+delete from sqlite_sequence where name='school_period';
+    delete from school_contracts;
+    delete from school_conferences;
+    delete from school_teacher;
+    delete from school_typecvitae;
+    delete from school_cvitae;
+    delete from user_user;
+
+
+
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+
+*/30 * * * * root sh /home/jair/pegasus/app/deploy/database.sh

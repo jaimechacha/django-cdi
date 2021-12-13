@@ -1,0 +1,25 @@
+{% extends 'form.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block head_form %}
+    <script src="{% static 'assets/web/js/form.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <form class="card-body" style="background-color: white;"class="form" autocomplete="off" method="post"  enctype="multipart/form-data" >
+    {% csrf_token %}
+        {{ form.as_p}}
+        {{ form.media}}
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save" aria-hidden="true"></i> Guardar registro
+                </button>
+                <a href="{% url 'dashboard' %}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

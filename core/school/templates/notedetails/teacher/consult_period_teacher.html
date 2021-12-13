@@ -1,0 +1,201 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'notedetails/teacher/js/teacher_matter.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="card {{ dshboard.card }}">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-search"></i>
+                {{ title }}
+            </h3>
+            <div class="card-tools">
+                <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+            </div>
+        </div>
+        <div class="card-body" style="display: block;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Periodo:</label>
+                            {{ form.period }}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table width="100%" class="table table-bordered" id="tblMatter">
+                            <thead>
+                            <tr>
+                                <th>Materia</th>
+                                <th>Nivel</th>
+                                <th>Opciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalStudents" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <b><i class="fas fa-book"></i> Estudiantes</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <table width="100%" class="table table-bordered" id="tblStudents">
+                            <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Número de cedula</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalNotedetails" tabindex="-1" role="dialog" style="overflow-y: scroll;" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <b><i class="fas fa-book"></i> Actividades</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <table width="100%" class="table table-bordered" id="tblNotedetails">
+                            <thead>
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Nombre / Título</th>
+                                <th>Descripción</th>
+                                <th>Materia</th>
+                                <th>Opciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalNotes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <b><i class="fas fa-book-open"></i> Calificaciones</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <table width="100%"
+                               class="table table-bordered" id="tblNotes">
+                            <thead>
+                            <tr>
+                                <th style="width: 25%;">Estudiante</th>                                
+                                <th style="width: 45%;">Comentario</th>
+                                <th style="width: 15%;">Calificación</th>
+                                <th style="width: 15%;">Equivalencia</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table"  >
+            <thead >
+                <tr id="tab">
+                    
+                </tr>
+            </thead>
+            <tbody id="tab1">
+               
+              </tbody>
+          </table>
+      </div>
+    
+      <!-- <script>
+        detalle_orden = {{ homework|safe }};
+        
+        console.log(detalle_orden)
+        let html1 = document.querySelector('#tab');
+            html1.innerHTML = '';
+
+            html1.innerHTML += ` 
+            <th scope="col">#</th>
+            `
+            
+            for (let item of detalle_orden) {
+                console.log(item.name);
+                html1.innerHTML +=    
+                `
+                
+                      
+                      <th scope="col">${item.notedetails.name}</th>
+                      
+                 
+           
+        `}
+
+
+        let html = document.querySelector('#tab1');
+        html.innerHTML = '';
+
+        for (let item of detalle_orden) {
+          
+            html.innerHTML += ` 
+        
+        <tr>
+            <td class=""  width="45%">${item.student.user.full_name}</td>
+            
+        </tr>
+       
+        
+    `
+
+        }
+
+        
+    </script> -->
+{% endblock %}
+

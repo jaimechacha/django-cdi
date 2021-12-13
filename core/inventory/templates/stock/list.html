@@ -1,0 +1,23 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+    <th>Nro</th>
+    <th>Material</th>
+    <th class="text-center">Stock</th>
+{% endblock %}
+
+{% block rows %}
+    {% for i in object_list %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.material }}</td>
+            <td class="text-center">
+                {% if i.stock == 0 %}
+                    <span class="badge badge-danger">{{ i.stock }}</span>
+                {% else %}
+                    <span class="badge badge-success">{{ i.stock }}</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

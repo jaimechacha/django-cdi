@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            color: black;
+        }
+
+        .name-company {
+            font-size: 30px;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        table thead tr th {
+            border: 1px solid black !important;
+            padding: 3px;
+        }
+
+        table tbody tr td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        .img-logo {
+            margin-top: 10px;
+            width: 75px;
+            height: 75px;
+            margin-bottom: 10px;
+        }
+
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+        .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+        .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+        .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+        .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+        .col-xl-auto {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .col-lg-1 {
+            -ms-flex: 0 0 8.333333%;
+            flex: 0 0 8.333333%;
+            max-width: 8.333333%;
+        }
+
+        .col-lg-2 {
+            -ms-flex: 0 0 16.666667%;
+            flex: 0 0 16.666667%;
+            max-width: 16.666667%;
+        }
+
+        .col-lg-3 {
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+
+        .col-lg-4 {
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+
+        .col-lg-5 {
+            -ms-flex: 0 0 41.666667%;
+            flex: 0 0 41.666667%;
+            max-width: 41.666667%;
+        }
+
+        .col-lg-6 {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-lg-7 {
+            -ms-flex: 0 0 58.333333%;
+            flex: 0 0 58.333333%;
+            max-width: 58.333333%;
+        }
+
+        .col-lg-8 {
+            -ms-flex: 0 0 66.666667%;
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+        }
+
+        .col-lg-9 {
+            -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+            max-width: 75%;
+        }
+
+        .col-lg-10 {
+            -ms-flex: 0 0 83.333333%;
+            flex: 0 0 83.333333%;
+            max-width: 83.333333%;
+        }
+
+        .col-lg-11 {
+            -ms-flex: 0 0 91.666667%;
+            flex: 0 0 91.666667%;
+            max-width: 91.666667%;
+        }
+
+        .col-lg-12 {
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            font-size: 13px;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-sm th,
+        .table-sm td {
+            padding: 0.3rem;
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered thead th,
+        .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+
+        .table-borderless th,
+        .table-borderless td,
+        .table-borderless thead th,
+        .table-borderless tbody + tbody {
+            border: 0;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-sm th,
+        .table-sm td {
+            padding: 0.3rem;
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered thead th,
+        .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+
+        .table-borderless th,
+        .table-borderless td,
+        .table-borderless thead th,
+        .table-borderless tbody + tbody {
+            border: 0;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .table-hover tbody tr:hover {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        @page {
+            margin: 10mm;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid" style="padding: 0; margin: 0;">
+    <img src="{{ company.get_image }}" class="d-block mx-auto img-logo">
+    <h3 class="text-center name-company">{{ company.name }}</h3>
+    <p style="font-size: 12px; text-align: center;">
+        Dirección: {{ company.address }}<br>
+        Teléfono: {{ company.mobile }}<br>
+        Email: {{ company.mobile }}<br>
+    </p>
+    <h4 class="text-center font-weight-bold">{{ title }}</h4>
+    <table class="table table-sm mt-3" style="width: 100%;">
+        <thead>
+        <tr>
+            <th style="width: 15%;">Fecha de registro</th>
+            <th style="width: 25%;">Estudiante</th>
+            <th style="width: 15%;">Número de cedula</th>
+            <th style="width: 15%;">Email</th>
+            <th style="width: 15%;">Teléfono</th>
+            <th style="width: 15%;">Periodo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in data %}
+            <tr>
+                <td>{{ d.date_joined|date:'c' }}</td>
+                <td>{{ d.matriculation.student.user.get_full_name }}</td>
+                <td>{{ d.matriculation.student.user.dni }}</td>
+                <td>{{ d.matriculation.student.user.email }}</td>
+                <td>{{ d.matriculation.student.mobile }}</td>
+                <td>{{ d.matriculation.period.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <p class="text-left font-weight-normal">
+                <b>Fecha de registro: </b> {{ date_joined|date:'c' }}
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <p class="text-right font-weight-normal">
+                <b style="text-decoration: underline;">Firma autorizada</b><br>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

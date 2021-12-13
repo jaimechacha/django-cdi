@@ -1,0 +1,21 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block head_form %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/spanish.js' %}"></script>
+    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.css' %}"/>
+    <script src="{% static 'notedetails/teacher/js/form.js' %}"></script>
+{% endblock %}
+
+{% block buttons %}
+    <button type="submit" class="btn btn-primary btn-flat">
+        <i class="fas fa-save" aria-hidden="true"></i> Guardar registro
+    </button>
+    <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+        <i class="fas fa-times"></i> Cancelar
+    </a>
+{% endblock %}

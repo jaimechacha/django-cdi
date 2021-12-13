@@ -1,0 +1,67 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'resources/student/js/list.js' %}"></script>
+{% endblock %}
+
+{% block columns %}
+    <th>Nro</th>
+    <th>Tipo de Recurso</th>
+    <th>Periodo</th>
+    <th>Materia</th>
+    <th>Nivel</th>
+    <th>Fecha de inicio</th>
+    <th>Fecha de finalización</th>
+    <th>Detalles</th>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block content_list_before %}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Periodo:</label>
+                {{ form.period }}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalDetails" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <b><i class="fas fa-folder-open"></i> Recurso</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <p class="desc"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" target="_blank" class="link-desc d-block mx-auto">
+                        <i class="fas fa-link"></i> Accede al enlace del recurso dando click aquí
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_list %}
+
+{% endblock %}
+
+{% block box_footer_buttons %}
+
+{% endblock %}

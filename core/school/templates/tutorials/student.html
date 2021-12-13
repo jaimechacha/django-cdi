@@ -1,0 +1,25 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+    <th>Nro</th>
+    <th>Docente</th>
+    <th>Cargo</th>
+    <th>Horario</th>
+    <th>Descripción</th>
+{% endblock %}
+
+{% block rows %}
+    {% for i in object_list %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.contract.teacher.user.get_full_name }}</td>
+            <td>{{ i.contract.job.name }}</td>
+            <td>{{ i.get_horary_display }}</td>
+            <td>{{ i.desc }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block box_footer %}
+
+{% endblock %}

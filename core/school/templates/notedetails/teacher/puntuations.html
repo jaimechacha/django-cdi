@@ -1,0 +1,63 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block head_form %}
+<script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-touchspin-v4.2.5/css/jquery.bootstrap-touchspin.css' %}"/>
+    <script src="{% static 'lib/bootstrap-touchspin-v4.2.5/js/jquery.bootstrap-touchspin.js' %}"></script>
+    <script src="{% static 'notedetails/teacher/js/puntuations.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <form class="form" method="post" autocomplete="off" action="." enctype="multipart/form-data" id="frmForm"
+          data-url="javascript: history.go(-1)">
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-sticky-note"></i>
+                    {{ title }}
+                </h3>
+                <div class="card-tools">
+                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+                </div>
+            </div>
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    <input type="hidden" name="action" id="action" value="{{ action }}">
+                    {% csrf_token %}
+                    <p>
+                        <b>Actividad:</b> {{ instance.name }}<br>
+                        <b>Tipo de Actividad:</b> {{ instance.typeactivity.name }}<br>
+                        <b>Periodo:</b> {{ instance.perioddetail.period.name }}<br>
+                        <b>Materia:</b> {{ instance.perioddetail.matter.name }}<br>
+                    </p>
+                    <table width="100%"
+                           class="table table-bordered" id="tblActivities">
+                        <thead>
+                        <tr>
+                            <th style="width: 30%;">Estudiante</th>                            
+                            <th style="width: 55%;">Comentario</th>
+                            <th style="width: 15%;">Calificación</th>                            
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save" aria-hidden="true"></i> Guardar registro
+                </button>
+                <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+    <script>
+        activities.details.homework = {{ homework|safe }};
+        activities.list();        
+    </script>
+{% endblock %}
