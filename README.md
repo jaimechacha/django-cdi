@@ -6,7 +6,7 @@
     ````
 3. Activar entorno virtual
     ````shell script
-    venv\Scritps\activate
+    .\venv\Scripts\activate
     ````
 4. Instalar dependencias
     ````shell script
