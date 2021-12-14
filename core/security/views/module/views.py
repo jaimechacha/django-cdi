@@ -53,7 +53,7 @@ class ModuleCreateView(PermissionMixin, CreateView):
 
     def get_form(self, form_class=None):
         form = ModuleForm()
-        form.fields['moduletype'].widget.attrs['disabled'] = True
+        form.fields['moduletype'].widget.attrs['disabled'] = False
         return form
 
     def validate_data(self):
