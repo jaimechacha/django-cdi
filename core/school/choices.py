@@ -51,3 +51,10 @@ blood_types = (
     ('AB-', 'AB-'),
     ('AB+', 'AB+'),
 )
+
+civil_state = (
+    ('Soltero/a', 'Soltero/a'),
+    ('Casado/a', 'Casado/a'),
+    ('Divorciado/a', 'Divorciado/a'),
+    ('Viudo/a', 'Viudo/a'),
+)

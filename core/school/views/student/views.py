@@ -87,7 +87,6 @@ class StudentCreateView(PermissionMixin, CreateView):
                     user.create_or_update_password(user.dni)
                     user.email = request.POST['email']
                     user.save()
-
                     student = Student()
                     student.user_id = user.id
                     student.gender = request.POST['gender']
@@ -96,6 +95,14 @@ class StudentCreateView(PermissionMixin, CreateView):
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
+                    student.birth_country_id = int(request.POST['birth_country'])
+                    student.birth_province_id = int(request.POST['birth_province'])
+                    student.birth_city = request.POST['birth_city']
+                    student.nationality = request.POST['nationality']
+                    student.age = request.POST['age']
+                    student.ethnicity = request.POST['ethnicity']
+                    student.religion = request.POST['religion']
+                    student.emergency_number = request.POST['emergency_number']
                     student.save()
                     group = Group.objects.get(pk=settings.GROUPS.get('student'))
                     user.groups.add(group)
@@ -193,6 +200,14 @@ class StudentUpdateView(PermissionMixin, UpdateView):
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
+                    student.birth_country_id = int(request.POST['birth_country'])
+                    student.birth_province_id = int(request.POST['birth_province'])
+                    student.birth_city = request.POST['birth_city']
+                    student.nationality = request.POST['nationality']
+                    student.age = request.POST['age']
+                    student.ethnicity = request.POST['ethnicity']
+                    student.religion = request.POST['religion']
+                    student.emergency_number = request.POST['emergency_number']
                     student.save()
             elif action == 'search_parish':
                 data = []

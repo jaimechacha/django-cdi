@@ -435,7 +435,7 @@ class StudentForm(ModelForm):
 
     class Meta:
         model = Student
-        fields = 'first_name', 'last_name', 'dni', 'email', 'gender', 'mobile', 'phone', 'birthdate', 'address', 'parish'
+        fields = '__all__'
         widgets = {
             'gender': forms.Select(attrs={
                 'class': 'form-control select2',
@@ -462,6 +462,61 @@ class StudentForm(ModelForm):
             'address': forms.TextInput(
                 attrs={
                     'placeholder': 'Ingrese una dirección',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                }
+            ),
+            'birth_country': forms.Select(
+                attrs={
+                    'class': 'form-control select2',
+                    'style': 'width: 100%;'
+                }
+            ),
+            'birth_province': forms.Select(
+                attrs={
+                    'class': 'form-control select2',
+                    'style': 'width: 100%;'
+                }
+            ),
+            'birth_city': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ingrese ciudad de nacimiento',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                }
+            ),
+            'nationality': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ingrese nacionalidad',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                }
+            ),
+            'age': forms.NumberInput(
+                attrs={
+                    'placeholder': 'Ingrese edad',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                    'required': 'true'
+                }
+            ),
+            'ethnicity': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ingrese etnia',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                }
+            ),
+            'religion': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ingrese religión',
+                    'class': 'form-control',
+                    'autocomplete': 'off',
+                }
+            ),
+            'emergency_number': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ingrese número de emergencia',
                     'class': 'form-control',
                     'autocomplete': 'off',
                 }

@@ -7,7 +7,7 @@ from django.db import models
 from django.forms import model_to_dict
 
 from config import settings
-from core.school.choices import months, course_level, horary, gender_person, blood_types
+from core.school.choices import months, course_level, horary, gender_person, blood_types, civil_state
 from core.user.models import User
 
 
@@ -146,12 +146,31 @@ class Parish(models.Model):
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Sexo')
+    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
-    address = models.CharField(max_length=500, null=True, blank=True, verbose_name='Dirección')
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
-    parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parroquia')
+    parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Lugar residencia')
+    address = models.CharField(max_length=500, null=True, blank=True, verbose_name='Dirección')
+    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Refencia')
+    nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
+    age = models.IntegerField(null=True, blank=True, verbose_name='Edad')
+    ethnicity = models.CharField(max_length=50, null=True, blank=True, verbose_name='Etnia')
+    religion = models.CharField(max_length=50, null=True, blank=True, verbose_name='Religión')
+    civil_status = models.CharField(max_length=20, choices=civil_state, null=True, blank=True,
+                                    verbose_name='Estado civil')
+    blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
+                                   verbose_name='Grupo sanguíneo')
+    disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
+    disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
+    cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
+                                                 verbose_name='Enfermedades catastróficas')
+    cat_illnesses_desc = models.TextField(null=True, blank=True,
+                                                   verbose_name='Descripción de enfermedades catastróficas')
+    croquis = models.FileField(upload_to='teacher/croquis/%Y/%m/%d', null=True, blank=True,
+                               verbose_name='Croquis PDF')
+    basic_services_payment = models.FileField(upload_to='teacher/bs-payment/%Y/%m/%d', null=True, blank=True,
+                                              verbose_name='Comprobante de servicios básicos')
 
     def __str__(self):
         return '{} / {}'.format(self.user.get_full_name(), self.user.dni)
@@ -178,6 +197,7 @@ class Student(models.Model):
     gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
+    emergency_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
     address = models.CharField(max_length=500, null=True, blank=True, verbose_name='Dirección')
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
     parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parroquia')
@@ -185,8 +205,7 @@ class Student(models.Model):
                                       verbose_name='País de nacimiento')
     birth_province = models.ForeignKey(Province, on_delete=models.PROTECT, null=True, blank=True,
                                        verbose_name='Provincia de nacimiento')
-    birth_city = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True,
-                                   verbose_name='Ciudad de nacimiento')
+    birth_city = models.CharField(max_length=30, null=True, blank=True, verbose_name='Ciudad de nacimiento')
     nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
     age = models.IntegerField(null=True, blank=True, verbose_name='Edad')
     ethnicity = models.CharField(max_length=50, null=True, blank=True, verbose_name='Etnia')
@@ -264,7 +283,7 @@ class StudentMedicalRecord(models.Model):
                                     verbose_name='Carnet de vacunas')
     disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
     disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
-    disability_percentage = models.IntegerField(null=True, blank=True, verbose_name='Porcentaje de discapacidad')
+    disability_per = models.IntegerField(null=True, blank=True, verbose_name='Porcentaje de discapacidad')
     allergies = models.BooleanField(null=True, blank=True, default=False, verbose_name='Alergias')
     allergies_desc = models.TextField(null=True, blank=True, verbose_name='Descripción de las alergias')
     allergy_treatment = models.CharField(max_length=50, null=True, blank=True,
@@ -272,16 +291,75 @@ class StudentMedicalRecord(models.Model):
     diseases_suffered = models.BooleanField(null=True, blank=True, default=False, verbose_name='Enfermedades padecidas')
     diseases_suffered_desc = models.TextField(null=True, blank=True,
                                               verbose_name='Descripción de enfermedades padecidas')
-    preexist_diseases = models.BooleanField(null=True, blank=True, default=False,
-                                            verbose_name='Enfermedades preexistentes')
-    preexist_diseases_desc = models.TextField(null=True, blank=True,
-                                              verbose_name='Descripción de enfermedades preexistentes')
+    pre_diseases = models.BooleanField(null=True, blank=True, default=False,
+                                       verbose_name='Enfermedades preexistentes')
+    pre_diseases_desc = models.TextField(null=True, blank=True,
+                                         verbose_name='Descripción de enfermedades preexistentes')
+    cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
+                                        verbose_name='Enfermedades catastróficas')
+    cat_illnesses_desc = models.TextField(null=True, blank=True,
+                                          verbose_name='Descripción de enfermedades catastróficas')
+    medication = models.BooleanField(null=True, blank=True, default=False, verbose_name='Medicación')
+    medication_type = models.CharField(max_length=50, null=True, blank=True, verbose_name='Tipo de medicación')
+    medication_schedule = models.CharField(max_length=50, null=True, blank=True, verbose_name='Horaio de medicación')
+    student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
 
-    # catastrophic_illnesses = boolean
-    # catastrophic_illnesses_desc = text
-    # medication = boolean
-    # medication_type = char
-    # medication_schedule = char
+    def __str__(self):
+        return self.student.__str__()
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    class Meta:
+        verbose_name = 'Ficha médica'
+        verbose_name_plural = 'Fichas médicas'
+        ordering = ['id']
+
+
+class Family(models.Model):
+    first_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
+    last_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
+    ci = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
+    relationship = models.CharField(max_length=30, null=True, blank=True, verbose_name='Parentesco')
+    age = models.IntegerField(null=True, blank=True, verbose_name='Edad')
+    civil_status = models.CharField(max_length=20, choices=civil_state, null=True, blank=True,
+                                    verbose_name='Estado civil')
+    disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
+    disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
+    cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
+                                                 verbose_name='Enfermedades catastróficas')
+    cat_illnesses_desc = models.TextField(null=True, blank=True,
+                                                   verbose_name='Descripción de enfermedades catastróficas')
+    academic_training = models.CharField(max_length=50, null=True, blank=True, verbose_name='Formación académica')
+    occupation = models.CharField(max_length=30, null=True, blank=True, verbose_name='Ocupación')
+    economic_income = models.DecimalField(decimal_places=2, default=0.00, max_digits=9, blank=True, null=True,
+                                          verbose_name='Ingresos')
+
+    def __str__(self):
+        return self.get_full_name()
+
+    def get_full_name(self):
+        return self.first_name + self.last_name
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    class Meta:
+        verbose_name = 'Familiar'
+        verbose_name_plural = 'Familiares'
+        ordering = ['id']
+
+
+class FamilyGroup(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
+    family = models.ForeignKey(Family, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Familiar')
+
+    class Meta:
+        verbose_name = 'Grupo familiar'
+        verbose_name_plural = 'Grupos familiares'
+        ordering = ['id']
 
 
 class TypeCVitae(models.Model):
@@ -321,6 +399,30 @@ class CVitae(models.Model):
     class Meta:
         verbose_name = 'Hoja de Vida'
         verbose_name_plural = 'Hojas de Vida'
+        ordering = ['id']
+
+
+class EnablingDocuments(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
+    ci = models.FileField(upload_to='teacher/ci/%Y/%m/%d', null=True, blank=True,
+                          verbose_name='Cédula de identidad')
+    commitment_act = models.FileField(upload_to='teacher/acta/%Y/%m/%d', null=True, blank=True,
+                                      verbose_name='Acta de compromiso')
+
+    class Meta:
+        verbose_name = 'Documento habilitante'
+        verbose_name_plural = 'Documentos habilitantes'
+        ordering = ['id']
+
+
+class SignedContract(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
+    ci = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
+                          verbose_name='Contrato firmado')
+
+    class Meta:
+        verbose_name = 'Contrato firmado'
+        verbose_name_plural = 'Contratos firmados'
         ordering = ['id']
 
 
