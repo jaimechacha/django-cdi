@@ -140,7 +140,7 @@
   "pk": 18,
   "fields": {
     "app_label": "school",
-    "model": "conferences"
+    "model": "company"
   }
 },
 {
@@ -148,7 +148,7 @@
   "pk": 19,
   "fields": {
     "app_label": "school",
-    "model": "conferencetheme"
+    "model": "conferences"
   }
 },
 {
@@ -156,7 +156,7 @@
   "pk": 20,
   "fields": {
     "app_label": "school",
-    "model": "contracts"
+    "model": "conferencetheme"
   }
 },
 {
@@ -164,7 +164,7 @@
   "pk": 21,
   "fields": {
     "app_label": "school",
-    "model": "country"
+    "model": "contracts"
   }
 },
 {
@@ -172,7 +172,7 @@
   "pk": 22,
   "fields": {
     "app_label": "school",
-    "model": "cvitae"
+    "model": "country"
   }
 },
 {
@@ -180,7 +180,7 @@
   "pk": 23,
   "fields": {
     "app_label": "school",
-    "model": "events"
+    "model": "cursos"
   }
 },
 {
@@ -188,7 +188,7 @@
   "pk": 24,
   "fields": {
     "app_label": "school",
-    "model": "job"
+    "model": "cvitae"
   }
 },
 {
@@ -196,7 +196,7 @@
   "pk": 25,
   "fields": {
     "app_label": "school",
-    "model": "matriculation"
+    "model": "events"
   }
 },
 {
@@ -204,7 +204,7 @@
   "pk": 26,
   "fields": {
     "app_label": "school",
-    "model": "matriculationdetail"
+    "model": "job"
   }
 },
 {
@@ -212,7 +212,7 @@
   "pk": 27,
   "fields": {
     "app_label": "school",
-    "model": "matter"
+    "model": "matriculation"
   }
 },
 {
@@ -220,7 +220,7 @@
   "pk": 28,
   "fields": {
     "app_label": "school",
-    "model": "parish"
+    "model": "matriculationdetail"
   }
 },
 {
@@ -228,7 +228,7 @@
   "pk": 29,
   "fields": {
     "app_label": "school",
-    "model": "period"
+    "model": "matter"
   }
 },
 {
@@ -236,7 +236,7 @@
   "pk": 30,
   "fields": {
     "app_label": "school",
-    "model": "perioddetail"
+    "model": "notedetails"
   }
 },
 {
@@ -244,7 +244,7 @@
   "pk": 31,
   "fields": {
     "app_label": "school",
-    "model": "province"
+    "model": "parish"
   }
 },
 {
@@ -252,7 +252,7 @@
   "pk": 32,
   "fields": {
     "app_label": "school",
-    "model": "psychologicalorientation"
+    "model": "period"
   }
 },
 {
@@ -260,7 +260,7 @@
   "pk": 33,
   "fields": {
     "app_label": "school",
-    "model": "qualifications"
+    "model": "perioddetail"
   }
 },
 {
@@ -268,7 +268,7 @@
   "pk": 34,
   "fields": {
     "app_label": "school",
-    "model": "resources"
+    "model": "province"
   }
 },
 {
@@ -276,7 +276,7 @@
   "pk": 35,
   "fields": {
     "app_label": "school",
-    "model": "schoolfeeding"
+    "model": "psychologicalorientation"
   }
 },
 {
@@ -284,7 +284,7 @@
   "pk": 36,
   "fields": {
     "app_label": "school",
-    "model": "shifts"
+    "model": "punctuations"
   }
 },
 {
@@ -292,7 +292,7 @@
   "pk": 37,
   "fields": {
     "app_label": "school",
-    "model": "student"
+    "model": "qualifications"
   }
 },
 {
@@ -300,7 +300,7 @@
   "pk": 38,
   "fields": {
     "app_label": "school",
-    "model": "typeactivity"
+    "model": "resources"
   }
 },
 {
@@ -308,7 +308,7 @@
   "pk": 39,
   "fields": {
     "app_label": "school",
-    "model": "typecvitae"
+    "model": "schoolfeeding"
   }
 },
 {
@@ -316,7 +316,7 @@
   "pk": 40,
   "fields": {
     "app_label": "school",
-    "model": "typeevent"
+    "model": "scores"
   }
 },
 {
@@ -324,7 +324,7 @@
   "pk": 41,
   "fields": {
     "app_label": "school",
-    "model": "typeresource"
+    "model": "shifts"
   }
 },
 {
@@ -332,7 +332,7 @@
   "pk": 42,
   "fields": {
     "app_label": "school",
-    "model": "tutorials"
+    "model": "student"
   }
 },
 {
@@ -340,7 +340,7 @@
   "pk": 43,
   "fields": {
     "app_label": "school",
-    "model": "teacher"
+    "model": "typeactivity"
   }
 },
 {
@@ -348,7 +348,23 @@
   "pk": 44,
   "fields": {
     "app_label": "school",
-    "model": "company"
+    "model": "typecvitae"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 45,
+  "fields": {
+    "app_label": "school",
+    "model": "typeevent"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 46,
+  "fields": {
+    "app_label": "school",
+    "model": "typeresource"
   }
 },
 {
@@ -356,12 +372,20 @@
   "pk": 47,
   "fields": {
     "app_label": "school",
-    "model": "cursos"
+    "model": "tutorials"
   }
 },
 {
   "model": "contenttypes.contenttype",
   "pk": 48,
+  "fields": {
+    "app_label": "school",
+    "model": "teacher"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 49,
   "fields": {
     "app_label": "iniciopage",
     "model": "web"
@@ -369,23 +393,7 @@
 },
 {
   "model": "contenttypes.contenttype",
-  "pk": 49,
-  "fields": {
-    "app_label": "inventory",
-    "model": "material"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
   "pk": 50,
-  "fields": {
-    "app_label": "inventory",
-    "model": "entrymaterial"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 51,
   "fields": {
     "app_label": "inventory",
     "model": "entry"
@@ -393,10 +401,18 @@
 },
 {
   "model": "contenttypes.contenttype",
+  "pk": 51,
+  "fields": {
+    "app_label": "inventory",
+    "model": "entrymaterial"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
   "pk": 52,
   "fields": {
     "app_label": "inventory",
-    "model": "outputmaterial"
+    "model": "inventory"
   }
 },
 {
@@ -404,7 +420,7 @@
   "pk": 53,
   "fields": {
     "app_label": "inventory",
-    "model": "output"
+    "model": "material"
   }
 },
 {
@@ -412,7 +428,23 @@
   "pk": 54,
   "fields": {
     "app_label": "inventory",
-    "model": "inventory"
+    "model": "output"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 55,
+  "fields": {
+    "app_label": "inventory",
+    "model": "outputmaterial"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "08q89kx9nmwtav2zaemhwxeiyxau4s7o",
+  "fields": {
+    "session_data": "YjNlZThiNzExYzRkYzYxZjQ2MWE0YzMyODEyMmM2M2UwM2I2OTRhZTqABZWHAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lChoEWgTKYGUfZQoaBaJaBdoGHViaBlLB4wDdXJslIwRL3NlY3VyaXR5L21vZHVsZS+UaBqMCE3Ds2R1bG9zlIwNbW9kdWxldHlwZV9pZJRLAYwLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGFkbWluaXN0cmFyIGxvcyBtw7NkdWxvcyBkZWwgc2lzdGVtYZSMBGljb26UjA9mYXMgZmEtdGgtbGFyZ2WUjAVpbWFnZZSMAJSMC2lzX3ZlcnRpY2FslIiMCWlzX2FjdGl2ZZSIjAppc192aXNpYmxllIhoHIwGMi4yLjEylHVijAh1cmxfbGFzdJSMES9zZWN1cml0eS9tb2R1bGUvlHUu",
+    "expire_date": "2021-12-28T02:52:21.432Z"
   }
 },
 {
@@ -529,10 +561,26 @@
 },
 {
   "model": "sessions.session",
+  "pk": "gaahiyi266u3owm8tuh7xvym692z3sbe",
+  "fields": {
+    "session_data": "NjdlMGI3YmYxNzVkNGVjYjY3ZjJhMjgzM2M3NDA4YTk2YWQzYmRhMjqABZXKAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATiUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKGY3M2VkZTUwMDNmNThmOTAyODA3ZmQwNzNiMzZlZjZlY2UyNGIxZjWUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsCjARuYW1llIwIUHJvZmVzb3KUjA9fZGphbmdvX3ZlcnNpb26UjAYyLjIuMTKUdWKMBm1vZHVsZZRoCowIc2VjdXJpdHmUjAZNb2R1bGWUhpSFlFKUfZQojAZfc3RhdGWUaBMpgZR9lChoFoloF2gYdWKMAmlklEsFjAN1cmyUjBsvc2Nob29sL2Fzc2lzdGFuY2UvdGVhY2hlci+UjARuYW1llIwLQXNpc3RlbmNpYXOUjA1tb2R1bGV0eXBlX2lklE6MC2Rlc2NyaXB0aW9ulIw1UGVybWl0ZSBhZG1pbmlzdHJhciBsYXMgbWF0cmljdWxhcyBkZSBsb3MgZXN0dWRpYW50ZXOUjARpY29ulIwVZmFzIGZhLWNhbGVuZGFyLWNoZWNrlIwFaW1hZ2WUjACUjAtpc192ZXJ0aWNhbJSJjAlpc19hY3RpdmWUiIwKaXNfdmlzaWJsZZSIjA9fZGphbmdvX3ZlcnNpb26UjAYyLjIuMTKUdWKMCHVybF9sYXN0lIwfL3NjaG9vbC9hc3Npc3RhbmNlL3RlYWNoZXIvYWRkL5R1Lg==",
+    "expire_date": "2021-12-31T23:09:28.126Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "h3ik2jcpy052uuww5l1ku6gi4juyzdk0",
   "fields": {
     "session_data": "MWMyZTE0ZmQwOWZhM2VjNTYwYWE2ZDVmOThlZmIxYTRiMGEzODQxMzqABJWWAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY4MTFiNTZmZTAwYzQyNTg0OTNkZGJjM2E3ZGFkYTEwMDAzZWRmYmaUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC4zlHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsBjAN1cmyUjBwvdXNlci9hZG1pbi91cGRhdGUvcGFzc3dvcmQvlIwEbmFtZZSMEENhbWJpYXIgcGFzc3dvcmSUjA1tb2R1bGV0eXBlX2lklE6MC2Rlc2NyaXB0aW9ulIwoUGVybWl0ZSBjYW1iaWFyIHR1IHBhc3N3b3JkIGRlIHR1IGN1ZW50YZSMBGljb26UjApmYXMgZmEta2V5lIwFaW1hZ2WUjACUjAtpc192ZXJ0aWNhbJSJjAlpc19hY3RpdmWUiIwKaXNfdmlzaWJsZZSIjA9fZGphbmdvX3ZlcnNpb26UjAUzLjAuM5R1YnUu",
     "expire_date": "2021-05-31T13:29:22.438Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "i4htewhqp6e0lxnsskmzaz3qdgr5jsz0",
+  "fields": {
+    "session_data": "YTMyOWY1YTZkMjA2ODA4N2E3ZmFjYmJhYzRjNzEwZDE0ZmNiZTM0ODqABZWSAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATaUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY0MjRhZTc0MDQzNGU4ZGI4ZTc1MGRjZDRlZGU3YTdkNGU4OTUyYzSUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsCjAN1cmyUjBsvdXNlci9hZG1pbi91cGRhdGUvcHJvZmlsZS+UjARuYW1llIwNRWRpdGFyIHBlcmZpbJSMDW1vZHVsZXR5cGVfaWSUTowLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGNhbWJpYXIgbGEgaW5mb3JtYWNpw7NuIGRlIHR1IGN1ZW50YZSMBGljb26UjAtmYXMgZmEtdXNlcpSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiYwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2021-12-28T04:52:33.435Z"
   }
 },
 {
@@ -641,10 +689,26 @@
 },
 {
   "model": "sessions.session",
+  "pk": "wa71oejxalittua2seln62no0vzi3vs6",
+  "fields": {
+    "session_data": "NmU3ODhkNjJlMDBjM2Y1YjllMmNjZmNjMzYwM2FiZjlhYTQ1Yjg1YzqABZW1AgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lCiMBl9zdGF0ZZRoEymBlH2UKGgWiWgXaBh1YowCaWSUSxCMA3VybJSMEi9zY2hvb2wvY29udHJhY3RzL5SMBG5hbWWUjAlDb250cmF0b3OUjA1tb2R1bGV0eXBlX2lklEsCjAtkZXNjcmlwdGlvbpSMMlBlcm1pdGUgYWRtaW5pc3RyYXIgbG9zIGNvbnRyYXRvcyBkZSBsb3MgZW1wbGVhZG9zlIwEaWNvbpSMFWZhcyBmYS1maWxlLXNpZ25hdHVyZZSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiIwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAh1cmxfbGFzdJSMEi9zY2hvb2wvY29udHJhY3RzL5R1Lg==",
+    "expire_date": "2022-01-01T01:47:42.526Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "x4dpy35vihjokre9f7eu8gnfs4awiu1m",
   "fields": {
     "session_data": "Y2I4ZTc3ODJlMjU4OGY0NjMxYTE0OWE1ZWVmMDIzYzQyNjdmNzhkYzqABJVXAQAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY4MTFiNTZmZTAwYzQyNTg0OTNkZGJjM2E3ZGFkYTEwMDAzZWRmYmaUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC4zlHVidS4=",
     "expire_date": "2021-04-06T15:51:38.161Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "y22sxnhv2ph6v8xljumvmuds152gbywj",
+  "fields": {
+    "session_data": "ODg5NTc5Yjg5ZDQ5M2UzNzM4MjQxMGM1MTk4Y2QyZWEyNDQ2ZjMxYTqABZVRAQAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATaUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY0MjRhZTc0MDQzNGU4ZGI4ZTc1MGRjZDRlZGU3YTdkNGU4OTUyYzSUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2021-12-28T04:34:42.295Z"
   }
 },
 {
@@ -15632,18 +15696,68 @@
   }
 },
 {
+  "model": "school.shifts",
+  "pk": 1,
+  "fields": {
+    "name": "Completo"
+  }
+},
+{
+  "model": "school.contracts",
+  "pk": 1,
+  "fields": {
+    "teacher": 6,
+    "job": 6,
+    "shifts": 1,
+    "start_date": "2021-12-13",
+    "end_date": "2021-12-13",
+    "base_salary": "500.00",
+    "state": true
+  }
+},
+{
+  "model": "school.contracts",
+  "pk": 2,
+  "fields": {
+    "teacher": 7,
+    "job": 3,
+    "shifts": 1,
+    "start_date": "2021-12-17",
+    "end_date": "2021-12-17",
+    "base_salary": "8000.00",
+    "state": true
+  }
+},
+{
   "model": "school.cursos",
   "pk": 1,
   "fields": {
-    "name": "Noveno A",
-    "descrip": "Noveno A Curso"
+    "name": "Inicial \"A\"",
+    "descrip": "De 2 a 3 a\u00f1os de edad"
+  }
+},
+{
+  "model": "school.cursos",
+  "pk": 2,
+  "fields": {
+    "name": "Maternal \"A\"",
+    "descrip": "Estudiantes de 1  a 2 a\u00f1os de edad"
   }
 },
 {
   "model": "school.matter",
   "pk": 1,
   "fields": {
-    "name": "Sociales",
+    "name": "Desarrollo del Movimiento",
+    "level": 2,
+    "state": true
+  }
+},
+{
+  "model": "school.matter",
+  "pk": 2,
+  "fields": {
+    "name": "Desarrollo Cognitivo",
     "level": 1,
     "state": true
   }
@@ -15652,7 +15766,198 @@
   "model": "school.period",
   "pk": 1,
   "fields": {
-    "name": "2020-2021",
+    "name": "2021-2022",
+    "state": true
+  }
+},
+{
+  "model": "school.perioddetail",
+  "pk": 2,
+  "fields": {
+    "period": 1,
+    "contract": 1,
+    "matter": 1
+  }
+},
+{
+  "model": "school.perioddetail",
+  "pk": 3,
+  "fields": {
+    "period": 1,
+    "contract": 2,
+    "matter": 2
+  }
+},
+{
+  "model": "school.matriculation",
+  "pk": 1,
+  "fields": {
+    "date_joined": "2021-12-13",
+    "period": 1,
+    "student": 2,
+    "level": 2
+  }
+},
+{
+  "model": "school.matriculation",
+  "pk": 2,
+  "fields": {
+    "date_joined": "2021-12-17",
+    "period": 1,
+    "student": 3,
+    "level": 1
+  }
+},
+{
+  "model": "school.matriculationdetail",
+  "pk": 1,
+  "fields": {
+    "matriculation": 1,
+    "perioddetail": 2
+  }
+},
+{
+  "model": "school.matriculationdetail",
+  "pk": 2,
+  "fields": {
+    "matriculation": 2,
+    "perioddetail": 3
+  }
+},
+{
+  "model": "school.psychologicalorientation",
+  "pk": 1,
+  "fields": {
+    "date_joined": "2021-12-13",
+    "matriculation": 1,
+    "desc": "<p>La <i><strong>salud</strong></i> (del lat\u00edn salus, -utis)\u200b es un estado de bienestar o de equilibrio que puede ser visto a nivel subjetivo (un ser humano asume como aceptable</p>"
+  }
+},
+{
+  "model": "school.typeactivity",
+  "pk": 1,
+  "fields": {
+    "name": "Deber"
+  }
+},
+{
+  "model": "school.typeactivity",
+  "pk": 2,
+  "fields": {
+    "name": "Tarea"
+  }
+},
+{
+  "model": "school.notedetails",
+  "pk": 1,
+  "fields": {
+    "name": "Colorear abeja",
+    "typeactivity": 1,
+    "perioddetail": 2,
+    "start_date": "2021-12-13",
+    "end_date": "2021-12-13",
+    "desc": "Colorear abeja",
+    "state": true
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 1,
+  "fields": {
+    "name": "Ecelente",
+    "score": "10.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 2,
+  "fields": {
+    "name": "Muy Buena",
+    "score": "9.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 3,
+  "fields": {
+    "name": "Buena",
+    "score": "8.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 4,
+  "fields": {
+    "name": "Regular",
+    "score": "7.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 5,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "6.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 6,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "5.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 7,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "4.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 8,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "3.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 9,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "2.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 10,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "1.00"
+  }
+},
+{
+  "model": "school.scores",
+  "pk": 11,
+  "fields": {
+    "name": "Insuficiente",
+    "score": "0.00"
+  }
+},
+{
+  "model": "school.punctuations",
+  "pk": 1,
+  "fields": {
+    "notedetails": 1,
+    "student": 2,
+    "date_joined": "2021-12-13",
+    "score": 3,
+    "note": "8.00",
+    "comment": "La ni\u00f1a coloreo excelente la abejta",
     "state": true
   }
 },
@@ -15660,21 +15965,24 @@
   "model": "iniciopage.web",
   "pk": 1,
   "fields": {
-    "name": "UE MARCEL LANIADO DE WIND",
+    "name": "CDI",
     "ruc": "0918222134001",
     "mobile": "0729818811",
-    "email": "uemarcel@hotmail.com",
-    "address": "PUERTO INCA, NARANJAL",
-    "image": "company/2021/02/18/logo.png",
-    "image_about": "",
+    "email": "cdi@hotmail.com",
+    "address": "AV unniversitaria",
+    "image": "company/2021/12/14/ni\u00f1os_felices.jpg",
+    "image_about": "company/2021/12/14/grupo-ninos-jugando-juntos-mascara-medica_23-2148504171.jpg",
     "mission": "Sin detalles",
     "vision": "Sin detalles",
-    "about_us": "Sin detalles",
-    "desc": "Sin detalles",
+    "about_us": "<p>Los&nbsp;<strong>CDI</strong>&nbsp;(Centro de Desarrollo Infantil) son instituciones especializadas donde ni&ntilde;os en condici&oacute;n de vulnerabilidad son atendidos por profesionales que les ayudan a potenciar el desarrollo de la primera infancia.</p>\r\n\r\n<p><strong>VISION</strong> La&nbsp;<strong>CDI</strong>&nbsp;es una instituci&oacute;n orientadora de las pol&iacute;ticas p&uacute;blicas para el desarrollo integral y sustentable de los pueblos y comunidades ind&iacute;genas</p>",
+    "desc": "Battlegrounds es un juego de acci\u00f3n en tercera persona que est\u00e1 abiertamente inspirado en PUBG",
     "coordinates": "-3.2720106277314938, -79.94902792607725",
-    "servicios_text": "",
-    "docentes_text": "",
-    "infraestructura_text": ""
+    "servicios_text": "Un servicio podr\u00eda ser un conjunto de actividades que buscan satisfacer las necesidades de un cliente.",
+    "docentes_text": "DOCENTE ser un conjunto de actividades que buscan satisfacer las necesidades de un cliente.",
+    "infraestructura_text": "Un servicio podr\u00eda ser un conjunto de actividades que buscan satisfacer las necesidades de un cliente.",
+    "block1": "Docencia significa ense\u00f1ar seg\u00fan su etimolog\u00eda latina (del lat\u00edn \u201cdocere\u201d). La docencia por lo tanto hace referencia a la actividad de ense\u00f1ar, siendo actualmente docentes aquellos que se dedican profesionalmente a ello, recibiendo una remuneraci\u00f3n por sus servicios.",
+    "block2": "A la concepci\u00f3n de la docencia tradicional, del docente poseedor del conocimiento y \u00fanico sujeto activo del proceso de ense\u00f1anza aprendizaje, la nueva tendencia constructivista lo ve como una gu\u00eda de la producci\u00f3n del conocimiento por parte del alumno, que toma en sus manos",
+    "block3": "Ya en la antigua Grecia, los fil\u00f3sofos que se dedicaban a ense\u00f1ar (siglo V a C.) recibieron el nombre de sofistas y cobraban por hacerlo, traslad\u00e1ndose de lugar en lugar. A posteriori, fil\u00f3sofos como S\u00f3crates"
   }
 },
 {
@@ -15703,6 +16011,16 @@
   "fields": {
     "name": "Material de apoyo",
     "description": "Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno Material de apoyo de noveno",
+    "image": "",
+    "course": 1
+  }
+},
+{
+  "model": "inventory.material",
+  "pk": 16,
+  "fields": {
+    "name": "Marcadores",
+    "description": "Marcadores en docena",
     "image": "",
     "course": 1
   }
@@ -17199,6 +17517,51 @@
 },
 {
   "model": "auth.permission",
+  "pk": 159,
+  "fields": {
+    "name": "Can add Tipo de Evento",
+    "content_type": 45,
+    "codename": "add_typeevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 160,
+  "fields": {
+    "name": "Can change Tipo de Evento",
+    "content_type": 45,
+    "codename": "change_typeevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 161,
+  "fields": {
+    "name": "Can delete Tipo de Evento",
+    "content_type": 45,
+    "codename": "delete_typeevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 162,
+  "fields": {
+    "name": "Can view Tipo de Evento",
+    "content_type": 45,
+    "codename": "view_typeevent"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 163,
+  "fields": {
+    "name": "Can add Tipo de Recurso",
+    "content_type": 46,
+    "codename": "add_typeresource"
+  }
+},
+{
+  "model": "auth.permission",
   "pk": 164,
   "fields": {
     "name": "Can add Curso",
@@ -17459,6 +17822,1275 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 193,
+  "fields": {
+    "name": "Can change Salida",
+    "content_type": 54,
+    "codename": "change_output"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 194,
+  "fields": {
+    "name": "Can delete Salida",
+    "content_type": 54,
+    "codename": "delete_output"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 195,
+  "fields": {
+    "name": "Can view Salida",
+    "content_type": 54,
+    "codename": "view_output"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 196,
+  "fields": {
+    "name": "Can add Salida material",
+    "content_type": 55,
+    "codename": "add_outputmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 197,
+  "fields": {
+    "name": "Can change Salida material",
+    "content_type": 55,
+    "codename": "change_outputmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 198,
+  "fields": {
+    "name": "Can delete Salida material",
+    "content_type": 55,
+    "codename": "delete_outputmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 199,
+  "fields": {
+    "name": "Can view Salida material",
+    "content_type": 55,
+    "codename": "view_outputmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 200,
+  "fields": {
+    "name": "Can view Compa\u00f1ia",
+    "content_type": 18,
+    "codename": "view_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 201,
+  "fields": {
+    "name": "Can add Tema de Conferencia",
+    "content_type": 19,
+    "codename": "add_conferences"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 202,
+  "fields": {
+    "name": "Can change Tema de Conferencia",
+    "content_type": 19,
+    "codename": "change_conferences"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 203,
+  "fields": {
+    "name": "Can delete Tema de Conferencia",
+    "content_type": 19,
+    "codename": "delete_conferences"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 204,
+  "fields": {
+    "name": "Can view Tema de Conferencia",
+    "content_type": 19,
+    "codename": "view_conferences"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 205,
+  "fields": {
+    "name": "Can add Tema de Conferencia",
+    "content_type": 20,
+    "codename": "add_conferencetheme"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 206,
+  "fields": {
+    "name": "Can change Tema de Conferencia",
+    "content_type": 20,
+    "codename": "change_conferencetheme"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 207,
+  "fields": {
+    "name": "Can delete Tema de Conferencia",
+    "content_type": 20,
+    "codename": "delete_conferencetheme"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 208,
+  "fields": {
+    "name": "Can view Tema de Conferencia",
+    "content_type": 20,
+    "codename": "view_conferencetheme"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 209,
+  "fields": {
+    "name": "Can add Contrato",
+    "content_type": 21,
+    "codename": "add_contracts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 210,
+  "fields": {
+    "name": "Can change Contrato",
+    "content_type": 21,
+    "codename": "change_contracts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 211,
+  "fields": {
+    "name": "Can delete Contrato",
+    "content_type": 21,
+    "codename": "delete_contracts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 212,
+  "fields": {
+    "name": "Can view Contrato",
+    "content_type": 21,
+    "codename": "view_contracts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 213,
+  "fields": {
+    "name": "Can add Pa\u00eds",
+    "content_type": 22,
+    "codename": "add_country"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 214,
+  "fields": {
+    "name": "Can change Pa\u00eds",
+    "content_type": 22,
+    "codename": "change_country"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 215,
+  "fields": {
+    "name": "Can delete Pa\u00eds",
+    "content_type": 22,
+    "codename": "delete_country"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 216,
+  "fields": {
+    "name": "Can view Pa\u00eds",
+    "content_type": 22,
+    "codename": "view_country"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 217,
+  "fields": {
+    "name": "Can add Curso",
+    "content_type": 23,
+    "codename": "add_cursos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 218,
+  "fields": {
+    "name": "Can change Curso",
+    "content_type": 23,
+    "codename": "change_cursos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 219,
+  "fields": {
+    "name": "Can delete Curso",
+    "content_type": 23,
+    "codename": "delete_cursos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 220,
+  "fields": {
+    "name": "Can view Curso",
+    "content_type": 23,
+    "codename": "view_cursos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 221,
+  "fields": {
+    "name": "Can add Hoja de Vida",
+    "content_type": 24,
+    "codename": "add_cvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 222,
+  "fields": {
+    "name": "Can change Hoja de Vida",
+    "content_type": 24,
+    "codename": "change_cvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 223,
+  "fields": {
+    "name": "Can delete Hoja de Vida",
+    "content_type": 24,
+    "codename": "delete_cvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 224,
+  "fields": {
+    "name": "Can view Hoja de Vida",
+    "content_type": 24,
+    "codename": "view_cvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 225,
+  "fields": {
+    "name": "Can add Evento",
+    "content_type": 25,
+    "codename": "add_events"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 226,
+  "fields": {
+    "name": "Can change Evento",
+    "content_type": 25,
+    "codename": "change_events"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 227,
+  "fields": {
+    "name": "Can delete Evento",
+    "content_type": 25,
+    "codename": "delete_events"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 228,
+  "fields": {
+    "name": "Can view Evento",
+    "content_type": 25,
+    "codename": "view_events"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 229,
+  "fields": {
+    "name": "Can add Puesto de Trabajo",
+    "content_type": 26,
+    "codename": "add_job"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 230,
+  "fields": {
+    "name": "Can change Puesto de Trabajo",
+    "content_type": 26,
+    "codename": "change_job"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 231,
+  "fields": {
+    "name": "Can delete Puesto de Trabajo",
+    "content_type": 26,
+    "codename": "delete_job"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 232,
+  "fields": {
+    "name": "Can view Puesto de Trabajo",
+    "content_type": 26,
+    "codename": "view_job"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 233,
+  "fields": {
+    "name": "Can add Matriculaci\u00f3n",
+    "content_type": 27,
+    "codename": "add_matriculation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 234,
+  "fields": {
+    "name": "Can change Matriculaci\u00f3n",
+    "content_type": 27,
+    "codename": "change_matriculation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 235,
+  "fields": {
+    "name": "Can delete Matriculaci\u00f3n",
+    "content_type": 27,
+    "codename": "delete_matriculation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 236,
+  "fields": {
+    "name": "Can view Matriculaci\u00f3n",
+    "content_type": 27,
+    "codename": "view_matriculation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 237,
+  "fields": {
+    "name": "Can add Matriculaci\u00f3n Materia",
+    "content_type": 28,
+    "codename": "add_matriculationdetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 238,
+  "fields": {
+    "name": "Can change Matriculaci\u00f3n Materia",
+    "content_type": 28,
+    "codename": "change_matriculationdetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 239,
+  "fields": {
+    "name": "Can delete Matriculaci\u00f3n Materia",
+    "content_type": 28,
+    "codename": "delete_matriculationdetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 240,
+  "fields": {
+    "name": "Can view Matriculaci\u00f3n Materia",
+    "content_type": 28,
+    "codename": "view_matriculationdetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 241,
+  "fields": {
+    "name": "Can add Materia",
+    "content_type": 29,
+    "codename": "add_matter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 242,
+  "fields": {
+    "name": "Can change Materia",
+    "content_type": 29,
+    "codename": "change_matter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 243,
+  "fields": {
+    "name": "Can delete Materia",
+    "content_type": 29,
+    "codename": "delete_matter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 244,
+  "fields": {
+    "name": "Can view Materia",
+    "content_type": 29,
+    "codename": "view_matter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 245,
+  "fields": {
+    "name": "Can add Nota",
+    "content_type": 30,
+    "codename": "add_notedetails"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 246,
+  "fields": {
+    "name": "Can change Nota",
+    "content_type": 30,
+    "codename": "change_notedetails"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 247,
+  "fields": {
+    "name": "Can delete Nota",
+    "content_type": 30,
+    "codename": "delete_notedetails"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 248,
+  "fields": {
+    "name": "Can view Nota",
+    "content_type": 30,
+    "codename": "view_notedetails"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 249,
+  "fields": {
+    "name": "Can add Parroquia",
+    "content_type": 31,
+    "codename": "add_parish"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 250,
+  "fields": {
+    "name": "Can change Parroquia",
+    "content_type": 31,
+    "codename": "change_parish"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 251,
+  "fields": {
+    "name": "Can delete Parroquia",
+    "content_type": 31,
+    "codename": "delete_parish"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 252,
+  "fields": {
+    "name": "Can view Parroquia",
+    "content_type": 31,
+    "codename": "view_parish"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 253,
+  "fields": {
+    "name": "Can add Periodo",
+    "content_type": 32,
+    "codename": "add_period"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 254,
+  "fields": {
+    "name": "Can change Periodo",
+    "content_type": 32,
+    "codename": "change_period"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 255,
+  "fields": {
+    "name": "Can delete Periodo",
+    "content_type": 32,
+    "codename": "delete_period"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 256,
+  "fields": {
+    "name": "Can view Periodo",
+    "content_type": 32,
+    "codename": "view_period"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 257,
+  "fields": {
+    "name": "Can add Periodo Detalle",
+    "content_type": 33,
+    "codename": "add_perioddetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 258,
+  "fields": {
+    "name": "Can change Periodo Detalle",
+    "content_type": 33,
+    "codename": "change_perioddetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 259,
+  "fields": {
+    "name": "Can delete Periodo Detalle",
+    "content_type": 33,
+    "codename": "delete_perioddetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 260,
+  "fields": {
+    "name": "Can view Periodo Detalle",
+    "content_type": 33,
+    "codename": "view_perioddetail"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 261,
+  "fields": {
+    "name": "Can add Provincia",
+    "content_type": 34,
+    "codename": "add_province"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 262,
+  "fields": {
+    "name": "Can change Provincia",
+    "content_type": 34,
+    "codename": "change_province"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 263,
+  "fields": {
+    "name": "Can delete Provincia",
+    "content_type": 34,
+    "codename": "delete_province"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 264,
+  "fields": {
+    "name": "Can view Provincia",
+    "content_type": 34,
+    "codename": "view_province"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 265,
+  "fields": {
+    "name": "Can add Orientaci\u00f3n Psicol\u00f3gica",
+    "content_type": 35,
+    "codename": "add_psychologicalorientation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 266,
+  "fields": {
+    "name": "Can change Orientaci\u00f3n Psicol\u00f3gica",
+    "content_type": 35,
+    "codename": "change_psychologicalorientation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 267,
+  "fields": {
+    "name": "Can delete Orientaci\u00f3n Psicol\u00f3gica",
+    "content_type": 35,
+    "codename": "delete_psychologicalorientation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 268,
+  "fields": {
+    "name": "Can view Orientaci\u00f3n Psicol\u00f3gica",
+    "content_type": 35,
+    "codename": "view_psychologicalorientation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 269,
+  "fields": {
+    "name": "Can add Puntaje",
+    "content_type": 36,
+    "codename": "add_punctuations"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 270,
+  "fields": {
+    "name": "Can change Puntaje",
+    "content_type": 36,
+    "codename": "change_punctuations"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 271,
+  "fields": {
+    "name": "Can delete Puntaje",
+    "content_type": 36,
+    "codename": "delete_punctuations"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 272,
+  "fields": {
+    "name": "Can view Puntaje",
+    "content_type": 36,
+    "codename": "view_punctuations"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 273,
+  "fields": {
+    "name": "Can add Calificaci\u00f3n",
+    "content_type": 37,
+    "codename": "add_qualifications"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 274,
+  "fields": {
+    "name": "Can change Calificaci\u00f3n",
+    "content_type": 37,
+    "codename": "change_qualifications"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 275,
+  "fields": {
+    "name": "Can delete Calificaci\u00f3n",
+    "content_type": 37,
+    "codename": "delete_qualifications"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 276,
+  "fields": {
+    "name": "Can view Calificaci\u00f3n",
+    "content_type": 37,
+    "codename": "view_qualifications"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 277,
+  "fields": {
+    "name": "Can add Recurso",
+    "content_type": 38,
+    "codename": "add_resources"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 278,
+  "fields": {
+    "name": "Can change Recurso",
+    "content_type": 38,
+    "codename": "change_resources"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 279,
+  "fields": {
+    "name": "Can delete Recurso",
+    "content_type": 38,
+    "codename": "delete_resources"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 280,
+  "fields": {
+    "name": "Can view Recurso",
+    "content_type": 38,
+    "codename": "view_resources"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 281,
+  "fields": {
+    "name": "Can add Alimentaci\u00f3n escolar",
+    "content_type": 39,
+    "codename": "add_schoolfeeding"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 282,
+  "fields": {
+    "name": "Can change Alimentaci\u00f3n escolar",
+    "content_type": 39,
+    "codename": "change_schoolfeeding"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 283,
+  "fields": {
+    "name": "Can delete Alimentaci\u00f3n escolar",
+    "content_type": 39,
+    "codename": "delete_schoolfeeding"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 284,
+  "fields": {
+    "name": "Can view Alimentaci\u00f3n escolar",
+    "content_type": 39,
+    "codename": "view_schoolfeeding"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 285,
+  "fields": {
+    "name": "Can add RB Puntaje",
+    "content_type": 40,
+    "codename": "add_scores"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 286,
+  "fields": {
+    "name": "Can change RB Puntaje",
+    "content_type": 40,
+    "codename": "change_scores"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 287,
+  "fields": {
+    "name": "Can delete RB Puntaje",
+    "content_type": 40,
+    "codename": "delete_scores"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 288,
+  "fields": {
+    "name": "Can view RB Puntaje",
+    "content_type": 40,
+    "codename": "view_scores"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 289,
+  "fields": {
+    "name": "Can add Turno",
+    "content_type": 41,
+    "codename": "add_shifts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 290,
+  "fields": {
+    "name": "Can change Turno",
+    "content_type": 41,
+    "codename": "change_shifts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 291,
+  "fields": {
+    "name": "Can delete Turno",
+    "content_type": 41,
+    "codename": "delete_shifts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 292,
+  "fields": {
+    "name": "Can view Turno",
+    "content_type": 41,
+    "codename": "view_shifts"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 293,
+  "fields": {
+    "name": "Can add Estudiante",
+    "content_type": 42,
+    "codename": "add_student"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 294,
+  "fields": {
+    "name": "Can change Estudiante",
+    "content_type": 42,
+    "codename": "change_student"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 295,
+  "fields": {
+    "name": "Can delete Estudiante",
+    "content_type": 42,
+    "codename": "delete_student"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 296,
+  "fields": {
+    "name": "Can view Estudiante",
+    "content_type": 42,
+    "codename": "view_student"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 297,
+  "fields": {
+    "name": "Can add Tipo de Actividad",
+    "content_type": 43,
+    "codename": "add_typeactivity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 298,
+  "fields": {
+    "name": "Can change Tipo de Actividad",
+    "content_type": 43,
+    "codename": "change_typeactivity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 299,
+  "fields": {
+    "name": "Can delete Tipo de Actividad",
+    "content_type": 43,
+    "codename": "delete_typeactivity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 300,
+  "fields": {
+    "name": "Can view Tipo de Actividad",
+    "content_type": 43,
+    "codename": "view_typeactivity"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 301,
+  "fields": {
+    "name": "Can add Tipo de Hoja de Vida",
+    "content_type": 44,
+    "codename": "add_typecvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 302,
+  "fields": {
+    "name": "Can change Tipo de Hoja de Vida",
+    "content_type": 44,
+    "codename": "change_typecvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 303,
+  "fields": {
+    "name": "Can delete Tipo de Hoja de Vida",
+    "content_type": 44,
+    "codename": "delete_typecvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 304,
+  "fields": {
+    "name": "Can view Tipo de Hoja de Vida",
+    "content_type": 44,
+    "codename": "view_typecvitae"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 305,
+  "fields": {
+    "name": "Can change Tipo de Recurso",
+    "content_type": 46,
+    "codename": "change_typeresource"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 306,
+  "fields": {
+    "name": "Can delete Tipo de Recurso",
+    "content_type": 46,
+    "codename": "delete_typeresource"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 307,
+  "fields": {
+    "name": "Can view Tipo de Recurso",
+    "content_type": 46,
+    "codename": "view_typeresource"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 308,
+  "fields": {
+    "name": "Can add Tutor\u00eda",
+    "content_type": 47,
+    "codename": "add_tutorials"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 309,
+  "fields": {
+    "name": "Can change Tutor\u00eda",
+    "content_type": 47,
+    "codename": "change_tutorials"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 310,
+  "fields": {
+    "name": "Can delete Tutor\u00eda",
+    "content_type": 47,
+    "codename": "delete_tutorials"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 311,
+  "fields": {
+    "name": "Can view Tutor\u00eda",
+    "content_type": 47,
+    "codename": "view_tutorials"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 312,
+  "fields": {
+    "name": "Can add Profesor",
+    "content_type": 48,
+    "codename": "add_teacher"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 313,
+  "fields": {
+    "name": "Can change Profesor",
+    "content_type": 48,
+    "codename": "change_teacher"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 314,
+  "fields": {
+    "name": "Can delete Profesor",
+    "content_type": 48,
+    "codename": "delete_teacher"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 315,
+  "fields": {
+    "name": "Can view Profesor",
+    "content_type": 48,
+    "codename": "view_teacher"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 316,
+  "fields": {
+    "name": "Can view Web",
+    "content_type": 49,
+    "codename": "view_web"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 317,
+  "fields": {
+    "name": "Can add Entrada",
+    "content_type": 50,
+    "codename": "add_entry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 318,
+  "fields": {
+    "name": "Can change Entrada",
+    "content_type": 50,
+    "codename": "change_entry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 319,
+  "fields": {
+    "name": "Can delete Entrada",
+    "content_type": 50,
+    "codename": "delete_entry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 320,
+  "fields": {
+    "name": "Can view Entrada",
+    "content_type": 50,
+    "codename": "view_entry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 321,
+  "fields": {
+    "name": "Can add Entrada material",
+    "content_type": 51,
+    "codename": "add_entrymaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 322,
+  "fields": {
+    "name": "Can change Entrada material",
+    "content_type": 51,
+    "codename": "change_entrymaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 323,
+  "fields": {
+    "name": "Can delete Entrada material",
+    "content_type": 51,
+    "codename": "delete_entrymaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 324,
+  "fields": {
+    "name": "Can view Entrada material",
+    "content_type": 51,
+    "codename": "view_entrymaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 325,
+  "fields": {
+    "name": "Can add Inventario",
+    "content_type": 52,
+    "codename": "add_inventory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 326,
+  "fields": {
+    "name": "Can change Inventario",
+    "content_type": 52,
+    "codename": "change_inventory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 327,
+  "fields": {
+    "name": "Can delete Inventario",
+    "content_type": 52,
+    "codename": "delete_inventory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 328,
+  "fields": {
+    "name": "Can view Inventario",
+    "content_type": 52,
+    "codename": "view_inventory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 329,
+  "fields": {
+    "name": "Can add Material",
+    "content_type": 53,
+    "codename": "add_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 330,
+  "fields": {
+    "name": "Can change Material",
+    "content_type": 53,
+    "codename": "change_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 331,
+  "fields": {
+    "name": "Can delete Material",
+    "content_type": 53,
+    "codename": "delete_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 332,
+  "fields": {
+    "name": "Can view Material",
+    "content_type": 53,
+    "codename": "view_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 333,
+  "fields": {
+    "name": "Can add Salida",
+    "content_type": 54,
+    "codename": "add_output"
+  }
+},
+{
   "model": "auth.group",
   "pk": 1,
   "fields": {
@@ -17468,30 +19100,31 @@
       10,
       11,
       12,
-      177,
-      178,
-      179,
-      180,
-      173,
-      174,
-      175,
-      176,
-      189,
-      190,
-      191,
-      192,
       169,
       170,
       171,
       172,
-      185,
-      186,
-      187,
-      188,
+      316,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
       181,
       182,
       183,
       184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
       44,
       45,
       43,
@@ -17563,14 +19196,6 @@
       131,
       132,
       133,
-      154,
-      155,
-      156,
-      157,
-      150,
-      151,
-      152,
-      153,
       134,
       135,
       136,
@@ -17587,6 +19212,18 @@
       147,
       148,
       149,
+      150,
+      151,
+      152,
+      153,
+      164,
+      165,
+      166,
+      167,
+      154,
+      155,
+      156,
+      157,
       22,
       21,
       25,
@@ -17613,17 +19250,13 @@
   "fields": {
     "name": "Profesor",
     "permissions": [
-      39,
-      40,
-      41,
-      42,
       44,
       45,
       43,
-      118,
-      119,
-      120,
-      121
+      114,
+      115,
+      116,
+      117
     ]
   }
 },
@@ -17632,132 +19265,7 @@
   "pk": 3,
   "fields": {
     "name": "Estudi",
-    "permissions": [
-      9,
-      10,
-      11,
-      12,
-      39,
-      40,
-      41,
-      42,
-      44,
-      45,
-      43,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      74,
-      75,
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      82,
-      83,
-      84,
-      85,
-      90,
-      91,
-      92,
-      93,
-      94,
-      95,
-      96,
-      97,
-      98,
-      99,
-      100,
-      101,
-      106,
-      107,
-      108,
-      109,
-      110,
-      111,
-      112,
-      113,
-      118,
-      119,
-      120,
-      121,
-      122,
-      123,
-      124,
-      125,
-      126,
-      127,
-      128,
-      129,
-      130,
-      131,
-      132,
-      133,
-      154,
-      155,
-      156,
-      157,
-      150,
-      151,
-      152,
-      153,
-      134,
-      135,
-      136,
-      137,
-      138,
-      139,
-      140,
-      141,
-      142,
-      143,
-      144,
-      145,
-      146,
-      147,
-      148,
-      149,
-      22,
-      21,
-      25,
-      26,
-      24,
-      31,
-      32,
-      33,
-      34,
-      27,
-      28,
-      29,
-      30,
-      35,
-      36,
-      37,
-      38
-    ]
+    "permissions": []
   }
 },
 {
@@ -17849,14 +19357,6 @@
       131,
       132,
       133,
-      154,
-      155,
-      156,
-      157,
-      150,
-      151,
-      152,
-      153,
       134,
       135,
       136,
@@ -17873,6 +19373,14 @@
       147,
       148,
       149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
       22,
       21,
       25,
@@ -18630,7 +20138,7 @@
   "pk": 37,
   "fields": {
     "url": "/school/resources/teacher/",
-    "name": "Recursos",
+    "name": "Recursos Docente",
     "moduletype": null,
     "description": "Permite administrar los recursos para los estudiantes",
     "icon": "fas fa-capsules",
@@ -18683,7 +20191,7 @@
   "pk": 40,
   "fields": {
     "url": "/school/activities/teacher/",
-    "name": "Actividades",
+    "name": "Actividades Docente",
     "moduletype": null,
     "description": "Permite administrar las actividades para los estudiantes",
     "icon": "fas fa-book",
@@ -18867,14 +20375,14 @@
     "is_active": true,
     "is_visible": true,
     "permits": [
-      177,
-      178,
-      179,
-      180,
       173,
       174,
       175,
-      176
+      176,
+      177,
+      178,
+      179,
+      180
     ]
   }
 },
@@ -18892,14 +20400,14 @@
     "is_active": true,
     "is_visible": true,
     "permits": [
-      185,
-      186,
-      187,
-      188,
       181,
       182,
       183,
-      184
+      184,
+      185,
+      186,
+      187,
+      188
     ]
   }
 },
@@ -18925,43 +20433,89 @@
   }
 },
 {
-  "model": "security.groupmodule",
-  "pk": 83,
+  "model": "security.module",
+  "pk": 53,
   "fields": {
-    "group": 2,
-    "module": 40
+    "url": "/school/cursos/",
+    "name": "Cursos",
+    "moduletype": 4,
+    "description": "Permite administrar los Cursos",
+    "icon": "fas fa-briefcase",
+    "image": "",
+    "is_vertical": true,
+    "is_active": true,
+    "is_visible": true,
+    "permits": [
+      164,
+      165,
+      166,
+      167
+    ]
   }
 },
 {
-  "model": "security.groupmodule",
-  "pk": 84,
+  "model": "security.module",
+  "pk": 54,
   "fields": {
-    "group": 2,
-    "module": 5
+    "url": "/school/notedetails/teacher_matter/",
+    "name": "Calificaciones",
+    "moduletype": null,
+    "description": "Para ingresar las calificaciones",
+    "icon": "fas fa-book",
+    "image": "",
+    "is_vertical": false,
+    "is_active": true,
+    "is_visible": true,
+    "permits": [
+      114,
+      115,
+      116,
+      117,
+      130,
+      131,
+      132,
+      133
+    ]
   }
 },
 {
-  "model": "security.groupmodule",
-  "pk": 85,
+  "model": "security.module",
+  "pk": 55,
   "fields": {
-    "group": 2,
-    "module": 3
+    "url": "/school/notedetails/student_matter/",
+    "name": "Notas",
+    "moduletype": null,
+    "description": "Calificaciones de las distintas actividades del estudiante",
+    "icon": "fas fa-briefcase",
+    "image": "",
+    "is_vertical": false,
+    "is_active": true,
+    "is_visible": true,
+    "permits": [
+      133
+    ]
   }
 },
 {
-  "model": "security.groupmodule",
-  "pk": 86,
+  "model": "security.module",
+  "pk": 56,
   "fields": {
-    "group": 2,
-    "module": 31
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 87,
-  "fields": {
-    "group": 2,
-    "module": 37
+    "url": "/web/update/1",
+    "name": "Sitio Web",
+    "moduletype": 1,
+    "description": "Cambio de Pagina web",
+    "icon": "far fa-building Imagen:",
+    "image": "",
+    "is_vertical": true,
+    "is_active": true,
+    "is_visible": true,
+    "permits": [
+      169,
+      170,
+      171,
+      172,
+      316
+    ]
   }
 },
 {
@@ -19358,143 +20912,39 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 681,
+  "pk": 1356,
   "fields": {
-    "group": 3,
-    "module": 11
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 682,
-  "fields": {
-    "group": 3,
-    "module": 39
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 683,
-  "fields": {
-    "group": 3,
-    "module": 40
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 684,
-  "fields": {
-    "group": 3,
-    "module": 42
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 685,
-  "fields": {
-    "group": 3,
-    "module": 34
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 686,
-  "fields": {
-    "group": 3,
-    "module": 24
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 687,
-  "fields": {
-    "group": 3,
-    "module": 47
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 688,
-  "fields": {
-    "group": 3,
-    "module": 48
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 689,
-  "fields": {
-    "group": 3,
+    "group": 2,
     "module": 5
   }
 },
 {
   "model": "security.groupmodule",
-  "pk": 690,
+  "pk": 1357,
   "fields": {
-    "group": 3,
-    "module": 1
+    "group": 2,
+    "module": 54
   }
 },
 {
   "model": "security.groupmodule",
-  "pk": 691,
+  "pk": 1358,
   "fields": {
-    "group": 3,
-    "module": 22
+    "group": 2,
+    "module": 3
   }
 },
 {
   "model": "security.groupmodule",
-  "pk": 692,
+  "pk": 1359,
   "fields": {
-    "group": 3,
-    "module": 19
+    "group": 2,
+    "module": 31
   }
 },
 {
   "model": "security.groupmodule",
-  "pk": 693,
-  "fields": {
-    "group": 3,
-    "module": 10
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 694,
-  "fields": {
-    "group": 3,
-    "module": 44
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 695,
-  "fields": {
-    "group": 3,
-    "module": 45
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 696,
-  "fields": {
-    "group": 3,
-    "module": 16
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 697,
-  "fields": {
-    "group": 3,
-    "module": 4
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 698,
+  "pk": 1380,
   "fields": {
     "group": 3,
     "module": 2
@@ -19502,47 +20952,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 699,
-  "fields": {
-    "group": 3,
-    "module": 3
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 700,
-  "fields": {
-    "group": 3,
-    "module": 29
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 701,
-  "fields": {
-    "group": 3,
-    "module": 15
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 702,
-  "fields": {
-    "group": 3,
-    "module": 8
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 703,
-  "fields": {
-    "group": 3,
-    "module": 41
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 704,
+  "pk": 1381,
   "fields": {
     "group": 3,
     "module": 31
@@ -19550,199 +20960,15 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 705,
+  "pk": 1382,
   "fields": {
     "group": 3,
-    "module": 32
+    "module": 55
   }
 },
 {
   "model": "security.groupmodule",
-  "pk": 706,
-  "fields": {
-    "group": 3,
-    "module": 7
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 707,
-  "fields": {
-    "group": 3,
-    "module": 35
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 708,
-  "fields": {
-    "group": 3,
-    "module": 43
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 709,
-  "fields": {
-    "group": 3,
-    "module": 20
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 710,
-  "fields": {
-    "group": 3,
-    "module": 23
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 711,
-  "fields": {
-    "group": 3,
-    "module": 30
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 712,
-  "fields": {
-    "group": 3,
-    "module": 17
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 713,
-  "fields": {
-    "group": 3,
-    "module": 21
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 714,
-  "fields": {
-    "group": 3,
-    "module": 37
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 715,
-  "fields": {
-    "group": 3,
-    "module": 38
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 716,
-  "fields": {
-    "group": 3,
-    "module": 9
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 717,
-  "fields": {
-    "group": 3,
-    "module": 28
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 718,
-  "fields": {
-    "group": 3,
-    "module": 26
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 719,
-  "fields": {
-    "group": 3,
-    "module": 14
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 720,
-  "fields": {
-    "group": 3,
-    "module": 25
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 721,
-  "fields": {
-    "group": 3,
-    "module": 18
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 722,
-  "fields": {
-    "group": 3,
-    "module": 6
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 723,
-  "fields": {
-    "group": 3,
-    "module": 27
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 724,
-  "fields": {
-    "group": 3,
-    "module": 13
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 725,
-  "fields": {
-    "group": 3,
-    "module": 46
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 726,
-  "fields": {
-    "group": 3,
-    "module": 33
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 727,
-  "fields": {
-    "group": 3,
-    "module": 36
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 728,
-  "fields": {
-    "group": 3,
-    "module": 12
-  }
-},
-{
-  "model": "security.groupmodule",
-  "pk": 1156,
+  "pk": 1383,
   "fields": {
     "group": 1,
     "module": 11
@@ -19750,7 +20976,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1157,
+  "pk": 1384,
   "fields": {
     "group": 1,
     "module": 42
@@ -19758,7 +20984,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1158,
+  "pk": 1385,
   "fields": {
     "group": 1,
     "module": 34
@@ -19766,7 +20992,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1159,
+  "pk": 1386,
   "fields": {
     "group": 1,
     "module": 24
@@ -19774,7 +21000,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1160,
+  "pk": 1387,
   "fields": {
     "group": 1,
     "module": 47
@@ -19782,7 +21008,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1161,
+  "pk": 1388,
   "fields": {
     "group": 1,
     "module": 48
@@ -19790,7 +21016,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1162,
+  "pk": 1389,
   "fields": {
     "group": 1,
     "module": 5
@@ -19798,7 +21024,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1163,
+  "pk": 1390,
   "fields": {
     "group": 1,
     "module": 1
@@ -19806,7 +21032,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1164,
+  "pk": 1391,
   "fields": {
     "group": 1,
     "module": 22
@@ -19814,7 +21040,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1165,
+  "pk": 1392,
   "fields": {
     "group": 1,
     "module": 19
@@ -19822,7 +21048,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1166,
+  "pk": 1393,
   "fields": {
     "group": 1,
     "module": 10
@@ -19830,7 +21056,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1167,
+  "pk": 1394,
   "fields": {
     "group": 1,
     "module": 44
@@ -19838,7 +21064,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1168,
+  "pk": 1395,
   "fields": {
     "group": 1,
     "module": 45
@@ -19846,7 +21072,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1169,
+  "pk": 1396,
   "fields": {
     "group": 1,
     "module": 16
@@ -19854,7 +21080,15 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1170,
+  "pk": 1397,
+  "fields": {
+    "group": 1,
+    "module": 53
+  }
+},
+{
+  "model": "security.groupmodule",
+  "pk": 1398,
   "fields": {
     "group": 1,
     "module": 2
@@ -19862,7 +21096,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1171,
+  "pk": 1399,
   "fields": {
     "group": 1,
     "module": 50
@@ -19870,7 +21104,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1172,
+  "pk": 1400,
   "fields": {
     "group": 1,
     "module": 29
@@ -19878,7 +21112,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1173,
+  "pk": 1401,
   "fields": {
     "group": 1,
     "module": 15
@@ -19886,7 +21120,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1174,
+  "pk": 1402,
   "fields": {
     "group": 1,
     "module": 8
@@ -19894,7 +21128,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1175,
+  "pk": 1403,
   "fields": {
     "group": 1,
     "module": 41
@@ -19902,7 +21136,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1176,
+  "pk": 1404,
   "fields": {
     "group": 1,
     "module": 49
@@ -19910,7 +21144,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1177,
+  "pk": 1405,
   "fields": {
     "group": 1,
     "module": 32
@@ -19918,7 +21152,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1178,
+  "pk": 1406,
   "fields": {
     "group": 1,
     "module": 7
@@ -19926,7 +21160,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1179,
+  "pk": 1407,
   "fields": {
     "group": 1,
     "module": 35
@@ -19934,7 +21168,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1180,
+  "pk": 1408,
   "fields": {
     "group": 1,
     "module": 43
@@ -19942,7 +21176,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1181,
+  "pk": 1409,
   "fields": {
     "group": 1,
     "module": 20
@@ -19950,7 +21184,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1182,
+  "pk": 1410,
   "fields": {
     "group": 1,
     "module": 23
@@ -19958,7 +21192,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1183,
+  "pk": 1411,
   "fields": {
     "group": 1,
     "module": 30
@@ -19966,7 +21200,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1184,
+  "pk": 1412,
   "fields": {
     "group": 1,
     "module": 17
@@ -19974,7 +21208,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1185,
+  "pk": 1413,
   "fields": {
     "group": 1,
     "module": 21
@@ -19982,7 +21216,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1186,
+  "pk": 1414,
   "fields": {
     "group": 1,
     "module": 9
@@ -19990,7 +21224,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1187,
+  "pk": 1415,
   "fields": {
     "group": 1,
     "module": 51
@@ -19998,7 +21232,15 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1188,
+  "pk": 1416,
+  "fields": {
+    "group": 1,
+    "module": 56
+  }
+},
+{
+  "model": "security.groupmodule",
+  "pk": 1417,
   "fields": {
     "group": 1,
     "module": 52
@@ -20006,7 +21248,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1189,
+  "pk": 1418,
   "fields": {
     "group": 1,
     "module": 28
@@ -20014,7 +21256,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1190,
+  "pk": 1419,
   "fields": {
     "group": 1,
     "module": 26
@@ -20022,7 +21264,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1191,
+  "pk": 1420,
   "fields": {
     "group": 1,
     "module": 14
@@ -20030,7 +21272,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1192,
+  "pk": 1421,
   "fields": {
     "group": 1,
     "module": 25
@@ -20038,7 +21280,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1193,
+  "pk": 1422,
   "fields": {
     "group": 1,
     "module": 18
@@ -20046,7 +21288,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1194,
+  "pk": 1423,
   "fields": {
     "group": 1,
     "module": 6
@@ -20054,7 +21296,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1195,
+  "pk": 1424,
   "fields": {
     "group": 1,
     "module": 27
@@ -20062,7 +21304,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1196,
+  "pk": 1425,
   "fields": {
     "group": 1,
     "module": 13
@@ -20070,7 +21312,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1197,
+  "pk": 1426,
   "fields": {
     "group": 1,
     "module": 46
@@ -20078,7 +21320,7 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1198,
+  "pk": 1427,
   "fields": {
     "group": 1,
     "module": 33
@@ -20086,109 +21328,10 @@
 },
 {
   "model": "security.groupmodule",
-  "pk": 1199,
+  "pk": 1428,
   "fields": {
     "group": 1,
     "module": 12
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 120,
-  "fields": {
-    "group": 2,
-    "permission": 39,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 121,
-  "fields": {
-    "group": 2,
-    "permission": 40,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 122,
-  "fields": {
-    "group": 2,
-    "permission": 41,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 123,
-  "fields": {
-    "group": 2,
-    "permission": 42,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 124,
-  "fields": {
-    "group": 2,
-    "permission": 44,
-    "module": 5
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 125,
-  "fields": {
-    "group": 2,
-    "permission": 45,
-    "module": 5
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 126,
-  "fields": {
-    "group": 2,
-    "permission": 43,
-    "module": 5
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 127,
-  "fields": {
-    "group": 2,
-    "permission": 118,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 128,
-  "fields": {
-    "group": 2,
-    "permission": 119,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 129,
-  "fields": {
-    "group": 2,
-    "permission": 120,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 130,
-  "fields": {
-    "group": 2,
-    "permission": 121,
-    "module": 37
   }
 },
 {
@@ -21345,1132 +22488,70 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 1778,
+  "pk": 3745,
   "fields": {
-    "group": 3,
-    "permission": 22,
-    "module": 11
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1779,
-  "fields": {
-    "group": 3,
-    "permission": 21,
-    "module": 11
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1780,
-  "fields": {
-    "group": 3,
-    "permission": 39,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1781,
-  "fields": {
-    "group": 3,
-    "permission": 40,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1782,
-  "fields": {
-    "group": 3,
-    "permission": 41,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1783,
-  "fields": {
-    "group": 3,
-    "permission": 42,
-    "module": 40
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1784,
-  "fields": {
-    "group": 3,
-    "permission": 122,
-    "module": 34
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1785,
-  "fields": {
-    "group": 3,
-    "permission": 123,
-    "module": 34
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1786,
-  "fields": {
-    "group": 3,
-    "permission": 124,
-    "module": 34
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1787,
-  "fields": {
-    "group": 3,
-    "permission": 125,
-    "module": 34
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1788,
-  "fields": {
-    "group": 3,
-    "permission": 90,
-    "module": 24
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1789,
-  "fields": {
-    "group": 3,
-    "permission": 91,
-    "module": 24
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1790,
-  "fields": {
-    "group": 3,
-    "permission": 92,
-    "module": 24
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1791,
-  "fields": {
-    "group": 3,
-    "permission": 93,
-    "module": 24
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1792,
-  "fields": {
-    "group": 3,
+    "group": 2,
     "permission": 44,
     "module": 5
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1793,
+  "pk": 3746,
   "fields": {
-    "group": 3,
+    "group": 2,
     "permission": 45,
     "module": 5
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1794,
+  "pk": 3747,
   "fields": {
-    "group": 3,
+    "group": 2,
     "permission": 43,
     "module": 5
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1795,
+  "pk": 3748,
   "fields": {
-    "group": 3,
-    "permission": 50,
-    "module": 22
+    "group": 2,
+    "permission": 114,
+    "module": 54
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1796,
+  "pk": 3749,
   "fields": {
-    "group": 3,
-    "permission": 51,
-    "module": 22
+    "group": 2,
+    "permission": 115,
+    "module": 54
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1797,
+  "pk": 3750,
   "fields": {
-    "group": 3,
-    "permission": 52,
-    "module": 22
+    "group": 2,
+    "permission": 116,
+    "module": 54
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1798,
+  "pk": 3751,
   "fields": {
-    "group": 3,
-    "permission": 53,
-    "module": 22
+    "group": 2,
+    "permission": 117,
+    "module": 54
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 1799,
-  "fields": {
-    "group": 3,
-    "permission": 78,
-    "module": 19
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1800,
-  "fields": {
-    "group": 3,
-    "permission": 79,
-    "module": 19
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1801,
-  "fields": {
-    "group": 3,
-    "permission": 80,
-    "module": 19
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1802,
-  "fields": {
-    "group": 3,
-    "permission": 81,
-    "module": 19
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1803,
-  "fields": {
-    "group": 3,
-    "permission": 54,
-    "module": 44
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1804,
-  "fields": {
-    "group": 3,
-    "permission": 55,
-    "module": 44
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1805,
-  "fields": {
-    "group": 3,
-    "permission": 56,
-    "module": 44
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1806,
-  "fields": {
-    "group": 3,
-    "permission": 57,
-    "module": 44
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1807,
-  "fields": {
-    "group": 3,
-    "permission": 62,
-    "module": 16
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1808,
-  "fields": {
-    "group": 3,
-    "permission": 63,
-    "module": 16
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1809,
-  "fields": {
-    "group": 3,
-    "permission": 64,
-    "module": 16
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1810,
-  "fields": {
-    "group": 3,
-    "permission": 65,
-    "module": 16
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1811,
-  "fields": {
-    "group": 3,
-    "permission": 9,
-    "module": 4
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1812,
-  "fields": {
-    "group": 3,
-    "permission": 130,
-    "module": 29
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1813,
-  "fields": {
-    "group": 3,
-    "permission": 131,
-    "module": 29
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1814,
-  "fields": {
-    "group": 3,
-    "permission": 132,
-    "module": 29
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1815,
-  "fields": {
-    "group": 3,
-    "permission": 133,
-    "module": 29
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1816,
-  "fields": {
-    "group": 3,
-    "permission": 74,
-    "module": 15
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1817,
-  "fields": {
-    "group": 3,
-    "permission": 75,
-    "module": 15
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1818,
-  "fields": {
-    "group": 3,
-    "permission": 76,
-    "module": 15
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1819,
-  "fields": {
-    "group": 3,
-    "permission": 77,
-    "module": 15
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1820,
-  "fields": {
-    "group": 3,
-    "permission": 9,
-    "module": 8
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1821,
-  "fields": {
-    "group": 3,
-    "permission": 10,
-    "module": 8
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1822,
-  "fields": {
-    "group": 3,
-    "permission": 11,
-    "module": 8
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1823,
-  "fields": {
-    "group": 3,
-    "permission": 12,
-    "module": 8
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1824,
-  "fields": {
-    "group": 3,
-    "permission": 82,
-    "module": 32
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1825,
-  "fields": {
-    "group": 3,
-    "permission": 83,
-    "module": 32
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1826,
-  "fields": {
-    "group": 3,
-    "permission": 84,
-    "module": 32
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1827,
-  "fields": {
-    "group": 3,
-    "permission": 85,
-    "module": 32
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1828,
-  "fields": {
-    "group": 3,
-    "permission": 31,
-    "module": 7
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1829,
-  "fields": {
-    "group": 3,
-    "permission": 32,
-    "module": 7
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1830,
-  "fields": {
-    "group": 3,
-    "permission": 33,
-    "module": 7
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1831,
-  "fields": {
-    "group": 3,
-    "permission": 34,
-    "module": 7
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1832,
-  "fields": {
-    "group": 3,
-    "permission": 110,
-    "module": 35
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1833,
-  "fields": {
-    "group": 3,
-    "permission": 111,
-    "module": 35
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1834,
-  "fields": {
-    "group": 3,
-    "permission": 112,
-    "module": 35
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1835,
-  "fields": {
-    "group": 3,
-    "permission": 113,
-    "module": 35
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1836,
-  "fields": {
-    "group": 3,
-    "permission": 66,
-    "module": 20
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1837,
-  "fields": {
-    "group": 3,
-    "permission": 67,
-    "module": 20
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1838,
-  "fields": {
-    "group": 3,
-    "permission": 68,
-    "module": 20
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1839,
-  "fields": {
-    "group": 3,
-    "permission": 69,
-    "module": 20
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1840,
-  "fields": {
-    "group": 3,
-    "permission": 94,
-    "module": 23
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1841,
-  "fields": {
-    "group": 3,
-    "permission": 95,
-    "module": 23
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1842,
-  "fields": {
-    "group": 3,
-    "permission": 96,
-    "module": 23
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1843,
-  "fields": {
-    "group": 3,
-    "permission": 97,
-    "module": 23
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1844,
-  "fields": {
-    "group": 3,
-    "permission": 98,
-    "module": 30
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1845,
-  "fields": {
-    "group": 3,
-    "permission": 99,
-    "module": 30
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1846,
-  "fields": {
-    "group": 3,
-    "permission": 100,
-    "module": 30
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1847,
-  "fields": {
-    "group": 3,
-    "permission": 101,
-    "module": 30
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1848,
-  "fields": {
-    "group": 3,
-    "permission": 154,
-    "module": 17
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1849,
-  "fields": {
-    "group": 3,
-    "permission": 155,
-    "module": 17
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1850,
-  "fields": {
-    "group": 3,
-    "permission": 156,
-    "module": 17
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1851,
-  "fields": {
-    "group": 3,
-    "permission": 157,
-    "module": 17
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1852,
-  "fields": {
-    "group": 3,
-    "permission": 106,
-    "module": 21
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1853,
-  "fields": {
-    "group": 3,
-    "permission": 107,
-    "module": 21
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1854,
-  "fields": {
-    "group": 3,
-    "permission": 108,
-    "module": 21
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1855,
-  "fields": {
-    "group": 3,
-    "permission": 109,
-    "module": 21
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1856,
-  "fields": {
-    "group": 3,
-    "permission": 118,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1857,
-  "fields": {
-    "group": 3,
-    "permission": 119,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1858,
-  "fields": {
-    "group": 3,
-    "permission": 120,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1859,
-  "fields": {
-    "group": 3,
-    "permission": 121,
-    "module": 37
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1860,
-  "fields": {
-    "group": 3,
-    "permission": 25,
-    "module": 9
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1861,
-  "fields": {
-    "group": 3,
-    "permission": 26,
-    "module": 9
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1862,
-  "fields": {
-    "group": 3,
-    "permission": 24,
-    "module": 9
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1863,
-  "fields": {
-    "group": 3,
-    "permission": 58,
-    "module": 28
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1864,
-  "fields": {
-    "group": 3,
-    "permission": 59,
-    "module": 28
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1865,
-  "fields": {
-    "group": 3,
-    "permission": 60,
-    "module": 28
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1866,
-  "fields": {
-    "group": 3,
-    "permission": 61,
-    "module": 28
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1867,
-  "fields": {
-    "group": 3,
-    "permission": 134,
-    "module": 26
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1868,
-  "fields": {
-    "group": 3,
-    "permission": 135,
-    "module": 26
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1869,
-  "fields": {
-    "group": 3,
-    "permission": 136,
-    "module": 26
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1870,
-  "fields": {
-    "group": 3,
-    "permission": 137,
-    "module": 26
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1871,
-  "fields": {
-    "group": 3,
-    "permission": 138,
-    "module": 14
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1872,
-  "fields": {
-    "group": 3,
-    "permission": 139,
-    "module": 14
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1873,
-  "fields": {
-    "group": 3,
-    "permission": 140,
-    "module": 14
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1874,
-  "fields": {
-    "group": 3,
-    "permission": 141,
-    "module": 14
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1875,
-  "fields": {
-    "group": 3,
-    "permission": 46,
-    "module": 25
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1876,
-  "fields": {
-    "group": 3,
-    "permission": 47,
-    "module": 25
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1877,
-  "fields": {
-    "group": 3,
-    "permission": 48,
-    "module": 25
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1878,
-  "fields": {
-    "group": 3,
-    "permission": 49,
-    "module": 25
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1879,
-  "fields": {
-    "group": 3,
-    "permission": 142,
-    "module": 18
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1880,
-  "fields": {
-    "group": 3,
-    "permission": 143,
-    "module": 18
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1881,
-  "fields": {
-    "group": 3,
-    "permission": 144,
-    "module": 18
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1882,
-  "fields": {
-    "group": 3,
-    "permission": 145,
-    "module": 18
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1883,
-  "fields": {
-    "group": 3,
-    "permission": 27,
-    "module": 6
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1884,
-  "fields": {
-    "group": 3,
-    "permission": 28,
-    "module": 6
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1885,
-  "fields": {
-    "group": 3,
-    "permission": 29,
-    "module": 6
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1886,
-  "fields": {
-    "group": 3,
-    "permission": 30,
-    "module": 6
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1887,
-  "fields": {
-    "group": 3,
-    "permission": 146,
-    "module": 27
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1888,
-  "fields": {
-    "group": 3,
-    "permission": 147,
-    "module": 27
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1889,
-  "fields": {
-    "group": 3,
-    "permission": 148,
-    "module": 27
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1890,
-  "fields": {
-    "group": 3,
-    "permission": 149,
-    "module": 27
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1891,
-  "fields": {
-    "group": 3,
-    "permission": 126,
-    "module": 13
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1892,
-  "fields": {
-    "group": 3,
-    "permission": 127,
-    "module": 13
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1893,
-  "fields": {
-    "group": 3,
-    "permission": 128,
-    "module": 13
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1894,
-  "fields": {
-    "group": 3,
-    "permission": 129,
-    "module": 13
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1895,
-  "fields": {
-    "group": 3,
-    "permission": 150,
-    "module": 33
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1896,
-  "fields": {
-    "group": 3,
-    "permission": 151,
-    "module": 33
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1897,
-  "fields": {
-    "group": 3,
-    "permission": 152,
-    "module": 33
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1898,
-  "fields": {
-    "group": 3,
-    "permission": 153,
-    "module": 33
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1899,
-  "fields": {
-    "group": 3,
-    "permission": 35,
-    "module": 12
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1900,
-  "fields": {
-    "group": 3,
-    "permission": 36,
-    "module": 12
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1901,
-  "fields": {
-    "group": 3,
-    "permission": 37,
-    "module": 12
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 1902,
-  "fields": {
-    "group": 3,
-    "permission": 38,
-    "module": 12
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 3154,
+  "pk": 3752,
   "fields": {
     "group": 1,
     "permission": 22,
@@ -22479,7 +22560,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3155,
+  "pk": 3753,
   "fields": {
     "group": 1,
     "permission": 21,
@@ -22488,7 +22569,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3156,
+  "pk": 3754,
   "fields": {
     "group": 1,
     "permission": 122,
@@ -22497,7 +22578,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3157,
+  "pk": 3755,
   "fields": {
     "group": 1,
     "permission": 123,
@@ -22506,7 +22587,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3158,
+  "pk": 3756,
   "fields": {
     "group": 1,
     "permission": 124,
@@ -22515,7 +22596,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3159,
+  "pk": 3757,
   "fields": {
     "group": 1,
     "permission": 125,
@@ -22524,7 +22605,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3160,
+  "pk": 3758,
   "fields": {
     "group": 1,
     "permission": 90,
@@ -22533,7 +22614,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3161,
+  "pk": 3759,
   "fields": {
     "group": 1,
     "permission": 91,
@@ -22542,7 +22623,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3162,
+  "pk": 3760,
   "fields": {
     "group": 1,
     "permission": 92,
@@ -22551,7 +22632,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3163,
+  "pk": 3761,
   "fields": {
     "group": 1,
     "permission": 93,
@@ -22560,7 +22641,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3164,
+  "pk": 3762,
   "fields": {
     "group": 1,
     "permission": 44,
@@ -22569,7 +22650,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3165,
+  "pk": 3763,
   "fields": {
     "group": 1,
     "permission": 45,
@@ -22578,7 +22659,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3166,
+  "pk": 3764,
   "fields": {
     "group": 1,
     "permission": 43,
@@ -22587,7 +22668,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3167,
+  "pk": 3765,
   "fields": {
     "group": 1,
     "permission": 50,
@@ -22596,7 +22677,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3168,
+  "pk": 3766,
   "fields": {
     "group": 1,
     "permission": 51,
@@ -22605,7 +22686,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3169,
+  "pk": 3767,
   "fields": {
     "group": 1,
     "permission": 52,
@@ -22614,7 +22695,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3170,
+  "pk": 3768,
   "fields": {
     "group": 1,
     "permission": 53,
@@ -22623,7 +22704,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3171,
+  "pk": 3769,
   "fields": {
     "group": 1,
     "permission": 78,
@@ -22632,7 +22713,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3172,
+  "pk": 3770,
   "fields": {
     "group": 1,
     "permission": 79,
@@ -22641,7 +22722,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3173,
+  "pk": 3771,
   "fields": {
     "group": 1,
     "permission": 80,
@@ -22650,7 +22731,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3174,
+  "pk": 3772,
   "fields": {
     "group": 1,
     "permission": 81,
@@ -22659,7 +22740,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3175,
+  "pk": 3773,
   "fields": {
     "group": 1,
     "permission": 54,
@@ -22668,7 +22749,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3176,
+  "pk": 3774,
   "fields": {
     "group": 1,
     "permission": 55,
@@ -22677,7 +22758,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3177,
+  "pk": 3775,
   "fields": {
     "group": 1,
     "permission": 56,
@@ -22686,7 +22767,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3178,
+  "pk": 3776,
   "fields": {
     "group": 1,
     "permission": 57,
@@ -22695,7 +22776,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3179,
+  "pk": 3777,
   "fields": {
     "group": 1,
     "permission": 62,
@@ -22704,7 +22785,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3180,
+  "pk": 3778,
   "fields": {
     "group": 1,
     "permission": 63,
@@ -22713,7 +22794,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3181,
+  "pk": 3779,
   "fields": {
     "group": 1,
     "permission": 64,
@@ -22722,7 +22803,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3182,
+  "pk": 3780,
   "fields": {
     "group": 1,
     "permission": 65,
@@ -22731,43 +22812,43 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3183,
+  "pk": 3781,
   "fields": {
     "group": 1,
-    "permission": 177,
-    "module": 50
+    "permission": 164,
+    "module": 53
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 3184,
+  "pk": 3782,
   "fields": {
     "group": 1,
-    "permission": 178,
-    "module": 50
+    "permission": 165,
+    "module": 53
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 3185,
+  "pk": 3783,
   "fields": {
     "group": 1,
-    "permission": 179,
-    "module": 50
+    "permission": 166,
+    "module": 53
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 3186,
+  "pk": 3784,
   "fields": {
     "group": 1,
-    "permission": 180,
-    "module": 50
+    "permission": 167,
+    "module": 53
   }
 },
 {
   "model": "security.grouppermission",
-  "pk": 3187,
+  "pk": 3785,
   "fields": {
     "group": 1,
     "permission": 173,
@@ -22776,7 +22857,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3188,
+  "pk": 3786,
   "fields": {
     "group": 1,
     "permission": 174,
@@ -22785,7 +22866,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3189,
+  "pk": 3787,
   "fields": {
     "group": 1,
     "permission": 175,
@@ -22794,7 +22875,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3190,
+  "pk": 3788,
   "fields": {
     "group": 1,
     "permission": 176,
@@ -22803,7 +22884,43 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3191,
+  "pk": 3789,
+  "fields": {
+    "group": 1,
+    "permission": 177,
+    "module": 50
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3790,
+  "fields": {
+    "group": 1,
+    "permission": 178,
+    "module": 50
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3791,
+  "fields": {
+    "group": 1,
+    "permission": 179,
+    "module": 50
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3792,
+  "fields": {
+    "group": 1,
+    "permission": 180,
+    "module": 50
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3793,
   "fields": {
     "group": 1,
     "permission": 130,
@@ -22812,7 +22929,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3192,
+  "pk": 3794,
   "fields": {
     "group": 1,
     "permission": 131,
@@ -22821,7 +22938,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3193,
+  "pk": 3795,
   "fields": {
     "group": 1,
     "permission": 132,
@@ -22830,7 +22947,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3194,
+  "pk": 3796,
   "fields": {
     "group": 1,
     "permission": 133,
@@ -22839,7 +22956,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3195,
+  "pk": 3797,
   "fields": {
     "group": 1,
     "permission": 74,
@@ -22848,7 +22965,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3196,
+  "pk": 3798,
   "fields": {
     "group": 1,
     "permission": 75,
@@ -22857,7 +22974,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3197,
+  "pk": 3799,
   "fields": {
     "group": 1,
     "permission": 76,
@@ -22866,7 +22983,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3198,
+  "pk": 3800,
   "fields": {
     "group": 1,
     "permission": 77,
@@ -22875,7 +22992,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3199,
+  "pk": 3801,
   "fields": {
     "group": 1,
     "permission": 9,
@@ -22884,7 +23001,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3200,
+  "pk": 3802,
   "fields": {
     "group": 1,
     "permission": 10,
@@ -22893,7 +23010,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3201,
+  "pk": 3803,
   "fields": {
     "group": 1,
     "permission": 11,
@@ -22902,7 +23019,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3202,
+  "pk": 3804,
   "fields": {
     "group": 1,
     "permission": 12,
@@ -22911,7 +23028,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3203,
+  "pk": 3805,
   "fields": {
     "group": 1,
     "permission": 169,
@@ -22920,7 +23037,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3204,
+  "pk": 3806,
   "fields": {
     "group": 1,
     "permission": 170,
@@ -22929,7 +23046,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3205,
+  "pk": 3807,
   "fields": {
     "group": 1,
     "permission": 171,
@@ -22938,7 +23055,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3206,
+  "pk": 3808,
   "fields": {
     "group": 1,
     "permission": 172,
@@ -22947,7 +23064,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3207,
+  "pk": 3809,
   "fields": {
     "group": 1,
     "permission": 82,
@@ -22956,7 +23073,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3208,
+  "pk": 3810,
   "fields": {
     "group": 1,
     "permission": 83,
@@ -22965,7 +23082,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3209,
+  "pk": 3811,
   "fields": {
     "group": 1,
     "permission": 84,
@@ -22974,7 +23091,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3210,
+  "pk": 3812,
   "fields": {
     "group": 1,
     "permission": 85,
@@ -22983,7 +23100,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3211,
+  "pk": 3813,
   "fields": {
     "group": 1,
     "permission": 31,
@@ -22992,7 +23109,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3212,
+  "pk": 3814,
   "fields": {
     "group": 1,
     "permission": 32,
@@ -23001,7 +23118,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3213,
+  "pk": 3815,
   "fields": {
     "group": 1,
     "permission": 33,
@@ -23010,7 +23127,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3214,
+  "pk": 3816,
   "fields": {
     "group": 1,
     "permission": 34,
@@ -23019,7 +23136,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3215,
+  "pk": 3817,
   "fields": {
     "group": 1,
     "permission": 110,
@@ -23028,7 +23145,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3216,
+  "pk": 3818,
   "fields": {
     "group": 1,
     "permission": 111,
@@ -23037,7 +23154,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3217,
+  "pk": 3819,
   "fields": {
     "group": 1,
     "permission": 112,
@@ -23046,7 +23163,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3218,
+  "pk": 3820,
   "fields": {
     "group": 1,
     "permission": 113,
@@ -23055,7 +23172,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3219,
+  "pk": 3821,
   "fields": {
     "group": 1,
     "permission": 66,
@@ -23064,7 +23181,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3220,
+  "pk": 3822,
   "fields": {
     "group": 1,
     "permission": 67,
@@ -23073,7 +23190,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3221,
+  "pk": 3823,
   "fields": {
     "group": 1,
     "permission": 68,
@@ -23082,7 +23199,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3222,
+  "pk": 3824,
   "fields": {
     "group": 1,
     "permission": 69,
@@ -23091,7 +23208,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3223,
+  "pk": 3825,
   "fields": {
     "group": 1,
     "permission": 94,
@@ -23100,7 +23217,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3224,
+  "pk": 3826,
   "fields": {
     "group": 1,
     "permission": 95,
@@ -23109,7 +23226,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3225,
+  "pk": 3827,
   "fields": {
     "group": 1,
     "permission": 96,
@@ -23118,7 +23235,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3226,
+  "pk": 3828,
   "fields": {
     "group": 1,
     "permission": 97,
@@ -23127,7 +23244,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3227,
+  "pk": 3829,
   "fields": {
     "group": 1,
     "permission": 98,
@@ -23136,7 +23253,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3228,
+  "pk": 3830,
   "fields": {
     "group": 1,
     "permission": 99,
@@ -23145,7 +23262,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3229,
+  "pk": 3831,
   "fields": {
     "group": 1,
     "permission": 100,
@@ -23154,7 +23271,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3230,
+  "pk": 3832,
   "fields": {
     "group": 1,
     "permission": 101,
@@ -23163,7 +23280,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3231,
+  "pk": 3833,
   "fields": {
     "group": 1,
     "permission": 154,
@@ -23172,7 +23289,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3232,
+  "pk": 3834,
   "fields": {
     "group": 1,
     "permission": 155,
@@ -23181,7 +23298,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3233,
+  "pk": 3835,
   "fields": {
     "group": 1,
     "permission": 156,
@@ -23190,7 +23307,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3234,
+  "pk": 3836,
   "fields": {
     "group": 1,
     "permission": 157,
@@ -23199,7 +23316,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3235,
+  "pk": 3837,
   "fields": {
     "group": 1,
     "permission": 106,
@@ -23208,7 +23325,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3236,
+  "pk": 3838,
   "fields": {
     "group": 1,
     "permission": 107,
@@ -23217,7 +23334,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3237,
+  "pk": 3839,
   "fields": {
     "group": 1,
     "permission": 108,
@@ -23226,7 +23343,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3238,
+  "pk": 3840,
   "fields": {
     "group": 1,
     "permission": 109,
@@ -23235,7 +23352,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3239,
+  "pk": 3841,
   "fields": {
     "group": 1,
     "permission": 25,
@@ -23244,7 +23361,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3240,
+  "pk": 3842,
   "fields": {
     "group": 1,
     "permission": 26,
@@ -23253,7 +23370,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3241,
+  "pk": 3843,
   "fields": {
     "group": 1,
     "permission": 24,
@@ -23262,43 +23379,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3242,
-  "fields": {
-    "group": 1,
-    "permission": 185,
-    "module": 51
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 3243,
-  "fields": {
-    "group": 1,
-    "permission": 186,
-    "module": 51
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 3244,
-  "fields": {
-    "group": 1,
-    "permission": 187,
-    "module": 51
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 3245,
-  "fields": {
-    "group": 1,
-    "permission": 188,
-    "module": 51
-  }
-},
-{
-  "model": "security.grouppermission",
-  "pk": 3246,
+  "pk": 3844,
   "fields": {
     "group": 1,
     "permission": 181,
@@ -23307,7 +23388,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3247,
+  "pk": 3845,
   "fields": {
     "group": 1,
     "permission": 182,
@@ -23316,7 +23397,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3248,
+  "pk": 3846,
   "fields": {
     "group": 1,
     "permission": 183,
@@ -23325,7 +23406,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3249,
+  "pk": 3847,
   "fields": {
     "group": 1,
     "permission": 184,
@@ -23334,7 +23415,88 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3250,
+  "pk": 3848,
+  "fields": {
+    "group": 1,
+    "permission": 185,
+    "module": 51
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3849,
+  "fields": {
+    "group": 1,
+    "permission": 186,
+    "module": 51
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3850,
+  "fields": {
+    "group": 1,
+    "permission": 187,
+    "module": 51
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3851,
+  "fields": {
+    "group": 1,
+    "permission": 188,
+    "module": 51
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3852,
+  "fields": {
+    "group": 1,
+    "permission": 169,
+    "module": 56
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3853,
+  "fields": {
+    "group": 1,
+    "permission": 170,
+    "module": 56
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3854,
+  "fields": {
+    "group": 1,
+    "permission": 171,
+    "module": 56
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3855,
+  "fields": {
+    "group": 1,
+    "permission": 172,
+    "module": 56
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3856,
+  "fields": {
+    "group": 1,
+    "permission": 316,
+    "module": 56
+  }
+},
+{
+  "model": "security.grouppermission",
+  "pk": 3857,
   "fields": {
     "group": 1,
     "permission": 189,
@@ -23343,7 +23505,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3251,
+  "pk": 3858,
   "fields": {
     "group": 1,
     "permission": 190,
@@ -23352,7 +23514,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3252,
+  "pk": 3859,
   "fields": {
     "group": 1,
     "permission": 191,
@@ -23361,7 +23523,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3253,
+  "pk": 3860,
   "fields": {
     "group": 1,
     "permission": 192,
@@ -23370,7 +23532,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3254,
+  "pk": 3861,
   "fields": {
     "group": 1,
     "permission": 58,
@@ -23379,7 +23541,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3255,
+  "pk": 3862,
   "fields": {
     "group": 1,
     "permission": 59,
@@ -23388,7 +23550,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3256,
+  "pk": 3863,
   "fields": {
     "group": 1,
     "permission": 60,
@@ -23397,7 +23559,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3257,
+  "pk": 3864,
   "fields": {
     "group": 1,
     "permission": 61,
@@ -23406,7 +23568,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3258,
+  "pk": 3865,
   "fields": {
     "group": 1,
     "permission": 134,
@@ -23415,7 +23577,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3259,
+  "pk": 3866,
   "fields": {
     "group": 1,
     "permission": 135,
@@ -23424,7 +23586,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3260,
+  "pk": 3867,
   "fields": {
     "group": 1,
     "permission": 136,
@@ -23433,7 +23595,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3261,
+  "pk": 3868,
   "fields": {
     "group": 1,
     "permission": 137,
@@ -23442,7 +23604,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3262,
+  "pk": 3869,
   "fields": {
     "group": 1,
     "permission": 138,
@@ -23451,7 +23613,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3263,
+  "pk": 3870,
   "fields": {
     "group": 1,
     "permission": 139,
@@ -23460,7 +23622,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3264,
+  "pk": 3871,
   "fields": {
     "group": 1,
     "permission": 140,
@@ -23469,7 +23631,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3265,
+  "pk": 3872,
   "fields": {
     "group": 1,
     "permission": 141,
@@ -23478,7 +23640,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3266,
+  "pk": 3873,
   "fields": {
     "group": 1,
     "permission": 46,
@@ -23487,7 +23649,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3267,
+  "pk": 3874,
   "fields": {
     "group": 1,
     "permission": 47,
@@ -23496,7 +23658,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3268,
+  "pk": 3875,
   "fields": {
     "group": 1,
     "permission": 48,
@@ -23505,7 +23667,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3269,
+  "pk": 3876,
   "fields": {
     "group": 1,
     "permission": 49,
@@ -23514,7 +23676,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3270,
+  "pk": 3877,
   "fields": {
     "group": 1,
     "permission": 142,
@@ -23523,7 +23685,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3271,
+  "pk": 3878,
   "fields": {
     "group": 1,
     "permission": 143,
@@ -23532,7 +23694,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3272,
+  "pk": 3879,
   "fields": {
     "group": 1,
     "permission": 144,
@@ -23541,7 +23703,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3273,
+  "pk": 3880,
   "fields": {
     "group": 1,
     "permission": 145,
@@ -23550,7 +23712,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3274,
+  "pk": 3881,
   "fields": {
     "group": 1,
     "permission": 27,
@@ -23559,7 +23721,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3275,
+  "pk": 3882,
   "fields": {
     "group": 1,
     "permission": 28,
@@ -23568,7 +23730,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3276,
+  "pk": 3883,
   "fields": {
     "group": 1,
     "permission": 29,
@@ -23577,7 +23739,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3277,
+  "pk": 3884,
   "fields": {
     "group": 1,
     "permission": 30,
@@ -23586,7 +23748,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3278,
+  "pk": 3885,
   "fields": {
     "group": 1,
     "permission": 146,
@@ -23595,7 +23757,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3279,
+  "pk": 3886,
   "fields": {
     "group": 1,
     "permission": 147,
@@ -23604,7 +23766,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3280,
+  "pk": 3887,
   "fields": {
     "group": 1,
     "permission": 148,
@@ -23613,7 +23775,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3281,
+  "pk": 3888,
   "fields": {
     "group": 1,
     "permission": 149,
@@ -23622,7 +23784,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3282,
+  "pk": 3889,
   "fields": {
     "group": 1,
     "permission": 126,
@@ -23631,7 +23793,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3283,
+  "pk": 3890,
   "fields": {
     "group": 1,
     "permission": 127,
@@ -23640,7 +23802,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3284,
+  "pk": 3891,
   "fields": {
     "group": 1,
     "permission": 128,
@@ -23649,7 +23811,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3285,
+  "pk": 3892,
   "fields": {
     "group": 1,
     "permission": 129,
@@ -23658,7 +23820,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3286,
+  "pk": 3893,
   "fields": {
     "group": 1,
     "permission": 150,
@@ -23667,7 +23829,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3287,
+  "pk": 3894,
   "fields": {
     "group": 1,
     "permission": 151,
@@ -23676,7 +23838,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3288,
+  "pk": 3895,
   "fields": {
     "group": 1,
     "permission": 152,
@@ -23685,7 +23847,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3289,
+  "pk": 3896,
   "fields": {
     "group": 1,
     "permission": 153,
@@ -23694,7 +23856,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3290,
+  "pk": 3897,
   "fields": {
     "group": 1,
     "permission": 35,
@@ -23703,7 +23865,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3291,
+  "pk": 3898,
   "fields": {
     "group": 1,
     "permission": 36,
@@ -23712,7 +23874,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3292,
+  "pk": 3899,
   "fields": {
     "group": 1,
     "permission": 37,
@@ -23721,7 +23883,7 @@
 },
 {
   "model": "security.grouppermission",
-  "pk": 3293,
+  "pk": 3900,
   "fields": {
     "group": 1,
     "permission": 38,
@@ -23757,11 +23919,11 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$150000$udGvXstbSFZm$Xyqa0A9oMO1abT3fKN2eJxNLHTfjPzjObPKi1V8Jk50=",
-    "last_login": "2021-12-06T17:53:03.183Z",
+    "last_login": "2021-12-14T03:31:32.139Z",
     "is_superuser": true,
     "username": "0401798477",
-    "first_name": "Andres Jos\u00e9",
-    "last_name": "Lopez",
+    "first_name": "Jaime CDI",
+    "last_name": "Educaci\u00f3n L",
     "email": "admin01@test.com",
     "is_staff": true,
     "is_active": true,
@@ -23786,7 +23948,7 @@
     "username": "0401798475",
     "first_name": "Juan Manuel",
     "last_name": "Prado",
-    "email": "anderson.pozo@upec.edu.ec",
+    "email": "anderson@upec.edu.ec",
     "is_staff": false,
     "is_active": true,
     "date_joined": "2021-12-07T21:52:15.403Z",
@@ -23849,6 +24011,102 @@
   }
 },
 {
+  "model": "user.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$X9Gs2hYlZxoJ$FE2cdy4jntbguayr4GZvZ0MJj5MMDnw6GQ4nh/ttviQ=",
+    "last_login": "2021-12-14T04:41:51.751Z",
+    "is_superuser": false,
+    "username": "0954742250",
+    "first_name": "Josie",
+    "last_name": "Castro",
+    "email": "josie@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-14T02:48:23.743Z",
+    "dni": "0954742250",
+    "image": "users/2021/12/13/perfil.jpg",
+    "is_change_password": false,
+    "token": "7e538df9-ca8d-423b-8e94-e1d59591c45b",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$Gz7N9NIXo6NR$sFUoIvzYVcikXPsQ50nAFpB4tFRRdyGZhPmSXaUaAeU=",
+    "last_login": "2021-12-14T04:03:40.897Z",
+    "is_superuser": false,
+    "username": "0303123913",
+    "first_name": "Mirella",
+    "last_name": "Jumbo",
+    "email": "mirella@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-14T02:50:36.584Z",
+    "dni": "0303123913",
+    "image": "",
+    "is_change_password": false,
+    "token": "fc79afe5-9c96-4b88-a26e-a10afcec92c0",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$TUj1kJH9B92x$j3DnVbBVoT61BYUgb+6jt0nsnixX06ZlAjI54itKCsw=",
+    "last_login": "2021-12-17T23:09:03.588Z",
+    "is_superuser": false,
+    "username": "1208073864",
+    "first_name": "Diana",
+    "last_name": "Vargas",
+    "email": "diana@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-17T22:57:12.909Z",
+    "dni": "1208073864",
+    "image": "",
+    "is_change_password": false,
+    "token": "e78c06d3-8e43-48a7-929f-324e470af0f4",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$j095YNz1sGgf$SPbw80S6eUtIzZKYwHPjN7AGUuco3bh7rW6Eyx8EvEY=",
+    "last_login": "2021-12-17T23:07:51.550Z",
+    "is_superuser": false,
+    "username": "2200677058",
+    "first_name": "Diana Estudiante",
+    "last_name": "Vargas",
+    "email": "enriquejaiemechuvacastano@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-17T23:05:47.312Z",
+    "dni": "2200677058",
+    "image": "",
+    "is_change_password": false,
+    "token": "1059d3ee-d331-4d95-8aea-5c4f504bfbc8",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
   "model": "school.teacher",
   "pk": 4,
   "fields": {
@@ -23875,6 +24133,32 @@
   }
 },
 {
+  "model": "school.teacher",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "gender": "femenino",
+    "mobile": "0981541854",
+    "phone": "0981541854",
+    "address": "210150",
+    "birthdate": "1991-08-23",
+    "parish": 1299
+  }
+},
+{
+  "model": "school.teacher",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "gender": "masculino",
+    "mobile": "0981541888",
+    "phone": "0981541854",
+    "address": "210150",
+    "birthdate": "2005-05-26",
+    "parish": 1365
+  }
+},
+{
   "model": "school.student",
   "pk": 1,
   "fields": {
@@ -23885,6 +24169,62 @@
     "address": "Juan Montalvo and Panamericana",
     "birthdate": "2020-12-07",
     "parish": 1360
+  }
+},
+{
+  "model": "school.student",
+  "pk": 2,
+  "fields": {
+    "user": 6,
+    "gender": "masculino",
+    "mobile": "0981541888",
+    "phone": "0981541888",
+    "address": "210150",
+    "birthdate": "2020-08-13",
+    "parish": 1265
+  }
+},
+{
+  "model": "school.student",
+  "pk": 3,
+  "fields": {
+    "user": 9,
+    "gender": "femenino",
+    "mobile": "098154177",
+    "phone": "0981541854",
+    "address": "210150",
+    "birthdate": "2020-02-05",
+    "parish": 1365
+  }
+},
+{
+  "model": "school.assistance",
+  "pk": 1,
+  "fields": {
+    "date_joined": "2021-12-13",
+    "teacher": 7,
+    "user": 7,
+    "year": 2021,
+    "month": 12,
+    "day": 13,
+    "desc": null,
+    "state": true,
+    "is_teacher": true
+  }
+},
+{
+  "model": "school.assistance",
+  "pk": 2,
+  "fields": {
+    "date_joined": "2021-12-13",
+    "teacher": 7,
+    "user": 6,
+    "year": 2021,
+    "month": 12,
+    "day": 13,
+    "desc": "Acompa\u00f1ante la mama",
+    "state": true,
+    "is_teacher": false
   }
 },
 {
@@ -23915,6 +24255,127 @@
     "hour": "12:53:03.266",
     "localhost": "172.24.96.1",
     "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-13",
+    "hour": "21:43:13.306",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-13",
+    "hour": "22:03:17.646",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-13",
+    "hour": "22:31:32.230",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "date_joined": "2021-12-13",
+    "hour": "22:31:55.139",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 7,
+  "fields": {
+    "user": 7,
+    "date_joined": "2021-12-13",
+    "hour": "22:57:15.210",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 8,
+  "fields": {
+    "user": 6,
+    "date_joined": "2021-12-13",
+    "hour": "23:00:27.894",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 9,
+  "fields": {
+    "user": 7,
+    "date_joined": "2021-12-13",
+    "hour": "23:03:40.977",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 10,
+  "fields": {
+    "user": 6,
+    "date_joined": "2021-12-13",
+    "hour": "23:34:42.194",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 11,
+  "fields": {
+    "user": 6,
+    "date_joined": "2021-12-13",
+    "hour": "23:41:51.872",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 12,
+  "fields": {
+    "user": 9,
+    "date_joined": "2021-12-17",
+    "hour": "18:07:51.644",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 13,
+  "fields": {
+    "user": 8,
+    "date_joined": "2021-12-17",
+    "hour": "18:09:03.667",
+    "localhost": "192.168.1.57",
+    "hostname": "DESKTOP-6AC0JEF"
   }
 },
 {

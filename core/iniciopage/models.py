@@ -29,7 +29,9 @@ class Web(models.Model):
     servicios_text = models.CharField(verbose_name='Servicios Descripción', max_length=1000, default='')
     docentes_text = models.CharField(verbose_name='Docentes Descripción', max_length=1000, default='')
     infraestructura_text = models.CharField(verbose_name='Infraestructura Descripción', max_length=1000, default='')
-
+    block1 = models.CharField(verbose_name='Bloque 1', max_length=1000, default='')
+    block2 = models.CharField(verbose_name='Bloque 2', max_length=1000, default='')
+    block3 = models.CharField(verbose_name='Bloque 3', max_length=1000, default='')
 
     def __str__(self):
         return self.name
