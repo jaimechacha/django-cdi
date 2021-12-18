@@ -7,7 +7,7 @@ from django.db import models
 from django.forms import model_to_dict
 
 from config import settings
-from core.school.choices import months, course_level, horary, gender_person
+from core.school.choices import months, course_level, horary, gender_person, blood_types
 from core.user.models import User
 
 
@@ -175,12 +175,22 @@ class Teacher(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Sexo')
+    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
     address = models.CharField(max_length=500, null=True, blank=True, verbose_name='Dirección')
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
     parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parroquia')
+    birth_country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True, blank=True,
+                                      verbose_name='País de nacimiento')
+    birth_province = models.ForeignKey(Province, on_delete=models.PROTECT, null=True, blank=True,
+                                       verbose_name='Provincia de nacimiento')
+    birth_city = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True,
+                                   verbose_name='Ciudad de nacimiento')
+    nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
+    age = models.IntegerField(null=True, blank=True, verbose_name='Edad')
+    ethnicity = models.CharField(max_length=50, null=True, blank=True, verbose_name='Etnia')
+    religion = models.CharField(max_length=50, null=True, blank=True, verbose_name='Religión')
 
     def __str__(self):
         return '{} / {}'.format(self.user.get_full_name(), self.user.dni)
@@ -200,6 +210,78 @@ class Student(models.Model):
         verbose_name = 'Estudiante'
         verbose_name_plural = 'Estudiantes'
         ordering = ['-id']
+
+
+class LegalRepresentative(models.Model):
+    first_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
+    last_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
+    relationship = models.CharField(max_length=30, null=True, blank=True, verbose_name='Parentesco')
+    ci = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
+    nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
+    address = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección')
+    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Refencia')
+    cell_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Celular')
+    conventional_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono convencional')
+    emergency_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
+    email = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo electrónico')
+    blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
+                                   verbose_name='Grupo sanguíneo')
+    is_working = models.BooleanField(null=True, blank=True, default=False, verbose_name='Trabaja')
+    workplace = models.CharField(max_length=30, null=True, blank=True, verbose_name='Lugar de trabajo')
+    work_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono del trabajo')
+    work_address = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección del trabajo')
+    work_email = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo del trabajo')
+    croquis = models.FileField(upload_to='rs/croquis/%Y/%m/%d', null=True, blank=True,
+                               verbose_name='Croquis PDF')
+    basic_services_payment = models.FileField(upload_to='rs/bs-payment/%Y/%m/%d', null=True, blank=True,
+                                              verbose_name='Comprobante de servicios básicos')
+    image = models.ImageField(upload_to='rs/image/%Y/%m/%d', null=True, blank=True, verbose_name='Fotografía')
+    student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
+
+    def __str__(self):
+        return self.first_name + self.last_name
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    class Meta:
+        verbose_name = 'Representante del estudiante'
+        verbose_name_plural = 'Representantes del estudiante'
+        ordering = ['id']
+
+
+class StudentMedicalRecord(models.Model):
+    weight = models.DecimalField(decimal_places=2, default=0.00, max_digits=5, blank=True, null=True,
+                                 verbose_name='Peso')
+    size = models.CharField(max_length=20, null=True, blank=True, verbose_name='Talla')
+    height = models.DecimalField(decimal_places=2, default=0.00, max_digits=5, blank=True, null=True,
+                                 verbose_name='Altura')
+    blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
+                                   verbose_name='Grupo sanguíneo')
+    donor = models.BooleanField(null=True, blank=True, default=False, verbose_name='Donante')
+    vaccine_card = models.FileField(upload_to='smr/vaccinecard/%Y/%m/%d', null=True, blank=True,
+                                    verbose_name='Carnet de vacunas')
+    disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
+    disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
+    disability_percentage = models.IntegerField(null=True, blank=True, verbose_name='Porcentaje de discapacidad')
+    allergies = models.BooleanField(null=True, blank=True, default=False, verbose_name='Alergias')
+    allergies_desc = models.TextField(null=True, blank=True, verbose_name='Descripción de las alergias')
+    allergy_treatment = models.CharField(max_length=50, null=True, blank=True,
+                                         verbose_name='Tratamiento de las alergias')
+    diseases_suffered = models.BooleanField(null=True, blank=True, default=False, verbose_name='Enfermedades padecidas')
+    diseases_suffered_desc = models.TextField(null=True, blank=True,
+                                              verbose_name='Descripción de enfermedades padecidas')
+    preexist_diseases = models.BooleanField(null=True, blank=True, default=False,
+                                            verbose_name='Enfermedades preexistentes')
+    preexist_diseases_desc = models.TextField(null=True, blank=True,
+                                              verbose_name='Descripción de enfermedades preexistentes')
+
+    # catastrophic_illnesses = boolean
+    # catastrophic_illnesses_desc = text
+    # medication = boolean
+    # medication_type = char
+    # medication_schedule = char
 
 
 class TypeCVitae(models.Model):
@@ -397,9 +479,10 @@ class Assistance(models.Model):
 
 
 class Cursos(models.Model):
-    name = models.CharField(max_length=23, null= False, blank=False, verbose_name='Nombre')
-    descrip = models.CharField(max_length=70, null= False, blank=False)
-    #state = models.BooleanField(default=False)
+    name = models.CharField(max_length=23, null=False, blank=False, verbose_name='Nombre')
+    descrip = models.CharField(max_length=70, null=False, blank=False)
+
+    # state = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -407,7 +490,6 @@ class Cursos(models.Model):
     def toJSON(self):
         item = model_to_dict(self)
         return item
-
 
     class Meta:
         verbose_name = 'Curso'
@@ -423,7 +505,7 @@ class Matter(models.Model):
     def __str__(self):
         return self.name
 
-    #def toJSON(self):
+    # def toJSON(self):
     #    item = model_to_dict(self)
     #    item['level'] = {'id': self.level, 'name': self.level.name()}
     #    return item
@@ -523,7 +605,7 @@ class Matriculation(models.Model):
     date_joined = models.DateField(default=datetime.now)
     period = models.ForeignKey(Period, on_delete=models.PROTECT)
     student = models.ForeignKey(Student, on_delete=models.PROTECT)
-    #level = models.CharField(choices=course_level, max_length=30)
+    # level = models.CharField(choices=course_level, max_length=30)
     level = models.ForeignKey(Cursos, on_delete=models.PROTECT, max_length=30, verbose_name='Nivel')
 
     def __str__(self):
@@ -768,10 +850,9 @@ class NoteDetails(models.Model):
     desc = models.CharField(max_length=1500, verbose_name='Descripción')
     state = models.BooleanField(default=True)
 
-
     def __str__(self):
         return self.name
-    
+
     def toJSON(self):
         item = model_to_dict(self)
         item['typeactivity'] = self.typeactivity.toJSON()
@@ -779,7 +860,7 @@ class NoteDetails(models.Model):
         item['start_date'] = self.start_date.strftime('%Y-%m-%d')
         item['end_date'] = self.end_date.strftime('%Y-%m-%d')
         return item
-    
+
     class Meta:
         verbose_name = 'Nota'
         verbose_name_plural = 'Notas'
@@ -787,17 +868,17 @@ class NoteDetails(models.Model):
 
 
 class Scores(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Nombre')         
+    name = models.CharField(max_length=100, verbose_name='Nombre')
     score = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
 
     def __str__(self):
         return self.name
-    
+
     def toJSON(self):
         item = model_to_dict(self)
         item['score'] = format(self.score, '.2f')
         return item
-    
+
     class Meta:
         verbose_name = 'RB Puntaje'
         verbose_name_plural = 'RB Puntajes'
@@ -815,7 +896,7 @@ class Punctuations(models.Model):
 
     def __str__(self):
         return self.comment
-    
+
     def toJSON(self):
         item = model_to_dict(self)
         item['date_joined'] = self.date_joined.strftime('%d-%m-%Y')
@@ -825,9 +906,8 @@ class Punctuations(models.Model):
         item['score'] = self.score.toJSON()
         item['note'] = format(self.note, '.2f')
         return item
-    
+
     class Meta:
         verbose_name = 'Puntaje'
         verbose_name_plural = 'Puntajes'
         ordering = ['id']
-
