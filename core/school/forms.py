@@ -4,6 +4,55 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
+class FamilyForm(ModelForm):
+    class Meta:
+        model = Family
+        fields = '__all__'
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese los nombres', 'required': 'true'}
+            ),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese los apellidos', 'required': 'true'}
+            ),
+            'ci': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el número de cédula', 'required': 'true'}
+            ),
+            'relationship': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el parentesco', 'required': 'true'}
+            ),
+            'age': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la edad', 'required': 'true'}
+            ),
+            'civil_status': forms.Select(
+                attrs={'class': 'form-control', 'required': 'true'}
+            ),
+            'disability': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
+            ),
+            'disability_type': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'}
+            ),
+            'cat_illnesses': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control', 'placeholder': ''}
+            ),
+            'cat_illnesses_desc': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'academic_training': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese formación académica'}
+            ),
+            'occupation': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la ocupación'}
+            ),
+            'economic_income': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Escriba los ingresos'}
+            )
+        }
+
+
 class LegalRepresentativeForm(ModelForm):
     class Meta:
         model = LegalRepresentative

@@ -1,0 +1,132 @@
+{% extends 'form.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block head_form %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
+          data-url="{{ list_url }}">
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {% if action == 'add' %}
+                        <i class="fas fa-plus"></i>
+                    {% else %}
+                        <i class="fas fa-edit"></i>
+                    {% endif %}
+                    {{ title }}
+                </h3>
+            </div>
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    <input type="hidden" name="action" id="action" value="{{ action }}">
+                    {% csrf_token %}
+                    {% include 'navbartab.html' %}
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.first_name.label }}:</label>
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.last_name.label }}:</label>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.ci.label }}:</label>
+                                {{ form.ci }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.relationship.label }}:</label>
+                                {{ form.relationship }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.age.label }}:</label>
+                                {{ form.age }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.civil_status.label }}:</label>
+                                {{ form.civil_status }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.academic_training.label }}:</label>
+                                {{ form.academic_training }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.occupation.label }}:</label>
+                                {{ form.occupation }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.economic_income.label }}:</label>
+                                {{ form.economic_income }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>{{ form.disability.label }}:</label>
+                                {{ form.disability }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.disability_type.label }}:</label>
+                                {{ form.disability_type }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.cat_illnesses.label }}:</label>
+                                {{ form.cat_illnesses }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>{{ form.cat_illnesses_desc.label }}:</label>
+                                {{ form.cat_illnesses_desc }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="{% url 'family_list' %}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

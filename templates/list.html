@@ -20,11 +20,14 @@
                 {{ title }}
             </h3>
             <div class="card-tools">
-                <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+                {% block last_login %}
+                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+                {% endblock %}
             </div>
         </div>
         <div class="card-body" style="display: block;">
             <div class="container-fluid">
+                {% block navtab %} {% endblock %}
                 <!--Block content list-->
                 {% block content_list %}
                     <!--Block content list before-->

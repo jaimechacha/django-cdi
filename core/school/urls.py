@@ -34,6 +34,7 @@ from core.school.views.notedetails.teacher.views import *
 from core.school.views.notedetails.student.views import *
 from core.school.views.medicalrecord.views import *
 from core.school.views.legalrepresentative.views import *
+from core.school.views.familygroup.views import *
 
 urlpatterns = [
     # company
@@ -192,5 +193,9 @@ urlpatterns = [
     path('student/medrecord/add/', StudentMedicalRecordCreateView.as_view(), name='student_medrecord_create'),
     # Legal representative
     path('student/representative/add/', LegalRepresentativeCreateView.as_view(), name='leg_representative_create'),
-
+    # Family group
+    path('student/family/', FamilyListView.as_view(), name='family_list'),
+    path('student/family/add/', FamilyCreateView.as_view(), name='family_add'),
+    path('student/family/update/<int:pk>/', FamilyUpdateView.as_view(), name='family_update'),
+    path('student/family/delete/<int:pk>/', FamilyDeleteView.as_view(), name='family_delete'),
 ]
