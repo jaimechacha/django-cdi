@@ -90,14 +90,16 @@ class StudentMedicalRecordForm(ModelForm):
             'blood_group': forms.Select(
                 attrs={'class': 'form-control'}
             ),
-            'donor': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
+            'donor': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
             ),
             'vaccine_card': forms.FileInput(
                 attrs={'class': 'form-control'}
             ),
-            'disability': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
+            'disability': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
             ),
             'disability_type': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'}
@@ -105,11 +107,12 @@ class StudentMedicalRecordForm(ModelForm):
             'disability_per': forms.NumberInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese porcentaje de discapacidad'}
             ),
-            'allergies': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
+            'allergies': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
             ),
             'allergies_desc': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': '3'}
+                attrs={'class': 'form-control', 'rows': '2'}
             ),
             'allergy_treatment': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese tratamiento de alergia'}
@@ -118,28 +121,32 @@ class StudentMedicalRecordForm(ModelForm):
                 attrs={'class': 'form-check-input'}
             ),
             'diseases_suffered_desc': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': '3'}
+                attrs={'class': 'form-control', 'rows': '2'}
             ),
             'pre_diseases': forms.CheckboxInput(
                 attrs={'class': 'form-check-input'}
             ),
             'pre_diseases_desc': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': '3'}
+                attrs={'class': 'form-control', 'rows': '2'}
             ),
             'cat_illnesses': forms.CheckboxInput(
                 attrs={'class': 'form-check-input'}
             ),
             'cat_illnesses_desc': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': '3'}
+                attrs={'class': 'form-control', 'rows': '2'}
             ),
-            'medication': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
+            'medication': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
             ),
             'medication_type': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de medicación'}
             ),
             'medication_schedule': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese horario de medicación'}
+            ),
+            'student': forms.Select(
+                attrs={'class': 'form-control'}
             )
         }
 

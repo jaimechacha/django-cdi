@@ -55,34 +55,36 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-lg-2 mt-4">
-                            <div class="form-check">
-                                <label class="form-check-label align-middle">
-                                    {{ form.donor }}
-                                    {{ form.donor.label }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    {{ form.disability }}
-                                    {{ form.disability.label }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    {{ form.allergies }}
-                                    {{ form.allergies.label }}
-                                </label>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>{{ form.donor.label }}:</label>
+                                {{ form.donor }}
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>{{ form.disability.label }}:</label>
+                                {{ form.disability }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>{{ form.disability_type.label }}:</label>
                                 {{ form.disability_type }}
                             </div>
+                        </div>
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>{{ form.disability_per.label }}:</label>
                                 {{ form.disability_per }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>{{ form.allergies.label }}:</label>
+                                {{ form.allergies }}
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -90,6 +92,8 @@
                                 <label>{{ form.allergy_treatment.label }}:</label>
                                 {{ form.allergy_treatment }}
                             </div>
+                        </div>
+                        <div class="col-lg-5">
                             <div class="form-group">
                                 <label>{{ form.allergies_desc.label }}:</label>
                                 {{ form.allergies_desc }}
@@ -138,11 +142,9 @@
                     <hr/>
                     <div class="row">
                         <div class="col-lg-2">
-                            <div class="form-check">
-                                <label class="form-check-label mt-4">
-                                    {{ form.medication }}
-                                    {{ form.medication.label }}
-                                </label>
+                            <div class="form-group">
+                                <label>{{ form.medication.label }}:</label>
+                                {{ form.medication }}
                             </div>
                         </div>
                         <div class="col-lg-5">
