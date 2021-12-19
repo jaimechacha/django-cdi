@@ -165,18 +165,28 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>{{ form.vaccine_card.label }}:</label>
+                                {% if instance %}
+                                    {% if instance.vaccine_card %}
+                                        Actualmente:
+                                        <a href="{{ instance.get_vaccine_card }}"
+                                           target="_blank">{{ instance.get_vaccine_card }}</a>
+                                        <input type="checkbox" name="image-clear" id="image-clear_id">
+                                        <label for="image-clear_id">Limpiar</label><br>
+                                        Modificar:
+                                    {% endif %}
+                                {% endif %}
                                 {{ form.vaccine_card }}
                             </div>
                         </div>
                     </div>
-                    {{ form.student }}
+{#                    {{ form.student }}#}
                 </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-flat">
                     <i class="fas fa-save"></i> Guardar registro
                 </button>
-                <a href="{% url 'dashboard' %}" class="btn btn-danger btn-flat">
+                <a href="{% url 'student_medrecord' %}" class="btn btn-danger btn-flat">
                     <i class="fas fa-times"></i> Cancelar
                 </a>
             </div>

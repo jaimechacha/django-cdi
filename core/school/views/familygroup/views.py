@@ -54,8 +54,8 @@ class FamilyCreateView(CreateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        user = int(request.user.id)
         try:
+            user = int(request.user.id)
             student = Student.objects.get(user_id=user)
             with transaction.atomic():
                 family = FamilyForm(request.POST)

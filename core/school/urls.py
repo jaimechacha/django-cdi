@@ -190,7 +190,9 @@ urlpatterns = [
     # notedetails/student
     path('notedetails/student_matter/', NoteDetailsStudentMatterListView.as_view(), name='notedetails_student_matter'),
     # Student medical record
+    path('student/medrecord/', StudentMedicalRecordListView.as_view(), name='student_medrecord'),
     path('student/medrecord/add/', StudentMedicalRecordCreateView.as_view(), name='student_medrecord_create'),
+    path('student/medrecord/update/<int:pk>/', StudentMedicalRecordUpdateView.as_view(), name='student_medrecord_update'),
     # Legal representative
     path('student/representative/add/', LegalRepresentativeCreateView.as_view(), name='leg_representative_create'),
     # Family group

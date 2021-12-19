@@ -214,6 +214,9 @@ class Student(models.Model):
     def __str__(self):
         return '{} / {}'.format(self.user.get_full_name(), self.user.dni)
 
+    def get_full_name(self):
+        return self.user.get_full_name()
+
     def birthdate_format(self):
         return self.birthdate.strftime('%Y-%m-%d')
 
@@ -310,6 +313,11 @@ class StudentMedicalRecord(models.Model):
     def toJSON(self):
         item = model_to_dict(self)
         return item
+
+    def get_vaccine_card(self):
+        if self.vaccine_card:
+            return '{}{}'.format(settings.MEDIA_URL, self.vaccine_card)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     class Meta:
         verbose_name = 'Ficha médica'

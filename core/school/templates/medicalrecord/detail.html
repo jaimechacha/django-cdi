@@ -1,0 +1,18 @@
+{% extends 'detail.html' %}
+
+{% block navtab %}
+    {% include 'navbartab.html' %}
+{% endblock %}
+
+{% block content_card %}
+    {% if object_list %}
+        {% include 'medicalrecord/extra/medrecord.html' %}
+    {% else %}
+        <div class="container text-center my-4">
+            <h6>Aún no ha completado su ficha médica</h6>
+            <a href="{% url 'student_medrecord_create' %}" class="btn btn-primary btn-flat mt-2">
+                <i class="fas fa-book-medical mr-2"></i> Llenar ficha
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
