@@ -301,7 +301,7 @@ class StudentMedicalRecord(models.Model):
                                           verbose_name='Descripción de enfermedades catastróficas')
     medication = models.BooleanField(null=True, blank=True, default=False, verbose_name='Medicación')
     medication_type = models.CharField(max_length=50, null=True, blank=True, verbose_name='Tipo de medicación')
-    medication_schedule = models.CharField(max_length=50, null=True, blank=True, verbose_name='Horaio de medicación')
+    medication_schedule = models.CharField(max_length=50, null=True, blank=True, verbose_name='Horario de medicación')
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
 
     def __str__(self):

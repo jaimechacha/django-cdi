@@ -20,6 +20,8 @@
                 <div class="container-fluid">
                     <input type="hidden" name="action" id="action" value="{{ action }}">
                     {% csrf_token %}
+                    {% include 'navbartab.html' %}
+                    <br/>
                     {% for field in form.visible_fields %}
                         <div class="form-group">
                             <label>{{ field.label }}:</label>

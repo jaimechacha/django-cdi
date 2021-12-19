@@ -1,0 +1,184 @@
+{% extends 'form.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block head_form %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
+          data-url="{{ list_url }}">
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {% if action == 'add' %}
+                        <i class="fas fa-plus"></i>
+                    {% else %}
+                        <i class="fas fa-edit"></i>
+                    {% endif %}
+                    {{ title }}
+                </h3>
+            </div>
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    <input type="hidden" name="action" id="action" value="{{ action }}">
+                    {% csrf_token %}
+                    {% include 'navbartab.html' %}
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>{{ form.weight.label }}:</label>
+                                {{ form.weight }}
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>{{ form.height.label }}:</label>
+                                {{ form.height }}
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>{{ form.size.label }}:</label>
+                                {{ form.size }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>{{ form.blood_group.label }}:</label>
+                                {{ form.blood_group }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-2 mt-4">
+                            <div class="form-check">
+                                <label class="form-check-label align-middle">
+                                    {{ form.donor }}
+                                    {{ form.donor.label }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.disability }}
+                                    {{ form.disability.label }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.allergies }}
+                                    {{ form.allergies.label }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>{{ form.disability_type.label }}:</label>
+                                {{ form.disability_type }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.disability_per.label }}:</label>
+                                {{ form.disability_per }}
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>{{ form.allergy_treatment.label }}:</label>
+                                {{ form.allergy_treatment }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.allergies_desc.label }}:</label>
+                                {{ form.allergies_desc }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.diseases_suffered }}
+                                    {{ form.diseases_suffered.label }}
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.diseases_suffered_desc.label }}:</label>
+                                {{ form.diseases_suffered_desc }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.pre_diseases }}
+                                    {{ form.pre_diseases.label }}
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.pre_diseases_desc.label }}:</label>
+                                {{ form.pre_diseases_desc }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.cat_illnesses }}
+                                    {{ form.cat_illnesses.label }}
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.cat_illnesses_desc.label }}:</label>
+                                {{ form.cat_illnesses_desc }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-check">
+                                <label class="form-check-label mt-4">
+                                    {{ form.medication }}
+                                    {{ form.medication.label }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>{{ form.medication_type.label }}:</label>
+                                {{ form.medication_type }}
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>{{ form.medication_schedule.label }}:</label>
+                                {{ form.medication_schedule }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>{{ form.vaccine_card.label }}:</label>
+                                {{ form.vaccine_card }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form.student }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="{% url 'dashboard' %}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

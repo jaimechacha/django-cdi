@@ -4,6 +4,77 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
+class StudentMedicalRecordForm(ModelForm):
+    class Meta:
+        model = StudentMedicalRecord
+        fields = '__all__'
+        widgets = {
+            'weight': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el peso'}
+            ),
+            'size': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la talla'}
+            ),
+            'height': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la altura'}
+            ),
+            'blood_group': forms.Select(
+                attrs={'class': 'form-control'}
+            ),
+            'donor': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'vaccine_card': forms.FileInput(
+                attrs={'class': 'form-control'}
+            ),
+            'disability': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'disability_type': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'}
+            ),
+            'disability_per': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese porcentaje de discapacidad'}
+            ),
+            'allergies': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'allergies_desc': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'allergy_treatment': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese tratamiento de alergia'}
+            ),
+            'diseases_suffered': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'diseases_suffered_desc': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'pre_diseases': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'pre_diseases_desc': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'cat_illnesses': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'cat_illnesses_desc': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': '3'}
+            ),
+            'medication': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+            ),
+            'medication_type': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de medicación'}
+            ),
+            'medication_schedule': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese horario de medicación'}
+            )
+        }
+
+
 class CountryForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1139,4 +1210,3 @@ class NoteDetailsForm(ModelForm):
         except Exception as e:
             data['error'] = str(e)
         return data
-

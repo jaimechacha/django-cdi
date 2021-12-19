@@ -299,6 +299,7 @@ class UserUpdateProfileView(ModuleMixin, UpdateView):
         context['list_url'] = self.success_url
         context['title'] = 'Edición del perfil'
         context['action'] = 'edit'
+        context['tab_profile'] = 'active'
         return context
 
 

@@ -32,6 +32,7 @@ from core.school.views.resources.teacher.views import *
 from core.school.views.activities.teacher.views import *
 from core.school.views.notedetails.teacher.views import *
 from core.school.views.notedetails.student.views import *
+from core.school.views.medicalrecord.views import *
 
 urlpatterns = [
     # company
@@ -185,6 +186,8 @@ urlpatterns = [
     path('notedetails/teacher/puntuations/<int:pk>/', NotedetailsTeacherPuntuationsView.as_view(), name='notedetails_teacher_puntuatios'),
     path('notedetails/teacher/delete/<int:pk>/', NotedetailsTeacherDeleteView.as_view(), name='notedetails_teacher_delete'),
     # notedetails/student
-    path('notedetails/student_matter/', NoteDetailsStudentMatterListView.as_view(), name='notedetails_student_matter'), 
-    
+    path('notedetails/student_matter/', NoteDetailsStudentMatterListView.as_view(), name='notedetails_student_matter'),
+    # Student medical record
+    path('student/medrecord/add/', StudentMedicalRecordCreateView.as_view(), name='student_medrecord_create'),
+
 ]
