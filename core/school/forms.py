@@ -4,6 +4,75 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
+class LegalRepresentativeForm(ModelForm):
+    class Meta:
+        model = LegalRepresentative
+        fields = '__all__'
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese nombres'}
+            ),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese apellidos'}
+            ),
+            'relationship': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el parentesco'}
+            ),
+            'ci': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese número de cédula'}
+            ),
+            'nationality': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese nacionalidad'}
+            ),
+            'address': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Calle principal y secundaria'}
+            ),
+            'reference': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese lugar de referencia'}
+            ),
+            'cell_phone': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese número celular'}
+            ),
+            'conventional_phone': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese teléfono convencional'}
+            ),
+            'emergency_number': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese número de emergencia'}
+            ),
+            'email': forms.EmailInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese correo personal'}
+            ),
+            'blood_group': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Seleccione grupo de sangre'}
+            ),
+            'is_working': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
+            ),
+            'workplace': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese lugar de trabajo'}
+            ),
+            'work_phone': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese número del trabajo'}
+            ),
+            'work_address': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese dirección del trabajo'}
+            ),
+            'work_email': forms.EmailInput(
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese correo del trabajo'}
+            ),
+            'croquis': forms.FileInput(
+                attrs={'class': 'form-control', 'accept': '.pdf'}
+            ),
+            'basic_services_payment': forms.FileInput(
+                attrs={'class': 'form-control', 'accept': '.pdf'}
+            ),
+            'image': forms.FileInput(
+                attrs={'class': 'form-control', 'accept': 'image/png, image/jpeg'}
+            )
+        }
+
+
 class StudentMedicalRecordForm(ModelForm):
     class Meta:
         model = StudentMedicalRecord

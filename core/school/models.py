@@ -238,7 +238,7 @@ class LegalRepresentative(models.Model):
     ci = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
     nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
     address = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección')
-    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Refencia')
+    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Referencia')
     cell_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Celular')
     conventional_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono convencional')
     emergency_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
