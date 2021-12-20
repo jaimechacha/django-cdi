@@ -9,7 +9,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
 
 from config import settings
-from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
+from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm, EnablingDocumentsForm, \
+    SignedContractForm, EnablingDocuments, SignedContract
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -37,6 +38,7 @@ class TeacherListView(PermissionMixin, TemplateView):
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
             data['error'] = str(e)
+        print(data)
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):
@@ -311,6 +313,26 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
             pass
         return json.dumps(data)
 
+    def get_edocs(self):
+        data = []
+        try:
+            teacher = self.get_object()
+            for doc in EnablingDocuments.objects.filter(teacher=teacher):
+                data.append(doc.toJSON())
+        except Exception as e:
+            print(e)
+        return json.dumps(data)
+
+    def get_scontract(self):
+        data = []
+        try:
+            teacher = self.get_object()
+            for c in SignedContract.objects.filter(teacher=teacher):
+                data.append(c.toJSON())
+        except Exception as e:
+            print(e)
+        return json.dumps(data)
+
     def get_form(self, form_class=None):
         instance = self.object
         form = TeacherForm(instance=instance, initial={
@@ -404,5 +426,9 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
         context['action'] = 'edit'
         context['instance'] = self.object
         context['frmCVitae'] = CVitaeForm()
+        context['enaDocumentsForm'] = EnablingDocumentsForm()
+        context['sigContractForm'] = SignedContractForm()
         context['cvitae'] = self.get_cvitae()
+        context['edocs'] = self.get_edocs()
+        context['scontract'] = self.get_scontract()
         return context

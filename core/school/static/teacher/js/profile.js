@@ -9,9 +9,12 @@ var input_startdate;
 
 var tblCVitae;
 var cvitae;
+
 var teacher = {
     details: {
         cvitae: [],
+        edocs: [],
+        scontract: [],
     },
     add_cvitae: function (item) {
         if ($.isEmptyObject(cvitae)) {
@@ -60,10 +63,40 @@ var teacher = {
 
             },
         });
-    }
+    },
+    list_edocs: function () {
+        $.each(this.details.edocs, function (i, item) {
+            item.pos = i;
+        });
+
+        tblCVitae = $('#tblEDocs').DataTable({
+            responsive: true,
+            autoWidth: false,
+            destroy: true,
+            data: this.details.edocs,
+            lengthChange: false,
+            paginate: false,
+            columns: [
+                {data: "ci"},
+                {data: "commitment_act"},
+                {data: "commitment_act"},
+            ],
+            columnDefs: [
+                {
+                    targets: [-1],
+                    class: 'text-center',
+                    // render: function (data, type, row) {
+                    //     var buttons = '<a rel="edit" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-edit fa-1x"></i></a> ';
+                    //     buttons += '<a rel="remove" class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash fa-1x"></i></a> ';
+                    //     return buttons;
+                    // }
+                },
+            ]
+        });
+    },
 }
 
-function validateDate() {
+function validateDate() {r
     var now = new Date();
     var input = input_birthdate.val().split('-');
     var birthdate = new Date(input[0], input[1], input[2]);
@@ -411,7 +444,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 });
 
 $(function () {
-
     input_birthdate = $('input[name="birthdate"]');
     select_parish = $('select[name="parish"]');
 
@@ -541,6 +573,18 @@ $(function () {
         cvitae = {};
         $('#myModalCVitae .modal-title').html('<b><i class="fas fa-plus"></i> Nuevo dato de la hoja de vida</b>');
         $('#myModalCVitae').modal('show');
+    });
+
+    $('.btnAddEDocs').on('click', function () {
+        cvitae = {};
+        $('#myModalEDocs .modal-title').html('<b><i class="fas fa-plus"></i> Nuevos documentos</b>');
+        $('#myModalEDocs').modal('show');
+    });
+
+    $('.btnAddSContract').on('click', function () {
+        cvitae = {};
+        $('#myModalSContract .modal-title').html('<b><i class="fas fa-plus"></i> Nuevo contrato</b>');
+        $('#myModalSContract').modal('show');
     });
 
     $('#myModalCVitae').on('hidden.bs.modal', function () {

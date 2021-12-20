@@ -164,9 +164,9 @@ class Teacher(models.Model):
     disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
     disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
     cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
-                                                 verbose_name='Enfermedades catastróficas')
+                                        verbose_name='Enfermedades catastróficas')
     cat_illnesses_desc = models.TextField(null=True, blank=True,
-                                                   verbose_name='Descripción de enfermedades catastróficas')
+                                          verbose_name='Descripción de enfermedades catastróficas')
     croquis = models.FileField(upload_to='teacher/croquis/%Y/%m/%d', null=True, blank=True,
                                verbose_name='Croquis PDF')
     basic_services_payment = models.FileField(upload_to='teacher/bs-payment/%Y/%m/%d', null=True, blank=True,
@@ -184,7 +184,19 @@ class Teacher(models.Model):
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
         item['parish'] = self.parish.toJSON()
+        item['croquis'] = self.get_croquis()
+        item['basic_services_payment'] = self.get_comprobante()
         return item
+
+    def get_croquis(self):
+        if self.croquis:
+            return '{}{}'.format(settings.MEDIA_URL, self.croquis)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_comprobante(self):
+        if self.basic_services_payment:
+            return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     class Meta:
         verbose_name = 'Profesor'
@@ -351,9 +363,9 @@ class Family(models.Model):
     disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
     disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
     cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
-                                                 verbose_name='Enfermedades catastróficas')
+                                        verbose_name='Enfermedades catastróficas')
     cat_illnesses_desc = models.TextField(null=True, blank=True,
-                                                   verbose_name='Descripción de enfermedades catastróficas')
+                                          verbose_name='Descripción de enfermedades catastróficas')
     academic_training = models.CharField(max_length=50, null=True, blank=True, verbose_name='Formación académica')
     occupation = models.CharField(max_length=30, null=True, blank=True, verbose_name='Ocupación')
     economic_income = models.DecimalField(decimal_places=2, default=0.00, max_digits=9, blank=True, null=True,
@@ -437,16 +449,42 @@ class EnablingDocuments(models.Model):
         verbose_name_plural = 'Documentos habilitantes'
         ordering = ['id']
 
+    def toJSON(self):
+        item = model_to_dict(self, exclude=['teacher'])
+        item['ci'] = self.get_ci()
+        item['commitment_act'] = self.get_commitment_act()
+        return item
+
+    def get_ci(self):
+        if self.ci:
+            return '{}{}'.format(settings.MEDIA_URL, self.ci)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_commitment_act(self):
+        if self.commitment_act:
+            return '{}{}'.format(settings.MEDIA_URL, self.commitment_act)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
 
 class SignedContract(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
-    ci = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
-                          verbose_name='Contrato firmado')
+    contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
+                                verbose_name='Contrato firmado')
 
     class Meta:
         verbose_name = 'Contrato firmado'
         verbose_name_plural = 'Contratos firmados'
         ordering = ['id']
+
+    def toJSON(self):
+        item = model_to_dict(self, exclude=['teacher'])
+        item['contract'] = self.get_contract()
+        return item
+
+    def get_contract(self):
+        if self.contract:
+            return '{}{}'.format(settings.MEDIA_URL, self.contract)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
 
 class Job(models.Model):

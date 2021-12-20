@@ -4,6 +4,60 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
+class SignedContractForm(ModelForm):
+    class Meta:
+        model = SignedContract
+        widgets = {
+            'contract': forms.FileInput(attrs={
+                'placeholder': 'Suba el contrato firmado',
+                'class': 'form-control',
+                'accept': '.pdf'
+            })
+        }
+        fields = '__all__'
+        exclude = ['teacher']
+
+    def save(self, commit=True):
+        data = {}
+        try:
+            if self.is_valid():
+                super().save()
+            else:
+                data['error'] = self.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return data
+
+
+class EnablingDocumentsForm(ModelForm):
+    class Meta:
+        model = EnablingDocuments
+        fields = '__all__'
+        widgets = {
+            'ci': forms.FileInput(attrs={
+                'placeholder': 'Suba la cédula de identidad',
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
+            'commitment_act': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': '.pdf'
+            })
+        }
+        exclude = ['teacher']
+
+    def save(self, commit=True):
+        data = {}
+        try:
+            if self.is_valid():
+                super().save()
+            else:
+                data['error'] = self.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return data
+
+
 class FamilyForm(ModelForm):
     class Meta:
         model = Family

@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import StudentMedicalRecord, LegalRepresentative, Student, Family, FamilyGroup
+from .models import (
+    StudentMedicalRecord, LegalRepresentative, Student, Family, FamilyGroup, EnablingDocuments,
+    Teacher, SignedContract
+)
 
 # Register your models here.
 admin.site.register([
@@ -7,5 +10,8 @@ admin.site.register([
     LegalRepresentative,
     Student,
     Family,
-    FamilyGroup
+    FamilyGroup,
+    Teacher,
+    EnablingDocuments,
+    SignedContract
 ])
