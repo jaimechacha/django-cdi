@@ -1,0 +1,18 @@
+{% extends 'detail.html' %}
+
+{% block navtab %}
+    {% include 'navbartab.html' %}
+{% endblock %}
+
+{% block content_card %}
+    {% if object_list %}
+        {% include 'legalrepresentative/extra/body_detail.html' %}
+    {% else %}
+        <div class="container text-center my-4">
+            <h6>Aún no ha completado los datos del representante legal</h6>
+            <a href="{% url 'leg_representative_create' %}" class="btn btn-primary btn-flat mt-2">
+                <i class="fas fa-person-booth mr-2"></i> Completar datos
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

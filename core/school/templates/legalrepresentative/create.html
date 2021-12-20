@@ -148,12 +148,34 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>{{ form.croquis.label }}:</label>
+                                {% if instance %}
+                                    <br/>
+                                    {% if instance.croquis %}
+                                        Actualmente:
+                                        <a href="{{ instance.get_croquis }}"
+                                           target="_blank">Ver archivo actual</a>
+                                        <input type="checkbox" name="croquis-clear" id="croquis-clear_id">
+                                        <label for="croquis-clear_id">Limpiar</label><br>
+                                        Modificar:
+                                    {% endif %}
+                                {% endif %}
                                 {{ form.croquis }}
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>{{ form.basic_services_payment.label }}:</label>
+                                {% if instance %}
+                                    <br/>
+                                    {% if instance.basic_services_payment %}
+                                        Actualmente:
+                                        <a href="{{ instance.get_comprobante }}"
+                                           target="_blank">Ver archivo actual</a>
+                                        <input type="checkbox" name="comprob-clear" id="comprob-clear_id">
+                                        <label for="comprob-clear_id">Limpiar</label><br>
+                                        Modificar:
+                                    {% endif %}
+                                {% endif %}
                                 {{ form.basic_services_payment }}
                             </div>
                         </div>
@@ -162,18 +184,29 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>{{ form.image.label }}:</label>
+                                {% if instance %}
+                                    <br/>
+                                    {% if instance.image %}
+                                        Actualmente:
+                                        <a href="{{ instance.get_image }}"
+                                           target="_blank">Ver imagen actual</a>
+                                        <input type="checkbox" name="image-clear" id="image-clear_id">
+                                        <label for="image-clear_id">Limpiar</label><br>
+                                        Modificar:
+                                    {% endif %}
+                                {% endif %}
                                 {{ form.image }}
                             </div>
                         </div>
                     </div>
-                    {{ form.student }}
+                    {#                    {{ form.student }}#}
                 </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-flat">
                     <i class="fas fa-save"></i> Guardar registro
                 </button>
-                <a href="{% url 'dashboard' %}" class="btn btn-danger btn-flat">
+                <a href="{% url 'leg_representative' %}" class="btn btn-danger btn-flat">
                     <i class="fas fa-times"></i> Cancelar
                 </a>
             </div>

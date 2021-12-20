@@ -194,7 +194,9 @@ urlpatterns = [
     path('student/medrecord/add/', StudentMedicalRecordCreateView.as_view(), name='student_medrecord_create'),
     path('student/medrecord/update/<int:pk>/', StudentMedicalRecordUpdateView.as_view(), name='student_medrecord_update'),
     # Legal representative
+    path('student/representative/', LegalRepresentativeListView.as_view(), name='leg_representative'),
     path('student/representative/add/', LegalRepresentativeCreateView.as_view(), name='leg_representative_create'),
+    path('student/representative/update/<int:pk>/', LegalRepresentativeUpdateView.as_view(), name='leg_representative_update'),
     # Family group
     path('student/family/', FamilyListView.as_view(), name='family_list'),
     path('student/family/add/', FamilyCreateView.as_view(), name='family_add'),

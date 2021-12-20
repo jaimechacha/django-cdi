@@ -261,7 +261,7 @@ class LegalRepresentative(models.Model):
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
 
     def __str__(self):
-        return self.first_name + self.last_name
+        return '{} {}'.format(self.first_name, self.last_name)
 
     def toJSON(self):
         item = model_to_dict(self)
@@ -271,6 +271,21 @@ class LegalRepresentative(models.Model):
         verbose_name = 'Representante del estudiante'
         verbose_name_plural = 'Representantes del estudiante'
         ordering = ['id']
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(settings.MEDIA_URL, self.image)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_croquis(self):
+        if self.croquis:
+            return '{}{}'.format(settings.MEDIA_URL, self.croquis)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_comprobante(self):
+        if self.basic_services_payment:
+            return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
 
 class StudentMedicalRecord(models.Model):
