@@ -396,6 +396,7 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
                     teacher.cvitae_set.all().delete()
 
                     cvitaejson = json.loads(request.POST['cvitae'])
+
                     for det in cvitaejson:
                         cvitae = CVitae()
                         cvitae.teacher_id = teacher.id
@@ -405,6 +406,25 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
                         cvitae.name = det['name']
                         cvitae.details = det['details']
                         cvitae.save()
+
+                    EnablingDocuments.objects.filter(teacher_id=teacher.id).delete()
+
+                    enadocs = EnablingDocuments()
+                    # enadocs.teacher_id = teacher.id
+                    # print(request.FILES)
+                    # if 'ci' and 'commitment_act' in request.FILES:
+                    #     enadocs.ci = request.FILES['ci']
+                    #     enadocs.commitment_act = request.FILES['commitment_act']
+                    #     enadocs.save()
+
+                    edocsjson = json.loads(request.POST['edocs'])
+                    for doc in edocsjson:
+                        print('CI', doc['ci'])
+                        print('CA', doc['commitment_act'])
+                        enadocs.ci = doc['ci']
+                        enadocs.commitment_act = doc['commitment_act']
+                        # enadocs.save()
+
             elif action == 'search_parish':
                 data = []
                 term = request.POST['term']
@@ -416,6 +436,7 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:
+            print(e)
             data['error'] = str(e)
         return HttpResponse(json.dumps(data), content_type='application/json')
 

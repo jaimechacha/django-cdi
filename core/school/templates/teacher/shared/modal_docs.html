@@ -1,5 +1,5 @@
 <div class="modal fade" id="myModalEDocs" tabindex="-1" role="dialog" aria-hidden="true">
-    <form method="post" autocomplete="off" id="frmEDocs">
+    <form method="post" autocomplete="off" id="frmEDocs" enctype="multipart/form-data">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -10,6 +10,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
+{#                    <input type="text" name="ci">#}
+{#                    <input type="text" name="commitment_act">#}
                         {% for field in enaDocumentsForm.visible_fields %}
                             <div class="form-group">
                                 <label>{{ field.label }}:</label>

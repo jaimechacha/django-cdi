@@ -50,6 +50,11 @@
                                 Contrado firmado
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu3">
+                                Datos adicionales
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane container-fluid active" id="home">
@@ -221,6 +226,6 @@
         teacher.details.edocs = {{ edocs|safe }}
         teacher.details.scontract = {{ scontract|safe }}
         teacher.list_cvitae();
-        {#teacher.list_edocs();#}
+        teacher.list_edocs();
     </script>
 {% endblock %}

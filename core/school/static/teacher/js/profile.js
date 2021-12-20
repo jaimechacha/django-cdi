@@ -1,16 +1,20 @@
-var fv;
-var input_birthdate;
-var select_parish;
-var date_current;
-var fvCVitae;
-var current_date;
-var input_enddate;
-var input_startdate;
+let fv;
+let input_birthdate;
+let select_parish;
+let date_current;
+let fvCVitae;
+let current_date;
+let input_enddate;
+let input_startdate;
 
-var tblCVitae;
-var cvitae;
+let tblCVitae;
+let cvitae;
 
-var teacher = {
+let tblEDocs;
+let edocs;
+let fvEDocs;
+
+let teacher = {
     details: {
         cvitae: [],
         edocs: [],
@@ -64,12 +68,20 @@ var teacher = {
             },
         });
     },
+    add_edocs: function (item) {
+        if ($.isEmptyObject(edocs)) {
+            this.details.edocs.push(item);
+        } else {
+            this.details.edocs[edocs.pos] = item;
+        }
+        this.list_edocs();
+    },
     list_edocs: function () {
         $.each(this.details.edocs, function (i, item) {
             item.pos = i;
         });
 
-        tblCVitae = $('#tblEDocs').DataTable({
+        tblEDocs = $('#tblEDocs').DataTable({
             responsive: true,
             autoWidth: false,
             destroy: true,
@@ -79,17 +91,17 @@ var teacher = {
             columns: [
                 {data: "ci"},
                 {data: "commitment_act"},
-                {data: "commitment_act"},
+                {data: "ci"},
             ],
             columnDefs: [
                 {
                     targets: [-1],
                     class: 'text-center',
-                    // render: function (data, type, row) {
-                    //     var buttons = '<a rel="edit" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-edit fa-1x"></i></a> ';
-                    //     buttons += '<a rel="remove" class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash fa-1x"></i></a> ';
-                    //     return buttons;
-                    // }
+                    render: function (data, type, row) {
+                        var buttons = '<a rel="editDocs" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-edit fa-1x"></i></a> ';
+                        buttons += '<a rel="removeDocs" class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash fa-1x"></i></a> ';
+                        return buttons;
+                    }
                 },
             ]
         });
@@ -331,9 +343,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            var parameters = new FormData($(fv.form)[0]);
+
+            let parameters = new FormData($(fv.form)[0]);
+            console.log(parameters)
+            // parameters.append('ci', $('input[name="ci"]').prop('files')[0]);
+            // parameters.append('commitment_act', $('input[name="commitment_act"]').prop('files')[0]);
+
             parameters.append('action', $('input[name="action"]').val());
             parameters.append('cvitae', JSON.stringify(teacher.details.cvitae));
+            parameters.append('edocs', JSON.stringify(teacher.details.edocs));
             submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
                 location.href = fv.form.getAttribute('data-url');
             });
@@ -440,6 +458,67 @@ document.addEventListener('DOMContentLoaded', function (e) {
             };
             teacher.add_cvitae(parameters);
             $('#myModalCVitae').modal('hide');
+        });
+});
+
+
+document.addEventListener('DOMContentLoaded', function (e) {
+    const frmEDocs = document.getElementById('frmEDocs');
+    fvEDocs = FormValidation.formValidation(frmEDocs, {
+            locale: 'es_ES',
+            localization: FormValidation.locales.es_ES,
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                bootstrap: new FormValidation.plugins.Bootstrap(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh',
+                }),
+            },
+            fields: {
+                ci: { validators: {notEmpty: {}}},
+                commitment_act: {validators: {notEmpty: {}}}
+            }
+        }
+    )
+        .on('core.element.validated', function (e) {
+            if (e.valid) {
+                const groupEle = FormValidation.utils.closest(e.element, '.form-group');
+                if (groupEle) {
+                    FormValidation.utils.classSet(groupEle, {
+                        'has-success': false,
+                    });
+                }
+                FormValidation.utils.classSet(e.element, {
+                    'is-valid': false,
+                });
+            }
+            const iconPlugin = fvEDocs.getPlugin('icon');
+            const iconElement = iconPlugin && iconPlugin.icons.has(e.element) ? iconPlugin.icons.get(e.element) : null;
+            iconElement && (iconElement.style.display = 'none');
+        })
+        .on('core.validator.validated', function (e) {
+            if (!e.result.valid) {
+                const messages = [].slice.call(frmEDocs.querySelectorAll('[data-field="' + e.field + '"][data-validator]'));
+                messages.forEach((messageEle) => {
+                    const validator = messageEle.getAttribute('data-validator');
+                    messageEle.style.display = validator === e.validator ? 'block' : 'none';
+                });
+            }
+        })
+        .on('core.form.valid', function () {
+            let parameters = new FormData($(fvEDocs.form)[0]);
+            // let parameters = {};
+            parameters.ci = $('input[name="ci"]').prop('files')[0];
+            // parameters.ci_file =$('input[name="ci"]').prop('files')[0]
+            parameters.commitment_act = $('input[name="commitment_act"]').val().replace(/C:\\fakepath\\/i, '');
+
+            console.log(parameters)
+            // console.log(parameters);
+            teacher.add_edocs(parameters);
+            $('#myModalEDocs').modal('hide');
         });
 });
 
