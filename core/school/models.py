@@ -375,7 +375,7 @@ class Family(models.Model):
         return self.get_full_name()
 
     def get_full_name(self):
-        return self.first_name + self.last_name
+        return '{} {}'.format(self.first_name, self.last_name)
 
     def toJSON(self):
         item = model_to_dict(self)

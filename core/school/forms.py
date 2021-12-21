@@ -106,6 +106,17 @@ class FamilyForm(ModelForm):
             )
         }
 
+    student = forms.ModelChoiceField(
+        queryset=Student.objects.all(),
+        widget=forms.Select(attrs={
+            'class': 'form-control select2',
+            'style': 'width: 100%;',
+            'autocomplete': 'off',
+        }),
+        label='Estudiante',
+        required=False
+    )
+
 
 class LegalRepresentativeForm(ModelForm):
     class Meta:
@@ -113,19 +124,19 @@ class LegalRepresentativeForm(ModelForm):
         fields = '__all__'
         widgets = {
             'first_name': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese nombres'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese nombres', 'required': 'true'}
             ),
             'last_name': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese apellidos'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese apellidos', 'required': 'true'}
             ),
             'relationship': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese el parentesco'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el parentesco', 'required': 'true'}
             ),
             'ci': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese número de cédula'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese número de cédula', 'required': 'true'}
             ),
             'nationality': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese nacionalidad'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese nacionalidad', 'required': 'true'}
             ),
             'address': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Calle principal y secundaria'}
@@ -172,23 +183,31 @@ class LegalRepresentativeForm(ModelForm):
             ),
             'image': forms.FileInput(
                 attrs={'class': 'form-control', 'accept': 'image/png, image/jpeg'}
+            ),
+            'student': forms.Select(
+                attrs={'class': 'form-control select2', 'style': 'width: 100%;'}
             )
         }
 
 
 class StudentMedicalRecordForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.fields['student'].initial = Student.objects.all().last()
+        # self.fields['student'].widget.attrs['autofocus'] = True
+
     class Meta:
         model = StudentMedicalRecord
         fields = '__all__'
         widgets = {
             'weight': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese el peso'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese el peso', 'required': 'true'}
             ),
             'size': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese la talla'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la talla', 'required': 'true'}
             ),
             'height': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': 'Ingrese la altura'}
+                attrs={'class': 'form-control', 'placeholder': 'Ingrese la altura', 'required': 'true'}
             ),
             'blood_group': forms.Select(
                 attrs={'class': 'form-control'}
@@ -249,7 +268,7 @@ class StudentMedicalRecordForm(ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese horario de medicación'}
             ),
             'student': forms.Select(
-                attrs={'class': 'form-control'}
+                attrs={'class': 'form-control select2', 'style': 'width: 100%;'}
             )
         }
 
@@ -425,6 +444,7 @@ class TypeEventForm(ModelForm):
             data['error'] = str(e)
         return data
 
+
 class CursosForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -448,7 +468,6 @@ class CursosForm(ModelForm):
         except Exception as e:
             data['error'] = str(e)
         return data
-
 
 
 
