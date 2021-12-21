@@ -9,8 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
 
 from config import settings
-from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm, EnablingDocumentsForm, \
-    SignedContractForm, EnablingDocuments, SignedContract
+from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -313,25 +312,25 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
             pass
         return json.dumps(data)
 
-    def get_edocs(self):
-        data = []
-        try:
-            teacher = self.get_object()
-            for doc in EnablingDocuments.objects.filter(teacher=teacher):
-                data.append(doc.toJSON())
-        except Exception as e:
-            print(e)
-        return json.dumps(data)
+    # def get_edocs(self):
+    #     data = []
+    #     try:
+    #         teacher = self.get_object()
+    #         for doc in EnablingDocuments.objects.filter(teacher=teacher):
+    #             data.append(doc.toJSON())
+    #     except Exception as e:
+    #         print(e)
+    #     return json.dumps(data)
 
-    def get_scontract(self):
-        data = []
-        try:
-            teacher = self.get_object()
-            for c in SignedContract.objects.filter(teacher=teacher):
-                data.append(c.toJSON())
-        except Exception as e:
-            print(e)
-        return json.dumps(data)
+    # def get_scontract(self):
+    #     data = []
+    #     try:
+    #         teacher = self.get_object()
+    #         for c in SignedContract.objects.filter(teacher=teacher):
+    #             data.append(c.toJSON())
+    #     except Exception as e:
+    #         print(e)
+    #     return json.dumps(data)
 
     def get_form(self, form_class=None):
         instance = self.object
@@ -392,9 +391,31 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
                     teacher.parish_id = int(request.POST['parish'])
-                    teacher.save()
-                    teacher.cvitae_set.all().delete()
+                    teacher.reference = request.POST['reference']
 
+                    teacher.nationality = request.POST['nationality']
+                    teacher.age = int(request.POST['age']) if request.POST['age'] else None
+                    teacher.ethnicity = request.POST['ethnicity']
+                    teacher.religion = request.POST['religion']
+                    teacher.civil_status = request.POST['civil_status']
+                    teacher.blood_group = request.POST['blood_group']
+                    teacher.disability = request.POST['disability']
+                    teacher.disability_type = request.POST['disability_type']
+                    teacher.cat_illnesses = request.POST['cat_illnesses']
+                    teacher.cat_illnesses_desc = request.POST['cat_illnesses_desc']
+                    if 'croquis' in request.FILES:
+                        teacher.croquis = request.FILES['croquis']
+                    if 'basic_services_payment' in request.FILES:
+                        teacher.basic_services_payment = request.FILES['basic_services_payment']
+                    if 'ci_doc' in request.FILES:
+                        teacher.ci_doc = request.FILES['ci_doc']
+                    if 'commitment_act' in request.FILES:
+                        teacher.commitment_act = request.FILES['commitment_act']
+                    if 'contract' in request.FILES:
+                        teacher.contract = request.FILES['contract']
+                    teacher.save()
+
+                    teacher.cvitae_set.all().delete()
                     cvitaejson = json.loads(request.POST['cvitae'])
 
                     for det in cvitaejson:
@@ -406,24 +427,6 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
                         cvitae.name = det['name']
                         cvitae.details = det['details']
                         cvitae.save()
-
-                    EnablingDocuments.objects.filter(teacher_id=teacher.id).delete()
-
-                    enadocs = EnablingDocuments()
-                    # enadocs.teacher_id = teacher.id
-                    # print(request.FILES)
-                    # if 'ci' and 'commitment_act' in request.FILES:
-                    #     enadocs.ci = request.FILES['ci']
-                    #     enadocs.commitment_act = request.FILES['commitment_act']
-                    #     enadocs.save()
-
-                    edocsjson = json.loads(request.POST['edocs'])
-                    for doc in edocsjson:
-                        print('CI', doc['ci'])
-                        print('CA', doc['commitment_act'])
-                        enadocs.ci = doc['ci']
-                        enadocs.commitment_act = doc['commitment_act']
-                        # enadocs.save()
 
             elif action == 'search_parish':
                 data = []
@@ -447,9 +450,5 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
         context['action'] = 'edit'
         context['instance'] = self.object
         context['frmCVitae'] = CVitaeForm()
-        context['enaDocumentsForm'] = EnablingDocumentsForm()
-        context['sigContractForm'] = SignedContractForm()
         context['cvitae'] = self.get_cvitae()
-        context['edocs'] = self.get_edocs()
-        context['scontract'] = self.get_scontract()
         return context

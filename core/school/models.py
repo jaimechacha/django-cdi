@@ -144,6 +144,56 @@ class Parish(models.Model):
         ordering = ['-id']
 
 
+# class EnablingDocuments(models.Model):
+#     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
+#     ci = models.FileField(upload_to='teacher/ci/%Y/%m/%d', null=True, blank=True,
+#                           verbose_name='Cédula de identidad')
+#     commitment_act = models.FileField(upload_to='teacher/acta/%Y/%m/%d', null=True, blank=True,
+#                                       verbose_name='Acta de compromiso')
+#
+#     class Meta:
+#         verbose_name = 'Documento habilitante'
+#         verbose_name_plural = 'Documentos habilitantes'
+#         ordering = ['id']
+#
+#     def toJSON(self):
+#         item = model_to_dict(self, exclude=['teacher'])
+#         item['ci'] = self.get_ci()
+#         item['commitment_act'] = self.get_commitment_act()
+#         return item
+#
+    # def get_ci(self):
+    #     if self.ci:
+    #         return '{}{}'.format(settings.MEDIA_URL, self.ci)
+    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+    #
+    # def get_commitment_act(self):
+    #     if self.commitment_act:
+    #         return '{}{}'.format(settings.MEDIA_URL, self.commitment_act)
+    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+#
+#
+# class SignedContract(models.Model):
+#     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
+#     contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
+#                                 verbose_name='Contrato firmado')
+#
+#     class Meta:
+#         verbose_name = 'Contrato firmado'
+#         verbose_name_plural = 'Contratos firmados'
+#         ordering = ['id']
+#
+#     def toJSON(self):
+#         item = model_to_dict(self, exclude=['teacher'])
+#         item['contract'] = self.get_contract()
+#         return item
+#
+    # def get_contract(self):
+    #     if self.contract:
+    #         return '{}{}'.format(settings.MEDIA_URL, self.contract)
+    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
@@ -152,7 +202,7 @@ class Teacher(models.Model):
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
     parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Lugar residencia')
     address = models.CharField(max_length=500, null=True, blank=True, verbose_name='Dirección')
-    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Refencia')
+    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Lugar de referencia')
     nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
     age = models.IntegerField(null=True, blank=True, verbose_name='Edad')
     ethnicity = models.CharField(max_length=50, null=True, blank=True, verbose_name='Etnia')
@@ -171,6 +221,12 @@ class Teacher(models.Model):
                                verbose_name='Croquis PDF')
     basic_services_payment = models.FileField(upload_to='teacher/bs-payment/%Y/%m/%d', null=True, blank=True,
                                               verbose_name='Comprobante de servicios básicos')
+    ci_doc = models.FileField(upload_to='teacher/ci/%Y/%m/%d', null=True, blank=True,
+                              verbose_name='Cédula de identidad')
+    commitment_act = models.FileField(upload_to='teacher/acta/%Y/%m/%d', null=True, blank=True,
+                                      verbose_name='Acta de compromiso')
+    contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
+                                verbose_name='Contrato firmado')
 
     def __str__(self):
         return '{} / {}'.format(self.user.get_full_name(), self.user.dni)
@@ -196,6 +252,21 @@ class Teacher(models.Model):
     def get_comprobante(self):
         if self.basic_services_payment:
             return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_ci_doc(self):
+        if self.ci_doc:
+            return '{}{}'.format(settings.MEDIA_URL, self.ci_doc)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_commitment_act(self):
+        if self.commitment_act:
+            return '{}{}'.format(settings.MEDIA_URL, self.commitment_act)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_contract(self):
+        if self.contract:
+            return '{}{}'.format(settings.MEDIA_URL, self.contract)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     class Meta:
@@ -435,56 +506,6 @@ class CVitae(models.Model):
         verbose_name = 'Hoja de Vida'
         verbose_name_plural = 'Hojas de Vida'
         ordering = ['id']
-
-
-class EnablingDocuments(models.Model):
-    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
-    ci = models.FileField(upload_to='teacher/ci/%Y/%m/%d', null=True, blank=True,
-                          verbose_name='Cédula de identidad')
-    commitment_act = models.FileField(upload_to='teacher/acta/%Y/%m/%d', null=True, blank=True,
-                                      verbose_name='Acta de compromiso')
-
-    class Meta:
-        verbose_name = 'Documento habilitante'
-        verbose_name_plural = 'Documentos habilitantes'
-        ordering = ['id']
-
-    def toJSON(self):
-        item = model_to_dict(self, exclude=['teacher'])
-        item['ci'] = self.get_ci()
-        item['commitment_act'] = self.get_commitment_act()
-        return item
-
-    def get_ci(self):
-        if self.ci:
-            return '{}{}'.format(settings.MEDIA_URL, self.ci)
-        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-
-    def get_commitment_act(self):
-        if self.commitment_act:
-            return '{}{}'.format(settings.MEDIA_URL, self.commitment_act)
-        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-
-
-class SignedContract(models.Model):
-    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
-    contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
-                                verbose_name='Contrato firmado')
-
-    class Meta:
-        verbose_name = 'Contrato firmado'
-        verbose_name_plural = 'Contratos firmados'
-        ordering = ['id']
-
-    def toJSON(self):
-        item = model_to_dict(self, exclude=['teacher'])
-        item['contract'] = self.get_contract()
-        return item
-
-    def get_contract(self):
-        if self.contract:
-            return '{}{}'.format(settings.MEDIA_URL, self.contract)
-        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
 
 class Job(models.Model):

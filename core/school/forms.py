@@ -4,58 +4,58 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
-class SignedContractForm(ModelForm):
-    class Meta:
-        model = SignedContract
-        widgets = {
-            'contract': forms.FileInput(attrs={
-                'placeholder': 'Suba el contrato firmado',
-                'class': 'form-control',
-                'accept': '.pdf'
-            })
-        }
-        fields = '__all__'
-        exclude = ['teacher']
-
-    def save(self, commit=True):
-        data = {}
-        try:
-            if self.is_valid():
-                super().save()
-            else:
-                data['error'] = self.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
-
-
-class EnablingDocumentsForm(ModelForm):
-    class Meta:
-        model = EnablingDocuments
-        fields = '__all__'
-        widgets = {
-            'ci': forms.FileInput(attrs={
-                'placeholder': 'Suba la cédula de identidad',
-                'class': 'form-control',
-                'accept': '.pdf'
-            }),
-            'commitment_act': forms.FileInput(attrs={
-                'class': 'form-control',
-                'accept': '.pdf'
-            })
-        }
-        exclude = ['teacher']
-
-    def save(self, commit=True):
-        data = {}
-        try:
-            if self.is_valid():
-                super().save()
-            else:
-                data['error'] = self.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
+# class SignedContractForm(ModelForm):
+#     class Meta:
+#         model = SignedContract
+#         widgets = {
+#             'contract': forms.FileInput(attrs={
+#                 'placeholder': 'Suba el contrato firmado',
+#                 'class': 'form-control',
+#                 'accept': '.pdf'
+#             })
+#         }
+#         fields = '__all__'
+#         exclude = ['teacher']
+#
+#     def save(self, commit=True):
+#         data = {}
+#         try:
+#             if self.is_valid():
+#                 super().save()
+#             else:
+#                 data['error'] = self.errors
+#         except Exception as e:
+#             data['error'] = str(e)
+#         return data
+#
+#
+# class EnablingDocumentsForm(ModelForm):
+#     class Meta:
+#         model = EnablingDocuments
+#         fields = '__all__'
+#         widgets = {
+#             'ci': forms.FileInput(attrs={
+#                 'placeholder': 'Suba la cédula de identidad',
+#                 'class': 'form-control',
+#                 'accept': '.pdf'
+#             }),
+#             'commitment_act': forms.FileInput(attrs={
+#                 'class': 'form-control',
+#                 'accept': '.pdf'
+#             })
+#         }
+#         exclude = ['teacher']
+#
+#     def save(self, commit=True):
+#         data = {}
+#         try:
+#             if self.is_valid():
+#                 super().save()
+#             else:
+#                 data['error'] = self.errors
+#         except Exception as e:
+#             data['error'] = str(e)
+#         return data
 
 
 class FamilyForm(ModelForm):
@@ -624,7 +624,9 @@ class TeacherForm(ModelForm):
 
     class Meta:
         model = Teacher
-        fields = 'first_name', 'last_name', 'dni', 'email', 'gender', 'mobile', 'phone', 'birthdate', 'address', 'parish'
+        # fields = 'first_name', 'last_name', 'dni', 'email', 'gender', 'mobile', 'phone', 'birthdate', 'address', 'parish'
+        fields = '__all__'
+        exclude = ['user']
         widgets = {
             'gender': forms.Select(attrs={
                 'class': 'form-control select2',
@@ -655,8 +657,67 @@ class TeacherForm(ModelForm):
                     'autocomplete': 'off',
                 }
             ),
+            # Additional data
+            'reference': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese lugar de referencia'
+            }),
+            'nationality': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese nacionalidad'
+            }),
+            'age': forms.NumberInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese edad'
+            }),
+            'ethnicity': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese etnia'
+            }),
+            'religion': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese religión'
+            }),
+            'civil_status': forms.Select(attrs={
+                'class': 'form-control',
+            }),
+            'blood_group': forms.Select(attrs={
+                'class': 'form-control',
+            }),
+            'disability': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
+            ),
+            'disability_type': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'
+            }),
+            'cat_illnesses': forms.Select(
+                choices={(1, 'Sí'), (0, 'No')},
+                attrs={'class': 'form-control'}
+            ),
+            'cat_illnesses_desc': forms.Textarea(attrs={
+                'class': 'form-control', 'rows': '3'
+            }),
+            'croquis': forms.FileInput(attrs={
+                'placeholder': 'Suba documento del croquis',
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
+            'basic_services_payment': forms.FileInput(attrs={
+                'placeholder': 'Suba comprobante de servicios básicos',
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
+            'ci_doc': forms.FileInput(attrs={
+                'placeholder': 'Suba la cédula de identidad',
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
+            'commitment_act': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
+            'contract': forms.FileInput(attrs={
+                'placeholder': 'Suba el contrato firmado',
+                'class': 'form-control',
+                'accept': '.pdf'
+            })
         }
-        exclude = ['user']
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -1354,9 +1415,9 @@ class ConferencesForm(ModelForm):
 class NoteDetailsForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
     class Meta:
-       
+
         model = NoteDetails
         fields = 'name',  'typeactivity', 'date_range', 'desc'
         widgets = {
@@ -1364,7 +1425,7 @@ class NoteDetailsForm(ModelForm):
                 'placeholder': 'Ingrese un nombre o titulo'
             }),
             'typeactivity': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
-            
+
             'start_date': forms.DateInput(format='%Y-%m-%d', attrs={
                 'class': 'form-control datetimepicker-input',
                 'id': 'start_date',
@@ -1385,7 +1446,7 @@ class NoteDetailsForm(ModelForm):
                 'cols': 3
             }),
         }
-        
+
     date_range = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off'

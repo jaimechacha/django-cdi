@@ -1,10 +1,9 @@
 from django.contrib import admin
 from .models import (
-    StudentMedicalRecord, LegalRepresentative, Student, Family, FamilyGroup, EnablingDocuments,
-    Teacher, SignedContract
+    StudentMedicalRecord, LegalRepresentative, Student, Family, FamilyGroup,
+    Teacher
 )
 
-# Register your models here.
 admin.site.register([
     StudentMedicalRecord,
     LegalRepresentative,
@@ -12,6 +11,4 @@ admin.site.register([
     Family,
     FamilyGroup,
     Teacher,
-    EnablingDocuments,
-    SignedContract
 ])

@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu3">
+                            <a class="nav-link" data-toggle="tab" href="#menu4">
                                 Datos adicionales
                             </a>
                         </li>
@@ -120,6 +120,12 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
+                                        <label>{{ form.reference.label }}:</label>
+                                        {{ form.reference }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
                                         <label>Parroquia:</label>
                                         {{ form.parish }}
                                     </div>
@@ -130,7 +136,8 @@
                                         {% if instance %}
                                             {% if instance.user.image %}
                                                 Actualmente:
-                                                <a href="{{ instance.user.get_image }}" target="_blank">{{ instance.user.image.name }}</a>
+                                                <a href="{{ instance.user.get_image }}"
+                                                   target="_blank">{{ instance.user.image.name }}</a>
                                                 <input type="checkbox" name="image-clear" id="image-clear_id">
                                                 <label for="image-clear_id">Limpiar</label><br>
                                                 Modificar:
@@ -166,44 +173,170 @@
                         </div>
                         <div class="tab-pane container-fluid fade" id="menu2">
                             <br>
-                            <a class="btn btn-success btn-xs btn-flat btnAddEDocs">
-                                <i class="fas fa-folder-plus"></i> Agregar documentos
-                            </a>
-                            <a class="btn btn-danger btn-xs btn-flat btnRemoveAllEDocs">
-                                <i class="fas fa-trash"></i> Remover todo
-                            </a>
-                            <hr>
-                            <table width="100%"
-                                   class="table table-bordered table-striped" id="tblEDocs">
-                                <thead>
-                                <tr>
-                                    <th>Cedula</th>
-                                    <th>Acta de compromiso</th>
-                                    <th>Opciones</th>
-                                </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.ci_doc.label }}:</label>
+                                        {% if instance %}
+                                            {% if instance.ci_doc %}
+                                                <br/>
+                                                Actualmente:
+                                                <a href="{{ instance.get_ci_doc }}"
+                                                   target="_blank">Ver documento</a>
+                                                <input type="checkbox" name="ci_doc-clear" id="ci-doc-clear_id">
+                                                <label for="ci-doc-clear_id">Limpiar</label><br>
+                                                Modificar:
+                                            {% endif %}
+                                        {% endif %}
+                                        {{ form.ci_doc }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.commitment_act.label }}:</label>
+                                        {% if instance %}
+                                            {% if instance.commitment_act %}
+                                                <br/>
+                                                Actualmente:
+                                                <a href="{{ instance.get_commitment_act }}"
+                                                   target="_blank">Ver acta de compromiso</a>
+                                                <input type="checkbox" name="acta-clear" id="acta-clear_id">
+                                                <label for="acta-clear_id">Limpiar</label><br>
+                                                Modificar:
+                                            {% endif %}
+                                        {% endif %}
+                                        {{ form.commitment_act }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane container-fluid fade" id="menu3">
                             <br>
-                            <a class="btn btn-success btn-xs btn-flat btnAddSContract">
-                                <i class="fas fa-folder-plus"></i> Agregar contrado
-                            </a>
-                            <a class="btn btn-danger btn-xs btn-flat btnRemoveAllSContract">
-                                <i class="fas fa-trash"></i> Remover todo
-                            </a>
-                            <hr>
-                            <table width="100%"
-                                   class="table table-bordered table-striped" id="tblSContract">
-                                <thead>
-                                <tr>
-                                    <th>Contrato</th>
-                                    <th>Opciones</th>
-                                </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>{{ form.contract.label }}:</label>
+                                        {% if instance %}
+                                            {% if instance.contract %}
+                                                <br/>
+                                                Actualmente:
+                                                <a href="{{ instance.get_contract }}"
+                                                   target="_blank">Ver contrato</a>
+                                                <input type="checkbox" name="contract-clear" id="contract-clear_id">
+                                                <label for="contract-clear_id">Limpiar</label><br>
+                                                Modificar:
+                                            {% endif %}
+                                        {% endif %}
+
+                                        {{ form.contract }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane container-fluid fade" id="menu4">
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.nationality.label }}:</label>
+                                        {{ form.nationality }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.age.label }}:</label>
+                                        {{ form.age }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.ethnicity.label }}:</label>
+                                        {{ form.ethnicity }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.religion.label }}:</label>
+                                        {{ form.religion }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.civil_status.label }}:</label>
+                                        {{ form.civil_status }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.blood_group.label }}:</label>
+                                        {{ form.blood_group }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.disability.label }}:</label>
+                                        {{ form.disability }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>{{ form.disability_type.label }}:</label>
+                                        {{ form.disability_type }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.croquis.label }}:</label>
+                                        {% if instance %}
+                                            {% if instance.croquis %}
+                                                <br/>
+                                                Actualmente:
+                                                <a href="{{ instance.get_croquis }}"
+                                                   target="_blank">Ver croquis</a>
+                                                <input type="checkbox" name="croquis-clear" id="croquis-clear_id">
+                                                <label for="croquis-clear_id">Limpiar</label><br>
+                                                Modificar:
+                                            {% endif %}
+                                        {% endif %}
+                                        {{ form.croquis }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.basic_services_payment.label }}:</label>
+                                        {% if instance %}
+                                            {% if instance.basic_services_payment %}
+                                                <br/>
+                                                Actualmente:
+                                                <a href="{{ instance.get_comprobante }}"
+                                                   target="_blank">Ver comprobante</a>
+                                                <input type="checkbox" name="comprobante-clear" id="comprobante-clear_id">
+                                                <label for="comprobante-clear_id">Limpiar</label><br>
+                                                Modificar:
+                                            {% endif %}
+                                        {% endif %}
+                                        {{ form.basic_services_payment }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.cat_illnesses.label }}:</label>
+                                        {{ form.cat_illnesses }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ form.cat_illnesses_desc.label }}:</label>
+                                        {{ form.cat_illnesses_desc }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,9 +356,6 @@
     {% include 'teacher/shared/modal_contract.html' %}
     <script type="application/javascript">
         teacher.details.cvitae = {{ cvitae|safe }};
-        teacher.details.edocs = {{ edocs|safe }}
-        teacher.details.scontract = {{ scontract|safe }}
         teacher.list_cvitae();
-        teacher.list_edocs();
     </script>
 {% endblock %}
