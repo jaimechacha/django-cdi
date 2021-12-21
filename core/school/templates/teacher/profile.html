@@ -351,9 +351,7 @@
             </div>
         </div>
     </form>
-    {% include 'teacher/shared/modal_cv.html' %}
-    {% include 'teacher/shared/modal_docs.html' %}
-    {% include 'teacher/shared/modal_contract.html' %}
+    {% include 'teacher/extras/modal_cv.html' %}
     <script type="application/javascript">
         teacher.details.cvitae = {{ cvitae|safe }};
         teacher.list_cvitae();

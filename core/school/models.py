@@ -242,6 +242,9 @@ class Teacher(models.Model):
         item['parish'] = self.parish.toJSON()
         item['croquis'] = self.get_croquis()
         item['basic_services_payment'] = self.get_comprobante()
+        item['ci_doc'] = self.get_ci_doc()
+        item['commitment_act'] = self.get_commitment_act()
+        item['contract'] = self.get_contract()
         return item
 
     def get_croquis(self):
