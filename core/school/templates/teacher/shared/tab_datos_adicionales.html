@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.nationality.label }}:</label>
+            {{ form.nationality }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.age.label }}:</label>
+            {{ form.age }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.ethnicity.label }}:</label>
+            {{ form.ethnicity }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.religion.label }}:</label>
+            {{ form.religion }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.civil_status.label }}:</label>
+            {{ form.civil_status }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.blood_group.label }}:</label>
+            {{ form.blood_group }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.disability.label }}:</label>
+            {{ form.disability }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ form.disability_type.label }}:</label>
+            {{ form.disability_type }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.croquis.label }}:</label>
+            {% if instance %}
+                {% if instance.croquis %}
+                    <br/>
+                    Actualmente:
+                    <a href="{{ instance.get_croquis }}"
+                       target="_blank">Ver croquis</a>
+                    <input type="checkbox" name="croquis-clear" id="croquis-clear_id">
+                    <label for="croquis-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ form.croquis }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.basic_services_payment.label }}:</label>
+            {% if instance %}
+                {% if instance.basic_services_payment %}
+                    <br/>
+                    Actualmente:
+                    <a href="{{ instance.get_comprobante }}"
+                       target="_blank">Ver comprobante</a>
+                    <input type="checkbox" name="comprobante-clear" id="comprobante-clear_id">
+                    <label for="comprobante-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ form.basic_services_payment }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.cat_illnesses.label }}:</label>
+            {{ form.cat_illnesses }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.cat_illnesses_desc.label }}:</label>
+            {{ form.cat_illnesses_desc }}
+        </div>
+    </div>
+</div>

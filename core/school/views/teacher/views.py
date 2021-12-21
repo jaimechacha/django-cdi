@@ -101,6 +101,29 @@ class TeacherCreateView(PermissionMixin, CreateView):
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
                     teacher.parish_id = int(request.POST['parish'])
+
+                    teacher.reference = request.POST['reference']
+
+                    teacher.nationality = request.POST['nationality']
+                    teacher.age = int(request.POST['age']) if request.POST['age'] else None
+                    teacher.ethnicity = request.POST['ethnicity']
+                    teacher.religion = request.POST['religion']
+                    teacher.civil_status = request.POST['civil_status']
+                    teacher.blood_group = request.POST['blood_group']
+                    teacher.disability = request.POST['disability']
+                    teacher.disability_type = request.POST['disability_type']
+                    teacher.cat_illnesses = request.POST['cat_illnesses']
+                    teacher.cat_illnesses_desc = request.POST['cat_illnesses_desc']
+                    if 'croquis' in request.FILES:
+                        teacher.croquis = request.FILES['croquis']
+                    if 'basic_services_payment' in request.FILES:
+                        teacher.basic_services_payment = request.FILES['basic_services_payment']
+                    if 'ci_doc' in request.FILES:
+                        teacher.ci_doc = request.FILES['ci_doc']
+                    if 'commitment_act' in request.FILES:
+                        teacher.commitment_act = request.FILES['commitment_act']
+                    if 'contract' in request.FILES:
+                        teacher.contract = request.FILES['contract']
                     teacher.save()
                     group = Group.objects.get(pk=settings.GROUPS.get('teacher'))
                     user.groups.add(group)
@@ -136,126 +159,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
         context['action'] = 'add'
         context['cvitae'] = []
         context['instance'] = None
-        context['cVitaeForm'] = CVitaeForm()
-        return context
-
-
-class TeacherUpdateView(PermissionMixin, UpdateView):
-    model = Teacher
-    template_name = 'teacher/create.html'
-    form_class = TeacherForm
-    success_url = reverse_lazy('teacher_list')
-    permission_required = 'change_teacher'
-
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_form(self, form_class=None):
-        instance = self.object
-        form = TeacherForm(instance=instance, initial={
-            'first_name': instance.user.first_name,
-            'last_name': instance.user.last_name,
-            'dni': instance.user.dni,
-            'email': instance.user.email,
-            'image': instance.user.image,
-        })
-        if instance.parish:
-            form.fields['parish'].queryset = Parish.objects.filter(id=instance.parish.id)
-        return form
-
-    def validate_data(self):
-        data = {'valid': True}
-        try:
-            instance = self.object
-            type = self.request.POST['type']
-            obj = self.request.POST['obj'].strip()
-            if type == 'dni':
-                if User.objects.filter(dni=obj).exclude(id=instance.user.id):
-                    data['valid'] = False
-            elif type == 'mobile':
-                if Teacher.objects.filter(mobile=obj).exclude(id=instance.id):
-                    data['valid'] = False
-            elif type == 'email':
-                if User.objects.filter(email=obj).exclude(id=instance.user.id):
-                    data['valid'] = False
-        except:
-            pass
-        return JsonResponse(data)
-
-    def get_cvitae(self):
-        data = []
-        try:
-            instance = self.get_object()
-            for det in instance.cvitae_set.all():
-                data.append(det.toJSON())
-        except:
-            pass
-        return json.dumps(data)
-
-    def post(self, request, *args, **kwargs):
-        data = {}
-        action = request.POST['action']
-        try:
-            if action == 'edit':
-                with transaction.atomic():
-                    instance = self.object
-                    user = instance.user
-                    user.first_name = request.POST['first_name']
-                    user.last_name = request.POST['last_name']
-                    user.dni = request.POST['dni']
-                    user.username = user.dni
-                    if 'image-clear' in request.POST:
-                        user.remove_image()
-                    if 'image' in request.FILES:
-                        user.image = request.FILES['image']
-                    user.email = request.POST['email']
-                    user.save()
-
-                    teacher = instance
-                    teacher.user_id = user.id
-                    teacher.gender = request.POST['gender']
-                    teacher.mobile = request.POST['mobile']
-                    teacher.phone = request.POST['phone']
-                    teacher.address = request.POST['address']
-                    teacher.birthdate = request.POST['birthdate']
-                    teacher.parish_id = int(request.POST['parish'])
-                    teacher.save()
-                    teacher.cvitae_set.all().delete()
-
-                    cvitaejson = json.loads(request.POST['cvitae'])
-                    for det in cvitaejson:
-                        cvitae = CVitae()
-                        cvitae.teacher_id = teacher.id
-                        cvitae.start_date = det['start_date']
-                        cvitae.end_date = det['end_date']
-                        cvitae.typecvitae_id = int(det['typecvitae']['id'])
-                        cvitae.name = det['name']
-                        cvitae.details = det['details']
-                        cvitae.save()
-            elif action == 'search_parish':
-                data = []
-                term = request.POST['term']
-                for i in Parish.objects.filter(name__icontains=term)[0:10]:
-                    item = {'id': i.id, 'text': i.__str__(), 'data': i.toJSON()}
-                    data.append(item)
-            elif action == 'validate_data':
-                return self.validate_data()
-            else:
-                data['error'] = 'No ha seleccionado ninguna opción'
-        except Exception as e:
-            data['error'] = str(e)
-        return HttpResponse(json.dumps(data), content_type='application/json')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['list_url'] = self.success_url
-        context['title'] = 'Edición de un Profesor'
-        context['action'] = 'edit'
-        context['instance'] = self.object
         context['frmCVitae'] = CVitaeForm()
-        context['cvitae'] = self.get_cvitae()
         return context
 
 
@@ -288,11 +192,10 @@ class TeacherDeleteView(PermissionMixin, DeleteView):
         return context
 
 
-class TeacherUpdateProfileView(ModuleMixin, UpdateView):
+class GenericUpdateTeacher(UpdateView):
     model = Teacher
-    template_name = 'teacher/profile.html'
     form_class = TeacherForm
-    success_url = reverse_lazy('dashboard')
+    title = ''
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -311,26 +214,6 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
         except:
             pass
         return json.dumps(data)
-
-    # def get_edocs(self):
-    #     data = []
-    #     try:
-    #         teacher = self.get_object()
-    #         for doc in EnablingDocuments.objects.filter(teacher=teacher):
-    #             data.append(doc.toJSON())
-    #     except Exception as e:
-    #         print(e)
-    #     return json.dumps(data)
-
-    # def get_scontract(self):
-    #     data = []
-    #     try:
-    #         teacher = self.get_object()
-    #         for c in SignedContract.objects.filter(teacher=teacher):
-    #             data.append(c.toJSON())
-    #     except Exception as e:
-    #         print(e)
-    #     return json.dumps(data)
 
     def get_form(self, form_class=None):
         instance = self.object
@@ -446,9 +329,26 @@ class TeacherUpdateProfileView(ModuleMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Edición de Perfil'
+        context['title'] = self.title
         context['action'] = 'edit'
         context['instance'] = self.object
         context['frmCVitae'] = CVitaeForm()
         context['cvitae'] = self.get_cvitae()
         return context
+
+
+class TeacherUpdateProfileView(ModuleMixin, GenericUpdateTeacher):
+    title = 'Edición del perfil'
+    template_name = 'teacher/profile.html'
+    success_url = reverse_lazy('dashboard')
+
+
+class TeacherUpdateView(PermissionMixin, GenericUpdateTeacher):
+    title = 'Edición de un profesor'
+    template_name = 'teacher/create.html'
+    success_url = reverse_lazy('teacher_list')
+    permission_required = 'change_teacher'
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        return self.model.objects.get(pk=pk)

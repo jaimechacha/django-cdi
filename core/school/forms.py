@@ -82,14 +82,14 @@ class FamilyForm(ModelForm):
                 attrs={'class': 'form-control', 'required': 'true'}
             ),
             'disability': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'disability_type': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'}
             ),
             'cat_illnesses': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control', 'placeholder': ''}
             ),
             'cat_illnesses_desc': forms.Textarea(
@@ -160,7 +160,7 @@ class LegalRepresentativeForm(ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Seleccione grupo de sangre'}
             ),
             'is_working': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'workplace': forms.TextInput(
@@ -213,14 +213,14 @@ class StudentMedicalRecordForm(ModelForm):
                 attrs={'class': 'form-control'}
             ),
             'donor': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'vaccine_card': forms.FileInput(
                 attrs={'class': 'form-control'}
             ),
             'disability': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'disability_type': forms.TextInput(
@@ -230,7 +230,7 @@ class StudentMedicalRecordForm(ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese porcentaje de discapacidad'}
             ),
             'allergies': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'allergies_desc': forms.Textarea(
@@ -258,7 +258,7 @@ class StudentMedicalRecordForm(ModelForm):
                 attrs={'class': 'form-control', 'rows': '2'}
             ),
             'medication': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'medication_type': forms.TextInput(
@@ -680,14 +680,14 @@ class TeacherForm(ModelForm):
                 'class': 'form-control',
             }),
             'disability': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'disability_type': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'Ingrese tipo de discapacidad'
             }),
             'cat_illnesses': forms.Select(
-                choices={(1, 'Sí'), (0, 'No')},
+                choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
             'cat_illnesses_desc': forms.Textarea(attrs={

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.ci_doc.label }}:</label>
+            {% if instance %}
+                {% if instance.ci_doc %}
+                    <br/>
+                    Actualmente:
+                    <a href="{{ instance.get_ci_doc }}"
+                       target="_blank">Ver documento</a>
+                    <input type="checkbox" name="ci_doc-clear" id="ci-doc-clear_id">
+                    <label for="ci-doc-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ form.ci_doc }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ form.commitment_act.label }}:</label>
+            {% if instance %}
+                {% if instance.commitment_act %}
+                    <br/>
+                    Actualmente:
+                    <a href="{{ instance.get_commitment_act }}"
+                       target="_blank">Ver acta de compromiso</a>
+                    <input type="checkbox" name="acta-clear" id="acta-clear_id">
+                    <label for="acta-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ form.commitment_act }}
+        </div>
+    </div>
+</div>
