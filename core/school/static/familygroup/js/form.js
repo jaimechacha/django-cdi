@@ -21,24 +21,29 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         notEmpty: {message: "Seleccione un estudiante"},
                     }
                 },
-                weight: {
+                first_name: {
                     validators: {
                         notEmpty: {},
                     }
                 },
-                height: {
+                last_name: {
                     validators: {
                         notEmpty: {},
                     }
                 },
-                size: {
+                ci: {
                     validators: {
                         notEmpty: {},
                     }
                 },
-                blood_group: {
+                relationship: {
                     validators: {
-                        notEmpty: {message: "Seleccione una opción"},
+                        notEmpty: {},
+                    }
+                },
+                age: {
+                    validators: {
+                        notEmpty: {},
                     }
                 },
             },
@@ -94,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     },
                 }
             });
-            // submit_formdata_with_ajax_form(fv);
         });
 });
 

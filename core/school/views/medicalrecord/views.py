@@ -67,7 +67,8 @@ class StudentMedicalRecordCreateView(CreateView):
         except Exception as e:
             data = {'error': str(e)}
             print(data)
-            # return HttpResponse(json.dumps(data), content_type='application/json')
+        return redirect('student_list')
+        # return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 class StudentMedicalRecordUpdateView(UpdateView):
