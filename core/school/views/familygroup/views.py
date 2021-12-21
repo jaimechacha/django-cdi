@@ -56,18 +56,25 @@ class FamilyCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         try:
             user = int(request.user.id)
-            student = Student.objects.get(user_id=user)
             with transaction.atomic():
                 family = FamilyForm(request.POST)
                 fam = family.save()
+                fam_group = FamilyGroup(family=fam)
 
-                fam_group = FamilyGroup(student=student, family=fam)
-                fam_group.save()
-            return redirect('family_list')
+                if request.user.groups.filter(name='Estudi').exists():
+                    student = Student.objects.get(user_id=user)
+                    fam_group.student = student
+                    fam_group.save()
+                    return redirect('family_list')
+                elif request.user.groups.filter(name='Administrador').exists():
+                    fam_group.student_id = int(request.POST['student'])
+                    fam_group.save()
+                    return redirect('family_add')
         except Exception as e:
             data = {'error': str(e)}
             print(data)
-            # return HttpResponse(json.dumps(data), content_type='application/json')
+        return redirect('student_list')
+        # return HttpResponse(json.dumps(data), content_type='application/json')
 
 
 class FamilyUpdateView(UpdateView):

@@ -51,14 +51,20 @@ class LegalRepresentativeCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         try:
             user = int(request.user.id)
-            student = Student.objects.get(user_id=user)
             legal_form = LegalRepresentativeForm(request.POST.copy(), request.FILES)
-            legal_form.data['student'] = student.id
-            legal_form.save()
+
+            if request.user.groups.filter(name='Estudi').exists():
+                student = Student.objects.get(user_id=user)
+                legal_form.data['student'] = student.id
+                legal_form.save()
+                return redirect('leg_representative')
+            elif request.user.groups.filter(name='Administrador').exists():
+                legal_form.save()
+                return redirect('leg_representative_create')
         except Exception as e:
             data = {'error': str(e)}
             print(data)
-        return redirect('leg_representative')
+        return redirect('student_list')
 
 
 class LegalRepresentativeUpdateView(UpdateView):

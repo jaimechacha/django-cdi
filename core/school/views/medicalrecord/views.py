@@ -54,11 +54,16 @@ class StudentMedicalRecordCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         try:
             user = int(request.user.id)
-            student = Student.objects.get(user_id=user)
             med_record = StudentMedicalRecordForm(request.POST.copy(), request.FILES)
-            med_record.data['student'] = student.id
-            med_record.save()
-            return redirect('student_medrecord')
+
+            if request.user.groups.filter(name='Estudi').exists():
+                student = Student.objects.get(user_id=user)
+                med_record.data['student'] = student.id
+                med_record.save()
+                return redirect('student_medrecord')
+            elif request.user.groups.filter(name='Administrador').exists():
+                med_record.save()
+                return redirect('student_medrecord_create')
         except Exception as e:
             data = {'error': str(e)}
             print(data)

@@ -26,8 +26,22 @@
                 <div class="container-fluid">
                     <input type="hidden" name="action" id="action" value="{{ action }}">
                     {% csrf_token %}
-                    {% include 'navbartab.html' %}
+                    {% if request.session.group.name == 'Estudi' %}
+                        {% include 'navbartab.html' %}
+                    {% elif request.session.group.name == 'Administrador' %}
+                        {% include 'navbartab_admin.html' %}
+                    {% endif %}
                     <br/>
+                    {% if request.session.group.name == 'Administrador' %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>{{ form.student.label }}:</label>
+                                    {{ form.student }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -206,9 +220,15 @@
                 <button type="submit" class="btn btn-primary btn-flat">
                     <i class="fas fa-save"></i> Guardar registro
                 </button>
-                <a href="{% url 'leg_representative' %}" class="btn btn-danger btn-flat">
-                    <i class="fas fa-times"></i> Cancelar
-                </a>
+                {% if request.session.group.name == 'Estudi' %}
+                    <a href="{% url 'leg_representative' %}" class="btn btn-danger btn-flat">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                {% else %}
+                    <a href="{% url 'student_list' %}" class="btn btn-danger btn-flat">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                {% endif %}
             </div>
         </div>
     </form>

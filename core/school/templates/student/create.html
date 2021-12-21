@@ -29,6 +29,8 @@
                 <div class="container-fluid">
                     <input type="hidden" name="action" id="action" value="{{ action }}">
                     {% csrf_token %}
+                    {% include 'navbartab_admin.html' %}
+                    <br/>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">

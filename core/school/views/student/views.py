@@ -126,6 +126,7 @@ class StudentCreateView(PermissionMixin, CreateView):
         context['title'] = 'Nuevo registro de un Estudiante'
         context['action'] = 'add'
         context['instance'] = None
+        context['tab_add'] = 'active'
         return context
 
 

@@ -3,7 +3,11 @@
 {% block last_login %} {% endblock %}
 
 {% block navtab %}
-    {% include 'navbartab.html' %}
+    {% if request.session.group.name == 'Estudi' %}
+        {% include 'navbartab.html' %}
+    {% elif request.session.group.name == 'Administrador' %}
+        {% include 'navbartab_admin.html' %}
+    {% endif %}
 {% endblock %}
 
 {% block columns %}

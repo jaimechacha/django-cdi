@@ -20,7 +20,9 @@
                 <div class="container-fluid">
                     <input type="hidden" name="action" id="action" value="{{ action }}">
                     {% csrf_token %}
-                    {% include 'navbartab.html' %}
+                    {% if request.session.group.name == 'Estudi' %}
+                        {% include 'navbartab.html' %}
+                    {% endif %}
                     <br/>
                     {% for field in form.visible_fields %}
                         <div class="form-group">
