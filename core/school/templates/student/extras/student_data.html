@@ -1,0 +1,27 @@
+<p class="h6 mt-3">Estudiante: {{ object.get_full_name }}</p>
+
+<div class="row mt-4">
+    <div class="col col-lg-5">
+        <p><b>Correo</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
+        <p><b>Cédula</b>: {{ object.user.dni|default_if_none:"(Vacío)" }}</p>
+        <p><b>Género</b>: {{ object.gender|default_if_none:"(Vacío)" }}</p>
+        <p><b>Celular</b>: {{ object.mobile|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono convencional</b>: {{ object.phone|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono de emergencia</b>: {{ object.emergency_number|default_if_none:"(Vacío)" }}</p>
+        <p><b>Dirección</b>: {{ object.address|default_if_none:"(Vacío)" }}</p>
+        <p><b>Fecha de nacimiento</b>: {{ object.birthdate|default_if_none:"(Vacío)" }}</p>
+        <p><b>Parroquia</b>: {{ object.parish|default_if_none:"(Vacío)" }}</p>
+    </div>
+    <div class="col col-lg-5">
+        <p><b>País de nacimiento</b>: {{ object.birth_country|default_if_none:"(Vacío)" }}</p>
+        <p><b>Provincia de nacimiento</b>: {{ object.birth_province|default_if_none:"(Vacío)" }}</p>
+        <p><b>Ciudad de nacimiento</b>: {{ object.birth_city|default_if_none:"(Vacío)" }}</p>
+        <p><b>Nacionalidad</b>: {{ object.nationality|default_if_none:"(Vacío)" }}</p>
+        <p><b>Edad</b>: {{ object.age|default_if_none:"(Vacío)" }}</p>
+        <p><b>Etnia</b>: {{ object.ethnicity|default_if_none:"(Vacío)" }}</p>
+        <p><b>Religión</b>: {{ object.religion|default_if_none:"(Vacío)" }}</p>
+    </div>
+    <div class="col col-lg-2">
+        <img src="{{ object.user.get_image }}" alt="student profile" class="img-thumbnail">
+    </div>
+</div>

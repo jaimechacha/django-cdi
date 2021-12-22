@@ -1,0 +1,34 @@
+<table width="100%" class="table table-bordered" id="data">
+    <thead>
+    <tr>
+        <th>Nro</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Cédula</th>
+        <th>Parentesco</th>
+{#        <th class="text-center">Opciones</th>#}
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in family %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.first_name }}</td>
+            <td>{{ i.last_name }}</td>
+            <td>{{ i.ci }}</td>
+            <td>{{ i.relationship }}</td>
+{#            <td class="text-center">#}
+{#                <a href="{% url 'family_update' i.id %}" data-toggle="tooltip" title="Editar registro"#}
+{#                   class="btn btn-warning btn-xs btn-flat">#}
+{#                    <i class="fas fa-edit" aria-hidden="true"></i>#}
+{#                </a>#}
+{#                <a href="{% url 'family_delete' i.id %}" rel="delete" data-toggle="tooltip"#}
+{#                   title="Eliminar registro"#}
+{#                   class="btn btn-danger btn-xs btn-flat">#}
+{#                    <i class="fas fa-trash" aria-hidden="true"></i>#}
+{#                </a>#}
+{#            </td>#}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

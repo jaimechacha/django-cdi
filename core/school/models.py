@@ -252,6 +252,15 @@ class Teacher(models.Model):
             return '{}{}'.format(settings.MEDIA_URL, self.croquis)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
+    def remove_croquis(self):
+        try:
+            if self.croquis:
+                os.remove(self.croquis.path)
+        except:
+            pass
+        finally:
+            self.croquis = None
+
     def get_comprobante(self):
         if self.basic_services_payment:
             return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment)

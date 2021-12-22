@@ -6,7 +6,9 @@
 
 {% block content_card %}
     {% if object_list %}
-        {% include 'medicalrecord/extra/medrecord.html' %}
+        {% for i in object_list %}
+            {% include 'medicalrecord/extra/medrecord.html' %}
+        {% endfor %}
     {% else %}
         <div class="container text-center my-4">
             <h6>Aún no ha completado su ficha médica</h6>

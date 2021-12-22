@@ -1,0 +1,76 @@
+{% extends 'detail.html' %}
+
+{% block content_card %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datos">
+                <i class="fa"></i> Datos del estudiante
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#ficha">
+                Ficha médica
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#representante">
+                Representante legal
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#familia">
+                Grupo familiar
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane container-fluid active" id="datos">
+            {% if object %}
+                {% include 'student/extras/student_data.html' %}
+            {% else %}
+                <div class="container text-center my-4">
+                    <h6>No hay información del estudiante</h6>
+                </div>
+            {% endif %}
+        </div>
+        <div class="tab-pane container-fluid" id="ficha">
+            {% if med_record %}
+                {% for i in med_record %}
+                    {% include 'medicalrecord/extra/medrecord.html' %}
+                {% endfor %}
+            {% else %}
+                <div class="container text-center my-4">
+                    <h6>No hay información sobre la ficha médica</h6>
+                </div>
+            {% endif %}
+        </div>
+        <div class="tab-pane container-fluid" id="representante">
+            {% if repr %}
+                {% for i in repr %}
+                    {% include 'legalrepresentative/extra/body_detail.html' %}
+                {% endfor %}
+            {% else %}
+                <div class="container text-center my-4">
+                    <h6>No hay información sobre el representante legal</h6>
+                </div>
+            {% endif %}
+        </div>
+        <div class="tab-pane container-fluid" id="familia">
+            <br/>
+            {% if family %}
+                {% include 'student/extras/family_group.html' %}
+            {% else %}
+                <div class="container text-center my-4">
+                    <h6>No hay información sobre el grupo familiar</h6>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+{% block box_footer %}
+    <div class="card-footer">
+        <a href="{% url 'student_list' %}" class="btn btn-info btn-flat">
+            <i class="fas fa-backward"></i> Regresar
+        </a>
+    </div>
+{% endblock %}

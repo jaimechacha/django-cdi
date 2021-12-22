@@ -103,3 +103,4 @@ class StudentMedicalRecordUpdateView(UpdateView):
         except Exception as e:
             data = {'error': str(e)}
             print(data)
+        return redirect('student_list')

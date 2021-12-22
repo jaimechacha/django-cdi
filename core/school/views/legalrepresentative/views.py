@@ -64,7 +64,7 @@ class LegalRepresentativeCreateView(CreateView):
         except Exception as e:
             data = {'error': str(e)}
             print(data)
-        return redirect('student_list')
+        return redirect('leg_representative_create')
 
 
 class LegalRepresentativeUpdateView(UpdateView):
@@ -100,7 +100,8 @@ class LegalRepresentativeUpdateView(UpdateView):
             )
             legal_form.data['student'] = student.id
             legal_form.save()
+            return redirect('leg_representative')
         except Exception as e:
             data = {'error': str(e)}
             print(data)
-        return redirect('leg_representative')
+        return redirect('student_list')

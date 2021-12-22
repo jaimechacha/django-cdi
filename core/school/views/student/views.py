@@ -6,10 +6,10 @@ from django.http import JsonResponse, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
+from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
 from config import settings
-from core.school.forms import StudentForm, User, Student, Parish
+from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -259,6 +259,35 @@ class StudentDeleteView(PermissionMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Notificación de eliminación'
         context['list_url'] = self.success_url
+        return context
+
+
+class StudentDetailView(DetailView):
+    model = Student
+    template_name = 'student/detail.html'
+
+    def get_medical_record(self):
+        student = self.get_object()
+        return StudentMedicalRecord.objects.filter(student=student)[0:1]
+
+    def get_legal_representative(self):
+        student = self.get_object()
+        return LegalRepresentative.objects.filter(student=student)[0:1]
+
+    def get_family(self):
+        student = self.get_object()
+        return Family.objects.filter(familygroup__student=student)
+
+    def get_family_group(self):
+        pass
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['create_url'] = reverse_lazy('student_create')
+        context['title'] = 'Información del estudiante'
+        context['med_record'] = self.get_medical_record()
+        context['repr'] = self.get_legal_representative()
+        context['family'] = self.get_family()
         return context
 
 

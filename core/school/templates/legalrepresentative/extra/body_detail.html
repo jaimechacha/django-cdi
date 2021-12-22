@@ -1,39 +1,39 @@
-{% for i in object_list %}
-    <p class="h5 mt-3">Datos del representante</p>
-    <p class="h6">Representante: {{ i }}</p>
-    <div class="row mt-4">
-        <div class="col col-lg-5">
-            <p><b>Nombres: </b>{{ i.first_name|default_if_none:"(Vacío)" }}</p>
-            <p><b>Apellidos: </b>{{ i.last_name|default_if_none:"(Vacío)" }}</p>
-            <p><b>Parentesco: </b>{{ i.relationship|default_if_none:"(Vacío)" }}</p>
-            <p><b>CI: </b>{{ i.ci|default_if_none:"(Vacío)" }}</p>
-            <p><b>Nacionalidad: </b>{{ i.nationality|default_if_none:"(Vacío)" }}</p>
-            <p><b>Dirección: </b>{{ i.address|default_if_none:"(Vacío)" }}</p>
-            <p><b>Referencia: </b>{{ i.reference|default_if_none:"(Vacío)" }}</p>
-            <p><b>Celular: </b>{{ i.cell_phone|default_if_none:"(Vacío)" }}</p>
-            <p><b>Teléfono convencional: </b>{{ i.conventional_phone|default_if_none:"(Vacío)" }}</p>
-            <p><b>Teléfono de emergencia: </b>{{ i.emergency_number|default_if_none:"(Vacío)" }}</p>
-            <p><b>Correo: </b>{{ i.email|default_if_none:"(Vacío)" }}</p>
-            <p><b>Grupo sanguíneo: </b>{{ i.blood_group }}</p>
-        </div>
-        <div class="col col-lg-5">
-            <p><b>Trabaja: </b>{{ i.is_working|yesno:"Sí,No" }}</p>
-            <p><b>Lugar de trabajo: </b>{{ i.workplace|default_if_none:"(Vacío)" }}</p>
-            <p><b>Teléfono del trabajo: </b>{{ i.work_phone|default_if_none:"(Vacío)" }}</p>
-            <p><b>Dirección del trabajo: </b>{{ i.work_address|default_if_none:"(Vacío)" }}</p>
-            <p><b>Correo del trabajo: </b>{{ i.work_email|default_if_none:"(Vacío)" }}</p>
-        </div>
-        <div class="col col-lg-2">
-            <img src="{{ i.get_image }}" alt="student profile" class="img-thumbnail">
-            <a href="{{ i.get_croquis }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
-                <i class="fas fa-map-marked mr-1"></i> Croquis
-            </a>
-            <a href="{{ i.get_comprobante }}" target="_blank" class="btn btn-secondary btn-sm btn-flat mt-2 w-100">
-                <i class="fas fa-money-bill mr-1"></i> Comprobante de SB
-            </a>
+<p class="h5 mt-3">Datos del representante</p>
+<p class="h6">Representante: {{ i }}</p>
+<div class="row mt-4">
+    <div class="col col-lg-5">
+        <p><b>Nombres: </b>{{ i.first_name|default_if_none:"(Vacío)" }}</p>
+        <p><b>Apellidos: </b>{{ i.last_name|default_if_none:"(Vacío)" }}</p>
+        <p><b>Parentesco: </b>{{ i.relationship|default_if_none:"(Vacío)" }}</p>
+        <p><b>CI: </b>{{ i.ci|default_if_none:"(Vacío)" }}</p>
+        <p><b>Nacionalidad: </b>{{ i.nationality|default_if_none:"(Vacío)" }}</p>
+        <p><b>Dirección: </b>{{ i.address|default_if_none:"(Vacío)" }}</p>
+        <p><b>Referencia: </b>{{ i.reference|default_if_none:"(Vacío)" }}</p>
+        <p><b>Celular: </b>{{ i.cell_phone|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono convencional: </b>{{ i.conventional_phone|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono de emergencia: </b>{{ i.emergency_number|default_if_none:"(Vacío)" }}</p>
+        <p><b>Correo: </b>{{ i.email|default_if_none:"(Vacío)" }}</p>
+        <p><b>Grupo sanguíneo: </b>{{ i.blood_group }}</p>
+    </div>
+    <div class="col col-lg-5">
+        <p><b>Trabaja: </b>{{ i.is_working|yesno:"Sí,No" }}</p>
+        <p><b>Lugar de trabajo: </b>{{ i.workplace|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono del trabajo: </b>{{ i.work_phone|default_if_none:"(Vacío)" }}</p>
+        <p><b>Dirección del trabajo: </b>{{ i.work_address|default_if_none:"(Vacío)" }}</p>
+        <p><b>Correo del trabajo: </b>{{ i.work_email|default_if_none:"(Vacío)" }}</p>
+    </div>
+    <div class="col col-lg-2">
+        <img src="{{ i.get_image }}" alt="student profile" class="img-thumbnail">
+        <a href="{{ i.get_croquis }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
+            <i class="fas fa-map-marked mr-1"></i> Croquis
+        </a>
+        <a href="{{ i.get_comprobante }}" target="_blank" class="btn btn-secondary btn-sm btn-flat mt-2 w-100">
+            <i class="fas fa-money-bill mr-1"></i> Comprobante de SB
+        </a>
+        {% if request.session.group.name == 'Estudi' %}
             <a href="{% url 'leg_representative_update' i.id %}" class="btn btn-warning btn-sm btn-flat mt-2 w-100">
                 <i class="fas fa-edit mr-1"></i> Editar datos
             </a>
-        </div>
+        {% endif %}
     </div>
-{% endfor %}
+</div>
