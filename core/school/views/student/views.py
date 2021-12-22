@@ -99,7 +99,7 @@ class StudentCreateView(PermissionMixin, CreateView):
                     student.birth_province_id = int(request.POST['birth_province'])
                     student.birth_city = request.POST['birth_city']
                     student.nationality = request.POST['nationality']
-                    student.age = request.POST['age']
+                    student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.ethnicity = request.POST['ethnicity']
                     student.religion = request.POST['religion']
                     student.emergency_number = request.POST['emergency_number']
@@ -205,7 +205,7 @@ class StudentUpdateView(PermissionMixin, UpdateView):
                     student.birth_province_id = int(request.POST['birth_province'])
                     student.birth_city = request.POST['birth_city']
                     student.nationality = request.POST['nationality']
-                    student.age = request.POST['age']
+                    student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.ethnicity = request.POST['ethnicity']
                     student.religion = request.POST['religion']
                     student.emergency_number = request.POST['emergency_number']
