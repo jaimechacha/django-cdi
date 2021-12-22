@@ -1,0 +1,73 @@
+{% extends 'detail.html' %}
+
+{% block content_card %}
+    <div class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-2">
+                    <img src="{{ object.user.get_image }}" alt="teacher profile" class="img-thumbnail">
+                </div>
+                <div class="col col-lg-10">
+                    <p class="h2 mt-3">{{ object.user.get_full_name }}</p>
+                    <p class="h6 mt-3">Docente</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col col-lg-6">
+            <p><b>Correo</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
+            <p><b>Cédula</b>: {{ object.user.dni|default_if_none:"(Vacío)" }}</p>
+            <p><b>Género: </b>{{ object.gender|default_if_none:"(Vacío)" }}</p>
+            <p><b>Celular: </b>{{ object.mobile|default_if_none:"(Vacío)" }}</p>
+            <p><b>Teléfono: </b>{{ object.phone|default_if_none:"(Vacío)" }}</p>
+            <p><b>Fecha de nacimiento: </b>{{ object.birthdate|default_if_none:"(Vacío)" }}</p>
+            <p><b>Nacionalidad: </b>{{ object.nationality |default_if_none:"(Vacío)"}}</p>
+            <p><b>Edad: </b>{{ object.age|default_if_none:"(Vacío)" }}</p>
+            <p><b>Etnia: </b>{{ object.ethnicity|default_if_none:"(Vacío)" }}</p>
+            <p><b>Religión: </b>{{ object.religion|default_if_none:"(Vacío)" }}</p>
+            <p><b>Estado civil: </b>{{ object.civil_status|default_if_none:"(Vacío)" }}</p>
+            <p><b>Grupo sanguíneo: </b>{{ object.blood_group|default_if_none:"(Vacío)" }}</p>
+            <hr/>
+            <p><b>Discapacidad: </b>{{ object.disability|yesno:"Sí,No" }}</p>
+            <p><b>Tipo de discapacidad: </b>{{ object.disability_type|default_if_none:"(Vacío)" }}</p>
+            <p><b>Enfermedades catastróficas: </b>{{ object.cat_illnesses|yesno:"Sí,No" }}</p>
+            <p><b>Desc. enfermedades catastróficas: </b>{{ object.cat_illnesses_desc }}</p>
+        </div>
+        <div class="col col-lg-6">
+            <p><b>País: </b>{{ object.parish.canton.province.country.name }}</p>
+            <p><b>Provincia: </b>{{ object.parish.canton.province.name }}</p>
+            <p><b>Cantón: </b>{{ object.parish.canton.name }}</p>
+            <p><b>Parroquia: </b>{{ object.parish.name }}</p>
+            <p><b>Dirección: </b>{{ object.address }}</p>
+            <p><b>Referencia: </b>{{ object.reference }}</p>
+            <hr/>
+            <div class="w-50">
+                <a href="{{ object.get_ci_doc }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-id-card mr-1"></i> Cédula
+                </a>
+                <a href="{{ object.get_comprobante }}" target="_blank"
+                   class="btn btn-info btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-cash-register mr-1"></i> Comprobante SB
+                </a>
+                <a href="{{ object.get_commitment_act }}" target="_blank"
+                   class="btn btn-warning btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-briefcase mr-1"></i> Acta de compromiso
+                </a>
+                <a href="{{ object.get_contract }}" target="_blank" class="btn btn-secondary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-signature mr-1"></i> Contrato
+                </a>
+                <a href="{{ object.get_croquis }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-map-marked mr-1"></i> Croquis
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block box_footer %}
+    <div class="card-footer">
+        <a href="{% url 'teacher_list' %}" class="btn btn-info btn-flat">
+            <i class="fas fa-backward"></i> Regresar
+        </a>
+    </div>
+{% endblock %}

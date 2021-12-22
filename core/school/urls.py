@@ -125,6 +125,7 @@ urlpatterns = [
     path('teacher/', TeacherListView.as_view(), name='teacher_list'),
     path('teacher/add/', TeacherCreateView.as_view(), name='teacher_create'),
     path('teacher/update/<int:pk>/', TeacherUpdateView.as_view(), name='teacher_update'),
+    path('teacher/detail/<int:pk>/', TeacherDetailView.as_view(), name='teacher_detail'),
     path('teacher/delete/<int:pk>/', TeacherDeleteView.as_view(), name='teacher_delete'),
     path('teacher/update/profile/', TeacherUpdateProfileView.as_view(), name='teacher_update_profile'),
     # contracts

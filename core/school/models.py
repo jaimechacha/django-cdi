@@ -144,56 +144,6 @@ class Parish(models.Model):
         ordering = ['-id']
 
 
-# class EnablingDocuments(models.Model):
-#     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
-#     ci = models.FileField(upload_to='teacher/ci/%Y/%m/%d', null=True, blank=True,
-#                           verbose_name='Cédula de identidad')
-#     commitment_act = models.FileField(upload_to='teacher/acta/%Y/%m/%d', null=True, blank=True,
-#                                       verbose_name='Acta de compromiso')
-#
-#     class Meta:
-#         verbose_name = 'Documento habilitante'
-#         verbose_name_plural = 'Documentos habilitantes'
-#         ordering = ['id']
-#
-#     def toJSON(self):
-#         item = model_to_dict(self, exclude=['teacher'])
-#         item['ci'] = self.get_ci()
-#         item['commitment_act'] = self.get_commitment_act()
-#         return item
-#
-    # def get_ci(self):
-    #     if self.ci:
-    #         return '{}{}'.format(settings.MEDIA_URL, self.ci)
-    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-    #
-    # def get_commitment_act(self):
-    #     if self.commitment_act:
-    #         return '{}{}'.format(settings.MEDIA_URL, self.commitment_act)
-    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-#
-#
-# class SignedContract(models.Model):
-#     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
-#     contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
-#                                 verbose_name='Contrato firmado')
-#
-#     class Meta:
-#         verbose_name = 'Contrato firmado'
-#         verbose_name_plural = 'Contratos firmados'
-#         ordering = ['id']
-#
-#     def toJSON(self):
-#         item = model_to_dict(self, exclude=['teacher'])
-#         item['contract'] = self.get_contract()
-#         return item
-#
-    # def get_contract(self):
-    #     if self.contract:
-    #         return '{}{}'.format(settings.MEDIA_URL, self.contract)
-    #     return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-
-
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')

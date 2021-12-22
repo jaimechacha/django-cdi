@@ -278,9 +278,6 @@ class StudentDetailView(DetailView):
         student = self.get_object()
         return Family.objects.filter(familygroup__student=student)
 
-    def get_family_group(self):
-        pass
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['create_url'] = reverse_lazy('student_create')

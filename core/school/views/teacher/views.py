@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
+from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
 from config import settings
 from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
@@ -189,6 +189,16 @@ class TeacherDeleteView(PermissionMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Notificación de eliminación'
         context['list_url'] = self.success_url
+        return context
+
+
+class TeacherDetailView(DetailView):
+    model = Teacher
+    template_name = 'teacher/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Información del docente'
         return context
 
 
