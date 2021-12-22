@@ -440,6 +440,54 @@
   }
 },
 {
+  "model": "contenttypes.contenttype",
+  "pk": 56,
+  "fields": {
+    "app_label": "school",
+    "model": "family"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 57,
+  "fields": {
+    "app_label": "school",
+    "model": "studentmedicalrecord"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 58,
+  "fields": {
+    "app_label": "school",
+    "model": "signedcontract"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 59,
+  "fields": {
+    "app_label": "school",
+    "model": "legalrepresentative"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 60,
+  "fields": {
+    "app_label": "school",
+    "model": "familygroup"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 61,
+  "fields": {
+    "app_label": "school",
+    "model": "enablingdocuments"
+  }
+},
+{
   "model": "sessions.session",
   "pk": "08q89kx9nmwtav2zaemhwxeiyxau4s7o",
   "fields": {
@@ -469,6 +517,14 @@
   "fields": {
     "session_data": "OTM1OGRjMjliOTQ3NDQyY2Q5N2YxZWMyZmZhNmMxOWE1OWZhMTc3YTqABJXDAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY4MTFiNTZmZTAwYzQyNTg0OTNkZGJjM2E3ZGFkYTEwMDAzZWRmYmaUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC4zlHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQojAxmaWVsZHNfY2FjaGWUfZRoFoloF2gYdWKMAmlklEsRjAN1cmyUjBAvc2Nob29sL3RlYWNoZXIvlIwEbmFtZZSMCFByb2Zlc29ylIwNbW9kdWxldHlwZV9pZJRLAowLZGVzY3JpcHRpb26UjC5QZXJtaXRlIGFkbWluaXN0cmFyIGxvcyBwcm9mZXNvcmVzIGRlbCBjb2xlZ2lvlIwEaWNvbpSMGWZhcyBmYS1jaGFsa2JvYXJkLXRlYWNoZXKUjAVpbWFnZZSMAJSMC2lzX3ZlcnRpY2FslIiMCWlzX2FjdGl2ZZSIjAppc192aXNpYmxllIiMD19kamFuZ29fdmVyc2lvbpSMBTMuMC4zlHVijAh1cmxfbGFzdJSMFC9zY2hvb2wvdGVhY2hlci9hZGQvlHUu",
     "expire_date": "2021-05-25T11:40:36.502Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "45xfdee7heid77511ty9upj6ulnrbmrv",
+  "fields": {
+    "session_data": "N2EwYjk1NjIyODI1NTRiNzcxOWI0MDU0ZmY4Njk3MzM4YThkMDEyZTqABZWSAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATOUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDEwODY3ZWI1OGM2NDc0ODY5NDJjZDgyMjNlNzRkYjI3ZTk3YmU3ODiUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsCjAN1cmyUjBsvdXNlci9hZG1pbi91cGRhdGUvcHJvZmlsZS+UjARuYW1llIwNRWRpdGFyIHBlcmZpbJSMDW1vZHVsZXR5cGVfaWSUTowLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGNhbWJpYXIgbGEgaW5mb3JtYWNpw7NuIGRlIHR1IGN1ZW50YZSMBGljb26UjAtmYXMgZmEtdXNlcpSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiYwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2022-01-05T04:43:17.912Z"
   }
 },
 {
@@ -537,6 +593,22 @@
 },
 {
   "model": "sessions.session",
+  "pk": "b2jz20m78bi65iis1ix6fm5jhytelfsn",
+  "fields": {
+    "session_data": "NjZjZTYzYTgwNzMxZGUxZWE3OGM0NTU5YjI3NGQzMWI0ZTQ2YWE1MDqABZW4AgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lCiMBl9zdGF0ZZRoEymBlH2UKGgWiWgXaBh1YowCaWSUSx2MA3VybJSMEC9zY2hvb2wvc3R1ZGVudC+UjARuYW1llIwLRXN0dWRpYW50ZXOUjA1tb2R1bGV0eXBlX2lklEsEjAtkZXNjcmlwdGlvbpSML1Blcm1pdGUgYWRtaW5pc3RyYXIgbG9zIGVzdHVkaWFudGVzIGRlbCBjb2xlZ2lvlIwEaWNvbpSMFGZhcyBmYS11c2VyLWdyYWR1YXRllIwFaW1hZ2WUjACUjAtpc192ZXJ0aWNhbJSIjAlpc19hY3RpdmWUiIwKaXNfdmlzaWJsZZSIjA9fZGphbmdvX3ZlcnNpb26UjAYyLjIuMTKUdWKMCHVybF9sYXN0lIwZL3NjaG9vbC9zdHVkZW50L3VwZGF0ZS80L5R1Lg==",
+    "expire_date": "2022-01-01T20:43:04.593Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "c3js6155vankj8795egitfskfx5seuei",
+  "fields": {
+    "session_data": "N2EwYjk1NjIyODI1NTRiNzcxOWI0MDU0ZmY4Njk3MzM4YThkMDEyZTqABZWSAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATOUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDEwODY3ZWI1OGM2NDc0ODY5NDJjZDgyMjNlNzRkYjI3ZTk3YmU3ODiUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsCjAN1cmyUjBsvdXNlci9hZG1pbi91cGRhdGUvcHJvZmlsZS+UjARuYW1llIwNRWRpdGFyIHBlcmZpbJSMDW1vZHVsZXR5cGVfaWSUTowLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGNhbWJpYXIgbGEgaW5mb3JtYWNpw7NuIGRlIHR1IGN1ZW50YZSMBGljb26UjAtmYXMgZmEtdXNlcpSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiYwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2022-01-02T03:31:21.303Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "dydoy64shi3yonoiqqu3sqhxd2mmok2f",
   "fields": {
     "session_data": "NzNmOWNlYjQ1YzUwYWRmNTRiMjYwYzFjMTg4MmI1Nzk1MzQ4YWNkNzqABJWWAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDY4MTFiNTZmZTAwYzQyNTg0OTNkZGJjM2E3ZGFkYTEwMDAzZWRmYmaUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC4zlHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQojAxmaWVsZHNfY2FjaGWUfZRoFoloF4wHZGVmYXVsdJR1YowCaWSUSy6MA3VybJSMEC9yZXBvcnRzL3NoaWZ0cy+UjARuYW1llIwGVHVybm9zlIwNbW9kdWxldHlwZV9pZJRLBYwLZGVzY3JpcHRpb26UjCZQZXJtaXRlIHZlciBsb3MgcmVwb3J0ZXMgZGUgbG9zIHR1cm5vc5SMBGljb26UjBBmYXMgZmEtY2hhcnQtYmFylIwFaW1hZ2WUjACUjAtpc192ZXJ0aWNhbJSIjAlpc19hY3RpdmWUiIwKaXNfdmlzaWJsZZSIjA9fZGphbmdvX3ZlcnNpb26UjAUzLjAuM5R1YnUu",
@@ -549,6 +621,14 @@
   "fields": {
     "session_data": "NjEzMDYzZThlMzI2NjAzNzhiN2UzNDFiYmNhYmE0MmJhYTYxZWM1MDqABJXKAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDBkYTYyNGEzZTA3MTRmMjQ0N2EzMjgyNzQ0MmNkMTdjYTU1Y2M0OGaUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC40lHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQojAxmaWVsZHNfY2FjaGWUfZRoFoloF4wHZGVmYXVsdJR1YowCaWSUSy+MA3VybJSMHC9yZXBvcnRzL2Fzc2lzdGFuY2Uvc3R1ZGVudC+UjARuYW1llIwPQXNpc3RlbmNpYSBFc3QulIwNbW9kdWxldHlwZV9pZJRLBYwLZGVzY3JpcHRpb26UjCtQZXJtaXRlIHZlciBsb3MgcmVwb3J0ZXMgZGUgbGFzIGFzaXN0ZW5jaWFzlIwEaWNvbpSMEGZhcyBmYS1jaGFydC1iYXKUjAVpbWFnZZSMAJSMC2lzX3ZlcnRpY2FslIiMCWlzX2FjdGl2ZZSIjAppc192aXNpYmxllIiMD19kamFuZ29fdmVyc2lvbpSMBTMuMC40lHVijAh1cmxfbGFzdJSMDC91c2VyL2FkbWluL5R1Lg==",
     "expire_date": "2021-02-08T16:57:34.603Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "f13bfl01b08cmmv7wq4tz1hidt25ew8i",
+  "fields": {
+    "session_data": "YTg4Y2VjZTQ3ZmIyZWE1NjYyZTY5NDczNGRiYWE4NTBhMTQ3NWY5MTqABZWzAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lCiMBl9zdGF0ZZRoEymBlH2UKGgWiWgXaBh1YowCaWSUSx2MA3VybJSMEC9zY2hvb2wvc3R1ZGVudC+UjARuYW1llIwLRXN0dWRpYW50ZXOUjA1tb2R1bGV0eXBlX2lklEsEjAtkZXNjcmlwdGlvbpSML1Blcm1pdGUgYWRtaW5pc3RyYXIgbG9zIGVzdHVkaWFudGVzIGRlbCBjb2xlZ2lvlIwEaWNvbpSMFGZhcyBmYS11c2VyLWdyYWR1YXRllIwFaW1hZ2WUjACUjAtpc192ZXJ0aWNhbJSIjAlpc19hY3RpdmWUiIwKaXNfdmlzaWJsZZSIjA9fZGphbmdvX3ZlcnNpb26UjAYyLjIuMTKUdWKMCHVybF9sYXN0lIwUL3NjaG9vbC9zdHVkZW50L2FkZC+UdS4=",
+    "expire_date": "2022-01-05T04:47:17.157Z"
   }
 },
 {
@@ -689,6 +769,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "uwc9qglzvuu7w7robd3lboowi0eiaqmk",
+  "fields": {
+    "session_data": "N2EwYjk1NjIyODI1NTRiNzcxOWI0MDU0ZmY4Njk3MzM4YThkMDEyZTqABZWSAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATOUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDEwODY3ZWI1OGM2NDc0ODY5NDJjZDgyMjNlNzRkYjI3ZTk3YmU3ODiUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsCjAN1cmyUjBsvdXNlci9hZG1pbi91cGRhdGUvcHJvZmlsZS+UjARuYW1llIwNRWRpdGFyIHBlcmZpbJSMDW1vZHVsZXR5cGVfaWSUTowLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGNhbWJpYXIgbGEgaW5mb3JtYWNpw7NuIGRlIHR1IGN1ZW50YZSMBGljb26UjAtmYXMgZmEtdXNlcpSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiYwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2022-01-03T04:48:04.848Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "wa71oejxalittua2seln62no0vzi3vs6",
   "fields": {
     "session_data": "NmU3ODhkNjJlMDBjM2Y1YjllMmNjZmNjMzYwM2FiZjlhYTQ1Yjg1YzqABZW1AgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lCiMBl9zdGF0ZZRoEymBlH2UKGgWiWgXaBh1YowCaWSUSxCMA3VybJSMEi9zY2hvb2wvY29udHJhY3RzL5SMBG5hbWWUjAlDb250cmF0b3OUjA1tb2R1bGV0eXBlX2lklEsCjAtkZXNjcmlwdGlvbpSMMlBlcm1pdGUgYWRtaW5pc3RyYXIgbG9zIGNvbnRyYXRvcyBkZSBsb3MgZW1wbGVhZG9zlIwEaWNvbpSMFWZhcyBmYS1maWxlLXNpZ25hdHVyZZSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiIwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAh1cmxfbGFzdJSMEi9zY2hvb2wvY29udHJhY3RzL5R1Lg==",
@@ -717,6 +805,14 @@
   "fields": {
     "session_data": "MTRkMWVkYWUxYTc0NzY1NTQ1NzIwYWJiMmUzNGEwNWRjZjYyNGE3ZTqABZWcAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATGUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDFjYWViZjM5OGY5ZTVjODAxODJmNjEyZjMzNzgyYzkxMjkyZDIwNzOUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBTMuMC40lHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKGgRaBMpgZR9lCiMDGZpZWxkc19jYWNoZZR9lGgWiWgXaBh1YmgZSxOMA3VybJSMDC9zY2hvb2wvam9iL5RoGowGQ2FyZ29zlIwNbW9kdWxldHlwZV9pZJRLAowLZGVzY3JpcHRpb26UjDpQZXJtaXRlIGFkbWluaXN0cmFyIGxvcyBjYXJnb3MgZGUgbG9zIGRvY2VudGVzIGRlbCBjb2xlZ2lvlIwEaWNvbpSME2ZhcyBmYS1hZGRyZXNzLWNhcmSUjAVpbWFnZZSMAJSMC2lzX3ZlcnRpY2FslIiMCWlzX2FjdGl2ZZSIjAppc192aXNpYmxllIhoHIwFMy4wLjSUdWKMCHVybF9sYXN0lIwML3NjaG9vbC9qb2IvlHUu",
     "expire_date": "2021-06-14T08:47:12.033Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zrxaiysay9hmjt7rivxkw7yhsaohwocr",
+  "fields": {
+    "session_data": "N2EwYjk1NjIyODI1NTRiNzcxOWI0MDU0ZmY4Njk3MzM4YThkMDEyZTqABZWSAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATOUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDEwODY3ZWI1OGM2NDc0ODY5NDJjZDgyMjNlNzRkYjI3ZTk3YmU3ODiUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsDjARuYW1llIwGRXN0dWRplIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVijAZtb2R1bGWUaAqMCHNlY3VyaXR5lIwGTW9kdWxllIaUhZRSlH2UKIwGX3N0YXRllGgTKYGUfZQoaBaJaBeMB2RlZmF1bHSUdWKMAmlklEsCjAN1cmyUjBsvdXNlci9hZG1pbi91cGRhdGUvcHJvZmlsZS+UjARuYW1llIwNRWRpdGFyIHBlcmZpbJSMDW1vZHVsZXR5cGVfaWSUTowLZGVzY3JpcHRpb26UjCxQZXJtaXRlIGNhbWJpYXIgbGEgaW5mb3JtYWNpw7NuIGRlIHR1IGN1ZW50YZSMBGljb26UjAtmYXMgZmEtdXNlcpSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiYwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwPX2RqYW5nb192ZXJzaW9ulIwGMi4yLjEylHVidS4=",
+    "expire_date": "2022-01-04T04:13:12.364Z"
   }
 },
 {
@@ -15654,6 +15750,79 @@
   }
 },
 {
+  "model": "school.studentmedicalrecord",
+  "pk": 15,
+  "fields": {
+    "weight": "12.00",
+    "size": "z",
+    "height": "12.00",
+    "blood_group": "O+",
+    "donor": true,
+    "vaccine_card": "",
+    "disability": true,
+    "disability_type": null,
+    "disability_per": null,
+    "allergies": true,
+    "allergies_desc": "",
+    "allergy_treatment": null,
+    "diseases_suffered": false,
+    "diseases_suffered_desc": "",
+    "pre_diseases": false,
+    "pre_diseases_desc": "",
+    "cat_illnesses": false,
+    "cat_illnesses_desc": "",
+    "medication": true,
+    "medication_type": null,
+    "medication_schedule": null,
+    "student": 1
+  }
+},
+{
+  "model": "school.family",
+  "pk": 15,
+  "fields": {
+    "first_name": "Juan",
+    "last_name": "Andrarde",
+    "ci": "1212121212",
+    "relationship": "Tio",
+    "age": 25,
+    "civil_status": "Soltero/a",
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": true,
+    "cat_illnesses_desc": "asdasdasda",
+    "academic_training": null,
+    "occupation": null,
+    "economic_income": "0.00"
+  }
+},
+{
+  "model": "school.family",
+  "pk": 16,
+  "fields": {
+    "first_name": "Pedrio",
+    "last_name": "LKnmkN AKNAS",
+    "ci": "2121212121",
+    "relationship": "tIO",
+    "age": 25,
+    "civil_status": "Soltero/a",
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": false,
+    "cat_illnesses_desc": "",
+    "academic_training": null,
+    "occupation": null,
+    "economic_income": "0.00"
+  }
+},
+{
+  "model": "school.typecvitae",
+  "pk": 1,
+  "fields": {
+    "name": "Tipo1"
+  }
+},
+{
   "model": "school.job",
   "pk": 1,
   "fields": {
@@ -19088,6 +19257,222 @@
     "name": "Can add Salida",
     "content_type": 54,
     "codename": "add_output"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 334,
+  "fields": {
+    "name": "Can add Familiar",
+    "content_type": 56,
+    "codename": "add_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 335,
+  "fields": {
+    "name": "Can change Familiar",
+    "content_type": 56,
+    "codename": "change_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 336,
+  "fields": {
+    "name": "Can delete Familiar",
+    "content_type": 56,
+    "codename": "delete_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 337,
+  "fields": {
+    "name": "Can view Familiar",
+    "content_type": 56,
+    "codename": "view_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 338,
+  "fields": {
+    "name": "Can add Ficha m\u00e9dica",
+    "content_type": 57,
+    "codename": "add_studentmedicalrecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 339,
+  "fields": {
+    "name": "Can change Ficha m\u00e9dica",
+    "content_type": 57,
+    "codename": "change_studentmedicalrecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 340,
+  "fields": {
+    "name": "Can delete Ficha m\u00e9dica",
+    "content_type": 57,
+    "codename": "delete_studentmedicalrecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 341,
+  "fields": {
+    "name": "Can view Ficha m\u00e9dica",
+    "content_type": 57,
+    "codename": "view_studentmedicalrecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 342,
+  "fields": {
+    "name": "Can add Contrato firmado",
+    "content_type": 58,
+    "codename": "add_signedcontract"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 343,
+  "fields": {
+    "name": "Can change Contrato firmado",
+    "content_type": 58,
+    "codename": "change_signedcontract"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 344,
+  "fields": {
+    "name": "Can delete Contrato firmado",
+    "content_type": 58,
+    "codename": "delete_signedcontract"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 345,
+  "fields": {
+    "name": "Can view Contrato firmado",
+    "content_type": 58,
+    "codename": "view_signedcontract"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 346,
+  "fields": {
+    "name": "Can add Representante del estudiante",
+    "content_type": 59,
+    "codename": "add_legalrepresentative"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 347,
+  "fields": {
+    "name": "Can change Representante del estudiante",
+    "content_type": 59,
+    "codename": "change_legalrepresentative"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 348,
+  "fields": {
+    "name": "Can delete Representante del estudiante",
+    "content_type": 59,
+    "codename": "delete_legalrepresentative"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 349,
+  "fields": {
+    "name": "Can view Representante del estudiante",
+    "content_type": 59,
+    "codename": "view_legalrepresentative"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 350,
+  "fields": {
+    "name": "Can add Grupo familiar",
+    "content_type": 60,
+    "codename": "add_familygroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 351,
+  "fields": {
+    "name": "Can change Grupo familiar",
+    "content_type": 60,
+    "codename": "change_familygroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 352,
+  "fields": {
+    "name": "Can delete Grupo familiar",
+    "content_type": 60,
+    "codename": "delete_familygroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 353,
+  "fields": {
+    "name": "Can view Grupo familiar",
+    "content_type": 60,
+    "codename": "view_familygroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 354,
+  "fields": {
+    "name": "Can add Documento habilitante",
+    "content_type": 61,
+    "codename": "add_enablingdocuments"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 355,
+  "fields": {
+    "name": "Can change Documento habilitante",
+    "content_type": 61,
+    "codename": "change_enablingdocuments"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 356,
+  "fields": {
+    "name": "Can delete Documento habilitante",
+    "content_type": 61,
+    "codename": "delete_enablingdocuments"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 357,
+  "fields": {
+    "name": "Can view Documento habilitante",
+    "content_type": 61,
+    "codename": "view_enablingdocuments"
   }
 },
 {
@@ -23919,7 +24304,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$150000$udGvXstbSFZm$Xyqa0A9oMO1abT3fKN2eJxNLHTfjPzjObPKi1V8Jk50=",
-    "last_login": "2021-12-14T03:31:32.139Z",
+    "last_login": "2021-12-21T23:27:09.450Z",
     "is_superuser": true,
     "username": "0401798477",
     "first_name": "Jaime CDI",
@@ -23943,17 +24328,17 @@
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$150000$sk6fCWb20kPn$Vgep36xPqm4CIvPu4pLfb9+Ih+wOnr9NR8r/YL8l3As=",
-    "last_login": null,
+    "last_login": "2021-12-21T23:27:31.237Z",
     "is_superuser": false,
     "username": "0401798475",
     "first_name": "Juan Manuel",
-    "last_name": "Prado",
-    "email": "anderson@upec.edu.ec",
+    "last_name": "Prado Lopez",
+    "email": "juan@upec.edu.ec",
     "is_staff": false,
     "is_active": true,
     "date_joined": "2021-12-07T21:52:15.403Z",
     "dni": "0401798475",
-    "image": "users/2021/12/07/profile-5_g3hlUhq.png",
+    "image": "users/2021/12/19/profile-4.png",
     "is_change_password": false,
     "token": "ebe55f4c-8c61-4874-9c93-7f81941eb298",
     "groups": [
@@ -23991,17 +24376,17 @@
   "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$150000$boOkJOSANmAm$CnUukQR7cuGYP0iUalwIno5x8PJTHqECcivzTb537ns=",
-    "last_login": null,
+    "last_login": "2021-12-21T22:58:20.098Z",
     "is_superuser": false,
     "username": "0401929526",
-    "first_name": "Juan ",
-    "last_name": "Orellana",
+    "first_name": "Juan Alberto",
+    "last_name": "Orellana Potosi",
     "email": "juan@gmail.com",
     "is_staff": false,
     "is_active": true,
     "date_joined": "2021-12-10T22:45:54.126Z",
     "dni": "0401929526",
-    "image": "",
+    "image": "users/2021/12/20/profile-4_j74Xox5.png",
     "is_change_password": false,
     "token": "24752c35-6a2f-42ac-82ba-16e6286c90ce",
     "groups": [
@@ -24107,6 +24492,30 @@
   }
 },
 {
+  "model": "user.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$NVFXxltwbA51$bFHp5qtH+YFuWf6H4vIP7Il6XqfpHNUjfiL5alMVSKY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "0401921465",
+    "first_name": "Horacio Pedro",
+    "last_name": "Quiroga Romero",
+    "email": "usernmaae@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-21T23:10:22.453Z",
+    "dni": "0401921465",
+    "image": "users/2021/12/21/profile-4.png",
+    "is_change_password": false,
+    "token": "9d0581cb-f573-46a2-bc9f-82becef46d58",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
   "model": "school.teacher",
   "pk": 4,
   "fields": {
@@ -24114,9 +24523,25 @@
     "gender": "femenino",
     "mobile": "282811828",
     "phone": "",
-    "address": "Tulcan",
     "birthdate": "2000-12-01",
-    "parish": 1362
+    "parish": 1362,
+    "address": "Tulcan",
+    "reference": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null,
+    "civil_status": null,
+    "blood_group": null,
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": false,
+    "cat_illnesses_desc": null,
+    "croquis": "",
+    "basic_services_payment": "",
+    "ci_doc": "",
+    "commitment_act": "",
+    "contract": ""
   }
 },
 {
@@ -24127,9 +24552,25 @@
     "gender": "masculino",
     "mobile": "282811821",
     "phone": "282811828",
-    "address": "Tulcan",
     "birthdate": "2020-12-10",
-    "parish": 1361
+    "parish": 1361,
+    "address": "Tulc\u00e1n Avenida Sucre C234",
+    "reference": "Cerca del estadio de la ciudad",
+    "nationality": "Ecuatoriana",
+    "age": 32,
+    "ethnicity": "Mestiza",
+    "religion": "Cristiana",
+    "civil_status": "Casado/a",
+    "blood_group": "O+",
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": false,
+    "cat_illnesses_desc": "",
+    "croquis": "",
+    "basic_services_payment": "",
+    "ci_doc": "",
+    "commitment_act": "",
+    "contract": ""
   }
 },
 {
@@ -24140,9 +24581,25 @@
     "gender": "femenino",
     "mobile": "0981541854",
     "phone": "0981541854",
-    "address": "210150",
     "birthdate": "1991-08-23",
-    "parish": 1299
+    "parish": 1299,
+    "address": "210150",
+    "reference": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null,
+    "civil_status": null,
+    "blood_group": null,
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": false,
+    "cat_illnesses_desc": null,
+    "croquis": "",
+    "basic_services_payment": "",
+    "ci_doc": "",
+    "commitment_act": "",
+    "contract": ""
   }
 },
 {
@@ -24153,9 +24610,25 @@
     "gender": "masculino",
     "mobile": "0981541888",
     "phone": "0981541854",
-    "address": "210150",
     "birthdate": "2005-05-26",
-    "parish": 1365
+    "parish": 1365,
+    "address": "210150",
+    "reference": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null,
+    "civil_status": null,
+    "blood_group": null,
+    "disability": false,
+    "disability_type": null,
+    "cat_illnesses": false,
+    "cat_illnesses_desc": null,
+    "croquis": "",
+    "basic_services_payment": "",
+    "ci_doc": "",
+    "commitment_act": "",
+    "contract": ""
   }
 },
 {
@@ -24166,9 +24639,17 @@
     "gender": "masculino",
     "mobile": "0962131153",
     "phone": "29623121",
+    "emergency_number": null,
     "address": "Juan Montalvo and Panamericana",
     "birthdate": "2020-12-07",
-    "parish": 1360
+    "parish": 1360,
+    "birth_country": null,
+    "birth_province": null,
+    "birth_city": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null
   }
 },
 {
@@ -24179,9 +24660,17 @@
     "gender": "masculino",
     "mobile": "0981541888",
     "phone": "0981541888",
+    "emergency_number": null,
     "address": "210150",
     "birthdate": "2020-08-13",
-    "parish": 1265
+    "parish": 1265,
+    "birth_country": null,
+    "birth_province": null,
+    "birth_city": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null
   }
 },
 {
@@ -24192,9 +24681,17 @@
     "gender": "femenino",
     "mobile": "098154177",
     "phone": "0981541854",
+    "emergency_number": null,
     "address": "210150",
     "birthdate": "2020-02-05",
-    "parish": 1365
+    "parish": 1365,
+    "birth_country": null,
+    "birth_province": null,
+    "birth_city": null,
+    "nationality": null,
+    "age": null,
+    "ethnicity": null,
+    "religion": null
   }
 },
 {
@@ -24376,6 +24873,226 @@
     "hour": "18:09:03.667",
     "localhost": "192.168.1.57",
     "hostname": "DESKTOP-6AC0JEF"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 14,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-17",
+    "hour": "22:28:12.921",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 15,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-17",
+    "hour": "22:37:10.268",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 16,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-18",
+    "hour": "14:57:37.831",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 17,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-18",
+    "hour": "15:46:39.548",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 18,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-18",
+    "hour": "16:27:59.620",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 19,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-19",
+    "hour": "09:03:00.332",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 20,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-19",
+    "hour": "21:24:13.745",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 21,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-19",
+    "hour": "23:43:50.241",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 22,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "08:33:55.676",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 23,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "08:40:38.095",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 24,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "08:45:46.842",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 25,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "09:07:38.321",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 26,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "09:16:07.320",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 27,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "10:10:36.662",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 28,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-20",
+    "hour": "18:17:11.167",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 29,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-21",
+    "hour": "09:41:38.542",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 30,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-21",
+    "hour": "10:33:10.121",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 31,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-21",
+    "hour": "17:48:59.992",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 32,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-21",
+    "hour": "17:58:05.962",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
+  }
+},
+{
+  "model": "security.accessusers",
+  "pk": 33,
+  "fields": {
+    "user": 2,
+    "date_joined": "2021-12-21",
+    "hour": "18:27:09.528",
+    "localhost": "172.22.208.1",
+    "hostname": "DESKTOP-MSGDUCO"
   }
 },
 {
@@ -25505,6 +26222,812 @@
     "content_type": 54,
     "object_id": "9",
     "object_repr": "Material de Ciencias Naturales - 12",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2021-12-19T04:17:11.659Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "1",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2021-12-19T04:17:11.745Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "2",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2021-12-19T04:22:00.038Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "1",
+    "object_repr": "JuasaslOPiask",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2021-12-19T04:22:00.138Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "2",
+    "object_repr": "Juanasasdasdasd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2021-12-19T15:13:36.329Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "1",
+    "object_repr": "JulianaParedes",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2021-12-19T15:13:48.904Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "1",
+    "object_repr": "FamilyGroup object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2021-12-19T15:26:12.696Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "1",
+    "object_repr": "FamilyGroup object (1)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2021-12-19T15:26:27.068Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "2",
+    "object_repr": "FamilyGroup object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2021-12-19T17:23:36.681Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "2",
+    "object_repr": "thrthrteParedes",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2021-12-19T17:43:22.731Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "3",
+    "object_repr": "Ansdsadjkbkbj",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2021-12-19T17:46:03.118Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "4",
+    "object_repr": "Juan TestSignal",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2021-12-19T17:46:03.202Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "5",
+    "object_repr": "asdsadasdsadsadsad",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2021-12-19T19:16:21.634Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "2",
+    "object_repr": "FamilyGroup object (2)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2021-12-19T19:16:21.837Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "3",
+    "object_repr": "FamilyGroup object (3)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2021-12-19T19:16:29.419Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "6",
+    "object_repr": "NKJANNKasnjnsakdjn",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2021-12-19T20:51:49.606Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "3",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2021-12-19T21:41:02.541Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "3",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"diseases_suffered_desc\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2021-12-19T22:19:33.666Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "3",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2021-12-19T22:21:58.716Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "4",
+    "object_repr": "None",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2021-12-19T22:42:49.524Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "5",
+    "object_repr": "None",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2021-12-19T22:49:25.641Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "6",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2021-12-19T22:53:27.276Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "7",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2021-12-19T22:56:54.314Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "8",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2021-12-20T00:27:14.275Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "5",
+    "object_repr": "asdsdasd sadasdasd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2021-12-20T00:35:32.590Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "4",
+    "object_repr": "Manuel Cradenas",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"student\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2021-12-20T00:57:11.240Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "4",
+    "object_repr": "Manuel Cradenas",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2021-12-20T00:57:27.929Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "9",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2021-12-20T04:08:16.227Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "1",
+    "object_repr": "EnablingDocuments object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2021-12-20T04:43:00.206Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "1",
+    "object_repr": "EnablingDocuments object (1)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2021-12-20T04:43:16.558Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "1",
+    "object_repr": "JulianaParedes",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2021-12-20T22:11:57.322Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "2",
+    "object_repr": "EnablingDocuments object (2)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2021-12-20T22:11:57.425Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "3",
+    "object_repr": "EnablingDocuments object (3)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 120,
+  "fields": {
+    "action_time": "2021-12-20T22:11:57.524Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "4",
+    "object_repr": "EnablingDocuments object (4)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 121,
+  "fields": {
+    "action_time": "2021-12-20T22:11:57.601Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "5",
+    "object_repr": "EnablingDocuments object (5)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 122,
+  "fields": {
+    "action_time": "2021-12-20T22:15:33.609Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "6",
+    "object_repr": "EnablingDocuments object (6)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 123,
+  "fields": {
+    "action_time": "2021-12-20T22:15:33.683Z",
+    "user": 2,
+    "content_type": 61,
+    "object_id": "7",
+    "object_repr": "EnablingDocuments object (7)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 124,
+  "fields": {
+    "action_time": "2021-12-21T00:17:44.220Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "1",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 125,
+  "fields": {
+    "action_time": "2021-12-21T00:52:53.634Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "2",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 126,
+  "fields": {
+    "action_time": "2021-12-21T00:52:53.851Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "3",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 127,
+  "fields": {
+    "action_time": "2021-12-21T02:59:09.279Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "4",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 128,
+  "fields": {
+    "action_time": "2021-12-21T03:46:39.503Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "9",
+    "object_repr": "asdasdsadsad",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 129,
+  "fields": {
+    "action_time": "2021-12-21T03:46:39.724Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "10",
+    "object_repr": "asdasdasdsa",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 130,
+  "fields": {
+    "action_time": "2021-12-21T03:46:39.820Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "11",
+    "object_repr": "asdasdasdasdsad",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 131,
+  "fields": {
+    "action_time": "2021-12-21T04:08:26.872Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "5",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 132,
+  "fields": {
+    "action_time": "2021-12-21T04:09:34.423Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "6",
+    "object_repr": "Josie Castro / 0954742250",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 133,
+  "fields": {
+    "action_time": "2021-12-21T04:11:58.105Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "7",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 134,
+  "fields": {
+    "action_time": "2021-12-21T04:12:52.555Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "1",
+    "object_repr": "Hansjn asndkjasnbdkjn",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 135,
+  "fields": {
+    "action_time": "2021-12-21T14:42:42.676Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "8",
+    "object_repr": "Diana Estudiante Vargas / 2200677058",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 136,
+  "fields": {
+    "action_time": "2021-12-21T14:42:42.880Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "9",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 137,
+  "fields": {
+    "action_time": "2021-12-21T15:03:33.887Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "8",
+    "object_repr": "FamilyGroup object (8)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 138,
+  "fields": {
+    "action_time": "2021-12-21T15:03:41.591Z",
+    "user": 2,
+    "content_type": 56,
+    "object_id": "14",
+    "object_repr": "Juan Loapsa",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 139,
+  "fields": {
+    "action_time": "2021-12-21T20:20:13.627Z",
+    "user": 2,
+    "content_type": 48,
+    "object_id": "8",
+    "object_repr": "Kmasa Ljansjsab / 0401798467",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 140,
+  "fields": {
+    "action_time": "2021-12-21T22:50:30.010Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "10",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 141,
+  "fields": {
+    "action_time": "2021-12-21T23:15:21.222Z",
+    "user": 2,
+    "content_type": 48,
+    "object_id": "9",
+    "object_repr": "Horacio Pedro Quiroga Romero / 0401921465",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 142,
+  "fields": {
+    "action_time": "2021-12-21T23:18:17.902Z",
+    "user": 2,
+    "content_type": 48,
+    "object_id": "5",
+    "object_repr": "Juan Alberto Orellana Potosi / 0401929526",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"croquis\", \"basic_services_payment\", \"ci_doc\", \"commitment_act\", \"contract\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 143,
+  "fields": {
+    "action_time": "2021-12-22T00:08:51.303Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "11",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 144,
+  "fields": {
+    "action_time": "2021-12-22T00:49:54.635Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "12",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 145,
+  "fields": {
+    "action_time": "2021-12-22T04:27:42.677Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "13",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 146,
+  "fields": {
+    "action_time": "2021-12-22T04:35:34.556Z",
+    "user": 2,
+    "content_type": 57,
+    "object_id": "14",
+    "object_repr": "Juan Manuel Prado Lopez / 0401798475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 147,
+  "fields": {
+    "action_time": "2021-12-22T04:35:42.982Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "9",
+    "object_repr": "FamilyGroup object (9)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 148,
+  "fields": {
+    "action_time": "2021-12-22T04:35:43.058Z",
+    "user": 2,
+    "content_type": 60,
+    "object_id": "10",
+    "object_repr": "FamilyGroup object (10)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 149,
+  "fields": {
+    "action_time": "2021-12-22T04:35:54.098Z",
+    "user": 2,
+    "content_type": 59,
+    "object_id": "2",
+    "object_repr": "Manuel Orosco Huaca",
     "action_flag": 3,
     "change_message": ""
   }
