@@ -40,6 +40,11 @@ class StudentMedicalRecordCreateView(CreateView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        if request.user.groups.filter(name='Estudi').exists():
+            student = Student.objects.get(user=request.user)
+            records = StudentMedicalRecord.objects.filter(student=student)
+            if len(records) > 0:
+                return redirect('student_medrecord')
         return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
