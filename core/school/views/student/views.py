@@ -9,7 +9,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
 from config import settings
-from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family
+from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family, \
+    StudentMedicalRecordForm, LegalRepresentativeForm
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -302,6 +303,18 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user.student
 
+    def get_form_record(self):
+        student = self.get_object()
+
+        result = StudentMedicalRecord.objects.filter(student=student)[0:1]
+        if result:
+            instance = result[0]
+            form_record = StudentMedicalRecordForm(instance=instance)
+            return form_record
+
+        return StudentMedicalRecordForm()
+
+
     def get_form(self, form_class=None):
         instance = self.object
         form = StudentForm(instance=instance, initial={
@@ -381,5 +394,7 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         context['list_url'] = self.success_url
         context['title'] = 'Edición de Perfil'
         context['action'] = 'edit'
+        context['frmRecord'] = self.get_form_record()
+        context['frmRepr'] = LegalRepresentativeForm()
         context['instance'] = self.object
         return context

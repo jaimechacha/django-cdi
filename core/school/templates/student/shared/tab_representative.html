@@ -1,0 +1,171 @@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.first_name.label }}:</label>
+            {{ frmRepr.first_name }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.last_name.label }}:</label>
+            {{ frmRepr.last_name }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.ci.label }}:</label>
+            {{ frmRepr.ci }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.cell_phone.label }}:</label>
+            {{ frmRepr.cell_phone }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.conventional_phone.label }}:</label>
+            {{ frmRepr.conventional_phone }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.emergency_number.label }}:</label>
+            {{ frmRepr.emergency_number }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.relationship.label }}:</label>
+            {{ frmRepr.relationship }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.nationality.label }}:</label>
+            {{ frmRepr.nationality }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.email.label }}:</label>
+            {{ frmRepr.email }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.blood_group.label }}:</label>
+            {{ frmRepr.blood_group }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.address.label }}:</label>
+            {{ frmRepr.address }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.reference.label }}:</label>
+            {{ frmRepr.reference }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>{{ frmRepr.is_working.label }}:</label>
+            {{ frmRepr.is_working }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRepr.workplace.label }}:</label>
+            {{ frmRepr.workplace }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.work_phone.label }}:</label>
+            {{ frmRepr.work_phone }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRepr.work_email.label }}:</label>
+            {{ frmRepr.work_email }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.work_address.label }}:</label>
+            {{ frmRepr.work_address }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.croquis.label }}:</label>
+            {% if instance %}
+                <br/>
+                {% if instance.croquis %}
+                    Actualmente:
+                    <a href="{{ instance.get_croquis }}"
+                       target="_blank">Ver archivo actual</a>
+                    <input type="checkbox" name="croquis-clear" id="croquis-clear_id">
+                    <label for="croquis-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ frmRepr.croquis }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.basic_services_payment.label }}:</label>
+            {% if instance %}
+                <br/>
+                {% if instance.basic_services_payment %}
+                    Actualmente:
+                    <a href="{{ instance.get_comprobante }}"
+                       target="_blank">Ver archivo actual</a>
+                    <input type="checkbox" name="comprob-clear" id="comprob-clear_id">
+                    <label for="comprob-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ frmRepr.basic_services_payment }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label>{{ frmRepr.image.label }}:</label>
+            {% if instance %}
+                <br/>
+                {% if instance.image %}
+                    Actualmente:
+                    <a href="{{ instance.get_image }}"
+                       target="_blank">Ver imagen actual</a>
+                    <input type="checkbox" name="image-clear" id="image-clear_id">
+                    <label for="image-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ frmRepr.image }}
+        </div>
+    </div>
+</div>

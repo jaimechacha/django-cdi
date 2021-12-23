@@ -1,0 +1,151 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRecord.weight.label }}:</label>
+            {{ frmRecord.weight }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRecord.height.label }}:</label>
+            {{ frmRecord.height }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRecord.size.label }}:</label>
+            {{ frmRecord.size }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>{{ frmRecord.blood_group.label }}:</label>
+            {{ frmRecord.blood_group }}
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>{{ frmRecord.donor.label }}:</label>
+            {{ frmRecord.donor }}
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>{{ frmRecord.disability.label }}:</label>
+            {{ frmRecord.disability }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRecord.disability_type.label }}:</label>
+            {{ frmRecord.disability_type }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>{{ frmRecord.disability_per.label }}:</label>
+            {{ frmRecord.disability_per }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>{{ frmRecord.allergies.label }}:</label>
+            {{ frmRecord.allergies }}
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label>{{ frmRecord.allergy_treatment.label }}:</label>
+            {{ frmRecord.allergy_treatment }}
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label>{{ frmRecord.allergies_desc.label }}:</label>
+            {{ frmRecord.allergies_desc }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-check">
+            <label class="form-check-label">
+                {{ frmRecord.diseases_suffered }}
+                {{ frmRecord.diseases_suffered.label }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>{{ frmRecord.diseases_suffered_desc.label }}:</label>
+            {{ frmRecord.diseases_suffered_desc }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-check">
+            <label class="form-check-label">
+                {{ frmRecord.pre_diseases }}
+                {{ frmRecord.pre_diseases.label }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>{{ frmRecord.pre_diseases_desc.label }}:</label>
+            {{ frmRecord.pre_diseases_desc }}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-check">
+            <label class="form-check-label">
+                {{ frmRecord.cat_illnesses }}
+                {{ frmRecord.cat_illnesses.label }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>{{ frmRecord.cat_illnesses_desc.label }}:</label>
+            {{ frmRecord.cat_illnesses_desc }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>{{ frmRecord.medication.label }}:</label>
+            {{ frmRecord.medication }}
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label>{{ frmRecord.medication_type.label }}:</label>
+            {{ frmRecord.medication_type }}
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label>{{ frmRecord.medication_schedule.label }}:</label>
+            {{ frmRecord.medication_schedule }}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <label>{{ frmRecord.vaccine_card.label }}:</label>
+            {% if instance %}
+                {% if instance.vaccine_card %}
+                    Actualmente:
+                    <a href="{{ instance.get_vaccine_card }}"
+                       target="_blank">{{ instance.get_vaccine_card }}</a>
+                    <input type="checkbox" name="image-clear" id="image-clear_id">
+                    <label for="image-clear_id">Limpiar</label><br>
+                    Modificar:
+                {% endif %}
+            {% endif %}
+            {{ frmRecord.vaccine_card }}
+        </div>
+    </div>
+</div>
