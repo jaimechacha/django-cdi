@@ -280,33 +280,33 @@ class Student(models.Model):
 
 
 class LegalRepresentative(models.Model):
-    first_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
-    last_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
-    relationship = models.CharField(max_length=30, null=True, blank=True, verbose_name='Parentesco')
-    ci = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
-    nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
-    address = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección')
-    reference = models.CharField(max_length=80, null=True, blank=True, verbose_name='Referencia')
-    cell_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Celular')
-    conventional_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono convencional')
-    emergency_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
-    email = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo electrónico')
-    blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
+    first_name_rp = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
+    last_name_rp = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
+    relationship_rp = models.CharField(max_length=30, null=True, blank=True, verbose_name='Parentesco')
+    ci_rp = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
+    nationality_rp = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nacionalidad')
+    address_rp = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección')
+    reference_rp = models.CharField(max_length=80, null=True, blank=True, verbose_name='Referencia')
+    cell_phone_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Celular')
+    conventional_phone_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono convencional')
+    emergency_number_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
+    email_rp = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo electrónico')
+    blood_group_rp = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
                                    verbose_name='Grupo sanguíneo')
-    is_working = models.BooleanField(null=True, blank=True, default=False, verbose_name='Trabaja')
-    workplace = models.CharField(max_length=30, null=True, blank=True, verbose_name='Lugar de trabajo')
-    work_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono del trabajo')
-    work_address = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección del trabajo')
-    work_email = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo del trabajo')
-    croquis = models.FileField(upload_to='rs/croquis/%Y/%m/%d', null=True, blank=True,
+    is_working_rp = models.BooleanField(null=True, blank=True, default=False, verbose_name='Trabaja')
+    workplace_rp = models.CharField(max_length=30, null=True, blank=True, verbose_name='Lugar de trabajo')
+    work_phone_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono del trabajo')
+    work_address_rp = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección del trabajo')
+    work_email_rp = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo del trabajo')
+    croquis_rp = models.FileField(upload_to='rs/croquis/%Y/%m/%d', null=True, blank=True,
                                verbose_name='Croquis PDF')
-    basic_services_payment = models.FileField(upload_to='rs/bs-payment/%Y/%m/%d', null=True, blank=True,
+    basic_services_payment_rp = models.FileField(upload_to='rs/bs-payment/%Y/%m/%d', null=True, blank=True,
                                               verbose_name='Comprobante de servicios básicos')
-    image = models.ImageField(upload_to='rs/image/%Y/%m/%d', null=True, blank=True, verbose_name='Fotografía')
+    image_rp = models.ImageField(upload_to='rs/image/%Y/%m/%d', null=True, blank=True, verbose_name='Fotografía')
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return '{} {}'.format(self.first_name_rp, self.last_name_rp)
 
     def toJSON(self):
         item = model_to_dict(self)
@@ -318,18 +318,18 @@ class LegalRepresentative(models.Model):
         ordering = ['id']
 
     def get_image(self):
-        if self.image:
-            return '{}{}'.format(settings.MEDIA_URL, self.image)
+        if self.image_rp:
+            return '{}{}'.format(settings.MEDIA_URL, self.image_rp)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     def get_croquis(self):
-        if self.croquis:
-            return '{}{}'.format(settings.MEDIA_URL, self.croquis)
+        if self.croquis_rp:
+            return '{}{}'.format(settings.MEDIA_URL, self.croquis_rp)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     def get_comprobante(self):
-        if self.basic_services_payment:
-            return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment)
+        if self.basic_services_payment_rp:
+            return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment_rp)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
 

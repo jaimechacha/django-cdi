@@ -4,60 +4,6 @@ from django.forms import ModelForm
 from core.school.models import *
 
 
-# class SignedContractForm(ModelForm):
-#     class Meta:
-#         model = SignedContract
-#         widgets = {
-#             'contract': forms.FileInput(attrs={
-#                 'placeholder': 'Suba el contrato firmado',
-#                 'class': 'form-control',
-#                 'accept': '.pdf'
-#             })
-#         }
-#         fields = '__all__'
-#         exclude = ['teacher']
-#
-#     def save(self, commit=True):
-#         data = {}
-#         try:
-#             if self.is_valid():
-#                 super().save()
-#             else:
-#                 data['error'] = self.errors
-#         except Exception as e:
-#             data['error'] = str(e)
-#         return data
-#
-#
-# class EnablingDocumentsForm(ModelForm):
-#     class Meta:
-#         model = EnablingDocuments
-#         fields = '__all__'
-#         widgets = {
-#             'ci': forms.FileInput(attrs={
-#                 'placeholder': 'Suba la cédula de identidad',
-#                 'class': 'form-control',
-#                 'accept': '.pdf'
-#             }),
-#             'commitment_act': forms.FileInput(attrs={
-#                 'class': 'form-control',
-#                 'accept': '.pdf'
-#             })
-#         }
-#         exclude = ['teacher']
-#
-#     def save(self, commit=True):
-#         data = {}
-#         try:
-#             if self.is_valid():
-#                 super().save()
-#             else:
-#                 data['error'] = self.errors
-#         except Exception as e:
-#             data['error'] = str(e)
-#         return data
-
-
 class FamilyForm(ModelForm):
     class Meta:
         model = Family
@@ -134,65 +80,65 @@ class LegalRepresentativeForm(ModelForm):
         model = LegalRepresentative
         fields = '__all__'
         widgets = {
-            'first_name': forms.TextInput(
+            'first_name_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese nombres', 'required': 'true'}
             ),
-            'last_name': forms.TextInput(
+            'last_name_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese apellidos', 'required': 'true'}
             ),
-            'relationship': forms.TextInput(
+            'relationship_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese el parentesco', 'required': 'true'}
             ),
-            'ci': forms.TextInput(
+            'ci_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese número de cédula', 'required': 'true'}
             ),
-            'nationality': forms.TextInput(
+            'nationality_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese nacionalidad', 'required': 'true'}
             ),
-            'address': forms.TextInput(
+            'address_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Calle principal y secundaria'}
             ),
-            'reference': forms.TextInput(
+            'reference_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese lugar de referencia'}
             ),
-            'cell_phone': forms.TextInput(
+            'cell_phone_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese número celular'}
             ),
-            'conventional_phone': forms.TextInput(
+            'conventional_phone_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese teléfono convencional'}
             ),
-            'emergency_number': forms.TextInput(
+            'emergency_number_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese número de emergencia'}
             ),
-            'email': forms.EmailInput(
+            'email_rp': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese correo personal'}
             ),
-            'blood_group': forms.Select(
+            'blood_group_rp': forms.Select(
                 attrs={'class': 'form-control', 'placeholder': 'Seleccione grupo de sangre'}
             ),
-            'is_working': forms.Select(
+            'is_working_rp': forms.Select(
                 choices={(True, 'Sí'), (False, 'No')},
                 attrs={'class': 'form-control'}
             ),
-            'workplace': forms.TextInput(
+            'workplace_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese lugar de trabajo'}
             ),
-            'work_phone': forms.TextInput(
+            'work_phone_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese número del trabajo'}
             ),
-            'work_address': forms.TextInput(
+            'work_address_rp': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese dirección del trabajo'}
             ),
-            'work_email': forms.EmailInput(
+            'work_email_rp': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'Ingrese correo del trabajo'}
             ),
-            'croquis': forms.FileInput(
+            'croquis_rp': forms.FileInput(
                 attrs={'class': 'form-control', 'accept': '.pdf'}
             ),
-            'basic_services_payment': forms.FileInput(
+            'basic_services_payment_rp': forms.FileInput(
                 attrs={'class': 'form-control', 'accept': '.pdf'}
             ),
-            'image': forms.FileInput(
+            'image_rp': forms.FileInput(
                 attrs={'class': 'form-control', 'accept': 'image/png, image/jpeg'}
             ),
             'student': forms.Select(
