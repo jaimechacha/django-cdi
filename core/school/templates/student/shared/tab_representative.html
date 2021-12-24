@@ -1,80 +1,80 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.first_name.label }}:</label>
-            {{ frmRepr.first_name }}
+            <label>{{ frmRepr.first_name_rp.label }}:</label>
+            {{ frmRepr.first_name_rp }}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.last_name.label }}:</label>
-            {{ frmRepr.last_name }}
+            <label>{{ frmRepr.last_name_rp.label }}:</label>
+            {{ frmRepr.last_name_rp }}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.ci.label }}:</label>
-            {{ frmRepr.ci }}
+            <label>{{ frmRepr.ci_rp.label }}:</label>
+            {{ frmRepr.ci_rp }}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.cell_phone.label }}:</label>
-            {{ frmRepr.cell_phone }}
+            <label>{{ frmRepr.cell_phone_rp.label }}:</label>
+            {{ frmRepr.cell_phone_rp }}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.conventional_phone.label }}:</label>
-            {{ frmRepr.conventional_phone }}
+            <label>{{ frmRepr.conventional_phone_rp.label }}:</label>
+            {{ frmRepr.conventional_phone_rp }}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.emergency_number.label }}:</label>
-            {{ frmRepr.emergency_number }}
+            <label>{{ frmRepr.emergency_number_rp.label }}:</label>
+            {{ frmRepr.emergency_number_rp }}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.relationship.label }}:</label>
-            {{ frmRepr.relationship }}
+            <label>{{ frmRepr.relationship_rp.label }}:</label>
+            {{ frmRepr.relationship_rp }}
         </div>
     </div>
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.nationality.label }}:</label>
-            {{ frmRepr.nationality }}
+            <label>{{ frmRepr.nationality_rp.label }}:</label>
+            {{ frmRepr.nationality_rp }}
         </div>
     </div>
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.email.label }}:</label>
-            {{ frmRepr.email }}
+            <label>{{ frmRepr.email_rp.label }}:</label>
+            {{ frmRepr.email_rp }}
         </div>
     </div>
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.blood_group.label }}:</label>
-            {{ frmRepr.blood_group }}
+            <label>{{ frmRepr.blood_group_rp.label }}:</label>
+            {{ frmRepr.blood_group_rp }}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.address.label }}:</label>
-            {{ frmRepr.address }}
+            <label>{{ frmRepr.address_rp.label }}:</label>
+            {{ frmRepr.address_rp }}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.reference.label }}:</label>
-            {{ frmRepr.reference }}
+            <label>{{ frmRepr.reference_rp.label }}:</label>
+            {{ frmRepr.reference_rp }}
         </div>
     </div>
 </div>
@@ -82,34 +82,34 @@
 <div class="row">
     <div class="col-lg-2">
         <div class="form-group">
-            <label>{{ frmRepr.is_working.label }}:</label>
-            {{ frmRepr.is_working }}
+            <label>{{ frmRepr.is_working_rp.label }}:</label>
+            {{ frmRepr.is_working_rp }}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>{{ frmRepr.workplace.label }}:</label>
-            {{ frmRepr.workplace }}
+            <label>{{ frmRepr.workplace_rp.label }}:</label>
+            {{ frmRepr.workplace_rp }}
         </div>
     </div>
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.work_phone.label }}:</label>
-            {{ frmRepr.work_phone }}
+            <label>{{ frmRepr.work_phone_rp.label }}:</label>
+            {{ frmRepr.work_phone_rp }}
         </div>
     </div>
     <div class="col-lg-3">
         <div class="form-group">
-            <label>{{ frmRepr.work_email.label }}:</label>
-            {{ frmRepr.work_email }}
+            <label>{{ frmRepr.work_email_rp.label }}:</label>
+            {{ frmRepr.work_email_rp }}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.work_address.label }}:</label>
-            {{ frmRepr.work_address }}
+            <label>{{ frmRepr.work_address_rp.label }}:</label>
+            {{ frmRepr.work_address_rp }}
         </div>
     </div>
 </div>
@@ -117,55 +117,55 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.croquis.label }}:</label>
-            {% if instance %}
+            <label>{{ frmRepr.croquis_rp.label }}:</label>
+            {% if instance_rpr %}
                 <br/>
-                {% if instance.croquis %}
+                {% if instance_rpr.croquis_rp %}
                     Actualmente:
-                    <a href="{{ instance.get_croquis }}"
+                    <a href="{{ instance_rpr.get_croquis }}"
                        target="_blank">Ver archivo actual</a>
                     <input type="checkbox" name="croquis-clear" id="croquis-clear_id">
                     <label for="croquis-clear_id">Limpiar</label><br>
                     Modificar:
                 {% endif %}
             {% endif %}
-            {{ frmRepr.croquis }}
+            {{ frmRepr.croquis_rp }}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.basic_services_payment.label }}:</label>
-            {% if instance %}
+            <label>{{ frmRepr.basic_services_payment_rp.label }}:</label>
+            {% if instance_rpr %}
                 <br/>
-                {% if instance.basic_services_payment %}
+                {% if instance_rpr.basic_services_payment_rp %}
                     Actualmente:
-                    <a href="{{ instance.get_comprobante }}"
+                    <a href="{{ instance_rpr.get_comprobante }}"
                        target="_blank">Ver archivo actual</a>
                     <input type="checkbox" name="comprob-clear" id="comprob-clear_id">
                     <label for="comprob-clear_id">Limpiar</label><br>
                     Modificar:
                 {% endif %}
             {% endif %}
-            {{ frmRepr.basic_services_payment }}
+            {{ frmRepr.basic_services_payment_rp }}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            <label>{{ frmRepr.image.label }}:</label>
-            {% if instance %}
+            <label>{{ frmRepr.image_rp.label }}:</label>
+            {% if instance_rpr %}
                 <br/>
-                {% if instance.image %}
+                {% if instance_rpr.image_rp %}
                     Actualmente:
-                    <a href="{{ instance.get_image }}"
+                    <a href="{{ instance_rpr.get_image }}"
                        target="_blank">Ver imagen actual</a>
                     <input type="checkbox" name="image-clear" id="image-clear_id">
                     <label for="image-clear_id">Limpiar</label><br>
                     Modificar:
                 {% endif %}
             {% endif %}
-            {{ frmRepr.image }}
+            {{ frmRepr.image_rp }}
         </div>
     </div>
 </div>

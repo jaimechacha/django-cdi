@@ -266,7 +266,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            submit_formdata_with_ajax_form(fv);
+            let parameters = new FormData($(fv.form)[0]);
+
+            parameters.append('action', $('input[name="action"]').val());
+            parameters.append('family', JSON.stringify(student.details.family));
+            submit_formdata_with_ajax('Alerta',
+                '¿Estas seguro de realizar la siguiente acción?',
+                pathname, parameters, function () {
+                    location.href = fv.form.getAttribute('data-url');
+                });
         });
 });
 

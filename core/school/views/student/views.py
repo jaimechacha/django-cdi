@@ -10,7 +10,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, TemplateVie
 
 from config import settings
 from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family, \
-    StudentMedicalRecordForm, LegalRepresentativeForm, FamilyForm
+    StudentMedicalRecordForm, LegalRepresentativeForm, FamilyForm, FamilyGroup
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -313,27 +313,27 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
             print(e)
         return json.dumps(data)
 
-    def get_form_record(self):
+    def get_instance_record(self):
         student = self.get_object()
-
         result = StudentMedicalRecord.objects.filter(student=student)[0:1]
         if result:
-            instance = result[0]
-            form_record = StudentMedicalRecordForm(instance=instance)
-            return form_record
+            return result[0]
+        return None
 
-        return StudentMedicalRecordForm()
-
-    def get_form_representative(self):
+    def get_instance_representative(self):
         student = self.get_object()
-
         result = LegalRepresentative.objects.filter(student=student)[0:1]
         if result:
-            instance = result[0]
-            form_representative = LegalRepresentativeForm(instance=instance)
-            return form_representative
-        return LegalRepresentativeForm()
+            return result[0]
+        return None
 
+    def get_form_record(self):
+        instance = self.get_instance_record()
+        return StudentMedicalRecordForm(instance=instance)
+
+    def get_form_representative(self):
+        instance = self.get_instance_representative()
+        return LegalRepresentativeForm(instance=instance)
 
     def get_form(self, form_class=None):
         instance = self.object
@@ -373,6 +373,7 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         try:
             if action == 'edit':
                 with transaction.atomic():
+                    # print(request.POST['first_name'])
                     instance = self.object
                     user = instance.user
                     user.first_name = request.POST['first_name']
@@ -394,7 +395,40 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
+                    student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.save()
+
+                    instance_record = self.get_instance_record()
+                    med_record_form = StudentMedicalRecordForm(request.POST.copy(), request.FILES, instance=instance_record)
+                    med_record_form.data['student'] = instance.id
+                    med_record_form.save()
+
+                    instance_repr = self.get_instance_representative()
+                    leg_repr_form = LegalRepresentativeForm(request.POST.copy(), request.FILES, instance=instance_repr)
+                    leg_repr_form.data['student'] = instance.id
+                    leg_repr_form.save()
+
+                    familyjson = json.loads(request.POST['family'])
+                    family = Family()
+                    fam_group = FamilyGroup()
+                    for fam in familyjson:
+                        family.first_name = fam['first_name']
+                        family.last_name = fam['last_name']
+                        family.ci = fam['ci']
+                        family.relationship = fam['relationship']
+                        family.age = int(fam['age'])
+                        family.civil_status = fam['civil_status']
+                        family.disability = fam['disability']
+                        family.disability_type = fam['disability_type']
+                        family.cat_illnesses = fam['cat_illnesses']
+                        family.cat_illnesses_desc = fam['cat_illnesses_desc']
+                        family.academic_training = fam['academic_training']
+                        family.occupation = fam['occupation']
+                        family.economic_income = float(fam['economic_income'])
+                        family.save()
+                        fam_group.family = family
+                        fam_group.student = instance
+                        fam_group.save()
             elif action == 'search_parish':
                 data = []
                 term = request.POST['term']
@@ -419,4 +453,5 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         context['frmFamily'] = FamilyForm()
         context['family'] = self.get_family()
         context['instance'] = self.object
+        context['instance_rpr'] = self.get_instance_representative()
         return context
