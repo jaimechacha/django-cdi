@@ -373,7 +373,6 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         try:
             if action == 'edit':
                 with transaction.atomic():
-                    # print(request.POST['first_name'])
                     instance = self.object
                     user = instance.user
                     user.first_name = request.POST['first_name']
@@ -396,6 +395,13 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
                     student.age = int(request.POST['age']) if request.POST['age'] else None
+                    student.birth_country = int(request.POST['birth_country']) if request.POST['birth_country'] else None
+                    student.birth_province = int(request.POST['birth_province']) if request.POST['birth_province'] else None
+                    student.birth_city = request.POST['birth_city']
+                    student.nationality = request.POST['nationality']
+                    student.ethnicity = request.POST['ethnicity']
+                    student.religion = request.POST['religion']
+                    student.emergency_number = request.POST['emergency_number']
                     student.save()
 
                     instance_record = self.get_instance_record()
@@ -408,24 +414,16 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     leg_repr_form.data['student'] = instance.id
                     leg_repr_form.save()
 
+                    FamilyGroup.objects.filter(student=instance).delete()
                     familyjson = json.loads(request.POST['family'])
-                    family = Family()
-                    fam_group = FamilyGroup()
+
                     for fam in familyjson:
-                        family.first_name = fam['first_name']
-                        family.last_name = fam['last_name']
-                        family.ci = fam['ci']
-                        family.relationship = fam['relationship']
-                        family.age = int(fam['age'])
-                        family.civil_status = fam['civil_status']
-                        family.disability = fam['disability']
-                        family.disability_type = fam['disability_type']
-                        family.cat_illnesses = fam['cat_illnesses']
-                        family.cat_illnesses_desc = fam['cat_illnesses_desc']
-                        family.academic_training = fam['academic_training']
-                        family.occupation = fam['occupation']
-                        family.economic_income = float(fam['economic_income'])
-                        family.save()
+                        if 'id' in fam:
+                            Family.objects.get(id=fam['id']).delete()
+                        fam_form = FamilyForm(fam)
+                        family = fam_form.save()
+
+                        fam_group = FamilyGroup()
                         fam_group.family = family
                         fam_group.student = instance
                         fam_group.save()
@@ -454,4 +452,5 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         context['family'] = self.get_family()
         context['instance'] = self.object
         context['instance_rpr'] = self.get_instance_representative()
+        context['instance_record'] = self.get_instance_record()
         return context

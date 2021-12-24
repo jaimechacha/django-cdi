@@ -135,11 +135,11 @@
     <div class="col-lg-12">
         <div class="form-group">
             <label>{{ frmRecord.vaccine_card.label }}:</label>
-            {% if instance %}
-                {% if instance.vaccine_card %}
+            {% if instance_record %}
+                {% if instance_record.vaccine_card %}
                     Actualmente:
-                    <a href="{{ instance.get_vaccine_card }}"
-                       target="_blank">{{ instance.get_vaccine_card }}</a>
+                    <a href="{{ instance_record.get_vaccine_card }}"
+                       target="_blank">{{ instance_record.get_vaccine_card }}</a>
                     <input type="checkbox" name="image-clear" id="image-clear_id">
                     <label for="image-clear_id">Limpiar</label><br>
                     Modificar:

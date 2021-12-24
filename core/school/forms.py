@@ -63,16 +63,16 @@ class FamilyForm(ModelForm):
         required=False
     )
 
-    def save(self, commit=True):
-        data = {}
-        try:
-            if self.is_valid():
-                super().save()
-            else:
-                data['error'] = self.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
+    # def save(self, commit=True):
+    #     data = {}
+    #     try:
+    #         if self.is_valid():
+    #             super().save()
+    #         else:
+    #             data['error'] = self.errors
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return data
 
 
 class LegalRepresentativeForm(ModelForm):

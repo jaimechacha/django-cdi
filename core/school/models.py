@@ -430,6 +430,9 @@ class FamilyGroup(models.Model):
         verbose_name_plural = 'Grupos familiares'
         ordering = ['id']
 
+    def __str__(self):
+        return '{} {} {}'.format(self.id, self.family, self.student)
+
 
 class TypeCVitae(models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
