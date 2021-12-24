@@ -90,4 +90,9 @@
             </div>
         </div>
     </form>
+    {% include 'student/shared/modal_family.html' %}
+    <script type="application/javascript">
+        student.details.family = {{ family|safe }};
+        student.list_family();
+    </script>
 {% endblock %}

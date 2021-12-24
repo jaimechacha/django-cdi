@@ -10,7 +10,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, TemplateVie
 
 from config import settings
 from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family, \
-    StudentMedicalRecordForm, LegalRepresentativeForm
+    StudentMedicalRecordForm, LegalRepresentativeForm, FamilyForm
 from core.security.mixins import ModuleMixin, PermissionMixin
 
 
@@ -303,6 +303,16 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user.student
 
+    def get_family(self):
+        data = []
+        student = self.get_object()
+        try:
+            for fam in Family.objects.filter(familygroup__student=student):
+                data.append(fam.toJSON())
+        except Exception as e:
+            print(e)
+        return json.dumps(data)
+
     def get_form_record(self):
         student = self.get_object()
 
@@ -313,6 +323,16 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
             return form_record
 
         return StudentMedicalRecordForm()
+
+    def get_form_representative(self):
+        student = self.get_object()
+
+        result = LegalRepresentative.objects.filter(student=student)[0:1]
+        if result:
+            instance = result[0]
+            form_representative = LegalRepresentativeForm(instance=instance)
+            return form_representative
+        return LegalRepresentativeForm()
 
 
     def get_form(self, form_class=None):
@@ -395,6 +415,8 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         context['title'] = 'Edición de Perfil'
         context['action'] = 'edit'
         context['frmRecord'] = self.get_form_record()
-        context['frmRepr'] = LegalRepresentativeForm()
+        context['frmRepr'] = self.get_form_representative()
+        context['frmFamily'] = FamilyForm()
+        context['family'] = self.get_family()
         context['instance'] = self.object
         return context

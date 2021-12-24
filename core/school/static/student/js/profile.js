@@ -2,6 +2,64 @@ var fv;
 var input_birthdate;
 var select_parish;
 var current_date;
+let fvFamily;
+
+let tblFamily;
+let family;
+
+
+let student = {
+    details: {
+        family: [],
+    },
+    add_family: function (item) {
+        if ($.isEmptyObject(family)) {
+            this.details.family.push(item);
+        } else {
+            this.details.family[family.pos] = item;
+        }
+        this.list_family();
+    },
+    list_family: function () {
+        $.each(this.details.family, function (i, item) {
+            item.pos = i;
+        });
+        tblFamily = $('#tblFamily').DataTable({
+            responsive: true,
+            autoWidth: false,
+            destroy: true,
+            data: this.details.family,
+            //ordering: false,
+            lengthChange: false,
+            //searching: false,
+            paginate: false,
+            columns: [
+                {data: "first_name"},
+                {data: "last_name"},
+                {data: "ci"},
+                {data: "relationship"},
+                {data: "first_name"},
+            ],
+            columnDefs: [
+                {
+                    targets: [-1],
+                    class: 'text-center',
+                    render: function (data, type, row) {
+                        var buttons = '<a rel="edit" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-edit fa-1x"></i></a> ';
+                        buttons += '<a rel="remove" class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash fa-1x"></i></a> ';
+                        return buttons;
+                    }
+                },
+            ],
+            rowCallback: function (row, data, index) {
+
+            },
+            initComplete: function (settings, json) {
+
+            },
+        });
+    },
+}
 
 function validateDate() {
     var now = new Date();
@@ -212,6 +270,84 @@ document.addEventListener('DOMContentLoaded', function (e) {
         });
 });
 
+document.addEventListener('DOMContentLoaded', function (e) {
+    const frmFamily = document.getElementById('frmFamily');
+    fvFamily = FormValidation.formValidation(frmFamily, {
+            locale: 'es_ES',
+            localization: FormValidation.locales.es_ES,
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                bootstrap: new FormValidation.plugins.Bootstrap(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fa fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh',
+                }),
+            },
+            fields: {
+                first_name: {
+                    validators: {
+                        notEmpty: {},
+                    }
+                },
+                last_name: {
+                    validators: {
+                        notEmpty: {},
+                    }
+                },
+                ci: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La cédula es obligatoria'
+                        },
+                        stringLength: {
+                            min: 10
+                        }
+                    }
+                },
+            },
+        }
+    )
+        .on('core.element.validated', function (e) {
+            if (e.valid) {
+                const groupEle = FormValidation.utils.closest(e.element, '.form-group');
+                if (groupEle) {
+                    FormValidation.utils.classSet(groupEle, {
+                        'has-success': false,
+                    });
+                }
+                FormValidation.utils.classSet(e.element, {
+                    'is-valid': false,
+                });
+            }
+            const iconPlugin = fvFamily.getPlugin('icon');
+            const iconElement = iconPlugin && iconPlugin.icons.has(e.element) ? iconPlugin.icons.get(e.element) : null;
+            iconElement && (iconElement.style.display = 'none');
+        })
+        .on('core.validator.validated', function (e) {
+            if (!e.result.valid) {
+                const messages = [].slice.call(frmFamily.querySelectorAll('[data-field="' + e.field + '"][data-validator]'));
+                messages.forEach((messageEle) => {
+                    const validator = messageEle.getAttribute('data-validator');
+                    messageEle.style.display = validator === e.validator ? 'block' : 'none';
+                });
+            }
+        })
+        .on('core.form.valid', function () {
+            var parameters = {};
+            $.each($(fvFamily.form).serializeArray(), function () {
+                parameters[this.name] = this.value;
+            });
+            // parameters['typecvitae'] = {
+            //     'id': select_typecvitae.val(),
+            //     'name': $("#id_typecvitae option:selected").text()
+            // };
+            student.add_family(parameters);
+            $('#myModalFamily').modal('hide');
+        });
+});
+
 $(function () {
 
     current_date = new moment().format("YYYY-MM-DD");
@@ -225,6 +361,31 @@ $(function () {
 
     $('select[name="gender"]').on('change.select2', function () {
         fv.revalidateField('gender');
+    });
+
+    $('.btnAddFamily').on('click', function () {
+        cvitae = {};
+        $('#myModalFamily .modal-title').html('<b><i class="fas fa-plus"></i> Nuevo familiar</b>');
+        $('#myModalFamily').modal('show');
+    });
+
+    $('#myModalFamily').on('hidden.bs.modal', function () {
+        fvFamily.resetForm(true);
+    });
+
+    $('#tblFamily tbody')
+        .on('click', 'a[rel="remove"]', function () {
+            let tr = tblFamily.cell($(this).closest('td, li')).index();
+            student.details.family.splice(tr.row, 1);
+            student.list_family();
+        })
+
+    $('.btnRemoveAllFamily').on('click', function () {
+        if (student.details.family.length === 0) return false;
+        dialog_action('Notificación', '¿Estas seguro de eliminar todos los familiares asignados?', function () {
+            student.details.family = [];
+            student.list_family();
+        });
     });
 
     input_birthdate.datetimepicker({

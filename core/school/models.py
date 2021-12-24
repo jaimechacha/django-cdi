@@ -412,6 +412,7 @@ class Family(models.Model):
 
     def toJSON(self):
         item = model_to_dict(self)
+        item['economic_income'] = format(self.economic_income, '.2f')
         return item
 
     class Meta:

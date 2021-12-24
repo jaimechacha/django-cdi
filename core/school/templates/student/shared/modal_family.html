@@ -1,0 +1,111 @@
+<div class="modal fade" id="myModalFamily" tabindex="-1" role="dialog" aria-hidden="true">
+    <form method="post" autocomplete="off" id="frmFamily">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.first_name.label }}:</label>
+                                    {{ frmFamily.first_name }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.last_name.label }}:</label>
+                                    {{ frmFamily.last_name }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.ci.label }}:</label>
+                                    {{ frmFamily.ci }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.relationship.label }}:</label>
+                                    {{ frmFamily.relationship }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.age.label }}:</label>
+                                    {{ frmFamily.age }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.civil_status.label }}:</label>
+                                    {{ frmFamily.civil_status }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.academic_training.label }}:</label>
+                                    {{ frmFamily.academic_training }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.occupation.label }}:</label>
+                                    {{ frmFamily.occupation }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.economic_income.label }}:</label>
+                                    {{ frmFamily.economic_income }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.disability.label }}:</label>
+                                    {{ frmFamily.disability }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.disability_type.label }}:</label>
+                                    {{ frmFamily.disability_type }}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.cat_illnesses.label }}:</label>
+                                    {{ frmFamily.cat_illnesses }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>{{ frmFamily.cat_illnesses_desc.label }}:</label>
+                                    {{ frmFamily.cat_illnesses_desc }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <i class="fas fa-save" aria-hidden="true"></i> Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
