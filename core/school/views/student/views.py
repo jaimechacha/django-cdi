@@ -131,109 +131,6 @@ class StudentCreateView(PermissionMixin, CreateView):
         return context
 
 
-class StudentUpdateView(PermissionMixin, UpdateView):
-    model = Student
-    template_name = 'student/create.html'
-    form_class = StudentForm
-    success_url = reverse_lazy('student_list')
-    permission_required = 'change_student'
-
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_form(self, form_class=None):
-        instance = self.object
-        form = StudentForm(instance=instance, initial={
-            'first_name': instance.user.first_name,
-            'last_name': instance.user.last_name,
-            'dni': instance.user.dni,
-            'email': instance.user.email,
-            'image': instance.user.image,
-        })
-        if instance.parish:
-            form.fields['parish'].queryset = Parish.objects.filter(id=instance.parish.id)
-        return form
-
-    def validate_data(self):
-        data = {'valid': True}
-        try:
-            instance = self.object
-            type = self.request.POST['type']
-            obj = self.request.POST['obj'].strip()
-            if type == 'dni':
-                if User.objects.filter(dni=obj).exclude(id=instance.user.id):
-                    data['valid'] = False
-            elif type == 'mobile':
-                if Student.objects.filter(mobile=obj).exclude(id=instance.id):
-                    data['valid'] = False
-            elif type == 'email':
-                if User.objects.filter(email=obj).exclude(id=instance.user.id):
-                    data['valid'] = False
-        except:
-            pass
-        return JsonResponse(data)
-
-    def post(self, request, *args, **kwargs):
-        data = {}
-        action = request.POST['action']
-        try:
-            if action == 'edit':
-                with transaction.atomic():
-                    instance = self.object
-                    user = instance.user
-                    user.first_name = request.POST['first_name']
-                    user.last_name = request.POST['last_name']
-                    user.dni = request.POST['dni']
-                    user.username = user.dni
-                    if 'image-clear' in request.POST:
-                        user.remove_image()
-                    if 'image' in request.FILES:
-                        user.image = request.FILES['image']
-                    user.email = request.POST['email']
-                    user.save()
-
-                    student = instance
-                    student.user_id = user.id
-                    student.gender = request.POST['gender']
-                    student.mobile = request.POST['mobile']
-                    student.phone = request.POST['phone']
-                    student.address = request.POST['address']
-                    student.birthdate = request.POST['birthdate']
-                    student.parish_id = int(request.POST['parish'])
-                    student.birth_country_id = int(request.POST['birth_country'])
-                    student.birth_province_id = int(request.POST['birth_province'])
-                    student.birth_city = request.POST['birth_city']
-                    student.nationality = request.POST['nationality']
-                    student.age = int(request.POST['age']) if request.POST['age'] else None
-                    student.ethnicity = request.POST['ethnicity']
-                    student.religion = request.POST['religion']
-                    student.emergency_number = request.POST['emergency_number']
-                    student.save()
-            elif action == 'search_parish':
-                data = []
-                term = request.POST['term']
-                for i in Parish.objects.filter(name__icontains=term)[0:10]:
-                    item = {'id': i.id, 'text': i.__str__(), 'data': i.toJSON()}
-                    data.append(item)
-            elif action == 'validate_data':
-                return self.validate_data()
-            else:
-                data['error'] = 'No ha seleccionado ninguna opción'
-        except Exception as e:
-            data['error'] = str(e)
-        return HttpResponse(json.dumps(data), content_type='application/json')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['list_url'] = self.success_url
-        context['title'] = 'Edición de un Estudiante'
-        context['action'] = 'edit'
-        context['instance'] = self.object
-        return context
-
-
 class StudentDeleteView(PermissionMixin, DeleteView):
     model = Student
     template_name = 'student/delete.html'
@@ -289,11 +186,10 @@ class StudentDetailView(DetailView):
         return context
 
 
-class StudentUpdateProfileView(ModuleMixin, UpdateView):
+class GenericUpdateStudent(UpdateView):
     model = Student
-    template_name = 'student/profile.html'
     form_class = StudentForm
-    success_url = reverse_lazy('dashboard')
+    title = ''
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -408,8 +304,10 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
                     student.age = int(request.POST['age']) if request.POST['age'] else None
-                    student.birth_country_id = int(request.POST['birth_country']) if request.POST['birth_country'] else None
-                    student.birth_province_id = int(request.POST['birth_province']) if request.POST['birth_province'] else None
+                    student.birth_country_id = int(request.POST['birth_country']) if request.POST[
+                        'birth_country'] else None
+                    student.birth_province_id = int(request.POST['birth_province']) if request.POST[
+                        'birth_province'] else None
                     student.birth_city = request.POST['birth_city']
                     student.nationality = request.POST['nationality']
                     student.ethnicity = request.POST['ethnicity']
@@ -418,7 +316,8 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     student.save()
 
                     instance_record = self.get_instance_record()
-                    med_record_form = StudentMedicalRecordForm(request.POST.copy(), request.FILES, instance=instance_record)
+                    med_record_form = StudentMedicalRecordForm(request.POST.copy(), request.FILES,
+                                                               instance=instance_record)
                     med_record_form.data['student'] = instance.id
                     med_record_form.save()
 
@@ -458,7 +357,7 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Edición de Perfil'
+        context['title'] = self.title
         context['action'] = 'edit'
         context['frmRecord'] = self.get_form_record()
         context['frmRepr'] = self.get_form_representative()
@@ -468,3 +367,20 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
         context['instance_rpr'] = self.get_instance_representative()
         context['instance_record'] = self.get_instance_record()
         return context
+
+
+class StudentUpdateProfileView(ModuleMixin, GenericUpdateStudent):
+    title = 'Edición del perfil'
+    template_name = 'student/profile.html'
+    success_url = reverse_lazy('dashboard')
+
+
+class StudentUpdateView(PermissionMixin, GenericUpdateStudent):
+    title = 'Edición de un estudiante'
+    template_name = 'student/profile.html'
+    success_url = reverse_lazy('student_list')
+    permission_required = 'change_student'
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        return self.model.objects.get(pk=pk)

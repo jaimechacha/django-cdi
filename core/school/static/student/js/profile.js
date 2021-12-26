@@ -18,7 +18,6 @@ let student = {
         } else {
             this.details.family[family.pos] = item;
         }
-        console.log(this.details.family)
         this.list_family();
     },
     list_family: function () {
@@ -369,7 +368,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
             });
             parameters['disability'] = (parameters['disability'] === 'True');
             parameters['cat_illnesses'] = (parameters['cat_illnesses'] === 'True');
-            console.log('Para', parameters)
             student.add_family(parameters);
             $('#myModalFamily').modal('hide');
         });

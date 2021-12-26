@@ -2,25 +2,25 @@
 <p class="h6">Representante: {{ i }}</p>
 <div class="row mt-4">
     <div class="col col-lg-5">
-        <p><b>Nombres: </b>{{ i.first_name|default_if_none:"(Vacío)" }}</p>
-        <p><b>Apellidos: </b>{{ i.last_name|default_if_none:"(Vacío)" }}</p>
-        <p><b>Parentesco: </b>{{ i.relationship|default_if_none:"(Vacío)" }}</p>
-        <p><b>CI: </b>{{ i.ci|default_if_none:"(Vacío)" }}</p>
-        <p><b>Nacionalidad: </b>{{ i.nationality|default_if_none:"(Vacío)" }}</p>
-        <p><b>Dirección: </b>{{ i.address|default_if_none:"(Vacío)" }}</p>
-        <p><b>Referencia: </b>{{ i.reference|default_if_none:"(Vacío)" }}</p>
-        <p><b>Celular: </b>{{ i.cell_phone|default_if_none:"(Vacío)" }}</p>
-        <p><b>Teléfono convencional: </b>{{ i.conventional_phone|default_if_none:"(Vacío)" }}</p>
-        <p><b>Teléfono de emergencia: </b>{{ i.emergency_number|default_if_none:"(Vacío)" }}</p>
-        <p><b>Correo: </b>{{ i.email|default_if_none:"(Vacío)" }}</p>
-        <p><b>Grupo sanguíneo: </b>{{ i.blood_group }}</p>
+        <p><b>Nombres: </b>{{ i.first_name_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Apellidos: </b>{{ i.last_name_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Parentesco: </b>{{ i.relationship_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>CI: </b>{{ i.ci_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Nacionalidad: </b>{{ i.nationality_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Dirección: </b>{{ i.address_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Referencia: </b>{{ i.reference_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Celular: </b>{{ i.cell_phone_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono convencional: </b>{{ i.conventional_phone_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono de emergencia: </b>{{ i.emergency_number_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Correo: </b>{{ i.email_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Grupo sanguíneo: </b>{{ i.blood_group_rp }}</p>
     </div>
     <div class="col col-lg-5">
-        <p><b>Trabaja: </b>{{ i.is_working|yesno:"Sí,No" }}</p>
-        <p><b>Lugar de trabajo: </b>{{ i.workplace|default_if_none:"(Vacío)" }}</p>
-        <p><b>Teléfono del trabajo: </b>{{ i.work_phone|default_if_none:"(Vacío)" }}</p>
-        <p><b>Dirección del trabajo: </b>{{ i.work_address|default_if_none:"(Vacío)" }}</p>
-        <p><b>Correo del trabajo: </b>{{ i.work_email|default_if_none:"(Vacío)" }}</p>
+        <p><b>Trabaja: </b>{{ i.is_working_rp|yesno:"Sí,No" }}</p>
+        <p><b>Lugar de trabajo: </b>{{ i.workplace_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Teléfono del trabajo: </b>{{ i.work_phone_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Dirección del trabajo: </b>{{ i.work_address_rp|default_if_none:"(Vacío)" }}</p>
+        <p><b>Correo del trabajo: </b>{{ i.work_email_rp|default_if_none:"(Vacío)" }}</p>
     </div>
     <div class="col col-lg-2">
         <img src="{{ i.get_image }}" alt="student profile" class="img-thumbnail">
