@@ -332,6 +332,36 @@ class LegalRepresentative(models.Model):
             return '{}{}'.format(settings.MEDIA_URL, self.basic_services_payment_rp)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
+    def remove_croquis(self):
+        try:
+            if self.croquis_rp:
+                os.remove(self.croquis_rp.path)
+        except:
+            pass
+        finally:
+            self.croquis_rp = None
+            self.save()
+
+    def remove_payment_bs(self):
+        try:
+            if self.basic_services_payment_rp:
+                os.remove(self.basic_services_payment_rp.path)
+        except:
+            pass
+        finally:
+            self.basic_services_payment_rp = None
+            self.save()
+
+    def remove_image(self):
+        try:
+            if self.image_rp:
+                os.remove(self.image_rp.path)
+        except:
+            pass
+        finally:
+            self.image_rp = None
+            self.save()
+
 
 class StudentMedicalRecord(models.Model):
     weight = models.DecimalField(decimal_places=2, default=0.00, max_digits=5, blank=True, null=True,
@@ -378,6 +408,16 @@ class StudentMedicalRecord(models.Model):
         if self.vaccine_card:
             return '{}{}'.format(settings.MEDIA_URL, self.vaccine_card)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def remove_vaccine_card(self):
+        try:
+            if self.vaccine_card:
+                os.remove(self.vaccine_card.path)
+        except:
+            pass
+        finally:
+            self.vaccine_card = None
+            self.save()
 
     class Meta:
         verbose_name = 'Ficha médica'

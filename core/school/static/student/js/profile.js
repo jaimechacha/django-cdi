@@ -270,6 +270,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             parameters.append('action', $('input[name="action"]').val());
             parameters.append('family', JSON.stringify(student.details.family));
+            parameters['birth_country'] = {
+                'id': select_birth_country.val(),
+                'name': $("#id_birth_country option:selected").text()
+            };
+            parameters['birth_province'] = {
+                'id': select_birth_province.val(),
+                'name': $("#id_birth_province option:selected").text()
+            };
+
             submit_formdata_with_ajax('Alerta',
                 '¿Estas seguro de realizar la siguiente acción?',
                 pathname, parameters, function () {
@@ -347,16 +356,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
             $.each($(fvFamily.form).serializeArray(), function () {
                 parameters[this.name] = this.value;
             });
-            // parameters['typecvitae'] = {
-            //     'id': select_typecvitae.val(),
-            //     'name': $("#id_typecvitae option:selected").text()
-            // };
             student.add_family(parameters);
             $('#myModalFamily').modal('hide');
         });
 });
 
 $(function () {
+
+    select_birth_country = $('select[name="birth_country"]');
+    select_birth_province = $('select[name="birth_province"]');
 
     current_date = new moment().format("YYYY-MM-DD");
     input_birthdate = $('input[name="birthdate"]');

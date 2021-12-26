@@ -348,6 +348,19 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
             form.fields['parish'].queryset = Parish.objects.filter(id=instance.parish.id)
         return form
 
+    def remove_docs(self):
+        instance_record = self.get_instance_record()
+        instance_repr = self.get_instance_representative()
+
+        if 'vcard-clear' in self.request.POST:
+            instance_record.remove_vaccine_card()
+        elif 'croquis-clear' in self.request.POST:
+            instance_repr.remove_croquis()
+        elif 'comprob-clear' in self.request.POST:
+            instance_repr.remove_payment_bs()
+        elif 'image-rpr-clear' in self.request.POST:
+            instance_repr.remove_image()
+
     def validate_data(self):
         data = {'valid': True}
         try:
@@ -395,8 +408,8 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
                     student.age = int(request.POST['age']) if request.POST['age'] else None
-                    student.birth_country = int(request.POST['birth_country']) if request.POST['birth_country'] else None
-                    student.birth_province = int(request.POST['birth_province']) if request.POST['birth_province'] else None
+                    student.birth_country_id = int(request.POST['birth_country']) if request.POST['birth_country'] else None
+                    student.birth_province_id = int(request.POST['birth_province']) if request.POST['birth_province'] else None
                     student.birth_city = request.POST['birth_city']
                     student.nationality = request.POST['nationality']
                     student.ethnicity = request.POST['ethnicity']
@@ -413,6 +426,9 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     leg_repr_form = LegalRepresentativeForm(request.POST.copy(), request.FILES, instance=instance_repr)
                     leg_repr_form.data['student'] = instance.id
                     leg_repr_form.save()
+
+                    # Remove docs from med record and representative
+                    self.remove_docs()
 
                     FamilyGroup.objects.filter(student=instance).delete()
                     familyjson = json.loads(request.POST['family'])
