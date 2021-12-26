@@ -45,7 +45,7 @@ class StudentListView(PermissionMixin, TemplateView):
 
 class StudentCreateView(PermissionMixin, CreateView):
     model = Student
-    template_name = 'student/create.html'
+    template_name = 'student/profile.html'
     form_class = StudentForm
     success_url = reverse_lazy('student_list')
     permission_required = 'add_student'
@@ -96,17 +96,37 @@ class StudentCreateView(PermissionMixin, CreateView):
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
                     student.parish_id = int(request.POST['parish'])
-                    student.birth_country_id = int(request.POST['birth_country'])
-                    student.birth_province_id = int(request.POST['birth_province'])
+                    student.age = int(request.POST['age']) if request.POST['age'] else None
+                    student.birth_country_id = int(request.POST['birth_country']) if request.POST[
+                        'birth_country'] else None
+                    student.birth_province_id = int(request.POST['birth_province']) if request.POST[
+                        'birth_province'] else None
                     student.birth_city = request.POST['birth_city']
                     student.nationality = request.POST['nationality']
-                    student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.ethnicity = request.POST['ethnicity']
                     student.religion = request.POST['religion']
                     student.emergency_number = request.POST['emergency_number']
                     student.save()
                     group = Group.objects.get(pk=settings.GROUPS.get('student'))
                     user.groups.add(group)
+
+                    med_record_form = StudentMedicalRecordForm(request.POST.copy(), request.FILES)
+                    med_record_form.data['student'] = student.id
+                    med_record_form.save()
+
+                    leg_repr_form = LegalRepresentativeForm(request.POST.copy(), request.FILES)
+                    leg_repr_form.data['student'] = student.id
+                    leg_repr_form.save()
+
+                    familyjson = json.loads(request.POST['family'])
+                    for fam in familyjson:
+                        fam_form = FamilyForm(fam)
+                        family = fam_form.save()
+
+                        fam_group = FamilyGroup()
+                        fam_group.family = family
+                        fam_group.student = student
+                        fam_group.save()
             elif action == 'search_parish':
                 data = []
                 term = request.POST['term']
@@ -126,6 +146,9 @@ class StudentCreateView(PermissionMixin, CreateView):
         context['list_url'] = self.success_url
         context['title'] = 'Nuevo registro de un Estudiante'
         context['action'] = 'add'
+        context['frmRecord'] = StudentMedicalRecordForm()
+        context['frmRepr'] = LegalRepresentativeForm()
+        context['frmFamily'] = FamilyForm()
         context['instance'] = None
         context['tab_add'] = 'active'
         return context
