@@ -671,6 +671,8 @@ class Assistance(models.Model):
 class Cursos(models.Model):
     name = models.CharField(max_length=23, null=False, blank=False, verbose_name='Nombre')
     descrip = models.CharField(max_length=70, null=False, blank=False)
+    max_coupon = models.IntegerField(default=20, null=True, blank=True, verbose_name='Cupo máximo')
+    min_coupon = models.IntegerField(default=15, null=True, blank=True, verbose_name='Cupo mínimo')
 
     # state = models.BooleanField(default=False)
 

@@ -413,6 +413,8 @@ class CursosForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del curso'}),
             'descrip': forms.TextInput(attrs={'placeholder': 'Ingrese una descripción del curso'}),
+            'max_coupon': forms.TextInput(attrs={'placeholder': 'Ingrese el nº máximo de estudiantes'}),
+            'min_coupon': forms.TextInput(attrs={'placeholder': 'Ingrese el nº mínimo de estudiantes'}),
         }
 
     def save(self, commit=True):

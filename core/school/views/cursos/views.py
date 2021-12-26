@@ -10,7 +10,6 @@ from core.school.forms import CursosForm, Cursos
 from core.security.mixins import PermissionMixin
 
 
-
 class CursosListView(PermissionMixin, ListView):
     model = Cursos
     template_name = 'cursos/list.html'
