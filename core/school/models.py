@@ -463,7 +463,7 @@ class Family(models.Model):
 
 class FamilyGroup(models.Model):
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
-    family = models.ForeignKey(Family, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Familiar')
+    family = models.ForeignKey(Family, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Familiar')
 
     class Meta:
         verbose_name = 'Grupo familiar'

@@ -18,6 +18,7 @@ let student = {
         } else {
             this.details.family[family.pos] = item;
         }
+        console.log(this.details.family)
         this.list_family();
     },
     list_family: function () {
@@ -323,6 +324,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         }
                     }
                 },
+                age: {},
+                relationship: {},
+                civil_status: {},
+                disability: {},
+                disability_type: {},
+                cat_illnesses: {},
+                cat_illnesses_desc: {},
+                academic_training: {},
+                occupation: {},
+                economic_income: {},
             },
         }
     )
@@ -352,10 +363,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            var parameters = {};
+            let parameters = {};
             $.each($(fvFamily.form).serializeArray(), function () {
                 parameters[this.name] = this.value;
             });
+            parameters['disability'] = (parameters['disability'] === 'True');
+            parameters['cat_illnesses'] = (parameters['cat_illnesses'] === 'True');
+            console.log('Para', parameters)
             student.add_family(parameters);
             $('#myModalFamily').modal('hide');
         });
@@ -365,6 +379,9 @@ $(function () {
 
     select_birth_country = $('select[name="birth_country"]');
     select_birth_province = $('select[name="birth_province"]');
+    select_civil_status = $('select[name="civil_status"]');
+    select_disability_fam = $('#frmFamily select[name="disability"]');
+    select_cat_illnesses_fam = $('#frmFamily select[name="cat_illnesses"]');
 
     current_date = new moment().format("YYYY-MM-DD");
     input_birthdate = $('input[name="birthdate"]');
@@ -379,14 +396,19 @@ $(function () {
         fv.revalidateField('gender');
     });
 
+    select_disability_fam.on('change', function () {
+        fvFamily.revalidateField('disability');
+    });
+
     $('.btnAddFamily').on('click', function () {
-        cvitae = {};
+        family = {};
         $('#myModalFamily .modal-title').html('<b><i class="fas fa-plus"></i> Nuevo familiar</b>');
         $('#myModalFamily').modal('show');
     });
 
     $('#myModalFamily').on('hidden.bs.modal', function () {
         fvFamily.resetForm(true);
+        $('input[name="economic_income"]').val(0.00)
     });
 
     $('#tblFamily tbody')
@@ -395,6 +417,25 @@ $(function () {
             student.details.family.splice(tr.row, 1);
             student.list_family();
         })
+        .on('click', 'a[rel="edit"]', function () {
+            let tr = tblFamily.cell($(this).closest('td, li')).index();
+            family = tblFamily.row(tr.row).data();
+            $(fvFamily.form).find('input[name="first_name"]').val(family.first_name);
+            $(fvFamily.form).find('input[name="last_name"]').val(family.last_name);
+            $(fvFamily.form).find('input[name="ci"]').val(family.ci);
+            $(fvFamily.form).find('input[name="relationship"]').val(family.relationship);
+            $(fvFamily.form).find('input[name="age"]').val(family.age);
+            $(fvFamily.form).find('input[name="disability_type"]').val(family.disability_type);
+            $(fvFamily.form).find('textarea[name="cat_illnesses_desc"]').val(family.cat_illnesses_desc);
+            $(fvFamily.form).find('input[name="academic_training"]').val(family.academic_training);
+            $(fvFamily.form).find('input[name="occupation"]').val(family.occupation);
+            $(fvFamily.form).find('input[name="economic_income"]').val(family.economic_income);
+            select_civil_status.val(family.civil_status).trigger('change');
+            select_disability_fam.val(family.disability ? "True": "False").trigger('change');
+            select_cat_illnesses_fam.val(family.cat_illnesses? "True": "False").trigger('change');
+            $('#myModalFamily .modal-title').html('<b><i class="fas fa-edit"></i> Editar datos del familiar</b>');
+            $('#myModalFamily').modal('show');
+        });
 
     $('.btnRemoveAllFamily').on('click', function () {
         if (student.details.family.length === 0) return false;

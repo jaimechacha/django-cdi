@@ -427,15 +427,13 @@ class StudentUpdateProfileView(ModuleMixin, UpdateView):
                     leg_repr_form.data['student'] = instance.id
                     leg_repr_form.save()
 
-                    # Remove docs from med record and representative
+                    # Remove docs from med_record and representative
                     self.remove_docs()
+                    Family.objects.filter(familygroup__student=instance).delete()
 
-                    FamilyGroup.objects.filter(student=instance).delete()
                     familyjson = json.loads(request.POST['family'])
 
                     for fam in familyjson:
-                        if 'id' in fam:
-                            Family.objects.get(id=fam['id']).delete()
                         fam_form = FamilyForm(fam)
                         family = fam_form.save()
 
