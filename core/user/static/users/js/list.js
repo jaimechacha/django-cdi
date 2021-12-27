@@ -15,6 +15,15 @@ function getData() {
             },
             dataSrc: ""
         },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Imprimir listado <i class="fas fa-print"></i>',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-success btn-flat btn-xs'
+            },
+        ],
         columns: [
             {"data": "id"},
             {"data": "full_name"},
