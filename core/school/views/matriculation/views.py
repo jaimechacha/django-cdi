@@ -74,10 +74,10 @@ class MatriculationCreateView(PermissionMixin, CreateView):
         data = {}
         action = request.POST['action']
         try:
+            period = request.POST['period']
+            level = request.POST['level']
             if action == 'search_matters_period':
                 data = []
-                period = request.POST['period']
-                level = request.POST['level']
                 if len(period) and len(level):
                     for i in PeriodDetail.objects.filter(period_id=period, matter__level=level):
                         item = i.toJSON()
@@ -85,10 +85,14 @@ class MatriculationCreateView(PermissionMixin, CreateView):
                         data.append(item)
             elif action == 'add':
                 with transaction.atomic():
+                    enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
+                    max_level_coupon = Cursos.objects.get(id=level).max_coupon
+                    if enroll_students == max_level_coupon:
+                        raise AssertionError("No hay cupos disponibles para este nivel")
                     matriculation = Matriculation()
                     matriculation.student_id = request.POST['student']
-                    matriculation.period_id = request.POST['period']
-                    matriculation.level_id = request.POST['level']
+                    matriculation.period_id = period
+                    matriculation.level_id = level
                     matriculation.save()
                     for i in json.loads(request.POST['matters']):
                         det = MatriculationDetail()
