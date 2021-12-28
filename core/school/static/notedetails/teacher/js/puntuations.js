@@ -3,14 +3,14 @@ var activities = {
     details: {
         homework: []
     },
-    
+
     list: function () {
         tblActivities = $('#tblActivities').DataTable({
             responsive: true,
             autoWidth: false,
             destroy: true,
             data: this.details.homework,
-            
+
             ordering: false,
             lengthChange: false,
             searching: false,
@@ -23,20 +23,22 @@ var activities = {
             ],
             columnDefs: [
                 ///{
-                   // targets: [-3],
-                    //class: 'text-center',
-                    //render: function (data, type, row) {
-                        //return '<a target="_blank" href="' + row.archive + '" class="btn btn-primary btn-xs"><i class="fas fa-file-word"></i></a>';
-                        //console.log(data)
-                        //return data => `<select>${['fruit', 'vegie', 'berry'].reduce((options, item) => options+='<option value="'+item+'" '+(item == data ? 'selected' : '')+'>'+item+'</option>', '<option value=""></option>')}</select>`
-                    //}
+                // targets: [-3],
+                //class: 'text-center',
+                //render: function (data, type, row) {
+                //return '<a target="_blank" href="' + row.archive + '" class="btn btn-primary btn-xs"><i class="fas fa-file-word"></i></a>';
+                //console.log(data)
+                //return data => `<select>${['fruit', 'vegie', 'berry'].reduce((options, item) => options+='<option value="'+item+'" '+(item == data ? 'selected' : '')+'>'+item+'</option>', '<option value=""></option>')}</select>`
+                //}
                 //},
                 {
                     targets: [-2],
                     class: 'text-center',
                     render: function (data, type, row) {
-                        //return '<select size="1" id="row-1-office" name="note"><option value="Edinburgh" selected="selected">' + row.note + '</option><option value="London">Excelente</option></select>';
-                        return '<input class="form-control input-sm" type="file" autocomplete="off" name="comment" value="' + row.evidence_doc + '">';
+                        if (row.exists_doc){
+                            return `<a href="${row.evidence_doc}" target="_blank">Ver archivo</a>`
+                        }
+                        return '<input class="form-control form-control-sm" type="file" autocomplete="off" name="evidence_doc" id="' + row.id + '">';
                     }
                 },
                 {
@@ -50,15 +52,14 @@ var activities = {
                         } else if (data >= 7 && data < 9) {
                             var html = '<input type="text" class="form-control input-sm is-warning" autocomplete="off" name="note" value="' + row.note + '">';
                             return html;
-                        } 
-                        else if (data < 7) {
+                        } else if (data < 7) {
                             var html = '<input type="text" class="form-control input-sm is-invalid" autocomplete="off" name="note" value="' + row.note + '">';
                             return html;
-                        } 
-                        else{
-                            return  '<input type="text" class="form-control input-sm" autocomplete="off" name="note" value="' + row.note + '">';;
+                        } else {
+                            return '<input type="text" class="form-control input-sm" autocomplete="off" name="note" value="' + row.note + '">';
+                            ;
                         }
-                        
+
                     }
                 },
                 {
@@ -92,7 +93,7 @@ var activities = {
         });
     }
 
-    
+
 };
 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -146,16 +147,20 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 return false;
             }
 
-            let form_data = new FormData($(fv.form)[0]);
-            console.log(form_data)
+            let parameters = new FormData();
+            parameters.append('action', 'punctuation');
+            parameters.append('notedetails', JSON.stringify(activities.details));
+            $.each($("input[type=file]"), function (i, obj) {
+                console.log(obj.id)
+                $.each(obj.files, function (j, file) {
+                    parameters.append(`[${ obj.id }]`, file);
+                })
+            });
 
-            submit_with_ajax('Notificación',
+            submit_formdata_with_ajax('Notificación',
                 '¿Estas seguro de realizar la siguiente acción?',
                 pathname,
-                {
-                    'action': 'punctuation',
-                    'notedetails': JSON.stringify(activities.details),
-                },
+                parameters,
                 function () {
                     location.href = fv.form.getAttribute('data-url');
                 },
@@ -167,15 +172,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
 $(function () {
 
     $('#tblActivities tbody')
-        .on('change', 'input[name="note"]', function () {
-            var tr = tblActivities.cell($(this).closest('td, li')).index();
+        .on('keyup', 'input[name="note"]', function () {
+            let tr = tblActivities.cell($(this).closest('td, li')).index();
             //activities.details.homework[tr.row].note = parseInt($(this).val());
             activities.details.homework[tr.row].note = $(this).val();
         })
-        .on('keyup', 'input[name="comment"]', function () {
-            var tr = tblActivities.cell($(this).closest('td, li')).index();
+        .on('change', 'input[name="comment"]', function () {
+            let tr = tblActivities.cell($(this).closest('td, li')).index();
             activities.details.homework[tr.row].comment = $(this).val();
-        });
+        })
 });
 
 /* 

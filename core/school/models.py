@@ -1091,6 +1091,9 @@ class Punctuations(models.Model):
     def __str__(self):
         return self.comment
 
+    def exists_evidence_doc(self):
+        return True if self.evidence_doc else False
+
     def get_evidence_doc(self):
         if self.evidence_doc:
             return '{}{}'.format(settings.MEDIA_URL, self.evidence_doc)
@@ -1105,6 +1108,7 @@ class Punctuations(models.Model):
         item['score'] = self.score.toJSON()
         item['note'] = format(self.note, '.2f')
         item['evidence_doc'] = self.get_evidence_doc()
+        item['exists_doc'] = self.exists_evidence_doc()
         return item
 
     class Meta:

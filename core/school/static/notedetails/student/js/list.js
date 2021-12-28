@@ -29,20 +29,32 @@ function getData() {
             {"data": "note"},
             {"data": "score.name"},
             {"data": "comment"},
+            {"data": "evidence_doc"},
         ],
         columnDefs: [
             {
                 targets: [-3],
                 class: 'text-center',
                 orderable: false,
-               
+
             },
             {
                 targets: [-2],
                 class: 'text-center',
                 orderable: false,
             },
-           
+            {
+                targets: [-1],
+                class: 'text-center',
+                orderable: false,
+                render: function (data, type, row) {
+                    if (row.exists_doc) {
+                        return `<a href="${row.evidence_doc}" target="_blank">Ver archivo</a>`
+                    }
+                    return `<span>Archivo no encontrado</span>`
+                }
+            },
+
         ],
         initComplete: function (settings, json) {
 

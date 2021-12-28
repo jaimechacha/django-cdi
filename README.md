@@ -15,31 +15,37 @@
     ````shell script
     pip install -r .\requirements\requirements.txt
     ````
-5. Ejecutar migraciones
+5. Si ya existe la db saltar al paso 10
+
+6. Crear carpeta db en la raiz del proyecto
+    ````shell script
+    db/
+    ````
+7. Ejecutar migraciones
     ````shell script
     python manage.py makemigrations
     ````
-6. Confirmar migraciones
+8. Confirmar migraciones
     ````shell script
     python manage.py migrate
     ````
-7. Cargar respaldo
+9. Cargar respaldo
     ````shell script
      python manage.py loaddata deploy/backup.json --exclude contenttypes
     ````
-8. Incorporar librerias externas dentro del folder static/lib
+10. Incorporar librerias externas dentro del folder static/lib
     ````shell script
-    Dentro de la ruta static crear la carpeta lib y dentro incluir todas las librerias externas
-   adminlte-3.0.5
-   bootstrap-4.3.1
-   bootstrap-daterangepicker-3.0.5
-   ...etc
+       Dentro de la ruta static crear la carpeta lib y dentro incluir todas las librerias externas
+       adminlte-3.0.5
+       bootstrap-4.3.1
+       bootstrap-daterangepicker-3.0.5
+       ...etc
     ````
-9. Restaurar los archivos de media
+11. Restaurar los archivos de media
     ````shell script
     En la ruta principal volver a copiar la carpeta media
     ````
-10. Ejecutar el proyecto
+12. Ejecutar el proyecto
     ````shell script
     python manage.py runserver
     ````

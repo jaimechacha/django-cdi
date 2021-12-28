@@ -12,6 +12,7 @@ from core.school.forms import Activities, ActivitiesForm, NoteDetailsForm, Perio
 from core.school.models import Punctuations
 from core.security.mixins import PermissionMixin
 
+
 class NoteDetailsTeacherMatterListView(FormView):
     form_class = ReportForm
     template_name = 'notedetails/teacher/consult_period_teacher.html'
@@ -65,6 +66,7 @@ class NoteDetailsTeacherMatterListView(FormView):
         context['title'] = 'Listado de Materias por Periodos'
         context['homework'] = self.get_homework()
         return context
+
 
 class NoteDetailsTeacherCreateView(FormView):
     model = NoteDetails
@@ -120,6 +122,7 @@ class NoteDetailsTeacherCreateView(FormView):
         context['action'] = 'add'
         return context
 
+
 class NoteDetailsTeacherUpdateView(UpdateView):
     model = NoteDetails
     template_name = 'notedetails/teacher/create.html'
@@ -157,6 +160,7 @@ class NoteDetailsTeacherUpdateView(UpdateView):
         context['title'] = 'Edición de Actividad'
         context['action'] = 'edit'
         return context
+
 
 class NotedetailsTeacherDeleteView(DeleteView):
     model = NoteDetails
@@ -205,20 +209,20 @@ class NotedetailsTeacherPuntuationsView(UpdateView):
         action = request.POST['action']
         try:
             if action == 'punctuation':
-                print(request.POST['form_data'])
                 with transaction.atomic():
                     punctuationjson = json.loads(request.POST['notedetails'])
                     for p in punctuationjson['homework']:
                         calif = Punctuations.objects.get(pk=p['id'])
                         calif.note = float(p['note'])
-    
+                        if f'[{calif.id}]' in request.FILES:
+                            calif.evidence_doc = request.FILES[f'[{calif.id}]']
                         note = float(p['note'])
                         score = Scores.objects.get(score=round(note, 0))
                         calif.score_id = score.id
                         
                         calif.comment = p['comment']
                         calif.state = True
-                        calif.save()                        
+                        calif.save()
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:
