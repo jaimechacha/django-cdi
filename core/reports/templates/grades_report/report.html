@@ -1,0 +1,50 @@
+{% extends 'report.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block head_report %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'grades_report/js/report.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block content_report %}
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label>Período:</label>
+                {{ form.period }}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Curso:</label>
+                {{ form.course }}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Materia:</label>
+                {{ form.matter }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <table class="table table-bordered table-md" id="tblReport" width="100%">
+                <thead>
+                <tr>
+                    <th style="width: 15%;">Estudiante</th>
+                    <th style="width: 15%;">A2</th>
+                    <th style="width: 15%;">A3</th>
+                    <th style="width: 15%;">A4</th>
+                    <th style="width: 15%;">A5</th>
+                    <th style="width: 15%;">A6</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

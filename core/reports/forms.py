@@ -45,5 +45,10 @@ class ReportForm(forms.Form):
         'style': 'width: 100%;'
     }))
 
+    matter = forms.ModelChoiceField(queryset=Matter.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control select2',
+        'style': 'width: 100%;'
+    }))
+
 
 
