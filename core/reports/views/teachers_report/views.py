@@ -10,13 +10,13 @@ from django.views.generic import FormView
 from weasyprint import CSS, HTML
 
 from config import settings
-from core.reports.forms import ReportForm, Student
+from core.reports.forms import ReportForm, Student, Teacher, Cursos
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
 
 
-class StudentReportView(ModuleMixin, FormView):
-    template_name = 'student_report/report.html'
+class TeachersReportView(ModuleMixin, FormView):
+    template_name = 'teachers_report/report.html'
     form_class = ReportForm
 
     @method_decorator(csrf_exempt)
@@ -27,8 +27,10 @@ class StudentReportView(ModuleMixin, FormView):
         period = self.request.POST['period']
         course = self.request.POST['course']
         search = []
-        if len(period) and len(course):
-            search = Student.objects.filter(matriculation__period_id=period, matriculation__level_id=course)
+        if len(period):
+            search = Teacher.objects.filter(contracts__perioddetail__period_id=period)
+        if len(course):
+            search = Teacher.objects.filter(contracts__perioddetail__matter__level_id=course)
         return search
 
     def post(self, request, *args, **kwargs):
@@ -44,9 +46,9 @@ class StudentReportView(ModuleMixin, FormView):
                     'data': self.get_search_data(),
                     'company': Company.objects.first(),
                     'date_joined': datetime.now().date(),
-                    'title': 'Reporte de Estudiantes'
+                    'title': 'Reporte de Docentes'
                 }
-                template = get_template('student_report/pdf.html')
+                template = get_template('teachers_report/pdf.html')
                 html_template = template.render(context).encode(encoding="UTF-8")
                 url_css = os.path.join(settings.BASE_DIR, 'static/lib/bootstrap-4.3.1/css/bootstrap.min.css')
                 pdf_file = HTML(string=html_template, base_url=request.build_absolute_uri()).write_pdf(
@@ -60,5 +62,5 @@ class StudentReportView(ModuleMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Reporte de Estudiantes'
+        context['title'] = 'Reporte de Docentes'
         return context
