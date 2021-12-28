@@ -292,16 +292,16 @@ class LegalRepresentative(models.Model):
     emergency_number_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
     email_rp = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo electrónico')
     blood_group_rp = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
-                                   verbose_name='Grupo sanguíneo')
+                                      verbose_name='Grupo sanguíneo')
     is_working_rp = models.BooleanField(null=True, blank=True, default=False, verbose_name='Trabaja')
     workplace_rp = models.CharField(max_length=30, null=True, blank=True, verbose_name='Lugar de trabajo')
     work_phone_rp = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono del trabajo')
     work_address_rp = models.CharField(max_length=70, null=True, blank=True, verbose_name='Dirección del trabajo')
     work_email_rp = models.EmailField(max_length=30, null=True, blank=True, verbose_name='Correo del trabajo')
     croquis_rp = models.FileField(upload_to='rs/croquis/%Y/%m/%d', null=True, blank=True,
-                               verbose_name='Croquis PDF')
+                                  verbose_name='Croquis PDF')
     basic_services_payment_rp = models.FileField(upload_to='rs/bs-payment/%Y/%m/%d', null=True, blank=True,
-                                              verbose_name='Comprobante de servicios básicos')
+                                                 verbose_name='Comprobante de servicios básicos')
     image_rp = models.ImageField(upload_to='rs/image/%Y/%m/%d', null=True, blank=True, verbose_name='Fotografía')
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
 
@@ -1085,9 +1085,16 @@ class Punctuations(models.Model):
     note = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     comment = models.CharField(max_length=200, null=True, blank=True)
     state = models.BooleanField(default=False)
+    evidence_doc = models.FileField(upload_to='punctuations/%Y/%m/%d', null=True, blank=True,
+                                    verbose_name='Documento de evidencia')
 
     def __str__(self):
         return self.comment
+
+    def get_evidence_doc(self):
+        if self.evidence_doc:
+            return '{}{}'.format(settings.MEDIA_URL, self.evidence_doc)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     def toJSON(self):
         item = model_to_dict(self)
@@ -1097,6 +1104,7 @@ class Punctuations(models.Model):
         item['student'] = self.student.toJSON()
         item['score'] = self.score.toJSON()
         item['note'] = format(self.note, '.2f')
+        item['evidence_doc'] = self.get_evidence_doc()
         return item
 
     class Meta:

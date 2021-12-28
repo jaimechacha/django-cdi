@@ -37,9 +37,10 @@
                            class="table table-bordered" id="tblActivities">
                         <thead>
                         <tr>
-                            <th style="width: 30%;">Estudiante</th>                            
-                            <th style="width: 55%;">Comentario</th>
-                            <th style="width: 15%;">Calificación</th>                            
+                            <th style="width: 25%;">Estudiante</th>
+                            <th style="width: 30%;">Comentario</th>
+                            <th style="width: 30%;">Documento</th>
+                            <th style="width: 15%;">Calificación</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -58,6 +59,6 @@
     </form>
     <script>
         activities.details.homework = {{ homework|safe }};
-        activities.list();        
+        activities.list();
     </script>
 {% endblock %}

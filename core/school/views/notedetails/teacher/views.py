@@ -181,7 +181,8 @@ class NotedetailsTeacherDeleteView(DeleteView):
         context['title'] = 'Notificación de eliminación'
         context['list_url'] = 'javascript: history.go(-1)'
         return context
-    
+
+
 class NotedetailsTeacherPuntuationsView(UpdateView):
     model = NoteDetails
     form_class = NoteDetailsForm
@@ -204,6 +205,7 @@ class NotedetailsTeacherPuntuationsView(UpdateView):
         action = request.POST['action']
         try:
             if action == 'punctuation':
+                print(request.POST['form_data'])
                 with transaction.atomic():
                     punctuationjson = json.loads(request.POST['notedetails'])
                     for p in punctuationjson['homework']:
@@ -211,7 +213,7 @@ class NotedetailsTeacherPuntuationsView(UpdateView):
                         calif.note = float(p['note'])
     
                         note = float(p['note'])
-                        score = Scores.objects.get(score = round(note, 0))
+                        score = Scores.objects.get(score=round(note, 0))
                         calif.score_id = score.id
                         
                         calif.comment = p['comment']

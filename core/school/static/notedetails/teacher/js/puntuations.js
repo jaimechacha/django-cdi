@@ -19,8 +19,7 @@ var activities = {
                 {data: "student.user.full_name"},
                 {data: "comment"},
                 {data: "note"},
-               
-                
+                {data: "evidence_doc"},
             ],
             columnDefs: [
                 ///{
@@ -32,6 +31,14 @@ var activities = {
                         //return data => `<select>${['fruit', 'vegie', 'berry'].reduce((options, item) => options+='<option value="'+item+'" '+(item == data ? 'selected' : '')+'>'+item+'</option>', '<option value=""></option>')}</select>`
                     //}
                 //},
+                {
+                    targets: [-2],
+                    class: 'text-center',
+                    render: function (data, type, row) {
+                        //return '<select size="1" id="row-1-office" name="note"><option value="Edinburgh" selected="selected">' + row.note + '</option><option value="London">Excelente</option></select>';
+                        return '<input class="form-control input-sm" type="file" autocomplete="off" name="comment" value="' + row.evidence_doc + '">';
+                    }
+                },
                 {
                     targets: [-1],
                     class: 'text-center',
@@ -55,7 +62,7 @@ var activities = {
                     }
                 },
                 {
-                    targets: [-2],
+                    targets: [-3],
                     class: 'text-center',
                     render: function (data, type, row) {
                         //return '<select size="1" id="row-1-office" name="note"><option value="Edinburgh" selected="selected">' + row.note + '</option><option value="London">Excelente</option></select>';
@@ -139,12 +146,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 return false;
             }
 
+            let form_data = new FormData($(fv.form)[0]);
+            console.log(form_data)
+
             submit_with_ajax('Notificación',
                 '¿Estas seguro de realizar la siguiente acción?',
                 pathname,
                 {
                     'action': 'punctuation',
-                    'notedetails': JSON.stringify(activities.details)
+                    'notedetails': JSON.stringify(activities.details),
                 },
                 function () {
                     location.href = fv.form.getAttribute('data-url');
@@ -160,7 +170,7 @@ $(function () {
         .on('change', 'input[name="note"]', function () {
             var tr = tblActivities.cell($(this).closest('td, li')).index();
             //activities.details.homework[tr.row].note = parseInt($(this).val());
-            activities.details.homework[tr.row].note = $(this).val();            
+            activities.details.homework[tr.row].note = $(this).val();
         })
         .on('keyup', 'input[name="comment"]', function () {
             var tr = tblActivities.cell($(this).closest('td, li')).index();
