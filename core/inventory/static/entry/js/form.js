@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 return false;
             }
 
-            dialog_submit_to_ajax('Notificación',
+            submit_with_ajax('Notificación',
                 '¿Estas seguro de guardar la siguiente compra?',
                 pathname,
                 {
