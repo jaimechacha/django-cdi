@@ -4,6 +4,60 @@ let select_level;
 let tblMatter = null;
 let fv;
 
+const items = {
+    details: {
+        level: '',
+        students: []
+    },
+    assign_position: function () {
+        $.each(this.details.students, function (i, item) {
+            item.pos = i;
+        });
+    },
+    list_students: function () {
+        this.assign_position()
+        tblMaterials = $('#tblMatter').DataTable({
+            responsive: true,
+            autoWidth: false,
+            destroy: true,
+            data: this.details.students,
+            ordering: false,
+            lengthChange: false,
+            paginate: false,
+            columns: [
+                {data: "id"},
+                {data: "period"},
+                {data: "level"},
+                {data: "name"},
+            ],
+            columnDefs: [
+                {
+                    targets: [0],
+                    class: 'text-center',
+                    render: function (data, type, row) {
+                        return '<a rel="remove" class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash fa-1x" aria-hidden="true"></i></a>';
+                    },
+                },
+            ],
+            rowCallback: function (row, data, index) {
+
+            },
+        })
+    },
+    get_students_ids: function () {
+        let ids = [];
+        $.each(this.details.students, function (i, item) {
+            ids.push(item.id);
+        });
+        return ids;
+    },
+    add_students: function (item) {
+        this.details.students.push(item);
+        console.log(this.details.students)
+        this.list_students();
+    },
+}
+
 function getMatters() {
 
     let parameters = {
@@ -35,7 +89,6 @@ function getMatters() {
             {data: "contract.teacher.user.full_name"},
             {data: "contract.job.name"},
             {data: "matter.name"},
-            {data: "available_coupons"},
         ],
         columnDefs: [
             /*{
@@ -122,13 +175,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            var parameters = new FormData($(fv.form)[0]);
-            parameters.append('action', $('input[name="action"]').val());
-            parameters.append('matters', JSON.stringify(tblMatter.rows().data().toArray()));
-            console.log(parameters);
-            submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
-                location.href = fv.form.getAttribute('data-url');
-            });
+            // var parameters = new FormData($(fv.form)[0]);
+            // parameters.append('action', $('input[name="action"]').val());
+            // parameters.append('matters', JSON.stringify(tblMatter.rows().data().toArray()));
+            // console.log(parameters);
+            // submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
+            //     location.href = fv.form.getAttribute('data-url');
+            // });
         });
 });
 
@@ -138,6 +191,40 @@ $(function () {
     select_student = $('select[name="student"]');
     select_level = $('select[name="level"]');
 
+    $('#btnRemoveAllStudents').on('click', function () {
+        if (items.details.students.length === 0) return false;
+        dialog_action(
+            'Notificación',
+            '¿Estas seguro de eliminar todos los estudiantes de la lista?',
+            function () {
+                items.details.students = [];
+                items.list_students();
+            });
+    });
+
+    $('#btnAddStudent').on('click', () => {
+        fv.revalidateField('period');
+        fv.revalidateField('level');
+        fv.revalidateField('student');
+
+        fv.validate()
+            .then(function(status) {
+                if (status === 'Valid') {
+                    const std = {
+                        id: select_student.val(),
+                        name: $("#id_student option:selected").text(),
+                        level: $("#id_level option:selected").text(),
+                        level_id: select_level.val(),
+                        period: $("#id_period option:selected").text(),
+                        period_id: select_period.val()
+                    }
+                    items.add_students(std);
+                }
+            })
+        fv.resetForm(true)
+
+    })
+
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es",
@@ -145,18 +232,18 @@ $(function () {
 
     select_period
         .on('change', function () {
-            getMatters();
+            // getMatters();
             fv.revalidateField('period');
         });
 
     select_student
         .on('change', function () {
-            getMatters();
+            // getMatters();
             fv.revalidateField('student');
         });
 
     select_level.on('change', function () {
-        getMatters();
+        // getMatters();
         fv.revalidateField('level');
     });
 
@@ -168,6 +255,6 @@ $(function () {
         });
 
     if ($('input[name="action"]').val() === 'edit') {
-        getMatters();
+        // getMatters();
     }
 });
