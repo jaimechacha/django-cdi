@@ -79,9 +79,13 @@ class MatriculationCreateView(PermissionMixin, CreateView):
             if action == 'search_matters_period':
                 data = []
                 if len(period) and len(level):
+                    enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
+                    max_level_coupon = Cursos.objects.get(id=level).max_coupon
+                    available_coupons = max_level_coupon - enroll_students
                     for i in PeriodDetail.objects.filter(period_id=period, matter__level=level):
                         item = i.toJSON()
                         item['status'] = False
+                        item['available_coupons'] = available_coupons
                         data.append(item)
             elif action == 'add':
                 with transaction.atomic():

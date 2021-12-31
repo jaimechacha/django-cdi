@@ -1,12 +1,12 @@
-var select_period;
-var select_student;
-var select_level;
-var tblMatter = null;
-var fv;
+let select_period;
+let select_student;
+let select_level;
+let tblMatter = null;
+let fv;
 
 function getMatters() {
 
-    var parameters = {
+    let parameters = {
         'action': 'search_matters_period',
         'period': select_period.val(),
         'student': select_period.val(),
@@ -35,7 +35,7 @@ function getMatters() {
             {data: "contract.teacher.user.full_name"},
             {data: "contract.job.name"},
             {data: "matter.name"},
-            {data: "matter.level.name"},
+            {data: "available_coupons"},
         ],
         columnDefs: [
             /*{

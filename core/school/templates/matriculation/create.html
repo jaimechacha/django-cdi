@@ -30,16 +30,10 @@
                     <input type="hidden" name="action" id="action" value="{{ action }}">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Periodo:</label>
                                 {{ form.period }}
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Estudiante:</label>
-                                {{ form.student }}
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -48,16 +42,40 @@
                                 {{ form.level }}
                             </div>
                         </div>
+                        <div class="col-lg-5">
+                            <div class="form-group ml-4">
+                                <label>Cupos disponibles:</label>
+                                <h3>0</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>Estudiante:</label>
+                                {{ form.student }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Opciones:</label><br>
+                            <button type="submit" class="btn btn-primary btn-flat">
+                                <i class="fas fa-save" aria-hidden="true"></i> Agregar
+                            </button>
+                            <button type="button" class="btn btn-danger btn-flat" id="btnRemoveAllMaterials">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Remover todo
+                            </button>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <table width="100%" class="table table-bordered" id="tblMatter">
                                 <thead>
                                 <tr>
-                                    <th>Docente</th>
-                                    <th>Cargo</th>
-                                    <th>Materia</th>
+                                    <th>Eliminar</th>
+                                    <th>Estudiante</th>
                                     <th>Nivel</th>
+                                    <th>Materias</th>
                                     {#                                    <th>Selección</th>#}
                                 </tr>
                                 </thead>
@@ -66,6 +84,23 @@
                             </table>
                         </div>
                     </div>
+{#                    <div class="row">#}
+{#                        <div class="col-lg-12">#}
+{#                            <table width="100%" class="table table-bordered" id="tblMatter">#}
+{#                                <thead>#}
+{#                                <tr>#}
+{#                                    <th>Docente</th>#}
+{#                                    <th>Cargo</th>#}
+{#                                    <th>Materia</th>#}
+{#                                    <th>Nivel</th>#}
+                                    {#                                    <th>Selección</th>#}
+{#                                </tr>#}
+{#                                </thead>#}
+{#                                <tbody>#}
+{#                                </tbody>#}
+{#                            </table>#}
+{#                        </div>#}
+{#                    </div>#}
                 </div>
             </div>
             <div class="card-footer">
