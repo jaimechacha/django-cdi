@@ -3,6 +3,7 @@ let select_student;
 let select_level;
 let tblMatter = null;
 let fv;
+let level_coupons;
 
 const items = {
     details: {
@@ -16,7 +17,7 @@ const items = {
     },
     list_students: function () {
         this.assign_position()
-        tblMaterials = $('#tblMatter').DataTable({
+        tblMatter = $('#tblMatter').DataTable({
             responsive: true,
             autoWidth: false,
             destroy: true,
@@ -43,13 +44,6 @@ const items = {
 
             },
         })
-    },
-    get_students_ids: function () {
-        let ids = [];
-        $.each(this.details.students, function (i, item) {
-            ids.push(item.id);
-        });
-        return ids;
     },
     add_students: function (item) {
         this.details.students.push(item);
@@ -90,16 +84,6 @@ function getMatters() {
             {data: "contract.job.name"},
             {data: "matter.name"},
         ],
-        columnDefs: [
-            /*{
-                targets: [-1],
-                class: 'text-center',
-                render: function (data, type, row) {
-                    var checked = row.status === 1 ? ' checked' : '';
-                    return '<label class="checkbox-inline"><input type="checkbox" name="status" ' + checked + '></label>';
-                }
-            },*/
-        ],
         rowCallback: function (row, data, index) {
 
         },
@@ -107,6 +91,18 @@ function getMatters() {
 
         }
     });
+}
+
+function getCoupons() {
+    let parameters = {
+        'action': 'get_coupons',
+        'period': select_period.val(),
+        'level': select_level.val(),
+    };
+    $.post(pathname, parameters, (res) => {
+        level_coupons = res.coupons;
+        $("#level_coupons").text(res.coupons);
+    })
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -208,7 +204,7 @@ $(function () {
         fv.revalidateField('student');
 
         fv.validate()
-            .then(function(status) {
+            .then(function (status) {
                 if (status === 'Valid') {
                     const std = {
                         id: select_student.val(),
@@ -218,11 +214,23 @@ $(function () {
                         period: $("#id_period option:selected").text(),
                         period_id: select_period.val()
                     }
+                    const fnd_student = items.details.students.find(s => s.id === std.id)
+                    const fnd_level = items.details.students.find(s => s.level_id !== std.level_id)
+                    if (fnd_student) {
+                        alert("Estudiante ya ha sido agregado")
+                        return
+                    }
+                    if (fnd_level) {
+                        alert("Compruebe que el nivel seleccionado sea el mismo")
+                        return;
+                    }
+                    if (level_coupons === items.details.students.length){
+                        alert("No hay más cupos disponibles para este nivel")
+                        return;
+                    }
                     items.add_students(std);
                 }
             })
-        fv.resetForm(true)
-
     })
 
     $('.select2').select2({
@@ -232,27 +240,30 @@ $(function () {
 
     select_period
         .on('change', function () {
-            // getMatters();
             fv.revalidateField('period');
         });
 
     select_student
         .on('change', function () {
-            // getMatters();
             fv.revalidateField('student');
         });
 
     select_level.on('change', function () {
-        // getMatters();
         fv.revalidateField('level');
+        getCoupons()
     });
 
     $('#tblMatter tbody')
         .on('change', 'input[name="status"]', function () {
-            var tr = tblMatter.cell($(this).closest('td, li')).index(),
+            let tr = tblMatter.cell($(this).closest('td, li')).index(),
                 row = tblMatter.row(tr.row).data();
             row.status = this.checked ? 1 : 0;
-        });
+        }).on('click', 'a[rel="remove"]', function () {
+        const td = tblMatter.cell($(this).closest('td, li')).index();
+        const row = tblMatter.row(td.row).data();
+        items.details.students.splice(row.pos, 1);
+        items.list_students();
+    });
 
     if ($('input[name="action"]').val() === 'edit') {
         // getMatters();

@@ -72,21 +72,24 @@ class MatriculationCreateView(PermissionMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         data = {}
-        action = request.POST['action']
+        print(request.POST)
         try:
+            action = request.POST['action']
             period = request.POST['period']
             level = request.POST['level']
             if action == 'search_matters_period':
                 data = []
                 if len(period) and len(level):
-                    enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
-                    max_level_coupon = Cursos.objects.get(id=level).max_coupon
-                    available_coupons = max_level_coupon - enroll_students
                     for i in PeriodDetail.objects.filter(period_id=period, matter__level=level):
                         item = i.toJSON()
                         item['status'] = False
-                        item['available_coupons'] = available_coupons
                         data.append(item)
+            elif action == 'get_coupons':
+                enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
+                max_level_coupon = Cursos.objects.get(id=level).max_coupon
+                available_coupons = max_level_coupon - enroll_students
+                print(available_coupons)
+                data['coupons'] = available_coupons
             elif action == 'add':
                 with transaction.atomic():
                     enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
