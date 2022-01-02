@@ -72,11 +72,10 @@ class MatriculationCreateView(PermissionMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         data = {}
-        print(request.POST)
         try:
             action = request.POST['action']
-            period = request.POST['period']
-            level = request.POST['level']
+            period = request.POST.get('period', None)
+            level = request.POST.get('level', None)
             if action == 'search_matters_period':
                 data = []
                 if len(period) and len(level):
@@ -88,24 +87,27 @@ class MatriculationCreateView(PermissionMixin, CreateView):
                 enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
                 max_level_coupon = Cursos.objects.get(id=level).max_coupon
                 available_coupons = max_level_coupon - enroll_students
-                print(available_coupons)
                 data['coupons'] = available_coupons
             elif action == 'add':
                 with transaction.atomic():
-                    enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
-                    max_level_coupon = Cursos.objects.get(id=level).max_coupon
-                    if enroll_students == max_level_coupon:
-                        raise AssertionError("No hay cupos disponibles para este nivel")
-                    matriculation = Matriculation()
-                    matriculation.student_id = request.POST['student']
-                    matriculation.period_id = period
-                    matriculation.level_id = level
-                    matriculation.save()
-                    for i in json.loads(request.POST['matters']):
-                        det = MatriculationDetail()
-                        det.matriculation_id = matriculation.id
-                        det.perioddetail_id = int(i['id'])
-                        det.save()
+                    # enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
+                    # max_level_coupon = Cursos.objects.get(id=level).max_coupon
+                    # if enroll_students == max_level_coupon:
+                    #     raise AssertionError("No hay cupos disponibles para este nivel")
+
+                    students = json.loads(request.POST['students'])
+                    for s in students:
+                        matriculation = Matriculation()
+                        matriculation.student_id = s['id']
+                        matriculation.period_id = s['period_id']
+                        matriculation.level_id = s['level_id']
+                        # matriculation.save()
+
+                #     for i in json.loads(request.POST['matters']):
+                #         det = MatriculationDetail()
+                #         det.matriculation_id = matriculation.id
+                #         det.perioddetail_id = int(i['id'])
+                #         det.save()
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:

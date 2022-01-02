@@ -133,6 +133,41 @@ function submit_formdata_with_ajax_form(fv) {
     });
 }
 
+
+function submit_post(title, url, parameters, callback) {
+    $.confirm({
+        // type: 'blue',
+        theme: 'material',
+        title: title,
+        icon: 'fas fa-info-circle',
+        content: '¿Está seguro de realizar la siguiente acción?',
+        columnClass: 'small',
+        typeAnimated: true,
+        cancelButtonClass: "btn-primary",
+        draggable: true,
+        dragWindowBorder: false,
+        buttons: {
+            info: {
+                text: "Si",
+                btnClass: 'btn-primary',
+                action: function () {
+                    $.post(url, parameters, (success) => {
+                        callback();
+                    })
+                }
+            },
+            danger: {
+                text: "No",
+                btnClass: 'btn-red',
+                action: function () {
+
+                }
+            },
+        }
+    });
+}
+
+
 function submit_with_ajax(title, content, url, parameters, callback) {
     $.confirm({
         // type: 'blue',
