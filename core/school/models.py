@@ -271,6 +271,7 @@ class Student(models.Model):
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
         item['parish'] = self.parish.toJSON()
+        item['full_name'] = self.user.get_full_name()
         return item
 
     class Meta:
@@ -1083,7 +1084,7 @@ class Punctuations(models.Model):
     date_joined = models.DateField(default=datetime.now)
     score = models.ForeignKey(Scores, on_delete=models.PROTECT)
     note = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
-    comment = models.CharField(max_length=200, null=True, blank=True)
+    comment = models.CharField(max_length=200, null=True, blank=True, default='')
     state = models.BooleanField(default=False)
     evidence_doc = models.FileField(upload_to='punctuations/%Y/%m/%d', null=True, blank=True,
                                     verbose_name='Documento de evidencia')

@@ -10,7 +10,7 @@ from django.views.generic import FormView
 from weasyprint import CSS, HTML
 
 from config import settings
-from core.reports.forms import ReportForm, Student, Teacher, Cursos, NoteDetails
+from core.reports.forms import ReportForm, Student, Teacher, Cursos, NoteDetails, Punctuations, Matter
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
 
@@ -41,6 +41,27 @@ class GradesReportView(ModuleMixin, FormView):
                 data = []
                 for i in self.get_search_data():
                     data.append(i.toJSON())
+            elif action == 'search_students':
+                data = []
+                period = request.POST.get('period', None)
+                level = request.POST.get('course', None)
+                matter = request.POST.get('matter', None)
+                # mat = Matter.objects.get(id=int(matter))
+                # crs = Cursos.objects.filter(matter=mat).exists()
+                # print('COURSE', crs)
+                students = Student.objects.filter(
+                    matriculation__period_id=int(period),
+                    matriculation__level_id=int(level)
+                )
+                for s in students:
+                    punt = Punctuations.objects.filter(
+                        student_id=s.id,
+                        notedetails__perioddetail__matter_id=int(matter)
+                    )
+                    obj = {0: s.user.get_full_name()}
+                    for i, p in enumerate(punt):
+                        obj[i+1] = str(p.note)
+                    data.append(obj)
             elif action == 'search_activities':
                 data = []
                 matter = self.request.POST['matter']
