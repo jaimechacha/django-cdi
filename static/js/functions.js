@@ -151,9 +151,17 @@ function submit_post(title, url, parameters, callback) {
                 text: "Si",
                 btnClass: 'btn-primary',
                 action: function () {
-                    $.post(url, parameters, (success) => {
-                        callback();
-                    })
+                    $.post(
+                        url,
+                        parameters,
+                        (request) => {
+                            if (!request.hasOwnProperty('error')) {
+                                callback();
+                                return false;
+                            }
+                            message_error(request.error);
+                        }
+                    )
                 }
             },
             danger: {

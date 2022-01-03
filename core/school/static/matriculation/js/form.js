@@ -82,6 +82,7 @@ function getMatters() {
             {data: "contract.teacher.user.full_name"},
             {data: "contract.job.name"},
             {data: "matter.name"},
+            {data: "matter.level.name"},
         ],
         rowCallback: function (row, data, index) {
 
@@ -206,7 +207,7 @@ $(function () {
     });
 
     if ($('input[name="action"]').val() === 'edit') {
-        // getMatters();
+        getMatters();
     }
 
     $('#btnRemoveAllStudents').on('click', function () {

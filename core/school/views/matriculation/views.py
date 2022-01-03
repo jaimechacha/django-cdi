@@ -70,6 +70,13 @@ class MatriculationCreateView(PermissionMixin, CreateView):
         })
         return form
 
+    def verify_coupons(self, period, level, cant):
+        enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
+        max_level_coupon = Cursos.objects.get(id=level).max_coupon
+        available_coupons = max_level_coupon - enroll_students
+        if cant > available_coupons:
+            raise AssertionError("Verifique los cupos disponibles para este nivel")
+
     def post(self, request, *args, **kwargs):
         data = {}
         try:
@@ -90,27 +97,24 @@ class MatriculationCreateView(PermissionMixin, CreateView):
                 data['coupons'] = available_coupons
             elif action == 'add':
                 with transaction.atomic():
-                    # enroll_students = Matriculation.objects.filter(period_id=period, level=level).count()
-                    # max_level_coupon = Cursos.objects.get(id=level).max_coupon
-                    # if enroll_students == max_level_coupon:
-                    #     raise AssertionError("No hay cupos disponibles para este nivel")
-
                     students = json.loads(request.POST['students'])
+                    self.verify_coupons(students[0]['period_id'], students[0]['level_id'], len(students))
                     for s in students:
                         matriculation = Matriculation()
                         matriculation.student_id = s['id']
                         matriculation.period_id = s['period_id']
                         matriculation.level_id = s['level_id']
-                        # matriculation.save()
+                        matriculation.save()
 
-                #     for i in json.loads(request.POST['matters']):
-                #         det = MatriculationDetail()
-                #         det.matriculation_id = matriculation.id
-                #         det.perioddetail_id = int(i['id'])
-                #         det.save()
+                        for m in PeriodDetail.objects.filter(period_id=s['period_id'], matter__level=s['level_id']):
+                            det = MatriculationDetail()
+                            det.matriculation_id = matriculation.id
+                            det.perioddetail_id = m.id
+                            det.save()
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:
+            print(e)
             data['error'] = str(e)
         return HttpResponse(json.dumps(data), content_type='application/json')
 
