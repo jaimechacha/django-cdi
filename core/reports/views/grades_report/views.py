@@ -86,6 +86,7 @@ class GradesReportView(ModuleMixin, FormView):
                 data['error'] = 'No ha ingresado una opción'
         except Exception as e:
             data['error'] = str(e)
+        print(data)
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):

@@ -28,7 +28,6 @@ function get_number_activities() {
             })
             content += '</tr></thead>';
             $(table).append(content)
-            // console.log(result)
         }
     });
 }
@@ -46,6 +45,9 @@ function initTable() {
 }
 
 function generateGradeReport() {
+    // $('#tblReport').DataTable().destroy();
+    // $('#tblReport tbody').empty();
+
     let parameters = {
         'action': 'search_students',
         'period': select_period.val(),
@@ -62,22 +64,29 @@ function generateGradeReport() {
 
     let data_grades = null
     let columns_table = []
+    let columns_name = []
 
     $.ajax({
         url: pathname,
         type: 'POST',
         data: parameters,
         success: function (result) {
-            data_grades = result
-            const columnNames = Object.keys(data_grades[0]);
-            columnNames.forEach(e => columns_table.push({data: e}))
 
-            $('#tblReport').DataTable({
+            data_grades = result
+            columns_name = Object.keys(data_grades[0]);
+
+            columns_table = []
+            columns_name.forEach(e => columns_table.push({data: e}))
+
+            $('#tblReport').DataTable().destroy();
+            $('#tblReport tbody').empty();
+
+            tblReport = $('#tblReport').DataTable({
                 destroy: true,
                 responsive: true,
                 autoWidth: false,
                 data: data_grades,
-                order: [[0, 'asc']],
+                // order: [[0, 'asc']],
                 paging: false,
                 ordering: true,
                 searching: false,
@@ -273,10 +282,6 @@ $(function () {
     $('.drp-buttons').hide();
 
 
-    initTable();
+    // initTable();
 
-
-    // $('#tblReport tr').each(function () {
-    //     $(this).append('<th>A7</th>');
-    // });
 });
