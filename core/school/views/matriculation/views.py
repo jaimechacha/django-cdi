@@ -8,7 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, FormView, UpdateView, DeleteView
 
 from core.reports.forms import ReportForm
-from core.school.forms import Matriculation, MatriculationForm, PeriodDetail, MatriculationDetail, Period, Cursos
+from core.school.forms import Matriculation, MatriculationForm, PeriodDetail, MatriculationDetail, Period, Cursos, \
+    Student
 from core.security.mixins import PermissionMixin
 
 
@@ -95,6 +96,13 @@ class MatriculationCreateView(PermissionMixin, CreateView):
                 max_level_coupon = Cursos.objects.get(id=level).max_coupon
                 available_coupons = max_level_coupon - enroll_students
                 data['coupons'] = available_coupons
+            elif action == 'search_student':
+                data = []
+                level = request.POST.get('level', None)
+                stds = json.loads(request.POST['students'])
+                for s in Student.objects.filter(user__dni__icontains=request.POST['term']).exclude(
+                        matriculation__level_id=int(level)).exclude(id__in=stds)[0:10]:
+                    data.append(s.toJSON())
             elif action == 'add':
                 with transaction.atomic():
                     students = json.loads(request.POST['students'])
@@ -106,7 +114,7 @@ class MatriculationCreateView(PermissionMixin, CreateView):
                         matriculation.level_id = s['level_id']
                         matriculation.save()
 
-                        for m in PeriodDetail.objects.filter(period_id=s['period_id'], matter__level=s['level_id']):
+                        for m in PeriodDetail.objects.filter(period_id=s['period_id'], matter__level_id=s['level_id']):
                             det = MatriculationDetail()
                             det.matriculation_id = matriculation.id
                             det.perioddetail_id = m.id
@@ -162,6 +170,7 @@ class MatriculationUpdateView(PermissionMixin, UpdateView):
             elif action == 'edit':
                 with transaction.atomic():
                     matriculation = self.get_object()
+                    print(request.POST['period'])
                     matriculation.student_id = request.POST['student']
                     matriculation.period_id = request.POST['period']
                     matriculation.level = request.POST['level']

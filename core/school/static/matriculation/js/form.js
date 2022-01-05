@@ -44,6 +44,13 @@ const items = {
             },
         })
     },
+    get_students_ids: function () {
+        let ids = [];
+        $.each(this.details.students, function (i, item) {
+            ids.push(item.id);
+        });
+        return ids;
+    },
     add_students: function (item) {
         this.details.students.push(item);
         console.log(this.details.students)
@@ -171,14 +178,45 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            // let parameters = new FormData($(fv.form)[0]);
-            // parameters.append('action', $('input[name="action"]').val());
-            // parameters.append('matters', JSON.stringify(tblMatter.rows().data().toArray()));
-            // submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
-            //     location.href = fv.form.getAttribute('data-url');
-            // });
+            if ($('input[name="action"]').val() === 'edit') {
+                let parameters = new FormData($(fv.form)[0]);
+                parameters.append('action', $('input[name="action"]').val());
+                parameters.append('matters', JSON.stringify(tblMatter.rows().data().toArray()));
+                submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
+                    location.href = fv.form.getAttribute('data-url');
+                });
+            }
         });
 });
+
+function add_student_to_table(item) {
+    fv.revalidateField('period');
+    fv.revalidateField('level');
+
+    fv.validate()
+        .then(function (status) {
+            if (status === 'Valid') {
+                const std = {
+                    id: item.id,
+                    name: item.full_name,
+                    level: $("#id_level option:selected").text(),
+                    level_id: select_level.val(),
+                    period: $("#id_period option:selected").text(),
+                    period_id: select_period.val()
+                }
+                const fnd_level = items.details.students.find(s => s.level_id !== std.level_id)
+                if (fnd_level) {
+                    alert("Compruebe que el nivel seleccionado sea el mismo")
+                    return;
+                }
+                if (level_coupons === items.details.students.length) {
+                    alert("No hay más cupos disponibles para este nivel")
+                    return;
+                }
+                items.add_students(std);
+            }
+        })
+}
 
 $(function () {
 
@@ -189,6 +227,42 @@ $(function () {
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es",
+    });
+
+    $("#search_student").autocomplete({
+        source: function (request, response) {
+            if (select_level.val() === '') {
+                alert('Seleccione un curso')
+                $('#search_student').val('').focus();
+                return false;
+            }
+            $.ajax({
+                url: pathname,
+                data: {
+                    'action': 'search_student',
+                    'term': request.term,
+                    'level': select_level.val(),
+                    'students': JSON.stringify(items.get_students_ids()),
+                },
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        min_length: 3,
+        delay: 300,
+        select: function (event, ui) {
+            event.preventDefault();
+            add_student_to_table(ui.item)
+            $(this).blur();
+            $(this).val('').focus();
+        }
+    });
+
+    $('#clearSearchStudent').on('click', function () {
+        $('#search_student').val('').focus();
     });
 
     select_period
@@ -220,41 +294,6 @@ $(function () {
                 items.list_students();
             });
     });
-
-    $('#btnAddStudent').on('click', () => {
-        fv.revalidateField('period');
-        fv.revalidateField('level');
-        fv.revalidateField('student');
-
-        fv.validate()
-            .then(function (status) {
-                if (status === 'Valid') {
-                    const std = {
-                        id: select_student.val(),
-                        name: $("#id_student option:selected").text(),
-                        level: $("#id_level option:selected").text(),
-                        level_id: select_level.val(),
-                        period: $("#id_period option:selected").text(),
-                        period_id: select_period.val()
-                    }
-                    const fnd_student = items.details.students.find(s => s.id === std.id)
-                    const fnd_level = items.details.students.find(s => s.level_id !== std.level_id)
-                    if (fnd_student) {
-                        alert("Estudiante ya ha sido agregado")
-                        return
-                    }
-                    if (fnd_level) {
-                        alert("Compruebe que el nivel seleccionado sea el mismo")
-                        return;
-                    }
-                    if (level_coupons === items.details.students.length) {
-                        alert("No hay más cupos disponibles para este nivel")
-                        return;
-                    }
-                    items.add_students(std);
-                }
-            })
-    })
 
     $('#tblMatter tbody')
         .on('change', 'input[name="status"]', function () {

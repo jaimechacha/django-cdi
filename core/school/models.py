@@ -272,6 +272,7 @@ class Student(models.Model):
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
         item['parish'] = self.parish.toJSON()
         item['full_name'] = self.user.get_full_name()
+        item['value'] = self.user.get_full_name()
         return item
 
     class Meta:
