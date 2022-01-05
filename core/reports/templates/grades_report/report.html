@@ -10,6 +10,16 @@
 {% endblock %}
 {% block content_report %}
     <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Rangos de fechas:</label>
+                <div class="input-group">
+                    {{ form.date_range }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-3">
             <div class="form-group">
                 <label>Período:</label>
@@ -22,10 +32,19 @@
                 {{ form.course }}
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="form-group">
-                <label>Materia:</label>
-                {{ form.matter }}
+                <label>Búsqueda de asignatura:</label>
+                <div class="input-group margin">
+                    <input type="text" class="form-control" autocomplete="off" name="search_materia"
+                           id="search_materia" placeholder="Ingrese el nombre de la asignatura">
+                    <span class="input-group-btn">
+                          <button class="btn btn-primary btn-flat my-group-button" type="button"
+                                  id="clearSearchMateria">
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                          </button>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -34,12 +53,9 @@
             <hr>
             <table class="table table-bordered table-md" id="tblReport" width="100%">
                 <thead>
-                    <tr>
-                        <th style="width: 15%;">Estudiante</th>
-{#                        <th style="width: 15%;">A2</th>#}
-{#                        <th style="width: 15%;">A3</th>#}
-{#                        <th style="width: 15%;">A4</th>#}
-                    </tr>
+                <tr>
+                    <th style="width: 15%;" class="text-center">Estudiante</th>
+                </tr>
                 </thead>
                 <tbody></tbody>
             </table>

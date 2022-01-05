@@ -706,6 +706,7 @@ class Matter(models.Model):
     def toJSON(self):
         item = model_to_dict(self)
         item['level'] = self.level.toJSON()
+        item['value'] = self.name
         return item
 
     class Meta:
