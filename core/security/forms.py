@@ -16,7 +16,7 @@ class ModuleTypeForm(ModelForm):
             'name': forms.TextInput(attrs={'placeholder': 'Ingrese un nombre'}),
             'icon': forms.TextInput(attrs={'placeholder': 'ingrese un icono de font awesone'}),
         }
-        exclude = []
+        exclude = ['position']
 
     def save(self, commit=True):
         data = {}

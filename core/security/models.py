@@ -65,6 +65,7 @@ class ModuleType(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Nombre')
     icon = models.CharField(max_length=100, unique=True, verbose_name='Icono')
     is_active = models.BooleanField(default=True, verbose_name='Estado')
+    position = models.IntegerField(null=True, blank=True, verbose_name='Posición')
 
     def __str__(self):
         return self.name

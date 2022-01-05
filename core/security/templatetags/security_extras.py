@@ -10,7 +10,7 @@ register = template.Library()
 @register.filter
 def getmoduletype(group_id):
     return ModuleType.objects.filter(module__groupmodule__group_id=group_id, is_active=True).distinct().order_by(
-        'name')
+        'position')
 
 
 @register.filter()

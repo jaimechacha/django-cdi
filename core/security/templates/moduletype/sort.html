@@ -1,0 +1,54 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block head_form %}
+    <script src="{% static 'moduletype/js/sort.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <style>
+        #sortable {
+            list-style-type: none;
+        }
+    </style>
+    <div class="card {{ dshboard.card }}">
+        <div class="card-header">
+            <h3 class="card-title">
+                {% if action == 'add' %}
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                {% else %}
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                {% endif %}
+                {{ title }}
+            </h3>
+        </div>
+        <div class="card-body" style="display: block;">
+            <div class="container-fluid">
+                <input type="hidden" name="action" id="action" value="{{ action }}">
+                <input type="hidden" name="list_url" id="list_url" value="{{ list_url }}">
+                {% csrf_token %}
+                <ul id="sortable">
+                    {% for m in module_types %}
+                        <li id="{{ m.id }}">
+                            <div class="btn btn-info btn-sm mb-1">
+                                <i class="{{ m.icon }}"></i>
+                                {{ m.name }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% block box_footer %}
+            <div class="card-footer">
+                {% block buttons %}
+                    <button type="button" class="btn btn-primary btn-flat" id="btnSubmit">
+                        <i class="fas fa-save" aria-hidden="true"></i> Guardar
+                    </button>
+                    <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

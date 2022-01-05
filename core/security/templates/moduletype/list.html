@@ -22,13 +22,34 @@
                 {% endif %}
             </td>
             <td class="text-center">
-                <a href="{% url 'moduletype_update' i.id %}" data-toggle="tooltip" title="Editar registro" class="btn btn-warning btn-xs btn-flat">
+                <a href="{% url 'moduletype_update' i.id %}" data-toggle="tooltip" title="Editar registro"
+                   class="btn btn-warning btn-xs btn-flat">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="{% url 'moduletype_delete' i.id %}" rel="delete" data-toggle="tooltip" title="Eliminar registro" class="btn btn-danger btn-xs btn-flat">
+                <a href="{% url 'moduletype_delete' i.id %}" rel="delete" data-toggle="tooltip"
+                   title="Eliminar registro" class="btn btn-danger btn-xs btn-flat">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>
     {% endfor %}
+{% endblock %}
+
+{% block box_footer %}
+    <div class="card-footer">
+        {% block box_footer_buttons %}
+            {% if create_url %}
+                <a href="{{ create_url }}" class="btn btn-primary btn-flat">
+                    <i class="fas fa-plus"></i> Nuevo Registro
+                </a>
+            {% endif %}
+            {% block box_footer_add_button %}{% endblock %}
+            <a href="{% url 'moduletype_sort' %}" class="btn btn-secondary btn-flat">
+                <i class="fas fa-list-ol"></i> Ordenar
+            </a>
+            <a href="{{ list_url }}" class="btn btn-success btn-flat">
+                <i class="fas fa-sync-alt"></i> Actualizar
+            </a>
+        {% endblock %}
+    </div>
 {% endblock %}

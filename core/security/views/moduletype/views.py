@@ -1,10 +1,11 @@
 import json
 
 from django.http import JsonResponse, HttpResponse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
 from core.security.forms import ModuleTypeForm
 from core.security.mixins import PermissionMixin
@@ -121,6 +122,42 @@ class TypeUpdateView(PermissionMixin, UpdateView):
         context['list_url'] = self.success_url
         context['title'] = 'Edición de un Tipo de Módulo'
         context['action'] = 'edit'
+        return context
+
+
+class TypeSortView(PermissionMixin, TemplateView):
+    template_name = 'moduletype/sort.html'
+    success_url = reverse_lazy('moduletype_list')
+    permission_required = 'change_moduletype'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        action = request.POST['action']
+        try:
+            if action == 'sort':
+                list_mod = []
+                md_types = json.loads(request.POST['module_types'])
+                for m in md_types:
+                    instance = ModuleType.objects.get(id=m['id'])
+                    instance.position = int(m['pos'])
+                    list_mod.append(instance)
+                ModuleType.objects.bulk_update(list_mod, ['position'])
+            else:
+                data['error'] = 'No ha seleccionado ninguna opción'
+        except Exception as e:
+            data['error'] = str(e)
+        return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['list_url'] = self.success_url
+        context['title'] = 'Ordenar tipos de módulos'
+        context['action'] = 'sort'
+        context['module_types'] = ModuleType.objects.filter(is_active=True).order_by('position')
         return context
 
 

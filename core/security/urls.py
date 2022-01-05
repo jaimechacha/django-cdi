@@ -12,6 +12,7 @@ urlpatterns = [
     path('module/type/add/', TypeCreateView.as_view(), name='moduletype_create'),
     path('module/type/update/<int:pk>/', TypeUpdateView.as_view(), name='moduletype_update'),
     path('module/type/delete/<int:pk>/', TypeDeleteView.as_view(), name='moduletype_delete'),
+    path('module/type/sort/', TypeSortView.as_view(), name='moduletype_sort'),
     # module
     path('module/', ModuleListView.as_view(), name='module_list'),
     path('module/add/', ModuleCreateView.as_view(), name='module_create'),
