@@ -170,10 +170,9 @@ class MatriculationUpdateView(PermissionMixin, UpdateView):
             elif action == 'edit':
                 with transaction.atomic():
                     matriculation = self.get_object()
-                    print(request.POST['period'])
                     matriculation.student_id = request.POST['student']
                     matriculation.period_id = request.POST['period']
-                    matriculation.level = request.POST['level']
+                    matriculation.level_id = request.POST['level']
                     matriculation.save()
                     matriculation.matriculationdetail_set.all().delete()
                     for i in json.loads(request.POST['matters']):

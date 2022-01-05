@@ -179,8 +179,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
         })
         .on('core.form.valid', function () {
             if ($('input[name="action"]').val() === 'edit') {
-                let parameters = new FormData($(fv.form)[0]);
-                parameters.append('action', $('input[name="action"]').val());
+                let parameters = new FormData(form);
+                parameters.append('student', $('select[name="student"]').val());
+                parameters.append('period', $('select[name="period"]').val());
+                parameters.append('level', $('select[name="level"]').val());
                 parameters.append('matters', JSON.stringify(tblMatter.rows().data().toArray()));
                 submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
                     location.href = fv.form.getAttribute('data-url');
