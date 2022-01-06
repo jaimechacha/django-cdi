@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
             parameters.append('action', 'punctuation');
             parameters.append('notedetails', JSON.stringify(activities.details));
             $.each($("input[type=file]"), function (i, obj) {
-                console.log(obj.id)
                 $.each(obj.files, function (j, file) {
                     parameters.append(`[${ obj.id }]`, file);
                 })

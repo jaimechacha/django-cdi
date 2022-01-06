@@ -10,7 +10,7 @@ from django.views.generic import FormView
 from weasyprint import CSS, HTML
 
 from config import settings
-from core.reports.forms import ReportForm, Student, Teacher, Cursos, NoteDetails, Punctuations, Matter, Period
+from core.reports.forms import ReportForm, Student, NoteDetails, Punctuations, Matter, Period
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
 
@@ -38,7 +38,7 @@ class GradesReportView(ModuleMixin, FormView):
             data = NoteDetails.objects.filter(
                 perioddetail__matter_id=matter,
                 start_date__range=[start_date, end_date]
-            )
+            ).order_by('start_date')
         return data
 
     def search_students(self):
@@ -60,7 +60,7 @@ class GradesReportView(ModuleMixin, FormView):
                 student_id=s.id,
                 notedetails__perioddetail__matter_id=int(matter),
                 notedetails__start_date__range=[start_date, end_date]
-            )
+            ).order_by('notedetails__start_date')
             obj = {0: s.user.get_full_name()}
             for i, p in enumerate(punt):
                 obj[i + 1] = str(p.note)
@@ -76,7 +76,6 @@ class GradesReportView(ModuleMixin, FormView):
                 for i in self.get_activities():
                     data.append(i.toJSON())
             elif action == 'search_students':
-                data = []
                 data = self.search_students()
             elif action == 'search_materia':
                 level = request.POST.get('level', None)
@@ -85,12 +84,13 @@ class GradesReportView(ModuleMixin, FormView):
                     data.append(m.toJSON())
             elif action == 'generate_pdf':
                 context = {
-                    'data': self.get_activities(),
+                    'activities': self.get_activities(),
+                    'students': self.search_students(),
                     'company': Company.objects.first(),
                     'date_joined': datetime.now().date(),
-                    'title': 'Reporte de Docentes'
+                    'title': 'Reporte de Notas'
                 }
-                template = get_template('teachers_report/pdf.html')
+                template = get_template('grades_report/pdf.html')
                 html_template = template.render(context).encode(encoding="UTF-8")
                 url_css = os.path.join(settings.BASE_DIR, 'static/lib/bootstrap-4.3.1/css/bootstrap.min.css')
                 pdf_file = HTML(string=html_template, base_url=request.build_absolute_uri()).write_pdf(
