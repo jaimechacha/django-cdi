@@ -16,7 +16,7 @@
                     <form method="post" autocomplete="off" id="frmResetPassword" data-url="{% url 'login' %}">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label>Número de cedula:</label>
+                            <label>Número de cédula:</label>
                             {{ form.dni }}
                         </div>
                         <div class="row">

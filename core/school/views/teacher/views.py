@@ -43,7 +43,7 @@ class TeacherListView(PermissionMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('teacher_create')
-        context['title'] = 'Listado de Profesores'
+        context['title'] = 'Listado de Empleados'
         return context
 
 
@@ -155,7 +155,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de un Profesor'
+        context['title'] = 'Nuevo registro de un empleado'
         context['action'] = 'add'
         context['cvitae'] = []
         context['instance'] = None

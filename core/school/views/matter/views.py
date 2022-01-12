@@ -21,7 +21,7 @@ class MatterListView(PermissionMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('matter_create')
-        context['title'] = 'Listado de Asignaturas'
+        context['title'] = 'Listado de Ámbitos'
         return context
 
 

@@ -18,13 +18,14 @@ function getData() {
             {data: "id"},
             {data: "teacher.user.full_name"},
             {data: "job.name"},
-            {data: "start_date"},
-            {data: "end_date"},
-            {data: "base_salary"},
+            //{data: "start_date"},
+           // {data: "end_date"},
+            //{data: "base_salary"},
             {data: "state"},
             {data: "id"},
         ],
         columnDefs: [
+            /*
             {
                 targets: [3, 4],
                 class: 'text-center',
@@ -38,7 +39,7 @@ function getData() {
                 render: function (data, type, row) {
                     return '$' + parseFloat(data).toFixed(2);
                 }
-            },
+            }, */
             {
                 targets: [-2],
                 class: 'text-center',

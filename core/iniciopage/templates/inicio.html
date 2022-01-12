@@ -57,10 +57,10 @@
         <ul>
           <li class="active"><a href="{% url 'inicio' %}" >Inicio</a></li>
 
-          <li><a href="about.html">¿Quienes somos?</a></li>
-          <li><a href="{% url 'suscripcion' %}" >Suscripción</a></li>
+         
+          <li><a href="{% url 'nosotros' %}" >Nosotros</a></li>
+          <li><a href="{% url 'inscripción' %}" >Inscripción</a></li>
 
-          <li><a href="courses.html">Ayuda</a></li>
           <li><a href="{% url 'contacto' %}" >Contacto</a></li>
 
         </ul>
@@ -93,8 +93,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Nosotros</h2>
-          <p>Acerca de Nosotros</p>
+       
+          <p>Centro de Desarrollo Infantil "Pequeños Sabios"</p>
         </div>
 
         <div class="row">
@@ -102,7 +102,7 @@
             <img src="{{web.get_image_about }}" class="img-fluid" alt="" >
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+           
             <!--<p class="font-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -113,7 +113,7 @@
               Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
             </p>
             -->
-            <a href="about.html" class="learn-more-btn">Leer Mas</a>
+           
           </div>
         </div>
 
@@ -133,10 +133,23 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>¿Porqué el CDI?</h3>
+              <h4>Más de 5 añitos, te podemos ofrecer las siguientes opciones:</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                <br>
+                <br>
+•	Tareas dirigidas
+<br>
+•	Programa de inglés 
+<br>
+•	Programa de computación
+<br>
+•	Escuela de Fútbol
+<br> 
+•	Basket
+<br>
+•	Talleres
+
+
               </p>
                 <!--
               <div class="text-center">
@@ -158,14 +171,14 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-cube-alt"></i>
-                    <h4>Docentes</h4>
+                    <h4>Horarios</h4>
                     <p>{{ web.docentes_text }}</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-images"></i>
-                    <h4>Infraestructura</h4>
+                    <h4>Edades</h4>
                     <p>{{ web.infraestructura_text }}</p>
                   </div>
                 </div>
@@ -183,85 +196,88 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Courses</h2>
-          <p>Popular Courses</p>
+          <h2>Información adicional </h2>
+         
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <!--<img src="assets/img/course-1.jpg" class="img-fluid" alt="...">-->
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
+                  <h4>Criterios de los niños y niñas</h4>
+                  
                 </div>
-
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <!--<h3><a href="course-details.html">Website Design</a></h3>-->
+                <p>{{ web.block1 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
+                    
                   </div>
+                  <!--
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bx bx-user"></i>&nbsp;50
                     &nbsp;&nbsp;
                     <i class="bx bx-heart"></i>&nbsp;65
                   </div>
+                  -->
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
+              <!--<img src="assets/img/course-1.jpg" class="img-fluid" alt="...">-->
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
+                  <h4>Grupo de trabajo</h4>
+                  
                 </div>
-
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <!--<h3><a href="course-details.html">Website Design</a></h3>-->
+                <p>{{ web.block2 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                    <span>Lana</span>
+                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                    
                   </div>
+                  <!--
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
+                    <i class="bx bx-user"></i>&nbsp;50
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
+                    <i class="bx bx-heart"></i>&nbsp;65
                   </div>
+                  -->
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <!--<img src="assets/img/course-1.jpg" class="img-fluid" alt="...">-->
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
+                  <h4>Tarifas y pagos</h4>
+                  
                 </div>
-
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <!--<h3><a href="course-details.html">Website Design</a></h3>-->
+                <p>{{ web.block3 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                    <span>Brandon</span>
+                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                    
                   </div>
+                  <!--
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
+                    <i class="bx bx-user"></i>&nbsp;50
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
+                    <i class="bx bx-heart"></i>&nbsp;65
                   </div>
+                  -->
                 </div>
               </div>
             </div>
@@ -359,12 +375,10 @@
             <h3>Información</h3>
             <p>
                Calle Antisana y Av Universitaria Tulcán-Ecuador
-
-              Av Universitaria UPEC <br>
-              Tulcán<br>
-              Carchi <br><br>
-              <strong>Teléfono:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+ 
+          <br><br>
+              <strong>Teléfono:</strong> 062224080 / 0961967489 <br>
+              <strong>Correo electrónico:</strong> info.creativa@upec.edu.ec <br>
             </p>
           </div>
 
@@ -373,25 +387,23 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Acerca de Nosotros</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Ayuda</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Contacto</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Social</h4>
+            <h4> Redes sociales</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Youtube</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
 
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Suscríbete</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <h4>Inscríbete</h4>
+            <p>Presiona en insribirse y te direccionará al formato de inscripción</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Suscribirse">
+              <input type="email" name="email"><input type="submit" value="Inscribirse">
             </form>
           </div>
 

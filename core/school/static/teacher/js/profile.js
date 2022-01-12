@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                         digits: {},
                         callback: {
-                            message: 'Introduce un número de cedula válido',
+                            message: 'Introduce un número de cédula válido',
                             callback: function (input) {
                                 return validate_dni_ruc(input.value) || input.value === '9999999999';
                             }
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                                     action: 'validate_data'
                                 };
                             },
-                            message: 'El número de cedula ya se encuentra registrado',
+                            message: 'El número de cédula ya se encuentra registrado',
                             method: 'POST'
                         }
                     }
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                         regexp: {
                             regexp: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i,
-                            message: 'El formato email no es correcto'
+                            message: 'El formato del correo electrónico no es correcto'
                         },
                         remote: {
                             url: pathname,
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                                     action: 'validate_data'
                                 };
                             },
-                            message: 'El email ya se encuentra registrado',
+                            message: 'El correo electrónico ya se encuentra registrado',
                             method: 'POST'
                         }
                     }

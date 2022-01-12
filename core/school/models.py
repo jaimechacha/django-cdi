@@ -693,7 +693,7 @@ class Cursos(models.Model):
 
 class Matter(models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50)
-    level = models.ForeignKey(Cursos, on_delete=models.PROTECT, max_length=30, verbose_name='Nivel')
+    level = models.ForeignKey(Cursos, on_delete=models.PROTECT, max_length=30, verbose_name='Curso')
     state = models.BooleanField(default=True, verbose_name='Estado')
 
     def __str__(self):
@@ -804,7 +804,7 @@ class Matriculation(models.Model):
     level = models.ForeignKey(Cursos, on_delete=models.PROTECT, max_length=30, verbose_name='Nivel')
 
     def __str__(self):
-        return 'Alumno: {} / Número de cedula: {} /  Periodo: {}'.format(self.student.user.get_full_name(),
+        return 'Alumno: {} / Número de cédula: {} /  Periodo: {}'.format(self.student.user.get_full_name(),
                                                                          self.student.user.dni,
                                                                          self.period.name)
 

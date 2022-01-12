@@ -702,13 +702,13 @@ class TeacherForm(ModelForm):
     dni = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off',
-        'placeholder': 'Ingrese su número de cedula'
-    }), label='Número de cedula', max_length=10)
+        'placeholder': 'Ingrese su número de cédula'
+    }), label='Número de cédula', max_length=10)
 
     email = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off',
-        'placeholder': 'Ingrese su email'
+        'placeholder': 'Ingrese su correp electrónico'
     }), label='Email', max_length=50)
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
@@ -837,13 +837,13 @@ class StudentForm(ModelForm):
     dni = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off',
-        'placeholder': 'Ingrese su número de cedula'
-    }), label='Número de cedula', max_length=10)
+        'placeholder': 'Ingrese su número de cédula'
+    }), label='Número de cédula', max_length=10)
 
     email = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off',
-        'placeholder': 'Ingrese su email'
+        'placeholder': 'Ingrese su correo electrónico'
     }), label='Email', max_length=50)
 
     image = forms.ImageField(widget=forms.FileInput(attrs={
@@ -916,6 +916,7 @@ class ContractsForm(ModelForm):
     class Meta:
         model = Contracts
         fields = '__all__'
+        exclude = ('start_date','end_date','base_salary')
         widgets = {
             'teacher': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
             'job': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
@@ -1315,7 +1316,7 @@ class CompanyForm(ModelForm):
             'coordinates': forms.TextInput(attrs={'placeholder': 'Ingrese unas coordenadas'}),
             'ruc': forms.TextInput(attrs={'placeholder': 'Ingrese un ruc'}),
             'mobile': forms.TextInput(attrs={'placeholder': 'Ingrese un teléfono celular'}),
-            'email': forms.TextInput(attrs={'placeholder': 'Ingrese un email'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Ingrese un correp electrónico'}),
             'address': forms.TextInput(attrs={'placeholder': 'Ingrese una dirección'}),
             'mission': forms.Textarea(attrs={'placeholder': 'Ingrese una descripción', 'rows': 3, 'cols': 3}),
             'vision': forms.Textarea(attrs={'placeholder': 'Ingrese una descripción', 'rows': 3, 'cols': 3}),

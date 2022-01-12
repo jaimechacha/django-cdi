@@ -38,7 +38,7 @@ class ContractsListView(PermissionMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('contracts_create')
-        context['title'] = 'Listado de Contratos'
+        context['title'] = 'Listado de Profesores'
         return context
 
 
@@ -82,7 +82,7 @@ class ContractsCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de un Contrato'
+        context['title'] = 'Nuevo registro de un docente'
         context['action'] = 'add'
         return context
 

@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                                     action: 'validate_data'
                                 };
                             },
-                            message: 'El número de cedula ya se encuentra registrado',
+                            message: 'El número de cédula ya se encuentra registrado',
                             method: 'POST'
                         }
                     }
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         },
                         regexp: {
                             regexp: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i,
-                            message: 'El email no es correcto'
+                            message: 'El correo electrónico no es correcto'
                         },
                         remote: {
                             url: pathname,

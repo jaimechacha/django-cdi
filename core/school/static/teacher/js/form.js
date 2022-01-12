@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                         digits: {},
                         callback: {
-                            message: 'Introduce un número de cedula válido',
+                            message: 'Introduce un número de cédula válido',
                             callback: function (input) {
                                 return validate_dni_ruc(input.value) || input.value === '9999999999';
                             }
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                                     action: 'validate_data'
                                 };
                             },
-                            message: 'El número de cedula ya se encuentra registrado',
+                            message: 'El número de cédula ya se encuentra registrado',
                             method: 'POST'
                         }
                     }

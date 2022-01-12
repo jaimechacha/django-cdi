@@ -28,6 +28,9 @@ from core.iniciopage.forms import WebForm
 class ContactoView(TemplateView):
     template_name = 'contacto.html'
 
+class NosotrosView(TemplateView):
+    template_name = 'nosotros.html'
+
 
 class WebUpdateView(ModuleMixin, UpdateView):
     template_name = 'create.html'

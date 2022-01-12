@@ -2,7 +2,7 @@
 
 <div class="row mt-4">
     <div class="col col-lg-5">
-        <p><b>Correo</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
+        <p><b>Correo electrónico</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
         <p><b>Cédula</b>: {{ object.user.dni|default_if_none:"(Vacío)" }}</p>
         <p><b>Género</b>: {{ object.gender|default_if_none:"(Vacío)" }}</p>
         <p><b>Celular</b>: {{ object.mobile|default_if_none:"(Vacío)" }}</p>
@@ -10,7 +10,7 @@
         <p><b>Teléfono de emergencia</b>: {{ object.emergency_number|default_if_none:"(Vacío)" }}</p>
         <p><b>Dirección</b>: {{ object.address|default_if_none:"(Vacío)" }}</p>
         <p><b>Fecha de nacimiento</b>: {{ object.birthdate|default_if_none:"(Vacío)" }}</p>
-        <p><b>Parroquia</b>: {{ object.parish|default_if_none:"(Vacío)" }}</p>
+        <p><b>Ubicación</b>: {{ object.parish|default_if_none:"(Vacío)" }}</p>
     </div>
     <div class="col col-lg-5">
         <p><b>País de nacimiento</b>: {{ object.birth_country|default_if_none:"(Vacío)" }}</p>

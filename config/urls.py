@@ -31,7 +31,8 @@ urlpatterns = [
     path('web/update/', WebUpdateView.as_view(), name='web'),
     path('web/update/<int:pk>', ActualizarWeb.as_view(), name='web'),
     #path('suscripcion/', SuscripcionView.as_view(), name='suscripcion'),
-    path('suscripcion/', Suscripcion, name='suscripcion'),
+    path('nosotros/', NosotrosView.as_view(), name='nosotros'),
+    path('suscripcion/', Suscripcion, name='inscripción'),
     path('contacto/', ContactoView.as_view(), name='contacto'),
 
     #path('', DashboardView.as_view(), name='dashboard'),

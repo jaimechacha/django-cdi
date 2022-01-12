@@ -5,7 +5,7 @@ from core.user.models import User
 
 class ResetPasswordForm(forms.Form):
     dni = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Ingrese su número de cedula',
+        'placeholder': 'Ingrese su número de cédula',
         'class': 'form-control',
         'autocomplete': 'off'
     }))
