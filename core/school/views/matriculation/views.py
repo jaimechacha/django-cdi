@@ -29,9 +29,13 @@ class MatriculationListView(PermissionMixin, FormView):
             if action == 'search':
                 data = []
                 period = request.POST['period']
+                level = request.POST['level']
                 matriculation = Matriculation.objects.filter()
-                if len(period):
-                    matriculation = matriculation.filter(matriculationdetail__perioddetail__period_id=period)
+                if len(period) and len(level):
+                    matriculation = matriculation.filter(
+                        matriculationdetail__perioddetail__period_id=period,
+                        level_id=level
+                    )
                 for i in matriculation:
                     item = i.toJSON()
                     item['cant'] = i.matriculationdetail_set.all().count()

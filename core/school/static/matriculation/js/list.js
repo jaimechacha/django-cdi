@@ -1,5 +1,6 @@
 var tblMatriculation;
 var select_period;
+let select_level;
 
 function getData() {
     tblMatriculation = $('#data').DataTable({
@@ -12,7 +13,8 @@ function getData() {
             type: 'POST',
             data: {
                 'action': 'search',
-                'period': select_period.val()
+                'period': select_period.val(),
+                'level': select_level.val()
             },
             dataSrc: ""
         },
@@ -54,6 +56,7 @@ function getData() {
 $(function () {
 
     select_period = $('select[name="period"]');
+    select_level = $('select[name="course"]');
 
     $('.select2').select2({
         theme: 'bootstrap4',
@@ -61,6 +64,10 @@ $(function () {
     });
 
     select_period.on('change', function () {
+        getData();
+    });
+
+    select_level.on('change', function () {
         getData();
     });
 
