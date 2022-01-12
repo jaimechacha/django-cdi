@@ -10,7 +10,7 @@ from django.views.generic import FormView
 from weasyprint import CSS, HTML
 
 from config import settings
-from core.reports.forms import ReportForm, Student, Teacher, Cursos
+from core.reports.forms import ReportForm, Student, Teacher, Cursos, Period
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
 
@@ -24,14 +24,16 @@ class TeachersReportView(ModuleMixin, FormView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_search_data(self):
-        period = self.request.POST['period']
-        course = self.request.POST['course']
+        period = self.request.POST.get('period', None)
+        course = self.request.POST.get('course', None)
         search = []
-        if len(period):
+        if period:
             search = Teacher.objects.filter(contracts__perioddetail__period_id=period)
-        if len(course):
+            period = Period.objects.get(id=period)
+        if course:
             search = Teacher.objects.filter(contracts__perioddetail__matter__level_id=course)
-        return search
+            course = Cursos.objects.get(id=course)
+        return search, period, course
 
     def post(self, request, *args, **kwargs):
         action = request.POST.get('action', None)
@@ -39,11 +41,15 @@ class TeachersReportView(ModuleMixin, FormView):
         try:
             if action == 'search_report':
                 data = []
-                for i in self.get_search_data():
+                teachers, _, _ = self.get_search_data()
+                for i in teachers:
                     data.append(i.toJSON())
             elif action == 'generate_pdf':
+                teachers, period, level = self.get_search_data()
                 context = {
-                    'data': self.get_search_data(),
+                    'data': teachers,
+                    'period': period,
+                    'level': level,
                     'company': Company.objects.first(),
                     'date_joined': datetime.now().date(),
                     'title': 'Reporte de Docentes'

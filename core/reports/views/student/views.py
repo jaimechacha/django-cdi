@@ -10,7 +10,7 @@ from django.views.generic import FormView
 from weasyprint import CSS, HTML
 
 from config import settings
-from core.reports.forms import ReportForm, Student
+from core.reports.forms import ReportForm, Student, Cursos, Period
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
 
@@ -24,12 +24,14 @@ class StudentReportView(ModuleMixin, FormView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_search_data(self):
-        period = self.request.POST['period']
-        course = self.request.POST['course']
+        period = self.request.POST.get('period', None)
+        course = self.request.POST.get('course', None)
         search = []
-        if len(period) and len(course):
+        if period and course:
             search = Student.objects.filter(matriculation__period_id=period, matriculation__level_id=course)
-        return search
+            period = Period.objects.get(id=period)
+            course = Cursos.objects.get(id=course)
+        return search, period, course
 
     def post(self, request, *args, **kwargs):
         action = request.POST.get('action', None)
@@ -37,11 +39,15 @@ class StudentReportView(ModuleMixin, FormView):
         try:
             if action == 'search_report':
                 data = []
-                for i in self.get_search_data():
+                students, _, _ = self.get_search_data()
+                for i in students:
                     data.append(i.toJSON())
             elif action == 'generate_pdf':
+                students, period, level = self.get_search_data()
                 context = {
-                    'data': self.get_search_data(),
+                    'data': students,
+                    'period': period,
+                    'level': level,
                     'company': Company.objects.first(),
                     'date_joined': datetime.now().date(),
                     'title': 'Reporte de Estudiantes'
