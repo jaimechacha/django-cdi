@@ -1,0 +1,50 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'period/js/student_matter.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="card {{ dshboard.card }}">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-search"></i>
+                {{ title }}
+            </h3>
+            <div class="card-tools">
+                <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
+            </div>
+        </div>
+        <div class="card-body" style="display: block;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Periodo:</label>
+                            {{ form.period }}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table width="100%" class="table table-bordered" id="tblMatter">
+                            <thead>
+                            <tr>
+                                <th>Nivel</th>
+                                <th>Materia</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

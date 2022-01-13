@@ -248,3 +248,35 @@ class PeriodTeacherConsultView(ModuleMixin, FormView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de Materias por Periodos'
         return context
+
+
+class PeriodStudentConsultView(ModuleMixin, FormView):
+    form_class = ReportForm
+    template_name = 'period/consult_period_student.html'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'search_period':
+                data = []
+                period = request.POST['period']
+                if len(period):
+                    for i in PeriodDetail.objects.filter(
+                            period_id=period,
+                            period__matriculation__student__user=request.user):
+                        data.append(i.toJSON())
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Listado de Materias por periodo'
+        return context

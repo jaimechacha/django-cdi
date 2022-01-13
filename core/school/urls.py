@@ -140,6 +140,7 @@ urlpatterns = [
     path('period/delete/<int:pk>/', PeriodDeleteView.as_view(), name='period_delete'),
     path('period/assignment/teacher/<int:pk>/', PeriodAssignmentTeacherView.as_view(), name='period_assignment_teacher'),
     path('period/teacher/consult/', PeriodTeacherConsultView.as_view(), name='period_teacher_consult'),
+    path('period/student/consult/', PeriodStudentConsultView.as_view(), name='period_student_consult'),
     # matriculation
     path('matriculation/', MatriculationListView.as_view(), name='matriculation_list'),
     path('matriculation/add/', MatriculationCreateView.as_view(), name='matriculation_create'),
