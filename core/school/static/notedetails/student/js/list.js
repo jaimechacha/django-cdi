@@ -1,6 +1,7 @@
-var tblActivities;
-var select_period;
-var activities;
+let tblActivities;
+let select_period;
+let select_matter;
+let activities;
 
 function getData() {
     tblActivities = $('#data').DataTable({
@@ -13,7 +14,8 @@ function getData() {
             type: 'POST',
             data: {
                 'action': 'search',
-                'period': select_period.val()
+                'period': select_period.val(),
+                'matter': select_matter.val()
             },
             dataSrc: ""
         },
@@ -65,6 +67,7 @@ function getData() {
 $(function () {
 
     select_period = $('select[name="period"]');
+    select_matter = $('select[name="matter"]');
 
     $('.select2').select2({
         theme: 'bootstrap4',
@@ -72,6 +75,10 @@ $(function () {
     });
 
     select_period.on('change', function () {
+        getData();
+    });
+
+    select_matter.on('change', function () {
         getData();
     });
 

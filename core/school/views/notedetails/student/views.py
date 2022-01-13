@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView, ListView
 from core.reports.forms import ReportForm
 from core.school.forms import Activities, ActivitiesForm, NoteDetailsForm, PeriodDetail, Qualifications, Period, \
-    Matriculation, NoteDetails, Scores
+    Matriculation, NoteDetails, Scores, Matter, Cursos
 from core.school.models import Punctuations, MatriculationDetail
 from core.security.mixins import PermissionMixin
 
@@ -23,19 +23,30 @@ class NoteDetailsStudentMatterListView(FormView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['matter'].queryset = Matter.objects.filter(
+            level__matriculation__student__user=self.request.user
+        )
+        return form
+
     def post(self, request, *args, **kwargs):
         data = {}
         try:
             action = request.POST['action']
             if action == 'search':
                 data = []
-                period = request.POST['period']
+                period = request.POST.get('period', None)
+                matter = request.POST.get('matter', None)
                 search = Punctuations.objects.filter()
-                if len(period):
+                if period and matter:
                     if MatriculationDetail.objects.filter(perioddetail__period_id=period,
                                                           matriculation__student__user=request.user).exists():
-                        search = search.filter(notedetails_id__perioddetail__period_id=period,
-                                               student__user=request.user)
+                        search = search.filter(
+                            notedetails_id__perioddetail__period_id=period,
+                            student__user=request.user,
+                            notedetails__perioddetail__matter_id=matter
+                        )
                         for d in search:
                             item = d.toJSON()
                             item['calif'] = {}
