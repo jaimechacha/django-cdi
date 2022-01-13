@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import FormView, CreateView, TemplateView
 
 from core.school.forms import Assistance, AssistanceForm, Matriculation
-from core.security.mixins import  PermissionMixin
+from core.security.mixins import PermissionMixin
 
 
 class AssistanceTeacherListView(PermissionMixin, FormView):
@@ -60,8 +60,6 @@ class AssistanceTeacherCreateView(PermissionMixin, CreateView):
         data = {'valid': True}
         try:
             obj = self.request.POST['obj'].strip()
-            print('hjjjjjjjjjjjjjjjjjjjjjjjj')
-            print(obj)
             data['valid'] = True
             if Assistance.objects.filter(date_joined=obj, teacher_id=self.request.user.id):
                 data['valid'] = False
@@ -77,8 +75,6 @@ class AssistanceTeacherCreateView(PermissionMixin, CreateView):
                 with transaction.atomic():
                     assistances = json.loads(request.POST['items'])
                     #y = request.POST['yest']
-                    print('hjjjjjjjjjjjjjjjjjjllllllljjjjjjgggggggggjjjjjj')
-                    print(assistances)
                     date_joined = datetime.strptime(request.POST['date_joined'], '%Y-%m-%d')
 
                     a = Assistance()
