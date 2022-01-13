@@ -1,0 +1,36 @@
+{% extends 'list.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block head_list %}
+    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/spanish.js' %}"></script>
+    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.css' %}"/>
+    <script src="{% static 'assistance/student/js/list.js' %}"></script>
+{% endblock %}
+
+{% block content_list_before %}
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="form-group">
+                <label>Fecha de asistencia:</label>
+                <div class="input-group mb-3">
+                    {{ form.date_range }}
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-warning btn-flat btnSearchAssist">
+                            <i class="far fa-calendar-check"></i> Buscar asistencias
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}
+
+{% block columns %}
+    <th>Fecha</th>
+    <th>Nombres</th>
+    <th>Nº de cédula</th>
+    <th>Asistió</th>
+    <th>Descripción</th>
+{% endblock %}

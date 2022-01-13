@@ -2,6 +2,7 @@ from django.urls import path
 
 from core.school.views.activities.student.views import ActivitiesStudentListView
 from core.school.views.assistance.teacher.views import *
+from core.school.views.assistance.student.views import *
 from core.school.views.breakfast.views import *
 from core.school.views.canton.views import *
 from core.school.views.company.views import CompanyUpdateView
@@ -150,6 +151,8 @@ urlpatterns = [
     path('assistance/teacher/', AssistanceTeacherListView.as_view(), name='assistance_teacher_list'),
     path('assistance/teacher/add/', AssistanceTeacherCreateView.as_view(), name='assistance_teacher_create'),
     path('assistance/teacher/delete/<str:start_date>/<str:end_date>/', AssistanceTeacherDeleteView.as_view(), name='assistance_teacher_delete'),
+    # student assitance
+    path('assistance/student/', AssistanceStudentListView.as_view(), name='assistance_student_list'),
     # tutorials
     path('tutorials/', TutorialsListView.as_view(), name='tutorials_list'),
     path('tutorials/add/', TutorialsCreateView.as_view(), name='tutorials_create'),
