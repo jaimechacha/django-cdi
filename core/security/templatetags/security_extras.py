@@ -16,7 +16,7 @@ def getmoduletype(group_id):
 @register.filter()
 def getmodulehorizontal(group):
     return Module.objects.filter(groupmodule__group_id=group, moduletype_id=None, is_active=True,
-                                 is_vertical=False).order_by('name')
+                                 is_vertical=False).order_by('position')
 
 
 @register.filter()
