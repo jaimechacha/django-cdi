@@ -27,11 +27,23 @@
                 <input type="hidden" name="list_url" id="list_url" value="{{ list_url }}">
                 {% csrf_token %}
                 <ul id="sortable">
-                    {% for m in module_types %}
-                        <li id="{{ m.id }}">
-                            <div class="btn btn-info btn-sm mb-1">
-                                <i class="{{ m.icon }}"></i>
-                                {{ m.name }}
+                    {% for mt in module_types %}
+                        <li id="{{ mt.id }}">
+                            <div class="btn btn-info btn-sm mb-1" data-toggle="collapse" href="#collapse{{ mt.id }}"
+                                 aria-expanded="false">
+                                <i class="{{ mt.icon }}"></i>
+                                {{ mt.name }}
+                                <i class="right fas fa-angle-down"></i>
+                            </div>
+                            <div class="collapse" id="collapse{{ mt.id }}">
+                                {% for m in mt.get_modules_vertical %}
+                                    <section id="{{ m.id }}" class="ml-3">
+                                        <div class="btn btn-secondary btn-sm mb-1">
+                                            <i class="{{ m.icon }}"></i>
+                                            {{ m.name }}
+                                        </div>
+                                    </section>
+                                {% endfor %}
                             </div>
                         </li>
                     {% endfor %}

@@ -139,13 +139,20 @@ class TypeSortView(PermissionMixin, TemplateView):
         action = request.POST['action']
         try:
             if action == 'sort':
-                list_mod = []
+                list_type_mod = []
+                list_modules = []
                 md_types = json.loads(request.POST['module_types'])
-                for m in md_types:
-                    instance = ModuleType.objects.get(id=m['id'])
-                    instance.position = int(m['pos'])
-                    list_mod.append(instance)
-                ModuleType.objects.bulk_update(list_mod, ['position'])
+                modules = json.loads(request.POST['modules'])
+                for tm in md_types:
+                    instance = ModuleType.objects.get(id=tm['id'])
+                    instance.position = int(tm['pos'])
+                    list_type_mod.append(instance)
+                for m in modules:
+                    instance_mod = Module.objects.get(id=m['id'])
+                    instance_mod.position = int(m['pos'])
+                    list_modules.append(instance_mod)
+                ModuleType.objects.bulk_update(list_type_mod, ['position'])
+                Module.objects.bulk_update(list_modules, ['position'])
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:
@@ -155,7 +162,7 @@ class TypeSortView(PermissionMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Ordenar tipos de módulos'
+        context['title'] = 'Ordenar módulos'
         context['action'] = 'sort'
         context['module_types'] = ModuleType.objects.filter(is_active=True).order_by('position')
         return context
