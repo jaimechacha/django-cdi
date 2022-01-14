@@ -598,9 +598,9 @@ $(function () {
             var tr = tblCVitae.cell($(this).closest('td, li')).index();
             cvitae = tblCVitae.row(tr.row).data();
             $(fvCVitae.form).find('input[name="name"]').val(cvitae.name);
-            $(fvCVitae.form).find('textarea[name="details"]').val(cvitae.name);
-            $(fvCVitae.form).find('input[name="start_date"]').val(cvitae.start_date);
+            $(fvCVitae.form).find('textarea[name="details"]').val(cvitae.details);
             $(fvCVitae.form).find('input[name="end_date"]').val(cvitae.end_date);
+            $(fvCVitae.form).find('input[name="start_date"]').val(cvitae.start_date);
             select_typecvitae.val(cvitae.typecvitae.id).trigger('change');
             $('#myModalCVitae .modal-title').html('<b><i class="fas fa-edit"></i> Editar dato de la hoja de vida</b>');
             $('#myModalCVitae').modal('show');
