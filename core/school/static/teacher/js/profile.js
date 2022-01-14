@@ -49,8 +49,8 @@ let teacher = {
                     targets: [-2],
                     class: 'text-center',
                     render: function (data, type, row) {
-                        if (row.id){
-                            return `<a target="_blank" href="${row.cv_file.name}">Ver documento</a>`
+                        if (row.id && !row.cv_file.file){
+                            return `<a target="_blank" href="${row.cv_file.name}">Ver</a>`
                         }
                         return row.cv_file.name
                     }
@@ -73,9 +73,16 @@ let teacher = {
             },
         });
     },
+    get_cvitae_ids: function () {
+        let ids = [];
+        $.each(this.details.cvitae, function (i, item) {
+            if (item.id) ids.push(item.id);
+        });
+        return ids;
+    },
 }
-
 function validateDate() {r
+
     var now = new Date();
     var input = input_birthdate.val().split('-');
     var birthdate = new Date(input[0], input[1], input[2]);
@@ -314,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             parameters.append('action', $('input[name="action"]').val());
             parameters.append('cvitae', JSON.stringify(teacher.details.cvitae));
+            parameters.append('cvitae_ids', JSON.stringify(teacher.get_cvitae_ids()));
 
             teacher.details.cvitae.forEach(e => {
                 if (e.cv_file.file){
@@ -387,6 +395,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                     }
                 },
+                cv_file: {}
             },
         }
     )
@@ -418,7 +427,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         .on('core.form.valid', function () {
             let parameters = {};
 
-            const cv_file = $('input[name="cv_file"]')[0].files[0];
             $.each($(fvCVitae.form).serializeArray(), function () {
                 parameters[this.name] = this.value;
             });
@@ -426,16 +434,19 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 'id': select_typecvitae.val(),
                 'name': $("#id_typecvitae option:selected").text()
             };
-            parameters['cv_file'] = {
-                name: cv_file.name,
-                file: cv_file
+            const cv_file = $('input[name="cv_file"]')[0].files[0];
+            if (cv_file) {
+                parameters['cv_file'] = { name: cv_file.name, file: cv_file }
+            }else {
+                if (cvitae.cv_file){
+                    parameters['cv_file'] = { name: cvitae.cv_file.name}
+                }else {
+                    parameters['cv_file'] = { name: 'Vacío'}
+                }
             }
-            if (cvitae.id){
-                parameters['id'] = cvitae.id
-            }
-            // console.log(parameters)
+            if (cvitae.id) parameters['id'] = cvitae.id
             teacher.add_cvitae(parameters);
-            console.log(teacher.details.cvitae)
+            // console.log(teacher.details.cvitae)
             $('#myModalCVitae').modal('hide');
         });
 });

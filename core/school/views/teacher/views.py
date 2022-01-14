@@ -308,7 +308,12 @@ class GenericUpdateTeacher(UpdateView):
                         teacher.contract = request.FILES['contract']
                     teacher.save()
 
-                    # teacher.cvitae_set.all().delete()
+                    cvitaes = teacher.cvitae_set.all()
+                    cvitae_ids = json.loads(request.POST['cvitae_ids'])
+                    for cv in cvitaes:
+                        if cv.id not in cvitae_ids:
+                            cv.delete()
+
                     cvitaejson = json.loads(request.POST['cvitae'])
 
                     for det in cvitaejson:
