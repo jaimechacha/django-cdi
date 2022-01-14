@@ -48,7 +48,7 @@ class ModuleForm(ModelForm):
             'permits': forms.SelectMultiple(
                 attrs={'class': 'form-control select2', 'multiple': 'multiple', 'style': 'width:100%'}),
         }
-        exclude = []
+        exclude = ['position']
 
     def save(self, commit=True):
         data = {}
