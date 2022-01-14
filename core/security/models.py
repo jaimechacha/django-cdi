@@ -77,7 +77,7 @@ class ModuleType(models.Model):
             group_id = request.user.get_group_id_session()
             if group_id != 0:
                 listmodules = self.module_set.filter(is_active=True, is_vertical=True,
-                                                     groupmodule__group_id=group_id).order_by('name')
+                                                     groupmodule__group_id=group_id).order_by('position')
         except:
             pass
         return listmodules
@@ -89,7 +89,7 @@ class ModuleType(models.Model):
             group_id = request.user.get_group_id_session()
             if group_id != 0:
                 listmodules = self.module_set.filter(is_active=True, is_vertical=False,
-                                                     groupmodule__group_id=group_id).order_by('name')
+                                                     groupmodule__group_id=group_id).order_by('position')
         except:
             pass
         return listmodules
@@ -122,6 +122,7 @@ class Module(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='Estado')
     is_visible = models.BooleanField(default=True, verbose_name='Visible')
     permits = models.ManyToManyField(Permission, verbose_name='Permisos', blank=True)
+    position = models.IntegerField(null=True, blank=True, verbose_name='Posición')
 
     def __str__(self):
         return '{} [{}]'.format(self.name, self.url)
