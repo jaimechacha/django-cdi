@@ -429,7 +429,6 @@ class CursosForm(ModelForm):
         return data
 
 
-
 class MatterForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -583,7 +582,6 @@ class TeacherForm(ModelForm):
 
     class Meta:
         model = Teacher
-        # fields = 'first_name', 'last_name', 'dni', 'email', 'gender', 'mobile', 'phone', 'birthdate', 'address', 'parish'
         fields = '__all__'
         exclude = ['user']
         widgets = {
@@ -891,6 +889,11 @@ class CVitaeForm(ModelForm):
                 'data-toggle': 'datetimepicker',
                 'data-target': '#end_date'
             }),
+            'cv_file': forms.FileInput(attrs={
+                'placeholder': 'Suba el CV',
+                'class': 'form-control',
+                'accept': '.pdf'
+            }),
         }
         exclude = ['teacher']
 
@@ -916,7 +919,7 @@ class ContractsForm(ModelForm):
     class Meta:
         model = Contracts
         fields = '__all__'
-        exclude = ('start_date','end_date','base_salary')
+        exclude = ('start_date', 'end_date', 'base_salary')
         widgets = {
             'teacher': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
             'job': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),

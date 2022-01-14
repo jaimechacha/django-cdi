@@ -41,9 +41,20 @@ let teacher = {
                 {data: "name"},
                 {data: "start_date"},
                 {data: "end_date"},
+                {data: "cv_file.name"},
                 {data: "name"},
             ],
             columnDefs: [
+                {
+                    targets: [-2],
+                    class: 'text-center',
+                    render: function (data, type, row) {
+                        if (row.id){
+                            return `<a target="_blank" href="${row.cv_file.name}">Ver documento</a>`
+                        }
+                        return row.cv_file.name
+                    }
+                },
                 {
                     targets: [-1],
                     class: 'text-center',
@@ -303,6 +314,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             parameters.append('action', $('input[name="action"]').val());
             parameters.append('cvitae', JSON.stringify(teacher.details.cvitae));
+
+            teacher.details.cvitae.forEach(e => {
+                if (e.cv_file.file){
+                    parameters.append(`${ e.pos }`, e.cv_file.file);
+                }
+            })
             submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
                 location.href = fv.form.getAttribute('data-url');
             });
@@ -399,7 +416,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         })
         .on('core.form.valid', function () {
-            var parameters = {};
+            let parameters = {};
+
+            const cv_file = $('input[name="cv_file"]')[0].files[0];
             $.each($(fvCVitae.form).serializeArray(), function () {
                 parameters[this.name] = this.value;
             });
@@ -407,7 +426,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 'id': select_typecvitae.val(),
                 'name': $("#id_typecvitae option:selected").text()
             };
+            parameters['cv_file'] = {
+                name: cv_file.name,
+                file: cv_file
+            }
+            if (cvitae.id){
+                parameters['id'] = cvitae.id
+            }
+            // console.log(parameters)
             teacher.add_cvitae(parameters);
+            console.log(teacher.details.cvitae)
             $('#myModalCVitae').modal('hide');
         });
 });

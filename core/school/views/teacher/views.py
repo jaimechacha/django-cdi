@@ -308,17 +308,22 @@ class GenericUpdateTeacher(UpdateView):
                         teacher.contract = request.FILES['contract']
                     teacher.save()
 
-                    teacher.cvitae_set.all().delete()
+                    # teacher.cvitae_set.all().delete()
                     cvitaejson = json.loads(request.POST['cvitae'])
 
                     for det in cvitaejson:
-                        cvitae = CVitae()
-                        cvitae.teacher_id = teacher.id
+                        if 'id' in det:
+                            cvitae = CVitae.objects.get(id=int(det['id']))
+                        else:
+                            cvitae = CVitae()
                         cvitae.start_date = det['start_date']
                         cvitae.end_date = det['end_date']
                         cvitae.typecvitae_id = int(det['typecvitae']['id'])
                         cvitae.name = det['name']
                         cvitae.details = det['details']
+                        cvitae.teacher_id = teacher.id
+                        if str(det['pos']) in request.FILES:
+                            cvitae.cv_file = request.FILES[str(det['pos'])]
                         cvitae.save()
 
             elif action == 'search_parish':

@@ -499,6 +499,8 @@ class CVitae(models.Model):
     details = models.CharField(max_length=5000, null=True, blank=True, verbose_name='Detalles')
     start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio')
     end_date = models.DateField(default=datetime.now, verbose_name='Fecha de finalización')
+    cv_file = models.FileField(upload_to='teacher/cv/%Y/%m/%d', null=True, blank=True,
+                               verbose_name='Archivo')
 
     def __str__(self):
         return self.name
@@ -506,9 +508,15 @@ class CVitae(models.Model):
     def toJSON(self):
         item = model_to_dict(self, exclude=['teacher'])
         item['typecvitae'] = self.typecvitae.toJSON()
+        item['cv_file'] = {"name": self.get_cv_file()}
         item['start_date'] = self.start_date.strftime('%Y-%m-%d')
         item['end_date'] = self.end_date.strftime('%Y-%m-%d')
         return item
+
+    def get_cv_file(self):
+        if self.cv_file:
+            return '{}{}'.format(settings.MEDIA_URL, self.cv_file)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     class Meta:
         verbose_name = 'Hoja de Vida'
@@ -975,7 +983,7 @@ class Activities(models.Model):
 
     def remove_rubric(self):
         try:
-            if self.image:
+            if self.rubric:
                 os.remove(self.rubric.path)
         except:
             pass
