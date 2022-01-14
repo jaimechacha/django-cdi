@@ -129,14 +129,17 @@ class TeacherCreateView(PermissionMixin, CreateView):
                     user.groups.add(group)
 
                     cvitaejson = json.loads(request.POST['cvitae'])
+
                     for det in cvitaejson:
                         cvitae = CVitae()
-                        cvitae.teacher_id = teacher.id
-                        cvitae.start_date = det['start_date']
-                        cvitae.end_date = det['end_date']
                         cvitae.typecvitae_id = int(det['typecvitae']['id'])
                         cvitae.name = det['name']
+                        cvitae.start_date = det['start_date']
+                        cvitae.end_date = det['end_date']
                         cvitae.details = det['details']
+                        cvitae.teacher_id = teacher.id
+                        if str(det['pos']) in request.FILES:
+                            cvitae.cv_file = request.FILES[str(det['pos'])]
                         cvitae.save()
             elif action == 'search_parish':
                 data = []
