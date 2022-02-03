@@ -81,7 +81,7 @@ let teacher = {
         return ids;
     },
 }
-function validateDate() {r
+function validateDate() {
 
     var now = new Date();
     var input = input_birthdate.val().split('-');
@@ -467,10 +467,6 @@ $(function () {
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es"
-    });
-
-    input_birthdate.on('change', function () {
-        fv.revalidateField('birthdate');
     });
 
     $('select[name="gender"]').on('change.select2', function () {
