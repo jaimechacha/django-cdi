@@ -189,7 +189,7 @@ class Teacher(models.Model):
         item['user'] = self.user.toJSON()
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
-        item['parish'] = self.parish.toJSON()
+        item['parish'] = self.parish.toJSON() if self.parish else ''
         item['croquis'] = self.get_croquis()
         item['basic_services_payment'] = self.get_comprobante()
         item['ci_doc'] = self.get_ci_doc()
