@@ -706,7 +706,7 @@ class TeacherForm(ModelForm):
     email = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'autocomplete': 'off',
-        'placeholder': 'Ingrese su correp electrónico'
+        'placeholder': 'Ingrese su correo electrónico'
     }), label='Email', max_length=50)
 
     image = forms.ImageField(widget=forms.FileInput(attrs={

@@ -270,7 +270,7 @@ class Student(models.Model):
         item['user'] = self.user.toJSON()
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
-        item['parish'] = self.parish.toJSON()
+        item['parish'] = self.parish.toJSON() if self.parish else ''
         item['full_name'] = self.user.get_full_name()
         item['value'] = self.user.get_full_name()
         return item
