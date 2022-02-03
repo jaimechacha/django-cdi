@@ -14,7 +14,7 @@ from config import settings
 
 
 class Web(models.Model):
-    name = models.CharField(verbose_name='Compañia', max_length=50, unique=True)
+    name = models.CharField(verbose_name='Centro infantil', max_length=50, unique=True)
     ruc = models.CharField(verbose_name='Ruc', max_length=13, unique=True)
     mobile = models.CharField(verbose_name='Teléfono', max_length=10, unique=True)
     email = models.CharField(verbose_name='Correo Electrónico', max_length=50, unique=True)
@@ -26,12 +26,12 @@ class Web(models.Model):
     about_us = RichTextField(null=True, blank=True)
     desc = models.CharField(verbose_name='Descripción', max_length=1000)
     coordinates = models.CharField(verbose_name='Coordenadas', max_length=50)
-    servicios_text = models.CharField(verbose_name='Servicios Descripción', max_length=1000, default='')
-    docentes_text = models.CharField(verbose_name='Docentes Descripción', max_length=1000, default='')
-    infraestructura_text = models.CharField(verbose_name='Infraestructura Descripción', max_length=1000, default='')
-    block1 = models.CharField(verbose_name='Bloque 1', max_length=1000, default='')
-    block2 = models.CharField(verbose_name='Bloque 2', max_length=1000, default='')
-    block3 = models.CharField(verbose_name='Bloque 3', max_length=1000, default='')
+    servicios_text = models.CharField(verbose_name='Servicios', max_length=1000, default='')
+    docentes_text = models.CharField(verbose_name='Edades', max_length=1000, default='')
+    infraestructura_text = models.CharField(verbose_name='Horarios', max_length=1000, default='')
+    block1 = models.CharField(verbose_name='Criterios de los niños', max_length=1000, default='')
+    block2 = models.CharField(verbose_name='Grupos de trabajo', max_length=1000, default='')
+    block3 = models.CharField(verbose_name='Tarifas y pagos', max_length=1000, default='')
 
     def __str__(self):
         return self.name

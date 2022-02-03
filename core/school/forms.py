@@ -411,8 +411,8 @@ class CursosForm(ModelForm):
         model = Cursos
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del curso'}),
-            'descrip': forms.TextInput(attrs={'placeholder': 'Ingrese una descripción del curso'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del nivel'}),
+            'descrip': forms.TextInput(attrs={'placeholder': 'Ingrese una descripción del nivel'}),
             'max_coupon': forms.TextInput(attrs={'placeholder': 'Ingrese el nº máximo de estudiantes'}),
             'min_coupon': forms.TextInput(attrs={'placeholder': 'Ingrese el nº mínimo de estudiantes'}),
         }
@@ -919,7 +919,8 @@ class ContractsForm(ModelForm):
     class Meta:
         model = Contracts
         fields = '__all__'
-        exclude = ('start_date', 'end_date', 'base_salary')
+        exclude = ('start_date', 'end_date', 'base_salary', 'shifts',)
+        
         widgets = {
             'teacher': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
             'job': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),

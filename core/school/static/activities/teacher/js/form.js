@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 perioddetail: {
                     validators: {
                         notEmpty: {
-                            message: 'Seleccione una materia'
+                            message: 'Seleccione una ámbito'
                         },
                     }
                 },

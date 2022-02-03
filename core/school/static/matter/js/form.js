@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 level: {
                     validators: {
                         notEmpty: {
-                            message: 'Seleccione un curso'
+                            message: 'Seleccione un nivel'
                         },
                     }
                 },

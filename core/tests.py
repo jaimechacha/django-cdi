@@ -32,13 +32,13 @@ comp.coordinates = '-2.2397839,-79.8966192'
 comp.save()
 
 module = Module()
-module.name = 'Cambiar password'
+module.name = 'Cambiar contraseña'
 module.url = '/user/admin/update/password/'
 module.is_active = True
 module.is_vertical = False
 module.is_visible = True
 module.icon = 'fas fa-key'
-module.description = 'Permite cambiar tu password de tu cuenta'
+module.description = 'Permite cambiar la contraseña de tu cuenta'
 module.save()
 print('insertado {}'.format(module.name))
 
@@ -163,7 +163,7 @@ module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'far fa-building'
-module.description = 'Permite administrar la información de la compañia'
+module.description = 'Permite administrar la información del CDI'
 module.save()
 print('insertado {}'.format(module.name))
 
@@ -263,7 +263,7 @@ module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'fas fa-calendar-check'
-module.description = 'Permite administrar los turnos de los docentes del colegio'
+module.description = 'Permite administrar los turnos de los docentes del CDI'
 module.save()
 for p in Permission.objects.filter(content_type__model=Shifts._meta.label.split('.')[1].lower()):
     module.permits.add(p)
@@ -319,7 +319,7 @@ module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'fas fa-chalkboard-teacher'
-module.description = 'Permite administrar los profesores del colegio'
+module.description = 'Permite administrar los profesores del CDI'
 module.save()
 for p in Permission.objects.filter(content_type__model=Teacher._meta.label.split('.')[1].lower()):
     module.permits.add(p)
@@ -347,7 +347,7 @@ module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'fas fa-address-card'
-module.description = 'Permite administrar los cargos de los docentes del colegio'
+module.description = 'Permite administrar los cargos de los docentes del CDI'
 module.save()
 for p in Permission.objects.filter(content_type__model=Job._meta.label.split('.')[1].lower()):
     module.permits.add(p)
@@ -423,13 +423,13 @@ print('insertado {}'.format(type.name))
 
 module = Module()
 module.moduletype_id = 4
-module.name = 'Asignaturas'
+module.name = 'Ámbitos'
 module.url = '/school/matter/'
 module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'fas fa-book-open'
-module.description = 'Permite administrar las asignaturas del colegio'
+module.description = 'Permite administrar los ámbitos del CDI'
 module.save()
 for p in Permission.objects.filter(content_type__model=Matter._meta.label.split('.')[1].lower()):
     module.permits.add(p)
@@ -443,7 +443,7 @@ module.is_active = True
 module.is_vertical = True
 module.is_visible = True
 module.icon = 'fas fa-bread-slice'
-module.description = 'Permite administrar los tipos de desayuno del colegio'
+module.description = 'Permite administrar los tipos de desayuno del CDI'
 module.save()
 for p in Permission.objects.filter(content_type__model=Breakfast._meta.label.split('.')[1].lower()):
     module.permits.add(p)
@@ -520,7 +520,7 @@ for p in Permission.objects.filter(content_type__model=Period._meta.label.split(
 print('insertado {}'.format(module.name))
 
 module = Module()
-module.name = 'Materias'
+module.name = 'Ámbitos'
 module.url = '/school/period/teacher/consult/'
 module.is_active = True
 module.is_vertical = False

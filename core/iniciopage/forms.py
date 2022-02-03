@@ -19,11 +19,11 @@ class WebForm(ModelForm):
         model = Web
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Ingrese un nombre'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Ingrese el nombre del centro infantil'}),
             'coordinates': forms.TextInput(attrs={'placeholder': 'Ingrese unas coordenadas'}),
             'ruc': forms.TextInput(attrs={'placeholder': 'Ingrese un ruc'}),
             'mobile': forms.TextInput(attrs={'placeholder': 'Ingrese un teléfono celular'}),
-            'email': forms.TextInput(attrs={'placeholder': 'Ingrese un email'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Ingrese un correo electrónico'}),
             'address': forms.TextInput(attrs={'placeholder': 'Ingrese una dirección'}),
             'mission': forms.Textarea(attrs={'placeholder': 'Ingrese una descripción', 'rows': 3, 'cols': 3}),
             'vision': forms.Textarea(attrs={'placeholder': 'Ingrese una descripción', 'rows': 3, 'cols': 3}),

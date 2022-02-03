@@ -116,6 +116,8 @@ def Suscripcion(request):
             ctx['nomb_est'] = request.POST.get('nomb_est')
             ctx['apell_est'] = request.POST.get('apell_est')
             ctx['ci_est'] = request.POST.get('ci_est')
+            ctx['direccion'] = request.POST.get('direccion')
+
         elif action == 'docente':
             ctx['nomb_doc'] = request.POST.get('nomb_doc')
             ctx['apell_doc'] = request.POST.get('apell_doc')

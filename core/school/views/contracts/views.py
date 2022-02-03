@@ -66,12 +66,12 @@ class ContractsCreateView(PermissionMixin, CreateView):
         try:
             if action == 'add':
                 contract = Contracts()
-                contract.start_date = request.POST['start_date']
-                contract.end_date = request.POST['end_date']
+               
+                
                 contract.job_id = int(request.POST['job'])
                 contract.teacher_id = int(request.POST['teacher'])
                 contract.shifts_id = int(request.POST['shifts'])
-                contract.base_salary = float(request.POST['base_salary'])
+              
                 contract.save()
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
@@ -82,7 +82,7 @@ class ContractsCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de un docente'
+        context['title'] = 'Nuevo registro de un Docente'
         context['action'] = 'add'
         return context
 

@@ -207,7 +207,7 @@ class PeriodAssignmentTeacherView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         instance = Period.objects.get(pk=self.kwargs['pk'])
-        context['title'] = 'Asignación de Curso Docente/Materias {}'.format(instance.name)
+        context['title'] = 'Asignación de Nivel Docente/Ámbitos {}'.format(instance.name)
         context['list_url'] = self.success_url
         context['action'] = 'assignment_matters'
         return context
@@ -246,7 +246,7 @@ class PeriodTeacherConsultView(ModuleMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Listado de Materias por Periodos'
+        context['title'] = 'Listado de ámbitos por períodos'
         return context
 
 
@@ -278,5 +278,5 @@ class PeriodStudentConsultView(ModuleMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Listado de Materias por periodo'
+        context['title'] = 'Listado de ámbitos por período'
         return context

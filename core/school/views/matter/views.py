@@ -67,7 +67,7 @@ class MatterCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de una Asignatura'
+        context['title'] = 'Nuevo registro de un ámbito'
         context['action'] = 'add'
         return context
 
@@ -116,7 +116,7 @@ class MatterUpdateView(PermissionMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Edición de una Asignatura'
+        context['title'] = 'Edición de un Ámbito'
         context['action'] = 'edit'
         return context
 

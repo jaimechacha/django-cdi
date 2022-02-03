@@ -280,7 +280,7 @@ $(function () {
     $("#search_materia").autocomplete({
         source: function (request, response) {
             if (select_course.val() === '') {
-                alert('Seleccione un curso');
+                alert('Seleccione un nivel');
                 $('#search_materia').val('').focus();
                 return false;
             }

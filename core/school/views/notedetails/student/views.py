@@ -63,5 +63,5 @@ class NoteDetailsStudentMatterListView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Listado de Calificaciones por Periodos'
+        context['title'] = 'Listado de Calificaciones por Períodos'
         return context

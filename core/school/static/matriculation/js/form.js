@@ -234,7 +234,7 @@ $(function () {
     $("#search_student").autocomplete({
         source: function (request, response) {
             if (select_level.val() === '') {
-                alert('Seleccione un curso')
+                alert('Seleccione un nivel')
                 $('#search_student').val('').focus();
                 return false;
             }

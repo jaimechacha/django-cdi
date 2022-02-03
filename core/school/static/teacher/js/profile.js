@@ -81,7 +81,7 @@ let teacher = {
         return ids;
     },
 }
-function validateDate() {
+function validateDate() {r
 
     var now = new Date();
     var input = input_birthdate.val().split('-');
@@ -214,10 +214,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     validators: {
                         stringLength: {
                             min: 4,
-                        },
-                        notEmpty: {
-                            message: 'La dirección es obligatoria'
-                        },
+                        }
                     }
                 },
                 birthdate: {
@@ -262,11 +259,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     }
                 },
                 parish: {
-                    // validators: {
-                    //     notEmpty: {
-                    //         message: 'Seleccione una parroquia',
-                    //     },
-                    // }
+                    validators: {
+                        notEmpty: {
+                            message: 'Seleccione una parroquia',
+                        },
+                    }
                 },
                 curriculum: {
                     validators: {

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 contract: {
                     validators: {
                         notEmpty: {
-                            message: 'Seleccione un profesor'
+                            message: 'Seleccione un docente'
                         },
                     }
                 },

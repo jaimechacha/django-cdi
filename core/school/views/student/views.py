@@ -95,7 +95,7 @@ class StudentCreateView(PermissionMixin, CreateView):
                     student.phone = request.POST['phone']
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
-                    student.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
+                    student.parish_id = int(request.POST['parish'])
                     student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.birth_country_id = int(request.POST['birth_country']) if request.POST[
                         'birth_country'] else None
@@ -325,7 +325,7 @@ class GenericUpdateStudent(UpdateView):
                     student.phone = request.POST['phone']
                     student.address = request.POST['address']
                     student.birthdate = request.POST['birthdate']
-                    student.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
+                    student.parish_id = int(request.POST['parish'])
                     student.age = int(request.POST['age']) if request.POST['age'] else None
                     student.birth_country_id = int(request.POST['birth_country']) if request.POST[
                         'birth_country'] else None

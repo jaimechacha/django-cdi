@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 course: {
                     validators: {
                         notEmpty: {
-                            message: 'Seleccione un curso'
+                            message: 'Seleccione un nivel'
                         },
                     }
                 },

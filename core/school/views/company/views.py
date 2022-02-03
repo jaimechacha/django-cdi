@@ -52,6 +52,6 @@ class CompanyUpdateView(ModuleMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['title'] = 'Información del Colegio'
+        context['title'] = 'Información del CDI'
         context['action'] = 'edit'
         return context

@@ -43,7 +43,7 @@ class TeacherListView(PermissionMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('teacher_create')
-        context['title'] = 'Listado de Empleados'
+        context['title'] = 'Listado de profesores'
         return context
 
 
@@ -100,7 +100,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
                     teacher.phone = request.POST['phone']
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
-                    teacher.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
+                    teacher.parish_id = int(request.POST['parish'])
 
                     teacher.reference = request.POST['reference']
 
@@ -158,7 +158,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de un empleado'
+        context['title'] = 'Nuevo registro de un docente'
         context['action'] = 'add'
         context['cvitae'] = []
         context['instance'] = None
@@ -286,7 +286,7 @@ class GenericUpdateTeacher(UpdateView):
                     teacher.phone = request.POST['phone']
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
-                    teacher.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
+                    teacher.parish_id = int(request.POST['parish'])
                     teacher.reference = request.POST['reference']
 
                     teacher.nationality = request.POST['nationality']
@@ -367,7 +367,7 @@ class TeacherUpdateProfileView(ModuleMixin, GenericUpdateTeacher):
 
 
 class TeacherUpdateView(PermissionMixin, GenericUpdateTeacher):
-    title = 'Edición de un profesor'
+    title = 'Edición de un docente'
     template_name = 'teacher/create.html'
     success_url = reverse_lazy('teacher_list')
     permission_required = 'change_teacher'

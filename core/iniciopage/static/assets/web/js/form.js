@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                         regexp: {
                             regexp: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i,
-                            message: 'El formato email no es correcto'
+                            message: 'El formato del correo no es correcto'
                         }
                     }
                 },

@@ -54,7 +54,7 @@ class MatriculationListView(PermissionMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('matriculation_create')
-        context['title'] = 'Listado de Matriculas'
+        context['title'] = 'Listado de Matrículas'
         return context
 
 
@@ -133,7 +133,7 @@ class MatriculationCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de una Matricula'
+        context['title'] = 'Nuevo registro de una Matrícula'
         context['action'] = 'add'
         return context
 
@@ -193,7 +193,7 @@ class MatriculationUpdateView(PermissionMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Edición de una Matricula'
+        context['title'] = 'Edición de una Matrícula'
         context['action'] = 'edit'
         return context
 

@@ -16033,7 +16033,7 @@
   "model": "school.scores",
   "pk": 1,
   "fields": {
-    "name": "Ecelente",
+    "name": "Excelente",
     "score": "10.00"
   }
 },

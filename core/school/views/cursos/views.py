@@ -21,7 +21,7 @@ class CursosListView(PermissionMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('cursos_create')
-        context['title'] = 'Listado de Cursos'
+        context['title'] = 'Listado de Niveles'
         return context
 
 
@@ -65,7 +65,7 @@ class CursosCreateView(PermissionMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Nuevo registro de un Curso'
+        context['title'] = 'Nuevo registro de un Nivel'
         context['action'] = 'add'
         return context
 

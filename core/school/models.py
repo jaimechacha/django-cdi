@@ -189,7 +189,7 @@ class Teacher(models.Model):
         item['user'] = self.user.toJSON()
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
-        item['parish'] = self.parish.toJSON() if self.parish else ''
+        item['parish'] = self.parish.toJSON()
         item['croquis'] = self.get_croquis()
         item['basic_services_payment'] = self.get_comprobante()
         item['ci_doc'] = self.get_ci_doc()
@@ -270,7 +270,7 @@ class Student(models.Model):
         item['user'] = self.user.toJSON()
         item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
-        item['parish'] = self.parish.toJSON() if self.parish else ''
+        item['parish'] = self.parish.toJSON()
         item['full_name'] = self.user.get_full_name()
         item['value'] = self.user.get_full_name()
         return item
@@ -573,7 +573,7 @@ class Shifts(models.Model):
 
 
 class Contracts(models.Model):
-    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Empleado')
+    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
     job = models.ForeignKey(Job, on_delete=models.PROTECT, verbose_name='Cargo')
     shifts = models.ForeignKey(Shifts, on_delete=models.PROTECT, verbose_name='Turno')
     start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio')
@@ -843,8 +843,8 @@ class MatriculationDetail(models.Model):
         return item
 
     class Meta:
-        verbose_name = 'Matriculación Materia'
-        verbose_name_plural = 'Matriculaciones Materias'
+        verbose_name = 'Matriculación ámbito'
+        verbose_name_plural = 'Matriculaciones ámbitos'
         ordering = ['id']
 
 

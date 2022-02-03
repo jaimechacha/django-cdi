@@ -193,9 +193,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     validators: {
                         stringLength: {
                             min: 4,
-                        },
-                        notEmpty: {
-                            message: 'Ingrese una dirección',
                         }
                     }
                 },
@@ -233,7 +230,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         },
                     }
                 },
-                parish: {},
+                parish: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Seleccione una parroquia',
+                        },
+                    }
+                },
             },
         }
     )

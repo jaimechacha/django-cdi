@@ -10,11 +10,11 @@
 
 {% block columns %}
     <th>Nro</th>
-    <th>Fecha de matricula</th>
-    <th>Periodo</th>
+    <th>Fecha de matrícula</th>
+    <th>Período</th>
     <th>Nivel</th>
     <th>Estudiante</th>
-    <th>Materias</th>
+    <th>Ámbitos</th>
     <th class="text-center">Opciones</th>
 {% endblock %}
 
@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
-                <label>Periodo:</label>
+                <label>Período:</label>
                 {{ form.period }}
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        <b><i class="fas fa-book"></i> Materias</b>
+                        <b><i class="fas fa-book"></i> Ámbitos</b>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -57,7 +57,7 @@
                             <tr>
                                 <th>Docente</th>
                                 <th>Cargo</th>
-                                <th>Materia</th>
+                                <th>Ámbito</th>
                                 <th>Nivel</th>
                             </tr>
                             </thead>

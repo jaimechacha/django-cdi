@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                                     action: 'validate_data'
                                 };
                             },
-                            message: 'El nombre del curso ya se encuentra registrado',
+                            message: 'El nombre del nivel ya se encuentra registrado',
                             method: 'POST'
                         }
                     }
