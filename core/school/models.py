@@ -177,6 +177,8 @@ class Teacher(models.Model):
                                       verbose_name='Acta de compromiso')
     contract = models.FileField(upload_to='teacher/contrato/%Y/%m/%d', null=True, blank=True,
                                 verbose_name='Contrato firmado')
+    cv_doc = models.FileField(upload_to='teacher/cv-doc/%Y/%m/%d', null=True, blank=True,
+                              verbose_name='Hoja de vida')
 
     def __str__(self):
         return '{} / {}'.format(self.user.get_full_name(), self.user.dni)
@@ -195,21 +197,22 @@ class Teacher(models.Model):
         item['ci_doc'] = self.get_ci_doc()
         item['commitment_act'] = self.get_commitment_act()
         item['contract'] = self.get_contract()
+        item['cv_doc'] = self.get_cv_doc()
         return item
+
+    def remove_cv_doc(self):
+        try:
+            if self.cv_doc:
+                os.remove(self.cv_doc.path)
+        except:
+            pass
+        finally:
+            self.cv_doc = None
 
     def get_croquis(self):
         if self.croquis:
             return '{}{}'.format(settings.MEDIA_URL, self.croquis)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
-
-    def remove_croquis(self):
-        try:
-            if self.croquis:
-                os.remove(self.croquis.path)
-        except:
-            pass
-        finally:
-            self.croquis = None
 
     def get_comprobante(self):
         if self.basic_services_payment:
@@ -229,6 +232,11 @@ class Teacher(models.Model):
     def get_contract(self):
         if self.contract:
             return '{}{}'.format(settings.MEDIA_URL, self.contract)
+        return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
+
+    def get_cv_doc(self):
+        if self.cv_doc:
+            return '{}{}'.format(settings.MEDIA_URL, self.cv_doc)
         return '{}{}'.format(settings.STATIC_URL, 'img/default/empty.png')
 
     class Meta:

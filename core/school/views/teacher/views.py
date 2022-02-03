@@ -124,23 +124,25 @@ class TeacherCreateView(PermissionMixin, CreateView):
                         teacher.commitment_act = request.FILES['commitment_act']
                     if 'contract' in request.FILES:
                         teacher.contract = request.FILES['contract']
+                    if 'cv_doc' in request.FILES:
+                        teacher.cv_doc = request.FILES['cv_doc']
                     teacher.save()
                     group = Group.objects.get(pk=settings.GROUPS.get('teacher'))
                     user.groups.add(group)
 
-                    cvitaejson = json.loads(request.POST['cvitae'])
-
-                    for det in cvitaejson:
-                        cvitae = CVitae()
-                        cvitae.typecvitae_id = int(det['typecvitae']['id'])
-                        cvitae.name = det['name']
-                        cvitae.start_date = det['start_date']
-                        cvitae.end_date = det['end_date']
-                        cvitae.details = det['details']
-                        cvitae.teacher_id = teacher.id
-                        if str(det['pos']) in request.FILES:
-                            cvitae.cv_file = request.FILES[str(det['pos'])]
-                        cvitae.save()
+                    # cvitaejson = json.loads(request.POST['cvitae'])
+                    #
+                    # for det in cvitaejson:
+                    #     cvitae = CVitae()
+                    #     cvitae.typecvitae_id = int(det['typecvitae']['id'])
+                    #     cvitae.name = det['name']
+                    #     cvitae.start_date = det['start_date']
+                    #     cvitae.end_date = det['end_date']
+                    #     cvitae.details = det['details']
+                    #     cvitae.teacher_id = teacher.id
+                    #     if str(det['pos']) in request.FILES:
+                    #         cvitae.cv_file = request.FILES[str(det['pos'])]
+                    #     cvitae.save()
             elif action == 'search_parish':
                 data = []
                 term = request.POST['term']
@@ -309,30 +311,32 @@ class GenericUpdateTeacher(UpdateView):
                         teacher.commitment_act = request.FILES['commitment_act']
                     if 'contract' in request.FILES:
                         teacher.contract = request.FILES['contract']
+                    if 'cv_doc' in request.FILES:
+                        teacher.cv_doc = request.FILES['cv_doc']
                     teacher.save()
 
-                    cvitaes = teacher.cvitae_set.all()
-                    cvitae_ids = json.loads(request.POST['cvitae_ids'])
-                    for cv in cvitaes:
-                        if cv.id not in cvitae_ids:
-                            cv.delete()
-
-                    cvitaejson = json.loads(request.POST['cvitae'])
-
-                    for det in cvitaejson:
-                        if 'id' in det:
-                            cvitae = CVitae.objects.get(id=int(det['id']))
-                        else:
-                            cvitae = CVitae()
-                        cvitae.start_date = det['start_date']
-                        cvitae.end_date = det['end_date']
-                        cvitae.typecvitae_id = int(det['typecvitae']['id'])
-                        cvitae.name = det['name']
-                        cvitae.details = det['details']
-                        cvitae.teacher_id = teacher.id
-                        if str(det['pos']) in request.FILES:
-                            cvitae.cv_file = request.FILES[str(det['pos'])]
-                        cvitae.save()
+                    # cvitaes = teacher.cvitae_set.all()
+                    # cvitae_ids = json.loads(request.POST['cvitae_ids'])
+                    # for cv in cvitaes:
+                    #     if cv.id not in cvitae_ids:
+                    #         cv.delete()
+                    #
+                    # cvitaejson = json.loads(request.POST['cvitae'])
+                    #
+                    # for det in cvitaejson:
+                    #     if 'id' in det:
+                    #         cvitae = CVitae.objects.get(id=int(det['id']))
+                    #     else:
+                    #         cvitae = CVitae()
+                    #     cvitae.start_date = det['start_date']
+                    #     cvitae.end_date = det['end_date']
+                    #     cvitae.typecvitae_id = int(det['typecvitae']['id'])
+                    #     cvitae.name = det['name']
+                    #     cvitae.details = det['details']
+                    #     cvitae.teacher_id = teacher.id
+                    #     if str(det['pos']) in request.FILES:
+                    #         cvitae.cv_file = request.FILES[str(det['pos'])]
+                    #     cvitae.save()
 
             elif action == 'search_parish':
                 data = []

@@ -673,6 +673,11 @@ class TeacherForm(ModelForm):
                 'placeholder': 'Suba el contrato firmado',
                 'class': 'form-control',
                 'accept': '.pdf'
+            }),
+            'cv_doc': forms.FileInput(attrs={
+                'placeholder': 'Suba la hoja de vida',
+                'class': 'form-control',
+                'accept': '.pdf'
             })
         }
 

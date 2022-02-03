@@ -317,14 +317,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
             let parameters = new FormData($(fv.form)[0]);
 
             parameters.append('action', $('input[name="action"]').val());
-            parameters.append('cvitae', JSON.stringify(teacher.details.cvitae));
-            parameters.append('cvitae_ids', JSON.stringify(teacher.get_cvitae_ids()));
+            // parameters.append('cvitae', JSON.stringify(teacher.details.cvitae));
+            // parameters.append('cvitae_ids', JSON.stringify(teacher.get_cvitae_ids()));
 
-            teacher.details.cvitae.forEach(e => {
-                if (e.cv_file.file){
-                    parameters.append(`${ e.pos }`, e.cv_file.file);
-                }
-            })
+            // teacher.details.cvitae.forEach(e => {
+            //     if (e.cv_file.file){
+            //         parameters.append(`${ e.pos }`, e.cv_file.file);
+            //     }
+            // })
             submit_formdata_with_ajax('Alerta', '¿Estas seguro de realizar la siguiente acción?', pathname, parameters, function () {
                 location.href = fv.form.getAttribute('data-url');
             });
