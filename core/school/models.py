@@ -265,6 +265,9 @@ class Student(models.Model):
     def birthdate_format(self):
         return self.birthdate.strftime('%Y-%m-%d')
 
+    def get_info_search_student(self):
+        return '{}/{}/{}'.format(self.get_full_name(), self.user.dni, self.birthdate_format())
+
     def toJSON(self):
         item = model_to_dict(self)
         item['user'] = self.user.toJSON()
@@ -272,7 +275,7 @@ class Student(models.Model):
         item['birthdate'] = self.birthdate.strftime('%Y-%m-%d')
         item['parish'] = self.parish.toJSON() if self.parish else ''
         item['full_name'] = self.user.get_full_name()
-        item['value'] = self.user.get_full_name()
+        item['value'] = self.get_info_search_student()
         return item
 
     class Meta:
