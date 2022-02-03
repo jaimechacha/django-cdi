@@ -1,11 +1,14 @@
-var select_contract;
-var tblMatter = null;
+let select_contract;
+let select_level;
+
+let tblMatter = null;
 
 function getMatters() {
 
     var parameters = {
         'action': 'search_matters_period',
-        'contract': select_contract.val()
+        'contract': select_contract.val(),
+        'level': select_level.val()
     };
 
     if (parameters.contract === '') {
@@ -105,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         .on('core.form.valid', function () {
             var parameters = {};
             parameters['contract'] = select_contract.val();
+            parameters['level'] = select_level.val();
             parameters['action'] = $('input[name="action"]').val();
             parameters['matters'] = JSON.stringify(tblMatter.rows().data().toArray().filter(function (item, key) {
                 return item.status === 1;
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 $(function () {
 
     select_contract = $('select[name="contract"]');
+    select_level = $('select[name="level"]');
 
     $('.select2').select2({
         theme: 'bootstrap4',
@@ -125,6 +130,10 @@ $(function () {
     });
 
     select_contract.on('change', function () {
+        getMatters();
+    });
+
+    select_level.on('change', function () {
         getMatters();
     });
 

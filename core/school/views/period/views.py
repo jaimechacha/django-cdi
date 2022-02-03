@@ -178,18 +178,22 @@ class PeriodAssignmentTeacherView(FormView):
             action = request.POST['action']
             if action == 'search_matters_period':
                 data = []
-                for m in Matter.objects.filter():
+                contract = request.POST.get('contract', None)
+                level = request.POST.get('level', None)
+                query = Matter.objects.filter()
+                if level:
+                    query = Matter.objects.filter(level__id=level)
+                for m in query:
                     item = m.toJSON()
                     status = PeriodDetail.objects.filter(period_id=self.kwargs['pk'],
                                                          matter_id=m.id,
-                                                         contract_id=request.POST[
-                                                             'contract']).exists()
+                                                         contract_id=contract).exists()
                     item['status'] = 1 if status else 0
                     data.append(item)
             elif action == 'assignment_matters':
                 with transaction.atomic():
                     instance = Period.objects.get(pk=self.kwargs['pk'])
-                    
+
                     contract_id = request.POST['contract']
                     instance.perioddetail_set.filter(contract_id=contract_id).delete()
                     for m in json.loads(request.POST['matters']):
@@ -227,9 +231,9 @@ class PeriodTeacherConsultView(ModuleMixin, FormView):
             action = request.POST['action']
             if action == 'search_period':
                 data = []
-                
+
                 period = request.POST['period']
-                
+
                 if len(period):
                     for i in PeriodDetail.objects.filter(period_id=period, contract__teacher__user=request.user):
                         data.append(i.toJSON())

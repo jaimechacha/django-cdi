@@ -1020,6 +1020,11 @@ class AssignmentTeacherPeriodForm(forms.Form):
         'style': 'width: 100%;'
     }))
 
+    level = forms.ModelChoiceField(queryset=Cursos.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control select2',
+        'style': 'width: 100%;'
+    }))
+
 
 class MatriculationForm(ModelForm):
     def __init__(self, *args, **kwargs):
