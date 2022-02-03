@@ -100,7 +100,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
                     teacher.phone = request.POST['phone']
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
-                    teacher.parish_id = int(request.POST['parish'])
+                    teacher.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
 
                     teacher.reference = request.POST['reference']
 
@@ -286,7 +286,7 @@ class GenericUpdateTeacher(UpdateView):
                     teacher.phone = request.POST['phone']
                     teacher.address = request.POST['address']
                     teacher.birthdate = request.POST['birthdate']
-                    teacher.parish_id = int(request.POST['parish'])
+                    teacher.parish_id = int(request.POST['parish']) if request.POST['parish'] else None
                     teacher.reference = request.POST['reference']
 
                     teacher.nationality = request.POST['nationality']

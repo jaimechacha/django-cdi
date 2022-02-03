@@ -214,7 +214,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     validators: {
                         stringLength: {
                             min: 4,
-                        }
+                        },
+                        notEmpty: {
+                            message: 'La dirección es obligatoria'
+                        },
                     }
                 },
                 birthdate: {
@@ -259,11 +262,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     }
                 },
                 parish: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Seleccione una parroquia',
-                        },
-                    }
+                    // validators: {
+                    //     notEmpty: {
+                    //         message: 'Seleccione una parroquia',
+                    //     },
+                    // }
                 },
                 curriculum: {
                     validators: {
@@ -464,6 +467,10 @@ $(function () {
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es"
+    });
+
+    input_birthdate.on('change', function () {
+        fv.revalidateField('birthdate');
     });
 
     $('select[name="gender"]').on('change.select2', function () {
