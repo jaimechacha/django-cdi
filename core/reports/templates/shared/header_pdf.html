@@ -1,0 +1,32 @@
+<style>
+    .header-container {
+        text-align: center;
+    }
+    .header-logo {
+        width: 60px;
+        height: 60px;
+    }
+    .header-title {
+        font-size: 2.2em;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .header-info {
+        font-size: 1em;
+        margin-top: 0;
+    }
+    .header-subtitle {
+        font-size: xx-large;
+        margin-bottom: 0;
+    }
+</style>
+<div class="header-container">
+    <img src="{{ company.get_image }}" class="header-logo">
+    <h3 class="header-title">{{ company.name|upper }}</h3>
+    <p class="header-info">
+        Dirección: {{ company.address }}<br>
+        Teléfono: {{ company.mobile }}<br>
+        Correo electrónico: {{ company.email }}<br>
+    </p>
+    <h4 class="header-subtitle">{{ title }}</h4>
+</div>
