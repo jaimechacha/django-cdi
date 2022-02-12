@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 mt-3">
                 <div class="card card-widget widget-user">
-                    <div class="widget-user-header bg-gradient-blue" style="height: auto;">
+                    <div class="widget-user-header bg-gradient-green" style="height: auto;">
                         <h3 class="widget-user-username">
                             {{ company.name }}<br>
                             Ruc: {{ company.ruc }}
@@ -23,13 +23,13 @@
                             Tu último acceso fue {{ request.user.last_login }}
                         </h5>
                     </div>
-                    <img class="img-fluid d-block mx-auto p-3" style="width: 100px; height: 100px;"
+                    <img class="img-fluid d-block mx-auto p-6" style="width: 100px; height: 100px;"
                          src="{{ company.get_image }}" alt="User Avatar">
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-sm-6 border-right">
                                 <div class="description-block">
-                                    <i class="fas fa-phone-volume fa-3x p-3"></i>
+                                    <i style="color: #5fcf80;" class="fas fa-phone-volume fa-3x p-3"></i>
                                     <h5 class="description-header font-weight-bold mb-2">
                                         Teléfono
                                     </h5>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="description-block">
-                                    <i class="fas fa-envelope fa-3x p-3"></i>
+                                    <i style="color: #007bff;" class="fas fa-envelope fa-3x p-3"></i>
                                     <h5 class="description-header font-weight-bold mb-2">
                                         Correo electrónico
                                     </h5>
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-sm-6 border-right">
                                 <div class="description-block">
-                                    <i class="fas fa-location-arrow fa-3x p-3"></i>
+                                    <i  style="color: #5fcf80;" class="fas fa-location-arrow fa-3x p-3"></i>
                                     <h5 class="description-header font-weight-bold mb-2">
                                         Dirección
                                     </h5>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="description-block">
-                                    <i class="fas fa-street-view fa-3x p-3"></i>
+                                    <i  <i style="color: #007bff;" class="fas fa-street-view fa-3x p-3"></i>
                                     <h5 class="description-header font-weight-bold mb-2">
                                         Ubicación
                                     </h5>
