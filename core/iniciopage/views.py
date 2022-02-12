@@ -28,6 +28,7 @@ from core.iniciopage.forms import WebForm
 class ContactoView(TemplateView):
     template_name = 'contacto.html'
 
+
 class NosotrosView(TemplateView):
     template_name = 'nosotros.html'
 
@@ -87,7 +88,7 @@ def pagina(request):
 
 
 class ActualizarWeb(ModuleMixin, UpdateView):
-    model: Web
+    model = Web
     form_class = WebForm
     template_name = 'ActualizarWeb.html'
     success_url = reverse_lazy("inicio")

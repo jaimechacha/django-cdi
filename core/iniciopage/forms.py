@@ -5,6 +5,7 @@ from django.forms import ModelForm
 from ckeditor.fields import RichTextFormField
 from ckeditor.widgets import CKEditorWidget
 
+
 class WebForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -37,13 +38,13 @@ class WebForm(ModelForm):
             'block3': forms.Textarea(attrs={'placeholder': 'Ingrese una descripción', 'rows': 3, 'cols': 3}),
         }
 
-    def save(self, commit=True):
-        data = {}
-        try:
-            if self.is_valid():
-                super().save()
-            else:
-                data['error'] = self.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
+    # def save(self, commit=True):
+    #     data = {}
+    #     try:
+    #         if self.is_valid():
+    #             super().save()
+    #         else:
+    #             data['error'] = self.errors
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return data
