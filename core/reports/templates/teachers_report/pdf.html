@@ -9,29 +9,10 @@
             size: A4 portrait;
             margin: 10mm;
         }
-        .header-container {
-            text-align: center;
-        }
-        .header-logo {
-            width: 60px;
-            height: 60px;
-        }
-        .header-title {
-            font-size: 2.2em;
-            font-weight: bold;
-            margin-bottom: 0;
-        }
-        .header-info {
-            font-size: 1em;
-            margin-top: 0;
-        }
-        .header-subtitle {
-            font-size: xx-large;
-            margin-bottom: 0;
-        }
-        .header-subtitle-info {
+        .subheader-content {
             font-size: 1.2em;
             margin-top: 0;
+            text-align: center;
         }
         table, th, td {
           border: 1px solid #0c0c0c;
@@ -53,20 +34,11 @@
 </head>
 <body>
 <div style="padding: 0; margin: 0;">
-    <div class="header-container">
-        <img src="{{ company.get_image }}" class="header-logo">
-        <h3 class="header-title">{{ company.name|upper }}</h3>
-        <p class="header-info">
-            Dirección: {{ company.address }}<br>
-            Teléfono: {{ company.mobile }}<br>
-            Correo electrónico: {{ company.email }}<br>
-        </p>
-        <h4 class="header-subtitle">{{ title }}</h4>
-        <p class="header-subtitle-info">
-            {% if period %} Período: {{ period.name }}<br> {% endif %}
-            {% if level %} Nivel: {{ level.name }}<br> {% endif %}
-        </p>
-    </div>
+    {% include 'shared/header_pdf.html' %}
+    <p class="subheader-content">
+        {% if period %} Período: {{ period.name }}<br> {% endif %}
+        {% if level %} Nivel: {{ level.name }}<br> {% endif %}
+    </p>
     <table>
         <thead>
             <tr>
@@ -89,18 +61,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <table style="width: 100%; border: 0; margin-top: 40px">
-        <tbody>
-            <tr>
-                <td style="border: 0; font-size: 1.2em;" colspan="2">
-                    <b>Fecha de registro: </b> {{ date_joined|date:'c' }}
-                </td>
-                <td style="border: 0; font-size: 1.2em; text-align: right">
-                    <b style="text-decoration: underline;">Firma autorizada</b>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    {% include 'shared/footer_pdf.html' %}
 </div>
 </body>
 </html>

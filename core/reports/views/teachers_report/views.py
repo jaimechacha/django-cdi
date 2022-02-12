@@ -1,5 +1,4 @@
 import json
-import os
 from datetime import datetime
 
 from django.http import HttpResponse
@@ -9,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import FormView
 from xhtml2pdf import pisa
 
-from config import settings
+from core.reports.utils import link_callback_report
 from core.reports.forms import ReportForm, Teacher, Cursos, Period
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
@@ -22,24 +21,6 @@ class TeachersReportView(ModuleMixin, FormView):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-
-    def link_callback(self, uri, rel):
-        s_url = settings.STATIC_URL
-        s_root = settings.STATIC_ROOT
-        m_url = settings.MEDIA_URL
-        m_root = settings.MEDIA_ROOT
-        if uri.startswith(m_url):
-            path = os.path.join(m_root, uri.replace(m_url, ""))
-        elif uri.startswith(s_url):
-            path = os.path.join(s_root, uri.replace(s_url, ""))
-        else:
-            return uri
-
-        if not os.path.isfile(path):
-            raise Exception(
-                'media URI must start with %s or %s' % (s_url, m_url)
-            )
-        return path
 
     def get_search_data(self):
         period = self.request.POST.get('period', None)
@@ -78,7 +59,7 @@ class TeachersReportView(ModuleMixin, FormView):
                 pisa_status = pisa.CreatePDF(
                     html_template,
                     dest=response,
-                    link_callback=self.link_callback
+                    link_callback=link_callback_report
                 )
                 return response
             else:
