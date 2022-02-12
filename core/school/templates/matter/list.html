@@ -12,7 +12,7 @@
         <tr>
             <td>{{ i.id }}</td>
             <td>{{ i.name }}</td>
-            <td>{{ i.get_level_display }}</td>
+            <td>{{ i.level.name }}</td>
             <td class="text-center">
                 <a href="{% url 'matter_update' i.id %}" data-toggle="tooltip" title="Editar registro" class="btn btn-warning btn-xs btn-flat">
                     <i class="fas fa-edit" aria-hidden="true"></i>
