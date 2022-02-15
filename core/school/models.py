@@ -8,11 +8,11 @@ from django.forms import model_to_dict
 
 from config import settings
 from core.school.choices import months, course_level, horary, gender_person, blood_types, civil_state
-from core.security.mixins import AuditMixin
+from core.security.audit_mixin.mixin import AuditMixin
 from core.user.models import User
 
 
-class Company(models.Model):
+class Company(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Compañia', max_length=50, unique=True)
     ruc = models.CharField(verbose_name='Ruc', max_length=13, unique=True)
     mobile = models.CharField(verbose_name='Teléfono', max_length=10, unique=True)
@@ -73,7 +73,7 @@ class Company(models.Model):
         ordering = ['-id']
 
 
-class Country(models.Model):
+class Country(AuditMixin, models.Model):
     code = models.CharField(max_length=4, verbose_name='Código', unique=True)
     name = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
 
@@ -90,7 +90,7 @@ class Country(models.Model):
         ordering = ['-id']
 
 
-class Province(models.Model):
+class Province(AuditMixin, models.Model):
     country = models.ForeignKey(Country, on_delete=models.PROTECT, verbose_name='País')
     name = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
     code = models.CharField(max_length=4, verbose_name='Código', unique=True)
@@ -109,7 +109,7 @@ class Province(models.Model):
         ordering = ['-id']
 
 
-class Canton(models.Model):
+class Canton(AuditMixin, models.Model):
     province = models.ForeignKey(Province, on_delete=models.PROTECT, verbose_name='Provincia')
     name = models.CharField(max_length=50, verbose_name='Nombre')
 
@@ -127,7 +127,7 @@ class Canton(models.Model):
         ordering = ['-id']
 
 
-class Parish(models.Model):
+class Parish(AuditMixin, models.Model):
     canton = models.ForeignKey(Canton, on_delete=models.PROTECT, verbose_name='Cantón')
     name = models.CharField(max_length=50, verbose_name='Nombre')
 
@@ -246,7 +246,7 @@ class Teacher(AuditMixin, models.Model):
         ordering = ['-id']
 
 
-class Student(models.Model):
+class Student(AuditMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
@@ -293,7 +293,7 @@ class Student(models.Model):
         ordering = ['-id']
 
 
-class LegalRepresentative(models.Model):
+class LegalRepresentative(AuditMixin, models.Model):
     first_name_rp = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
     last_name_rp = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
     relationship_rp = models.CharField(max_length=30, null=True, blank=True, verbose_name='Parentesco')
@@ -377,7 +377,7 @@ class LegalRepresentative(models.Model):
             self.save()
 
 
-class StudentMedicalRecord(models.Model):
+class StudentMedicalRecord(AuditMixin, models.Model):
     weight = models.DecimalField(decimal_places=2, default=0.00, max_digits=5, blank=True, null=True,
                                  verbose_name='Peso')
     size = models.CharField(max_length=20, null=True, blank=True, verbose_name='Talla')
@@ -439,7 +439,7 @@ class StudentMedicalRecord(models.Model):
         ordering = ['id']
 
 
-class Family(models.Model):
+class Family(AuditMixin, models.Model):
     first_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombres')
     last_name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Apellidos')
     ci = models.CharField(max_length=10, null=True, blank=True, verbose_name='Cédula de identidad')
@@ -475,7 +475,7 @@ class Family(models.Model):
         ordering = ['id']
 
 
-class FamilyGroup(models.Model):
+class FamilyGroup(AuditMixin, models.Model):
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')
     family = models.ForeignKey(Family, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Familiar')
 
@@ -488,7 +488,7 @@ class FamilyGroup(models.Model):
         return '{} {} {}'.format(self.id, self.family, self.student)
 
 
-class TypeCVitae(models.Model):
+class TypeCVitae(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 
     def __str__(self):
@@ -504,7 +504,7 @@ class TypeCVitae(models.Model):
         ordering = ['id']
 
 
-class CVitae(models.Model):
+class CVitae(AuditMixin, models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
     typecvitae = models.ForeignKey(TypeCVitae, on_delete=models.PROTECT, verbose_name='Tipo')
     name = models.CharField(max_length=200, verbose_name='Nombre')
@@ -536,7 +536,7 @@ class CVitae(models.Model):
         ordering = ['id']
 
 
-class Job(models.Model):
+class Job(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 
     def __str__(self):
@@ -552,7 +552,7 @@ class Job(models.Model):
         ordering = ['id']
 
 
-class ConferenceTheme(models.Model):
+class ConferenceTheme(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 
     def __str__(self):
@@ -568,7 +568,7 @@ class ConferenceTheme(models.Model):
         ordering = ['id']
 
 
-class Shifts(models.Model):
+class Shifts(AuditMixin, models.Model):
     name = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
 
     def __str__(self):
@@ -584,7 +584,7 @@ class Shifts(models.Model):
         ordering = ['-id']
 
 
-class Contracts(models.Model):
+class Contracts(AuditMixin, models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
     job = models.ForeignKey(Job, on_delete=models.PROTECT, verbose_name='Cargo')
     shifts = models.ForeignKey(Shifts, on_delete=models.PROTECT, verbose_name='Turno')
@@ -616,7 +616,7 @@ class Contracts(models.Model):
         ordering = ['id']
 
 
-class TypeEvent(models.Model):
+class TypeEvent(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
     economic_sanction = models.BooleanField(default=False, verbose_name='Sanción económica')
 
@@ -633,7 +633,7 @@ class TypeEvent(models.Model):
         ordering = ['id']
 
 
-class Events(models.Model):
+class Events(AuditMixin, models.Model):
     contract = models.ForeignKey(Contracts, on_delete=models.PROTECT, verbose_name='Contrato')
     typeevent = models.ForeignKey(TypeEvent, on_delete=models.PROTECT, verbose_name='Tipo de Evento')
     start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio')
@@ -657,7 +657,7 @@ class Events(models.Model):
         ordering = ['-id']
 
 
-class Assistance(models.Model):
+class Assistance(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now)
     teacher = models.ForeignKey(User, on_delete=models.PROTECT, related_name='fk_teacher')
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='fk_user')
@@ -690,7 +690,7 @@ class Assistance(models.Model):
         ordering = ['id']
 
 
-class Cursos(models.Model):
+class Cursos(AuditMixin, models.Model):
     name = models.CharField(max_length=23, null=False, blank=False, verbose_name='Nombre')
     descrip = models.CharField(max_length=70, null=False, blank=False)
     max_coupon = models.IntegerField(default=0, null=True, blank=True, verbose_name='Cupo máximo')
@@ -711,7 +711,7 @@ class Cursos(models.Model):
         ordering = ['id']
 
 
-class Matter(models.Model):
+class Matter(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50)
     level = models.ForeignKey(Cursos, on_delete=models.PROTECT, max_length=30, verbose_name='Curso')
     state = models.BooleanField(default=True, verbose_name='Estado')
@@ -736,7 +736,7 @@ class Matter(models.Model):
         ordering = ['id']
 
 
-class Conferences(models.Model):
+class Conferences(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now, verbose_name='Fecha de conferencia')
     name = models.CharField(max_length=50, verbose_name='Nombre')
     contract = models.ForeignKey(Contracts, on_delete=models.PROTECT, verbose_name='Profesor')
@@ -759,7 +759,7 @@ class Conferences(models.Model):
         ordering = ['id']
 
 
-class Period(models.Model):
+class Period(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
     state = models.BooleanField(default=True, verbose_name='Estado')
 
@@ -776,7 +776,7 @@ class Period(models.Model):
         ordering = ['id']
 
 
-class PeriodDetail(models.Model):
+class PeriodDetail(AuditMixin, models.Model):
     period = models.ForeignKey(Period, on_delete=models.PROTECT)
     contract = models.ForeignKey(Contracts, on_delete=models.PROTECT)
     matter = models.ForeignKey(Matter, on_delete=models.PROTECT)
@@ -797,7 +797,7 @@ class PeriodDetail(models.Model):
         ordering = ['id']
 
 
-class Tutorials(models.Model):
+class Tutorials(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now, verbose_name='Fecha de registro')
     contract = models.ForeignKey(Contracts, on_delete=models.PROTECT, verbose_name='Profesor')
     horary = models.CharField(max_length=100, choices=horary, verbose_name='Horario')
@@ -816,7 +816,7 @@ class Tutorials(models.Model):
         ordering = ['id']
 
 
-class Matriculation(models.Model):
+class Matriculation(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now)
     period = models.ForeignKey(Period, on_delete=models.PROTECT)
     student = models.ForeignKey(Student, on_delete=models.PROTECT)
@@ -842,7 +842,7 @@ class Matriculation(models.Model):
         ordering = ['id']
 
 
-class MatriculationDetail(models.Model):
+class MatriculationDetail(AuditMixin, models.Model):
     matriculation = models.ForeignKey(Matriculation, on_delete=models.PROTECT)
     perioddetail = models.ForeignKey(PeriodDetail, on_delete=models.PROTECT)
 
@@ -860,7 +860,7 @@ class MatriculationDetail(models.Model):
         ordering = ['id']
 
 
-class PsychologicalOrientation(models.Model):
+class PsychologicalOrientation(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now, verbose_name='Fecha de registro')
     matriculation = models.ForeignKey(Matriculation, on_delete=models.PROTECT, verbose_name='Alumno')
     desc = models.CharField(max_length=5000, verbose_name='Detalles')
@@ -880,7 +880,7 @@ class PsychologicalOrientation(models.Model):
         ordering = ['id']
 
 
-class Breakfast(models.Model):
+class Breakfast(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
     state = models.BooleanField(default=True, verbose_name='Estado')
 
@@ -897,7 +897,7 @@ class Breakfast(models.Model):
         ordering = ['id']
 
 
-class SchoolFeeding(models.Model):
+class SchoolFeeding(AuditMixin, models.Model):
     date_joined = models.DateField(default=datetime.now, verbose_name='Fecha de registro')
     breakfast = models.ForeignKey(Breakfast, on_delete=models.PROTECT, verbose_name='Tipo de colación')
     student = models.ForeignKey(Student, on_delete=models.PROTECT, verbose_name='Estudiante')
@@ -921,7 +921,7 @@ class SchoolFeeding(models.Model):
         ordering = ['id']
 
 
-class TypeResource(models.Model):
+class TypeResource(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 
     def __str__(self):
@@ -937,7 +937,7 @@ class TypeResource(models.Model):
         ordering = ['id']
 
 
-class Resources(models.Model):
+class Resources(AuditMixin, models.Model):
     typeresource = models.ForeignKey(TypeResource, on_delete=models.PROTECT, verbose_name='Tipo de Recurso')
     perioddetail = models.ForeignKey(PeriodDetail, on_delete=models.PROTECT, verbose_name='Matería')
     start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio')
@@ -962,7 +962,7 @@ class Resources(models.Model):
         ordering = ['id']
 
 
-class TypeActivity(models.Model):
+class TypeActivity(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 
     def __str__(self):
@@ -978,7 +978,7 @@ class TypeActivity(models.Model):
         ordering = ['id']
 
 
-class Activities(models.Model):
+class Activities(AuditMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre')
     typeactivity = models.ForeignKey(TypeActivity, on_delete=models.PROTECT, verbose_name='Tipo de Actividad')
     perioddetail = models.ForeignKey(PeriodDetail, on_delete=models.PROTECT, verbose_name='Materia')
@@ -1023,7 +1023,7 @@ class Activities(models.Model):
         ordering = ['id']
 
 
-class Qualifications(models.Model):
+class Qualifications(AuditMixin, models.Model):
     activities = models.ForeignKey(Activities, on_delete=models.PROTECT)
     student = models.ForeignKey(Student, on_delete=models.PROTECT)
     archive = models.ImageField(upload_to='qualifications/%Y/%m/%d', null=True, blank=True)
@@ -1056,7 +1056,7 @@ class Qualifications(models.Model):
         ordering = ['id']
 
 
-class NoteDetails(models.Model):
+class NoteDetails(AuditMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre')
     typeactivity = models.ForeignKey(TypeActivity, on_delete=models.PROTECT, verbose_name='Tipo de Actividad')
     perioddetail = models.ForeignKey(PeriodDetail, on_delete=models.PROTECT, verbose_name='Materia')
@@ -1082,7 +1082,7 @@ class NoteDetails(models.Model):
         ordering = ['id']
 
 
-class Scores(models.Model):
+class Scores(AuditMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre')
     score = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
 
@@ -1100,7 +1100,7 @@ class Scores(models.Model):
         ordering = ['id']
 
 
-class Punctuations(models.Model):
+class Punctuations(AuditMixin, models.Model):
     notedetails = models.ForeignKey(NoteDetails, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.PROTECT)
     date_joined = models.DateField(default=datetime.now)

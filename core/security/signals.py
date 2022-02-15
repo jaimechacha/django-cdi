@@ -2,8 +2,18 @@ from .middleware import RequestMiddleware
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
-
-list_models = ['Teacher']
+list_models = ['Company', 'Country', 'Province', 'Canton',
+               'Parish', 'Teacher', 'Student', 'LegalRepresentative',
+               'StudentMedicalRecord', 'Family', 'FamilyGroup', 'TypeCVitae',
+               'CVitae', 'Job', 'ConferenceTheme', 'Shifts',
+               'Contracts', 'TypeEvent', 'Events', 'Assistance',
+               'Cursos', 'Matter', 'Conferences', 'Period',
+               'PeriodDetail', 'Tutorials', 'Matriculation', 'MatriculationDetail',
+               'PsychologicalOrientation', 'Breakfast', 'SchoolFeeding', 'TypeResource',
+               'Resources', 'TypeActivity', 'Activities', 'Qualifications', 'NoteDetails',
+               'Scores', 'Punctuations', 'Web', 'Material',
+               'Entry', 'EntryMaterial', 'Inventory', 'Output',
+               'OutputMaterial']
 
 
 @receiver(post_save)
@@ -25,7 +35,6 @@ def audit_log(sender, instance, created, raw, update_fields, **kwargs):
 
 @receiver(post_delete)
 def audit_delete_log(sender, instance, **kwargs):
-
     if sender.__name__ not in list_models:
         return
 

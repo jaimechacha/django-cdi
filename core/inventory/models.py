@@ -6,9 +6,10 @@ from django.forms import model_to_dict
 
 from core.school.models import Cursos, Teacher
 from core.user.models import User
+from core.security.audit_mixin.mixin import AuditMixin
 
 
-class Material(models.Model):
+class Material(AuditMixin, models.Model):
     name = models.CharField('Nombre', max_length=30, blank=True, null=True)
     description = models.TextField('Descripción', blank=True, null=True)
     image = models.ImageField('Imagen', upload_to='materials/%Y/%m/%d', null=True, blank=True)
@@ -35,7 +36,7 @@ class Material(models.Model):
         return item
 
 
-class Entry(models.Model):
+class Entry(AuditMixin, models.Model):
     date_entry = models.DateField('Fecha de ingreso', default=datetime.now)
     employee = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Responsable')
 
@@ -47,7 +48,7 @@ class Entry(models.Model):
         return '{} {}'.format(self.employee.__str__(), self.date_entry)
 
 
-class EntryMaterial(models.Model):
+class EntryMaterial(AuditMixin, models.Model):
     entry = models.ForeignKey(Entry, on_delete=models.PROTECT)
     material = models.ForeignKey(Material, on_delete=models.PROTECT)
     amount = models.IntegerField('Cantidad', blank=True, null=True)
@@ -66,7 +67,7 @@ class EntryMaterial(models.Model):
         return item
 
 
-class Inventory(models.Model):
+class Inventory(AuditMixin, models.Model):
     material = models.ForeignKey(Material, on_delete=models.PROTECT)
     stock = models.IntegerField('Stock', blank=True, null=True)
 
@@ -85,7 +86,7 @@ class Inventory(models.Model):
         return item
 
 
-class Output(models.Model):
+class Output(AuditMixin, models.Model):
     date_output = models.DateField('Fecha de salida', default=datetime.now)
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Docente')
 
@@ -97,7 +98,7 @@ class Output(models.Model):
         return '{} {}'.format(self.teacher.__str__(), self.date_output)
 
 
-class OutputMaterial(models.Model):
+class OutputMaterial(AuditMixin, models.Model):
     output = models.ForeignKey(Output, on_delete=models.PROTECT)
     material = models.ForeignKey(Material, on_delete=models.PROTECT)
     amount = models.IntegerField('Cantidad', blank=True, null=True)

@@ -10,10 +10,10 @@ from django.db import models
 from django.forms import model_to_dict
 
 from config import settings
-# Create your models here.
+from core.security.audit_mixin.mixin import AuditMixin
 
 
-class Web(models.Model):
+class Web(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Centro infantil', max_length=50, unique=True)
     ruc = models.CharField(verbose_name='Ruc', max_length=13, unique=True)
     mobile = models.CharField(verbose_name='Teléfono', max_length=10, unique=True)
