@@ -145,7 +145,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
@@ -229,4 +229,4 @@ venv.bak/
 # KDE Directory file
 .directory
 
-static/lib
+#static/lib
