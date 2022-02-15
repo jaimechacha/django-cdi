@@ -8,6 +8,7 @@ from django.forms import model_to_dict
 
 from config import settings
 from core.school.choices import months, course_level, horary, gender_person, blood_types, civil_state
+from core.security.mixins import AuditMixin
 from core.user.models import User
 
 
@@ -144,7 +145,7 @@ class Parish(models.Model):
         ordering = ['-id']
 
 
-class Teacher(models.Model):
+class Teacher(AuditMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
