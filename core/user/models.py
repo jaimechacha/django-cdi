@@ -8,9 +8,10 @@ from django.db import models
 from django.forms.models import model_to_dict
 
 from config import settings
+from core.security.audit_mixin.mixin import AuditMixin
 
 
-class User(AbstractUser):
+class User(AuditMixin, AbstractUser):
     dni = models.CharField(max_length=13, unique=True, verbose_name='Cédula o RUC')
     image = models.ImageField(upload_to='users/%Y/%m/%d', verbose_name='Imagen', null=True, blank=True)
     is_change_password = models.BooleanField(default=False)

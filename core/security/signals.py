@@ -14,7 +14,8 @@ list_models = ['Company', 'Country', 'Province', 'Canton',
                'Scores', 'Punctuations', 'Web', 'Material',
                'Entry', 'EntryMaterial', 'Inventory', 'Output',
                'OutputMaterial', 'Dashboard', 'ModuleType', 'Module',
-               'GroupModule', 'GroupPermission', 'DatabaseBackups', 'AccessUsers']
+               'GroupModule', 'GroupPermission', 'DatabaseBackups', 'AccessUsers',
+               'User']
 
 
 @receiver(post_save)
