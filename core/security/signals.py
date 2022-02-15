@@ -13,13 +13,12 @@ list_models = ['Company', 'Country', 'Province', 'Canton',
                'Resources', 'TypeActivity', 'Activities', 'Qualifications', 'NoteDetails',
                'Scores', 'Punctuations', 'Web', 'Material',
                'Entry', 'EntryMaterial', 'Inventory', 'Output',
-               'OutputMaterial']
+               'OutputMaterial', 'Dashboard', 'ModuleType', 'Module',
+               'GroupModule', 'GroupPermission', 'DatabaseBackups', 'AccessUsers']
 
 
 @receiver(post_save)
 def audit_log(sender, instance, created, raw, update_fields, **kwargs):
-    print('sender', sender.__name__)
-
     if sender.__name__ not in list_models:
         return
 

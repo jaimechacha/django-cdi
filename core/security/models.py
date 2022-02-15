@@ -11,12 +11,13 @@ from django.db import models
 from django.forms.models import model_to_dict
 
 from config import settings
+from core.security.audit_mixin.mixin import AuditMixin
 from core.security.choices import *
 from core.security.utils import current_date_format
 from core.user.models import User
 
 
-class Dashboard(models.Model):
+class Dashboard(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
     image = models.ImageField(verbose_name='Logo', upload_to='dashboard/%Y/%m/%d', null=True, blank=True)
     icon = models.CharField(max_length=500, verbose_name='Icono FontAwesome')
@@ -63,7 +64,7 @@ class Dashboard(models.Model):
         ordering = ['-id']
 
 
-class ModuleType(models.Model):
+class ModuleType(AuditMixin, models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Nombre')
     icon = models.CharField(max_length=100, unique=True, verbose_name='Icono')
     is_active = models.BooleanField(default=True, verbose_name='Estado')
@@ -112,7 +113,7 @@ class ModuleType(models.Model):
         ordering = ['-name']
 
 
-class Module(models.Model):
+class Module(AuditMixin, models.Model):
     url = models.CharField(max_length=100, verbose_name='Url', unique=True)
     name = models.CharField(max_length=100, verbose_name='Nombre')
     moduletype = models.ForeignKey(ModuleType, null=True, blank=True, verbose_name='Tipo de Módulo',
@@ -173,7 +174,7 @@ class Module(models.Model):
         ordering = ['-name']
 
 
-class GroupModule(models.Model):
+class GroupModule(AuditMixin, models.Model):
     group = models.ForeignKey(Group, on_delete=models.PROTECT)
     module = models.ForeignKey(Module, on_delete=models.PROTECT)
 
@@ -187,7 +188,7 @@ class GroupModule(models.Model):
         ordering = ['-id']
 
 
-class GroupPermission(models.Model):
+class GroupPermission(AuditMixin, models.Model):
     group = models.ForeignKey(Group, on_delete=models.PROTECT)
     permission = models.ForeignKey(Permission, on_delete=models.PROTECT)
     module = models.ForeignKey(Module, on_delete=models.PROTECT)
@@ -202,7 +203,7 @@ class GroupPermission(models.Model):
         ordering = ['-id']
 
 
-class DatabaseBackups(models.Model):
+class DatabaseBackups(AuditMixin, models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     date_joined = models.DateField(default=datetime.now)
     hour = models.TimeField(default=datetime.now)
@@ -253,7 +254,7 @@ class DatabaseBackups(models.Model):
         ordering = ['-id']
 
 
-class AccessUsers(models.Model):
+class AccessUsers(AuditMixin, models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     date_joined = models.DateField(default=datetime.now)
     hour = models.TimeField(default=datetime.now)
