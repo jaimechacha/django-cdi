@@ -2006,8 +2006,8 @@
   "model": "school.country",
   "pk": 114,
   "fields": {
-    "code": "undefined",
-    "name": "Islas Salomon"
+    "code": "DD",
+    "name": "Islas Salom\u00f3n"
   }
 },
 {
