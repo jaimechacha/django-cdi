@@ -3,6 +3,7 @@ import socket
 from datetime import *
 
 from crum import get_current_request
+from django.contrib.admin.models import LogEntry
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
@@ -11,6 +12,7 @@ from django.forms.models import model_to_dict
 
 from config import settings
 from core.security.choices import *
+from core.security.utils import current_date_format
 from core.user.models import User
 
 
@@ -285,3 +287,23 @@ class AccessUsers(models.Model):
             ('delete_accessusers', 'Can delete Acceso del usuario'),
         )
         ordering = ['-id']
+
+
+class Logs(LogEntry):
+    class Meta:
+        proxy = True
+
+    def get_action_text(self):
+        if self.action_flag == 1:
+            return 'Creado'
+        elif self.action_flag == 2:
+            return 'Modificado'
+        else:
+            return 'Eliminado'
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['user'] = self.user.__str__()
+        item['date'] = current_date_format(self.action_time)
+        item['action_text'] = self.get_action_text()
+        return item

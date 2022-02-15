@@ -5,6 +5,7 @@ from .views.module.views import *
 from .views.group.views import *
 from .views.accessusers.views import *
 from .views.databasebackups.views import *
+from .views.logs.views import *
 
 urlpatterns = [
     # module_type
@@ -32,4 +33,6 @@ urlpatterns = [
     path('database/backups/delete/<int:pk>/', DatabaseBackupsDeleteView.as_view(), name='databasebackups_delete'),
     # dashboard
     path('dashboard/update/', DashboardView.as_view(), name='dashboard_update'),
+    # logs
+    path('logs/', LogsListView.as_view(), name='logs_list'),
 ]
