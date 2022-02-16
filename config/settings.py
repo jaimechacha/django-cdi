@@ -16,7 +16,7 @@ SECRET_KEY = 'sv3bn4w^rir+zz4@jh_cse38bi3sxh#3s-3ro@yybzrmk98=bp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["cdi-anderson.herokuapp.com"]
+ALLOWED_HOSTS = ["cdi-upec.herokuapp.com"]
 
 
 DJANGO_APPS = [
