@@ -142,7 +142,7 @@ modules.xml
 .Python
 build/
 develop-eggs/
-dist/
+#dist/
 downloads/
 eggs/
 .eggs/
