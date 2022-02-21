@@ -7,33 +7,46 @@
     ````shell script
     python -m venv venv
     ````
-3. Activar entorno virtual
+3. Crear archivo .env en la ruta principal del proyecto y agregar lo siguiente
+    ````shell script
+      DB_NAME=YOUR_DB_NAME
+      DB_USER=YOUR_DB_USER
+      DB_PASSWORD=YOUR_USER_PASSWORD
+      DB_HOST=localhost
+    
+      BACKEND_EMAIL=django.core.mail.backends.smtp.EmailBackend
+      HOST_EMAIL=smtp.something.com
+      USER_EMAIL=myawesomeemail@test.com
+      USER_PASSWORD=my_awesome_password
+      PORT_EMAIL=587
+    ````
+4. Activar entorno virtual
     ````shell script
     .\venv\Scripts\activate
     ````
-4. Instalar dependencias
+5. Instalar dependencias
     ````shell script
     pip install -r .\requirements\requirements.txt
     ````
-5. Si ya existe la db saltar al paso 10
+6. Si ya existe la db saltar al paso 10
 
-6. Crear carpeta db en la raiz del proyecto
+7. Crear carpeta db en la raiz del proyecto
     ````shell script
     db/
     ````
-7. Ejecutar migraciones
+8. Ejecutar migraciones
     ````shell script
     python manage.py makemigrations
     ````
-8. Confirmar migraciones
+9. Confirmar migraciones
     ````shell script
     python manage.py migrate
     ````
-9. Cargar respaldo
-    ````shell script
-     python manage.py loaddata deploy/backup.json --exclude contenttypes
-    ````
-10. Incorporar librerias externas dentro del folder static/lib
+10. Cargar respaldo
+     ````shell script
+      python manage.py loaddata deploy/backup.json --exclude contenttypes
+     ````
+11. Incorporar librerias externas dentro del folder static/lib
     ````shell script
        Dentro de la ruta static crear la carpeta lib y dentro incluir todas las librerias externas
        adminlte-3.0.5
@@ -41,11 +54,11 @@
        bootstrap-daterangepicker-3.0.5
        ...etc
     ````
-11. Restaurar los archivos de media
+12. Restaurar los archivos de media
     ````shell script
     En la ruta principal volver a copiar la carpeta media
     ````
-12. Ejecutar el proyecto
+13. Ejecutar el proyecto
     ````shell script
     python manage.py runserver
     ````
