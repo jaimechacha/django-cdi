@@ -1,0 +1,139 @@
+{% extends 'detail.html' %}
+
+{% block content_card %}
+    <div class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-2">
+                    <!-- <img src="{{ object.user.get_image }}" alt="teacher profile" class="img-thumbnail">-->
+                    <img class="profile-user-img img-fluid img-circle" src="{{ object.user.get_image }}" alt="User profile picture">
+                </div>
+                
+                <div class="col col-lg-10" >
+                    <h5 style="font-family: 'Google Sans',Roboto,Arial,sans-serif;font-size: 1.5rem;font-weight: 400;letter-spacing: 0;line-height: 2.25rem;hyphens: auto;word-break: break-word;color: #202124;word-wrap: break-word;" class="h2 mt-3">{{ object.user.get_full_name }}</h5>
+                    <p class="h6 mt-3">Docente</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col col-lg-5" style="font-family: Roboto,Arial,sans-serif;text-transform: uppercase;font-size: .6875rem;letter-spacing: .07272727em;hyphens: auto;word-break: break-word;word-wrap: break-word;color: #5f6368;">
+            <br>
+            <li class="list-group-item">
+                <b>Correo electrónico</b> <a class="float-right">{{ object.user.email|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Cédula</b> <a class="float-right">{{ object.user.dni|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Género</b> <a class="float-right">{{ object.gender|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Celular</b> <a class="float-right">{{ object.mobile|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Teléfono</b> <a class="float-right">{{ object.phone|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Fecha de nacimiento: </b> <a class="float-right">{{ object.birthdate|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Nacionalidad</b> <a class="float-right">{{ object.nationality |default_if_none:"(Vacío)"}}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Edad</b> <a class="float-right">{{ object.age|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Etnia</b> <a class="float-right">{{ object.ethnicity|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Religión</b> <a class="float-right">{{ object.religion|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Estado civil</b> <a class="float-right">{{ object.civil_status|default_if_none:"(Vacío)" }}</a>
+            </li>
+        </div>
+
+        <div class="col col-lg-4" style="font-family: Roboto,Arial,sans-serif;text-transform: uppercase;font-size: .6875rem;letter-spacing: .07272727em;hyphens: auto;word-break: break-word;word-wrap: break-word;color: #5f6368;">
+            <li class="list-group-item" >
+                <b>Grupo sanguíneo</b> <a class="float-right">{{ object.blood_group|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Discapacidad</b> <a class="float-right">{{ object.disability|yesno:"Sí,No" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Tipo de discapacidad</b> <a class="float-right">{{ object.disability_type|default_if_none:"(Vacío)" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Enfermedades catastróficas</b> <a class="float-right">{{ object.cat_illnesses|yesno:"Sí,No" }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Desc. enfermedades catastróficas:</b> <a class="float-right">{{ object.cat_illnesses_desc }}</a>
+            </li>
+            <li class="list-group-item">
+                <b></b> <a class="float-right"></a>
+            </li>
+            <hr/>
+            <li class="list-group-item">
+                <b>País</b> <a class="float-right">{{ object.parish.canton.province.country.name }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Provincia</b> <a class="float-right">{{ object.parish.canton.province.name }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Cantón</b> <a class="float-right">{{ object.parish.canton.name }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Parroquia</b> <a class="float-right">{{ object.parish.name }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Dirección</b> <a class="float-right">{{ object.address }}</a>
+            </li>
+            <li class="list-group-item">
+                <b>Referencia</b> <a class="float-right">{{ object.reference }}</a>
+            </li>
+            <div class="w-50">
+               
+            </div>
+        </div>
+
+
+
+        <div class="col col-lg-3">
+            <li class="list-group-item">
+
+
+                        
+                <a href="{{ object.get_cv_doc }}" target="_blank" class="btn btn-success btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-id-card mr-1"></i> Hoja de vida
+                </a>
+                <a href="{{ object.get_ci_doc }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-id-card mr-1"></i> Cédula
+                </a>
+                <a href="{{ object.get_comprobante }}" target="_blank"
+                   class="btn btn-info btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-cash-register mr-1"></i> Comprobante SB
+                </a>
+                <a href="{{ object.get_commitment_act }}" target="_blank"
+                   class="btn btn-warning btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-briefcase mr-1"></i> Acta de compromiso
+                </a>
+                <a href="{{ object.get_contract }}" target="_blank" class="btn btn-secondary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-signature mr-1"></i> Contrato
+                </a>
+                <a href="{{ object.get_croquis }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
+                    <i class="fas fa-map-marked mr-1"></i> Croquis
+                </a>
+                    </div>
+                </div>
+    </div>
+    
+{% endblock %}
+{% block box_footer %}
+    <div class="card-footer">
+        <a href="{% url 'teacher_list' %}" class="btn btn-info btn-flat">
+            <i class="fas fa-backward"></i> Regresar
+        </a>
+    </div>
+{% endblock %}

@@ -60,7 +60,7 @@
           <li class="active"><a href="{% url 'inicio' %}" >Inicio</a></li>
 
          
-          <li><a href="{% url 'nosotros' %}" >About</a></li>
+          <li><a href="{% url 'nosotros' %}" >Nosotros</a></li>
           <li><a href="{% url 'inscripción' %}" >Inscripción</a></li>
 
           <li><a href="{% url 'contacto' %}" >Contacto</a></li>
@@ -96,7 +96,7 @@
 
         <div class="section-title">
        
-          <p style="font-family:serif; color:#148968;">Centro de Desarrollo Infantil "Pequeños Sabios"</p>
+          <p class="logo mr-auto" style="font-family:Poppins, sans-serif;; color:#148968; text-align:center; font-size: 25px; font-weight: 550; ">{{ web.desc|safe }}</p>
         </div>
 
         <div class="row">
@@ -122,7 +122,6 @@
       </div>
     </section><!-- End About Section -->
 
-
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
@@ -135,9 +134,8 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h4>Más de 5 añitos, te podemos ofrecer las siguientes opciones:</h4>
+              <h4 style="font-size: 1.2rem">Más de 5 añitos, te podemos ofrecer las siguientes opciones:</h4>
               <p>
-                <br>
                 <br>
 •	Tareas dirigidas
 <br>
@@ -198,7 +196,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Información adicional </h2>
+          <h2 >Información adicional </h2>
          
         </div>
 
@@ -208,12 +206,12 @@
             <div class="course-item">
               <!--<img src="assets/img/course-1.jpg" class="img-fluid" alt="...">-->
               <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-3" style="text-align:justify">
                   <h4>Criterios de los niños y niñas</h4>
                   
                 </div>
                 <!--<h3><a href="course-details.html">Website Design</a></h3>-->
-                <p>{{ web.block1 }}</p>
+                <p style="text-align:justify">{{ web.block1 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
@@ -240,7 +238,7 @@
                   
                 </div>
                 <!--<h3><a href="course-details.html">Website Design</a></h3>-->
-                <p>{{ web.block2 }}</p>
+                <p style="text-align:justify">{{ web.block2 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
@@ -267,7 +265,7 @@
                   
                 </div>
                 <!--<h3><a href="course-details.html">Website Design</a></h3>-->
-                <p>{{ web.block3 }}</p>
+                <p style="text-align:justify">{{ web.block3 }}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
@@ -374,7 +372,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Información</h3>
+            <h5>Información</h5>
             <p>
                Calle Antisana y Av Universitaria Tulcán-Ecuador
  
@@ -385,20 +383,20 @@
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
-            <h4> Links Útiles</h4>
+            <h5> Links Útiles</h5>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Acerca de Nosotros</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contacto</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'inicio' %}>Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'nosotros' %}>Acerca de Nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'contacto' %}>Contacto</a></li>
             </ul>
           </div>
 
           
 
           <div class="col-lg-5 col-md-6 footer-newsletter">
-            <h4>Inscríbete</h4>
+            <h5>Inscríbete</h5>
             <p>Presiona en insribirse y te direccionará al formato de inscripción</p>
-            <form action="" method="post">
+            <form action="inicio" method="post">
               <input type="email" name="email"><input type="submit" value="Inscribirse">
             </form>
           </div>

@@ -59,7 +59,7 @@ card = (
     ('card-outline card-maroon', 'card-outline card-maroon'),
     ('card-outline card-navy', 'card-outline card-navy'),
     ('card-outline card-olive', 'card-outline card-olive'),
-    ('card-outline card-orange', 'card-outline card-orange'),
+    ('card-outline card-orange', 'card-outline color-paginaweb'),
     ('card-outline card-outline', 'card-outline card-outline'),
     ('card-outline card-pink', 'card-outline card-pink'),
     ('card-outline card-purple', 'card-outline card-purple'),
@@ -88,7 +88,7 @@ navbar = (
     ('navbar-light', 'navbar-light'),
     ('navbar-light navbar-warning', 'navbar-warning'),
     ('navbar-light navbar-white', 'navbar-white'),
-    ('navbar-light navbar-orange', 'navbar-orange'),
+    ('navbar-light navbar-orange', 'navbar-color-paginaweb'),
 )
 
 brand_logo = (
