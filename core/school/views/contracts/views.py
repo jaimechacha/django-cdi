@@ -70,7 +70,7 @@ class ContractsCreateView(PermissionMixin, CreateView):
                 
                 contract.job_id = int(request.POST['job'])
                 contract.teacher_id = int(request.POST['teacher'])
-                contract.shifts_id = int(request.POST['shifts'])
+                '''contract.shifts_id = int(request.POST['shifts'])'''
               
                 contract.save()
             else:
@@ -111,11 +111,14 @@ class ContractsUpdateView(PermissionMixin, UpdateView):
         try:
             if action == 'edit':
                 contract = self.object
+                '''
                 contract.start_date = request.POST['start_date']
                 contract.end_date = request.POST['end_date']
-                contract.job_id = int(request.POST['job'])
                 contract.shifts_id = int(request.POST['shifts'])
                 contract.base_salary = float(request.POST['base_salary'])
+                '''
+
+                contract.job_id = int(request.POST['job'])
                 contract.save()
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'

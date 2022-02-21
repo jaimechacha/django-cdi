@@ -1,6 +1,8 @@
 import base64
+from email.policy import default
 import os
 from datetime import datetime
+from pickle import TRUE
 
 from PIL import Image
 from django.db import models
@@ -587,9 +589,9 @@ class Shifts(AuditMixin, models.Model):
 class Contracts(AuditMixin, models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Profesor')
     job = models.ForeignKey(Job, on_delete=models.PROTECT, verbose_name='Cargo')
-    shifts = models.ForeignKey(Shifts, on_delete=models.PROTECT, verbose_name='Turno')
-    start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio')
-    end_date = models.DateField(default=datetime.now, verbose_name='Fecha de finalización')
+    shifts = models.ForeignKey(Shifts, on_delete=models.PROTECT, verbose_name='Turno', default="1")
+    start_date = models.DateField(default=datetime.now, verbose_name='Fecha de inicio', null=TRUE)
+    end_date = models.DateField(default=datetime.now, verbose_name='Fecha de finalización', null=TRUE)
     base_salary = models.DecimalField(max_digits=9, decimal_places=2, default=0.00, verbose_name='Salario Base')
     state = models.BooleanField(default=True, verbose_name='Estado')
 
