@@ -1,21 +1,25 @@
 {% extends 'detail.html' %}
 
 {% block content_card %}
-    <div class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col col-lg-2">
-                    <img src="{{ object.user.get_image }}" alt="teacher profile" class="img-thumbnail">
-                </div>
-                <div class="col col-lg-10">
-                    <p class="h2 mt-3">{{ object.user.get_full_name }}</p>
-                    <p class="h6 mt-3">Docente</p>
-                </div>
+<div class="bg-light" >
+    <div class="container" style="background-color: white;">
+        <div class="row">
+            <div class="col col-lg-2">
+                <!-- <img src="{{ object.user.get_image }}" alt="teacher profile" class="img-thumbnail">-->
+                <img class="profile-user-img img-fluid img-circle" src="{{ object.user.get_image }}" alt="User profile picture">
+            </div>
+            
+            <div class="col col-lg-10" >
+                <h5 style="font-family: 'Google Sans',Roboto,Arial,sans-serif;font-size: 1.5rem;font-weight: 400;letter-spacing: 0;line-height: 2.25rem;hyphens: auto;word-break: break-word;color: #202124;word-wrap: break-word;" class="h2 mt-3">{{ object.user.get_full_name }}</h5>
+                <p class="h6 mt-3">Docente</p>
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+</div>
+    <div class="row mt-4" style="font-family: "Open Sans", sans-serif;;text-transform: uppercase;font-size: .7475rem;letter-spacing: .07272727em;hyphens: auto;word-break: break-word;word-wrap: break-word;color: #202124">
         <div class="col col-lg-6">
+            <div class="card card-success">
+                <div class="card-body">
             <p><b>Correo electrócnico</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
             <p><b>Cédula</b>: {{ object.user.dni|default_if_none:"(Vacío)" }}</p>
             <p><b>Género: </b>{{ object.gender|default_if_none:"(Vacío)" }}</p>
@@ -33,16 +37,23 @@
             <p><b>Tipo de discapacidad: </b>{{ object.disability_type|default_if_none:"(Vacío)" }}</p>
             <p><b>Enfermedades catastróficas: </b>{{ object.cat_illnesses|yesno:"Sí,No" }}</p>
             <p><b>Desc. enfermedades catastróficas: </b>{{ object.cat_illnesses_desc }}</p>
+                </div>
+            </div>
         </div>
-        <div class="col col-lg-6">
+        <div class="col col-lg-6" style="font-family: "Open Sans", sans-serif;text-transform: uppercase;font-size: .7475rem;letter-spacing: .07272727em;hyphens: auto;word-break: break-word;word-wrap: break-word;color: #202124">
+            <div class="card card-success">
+                <div class="card-body">
             <p><b>País: </b>{{ object.parish.canton.province.country.name }}</p>
             <p><b>Provincia: </b>{{ object.parish.canton.province.name }}</p>
             <p><b>Cantón: </b>{{ object.parish.canton.name }}</p>
             <p><b>Parroquia: </b>{{ object.parish.name }}</p>
             <p><b>Dirección: </b>{{ object.address }}</p>
             <p><b>Referencia: </b>{{ object.reference }}</p>
+                </div>
+            </div>
             <hr/>
             <div class="w-50">
+                
                 <a href="{{ object.get_ci_doc }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
                     <i class="fas fa-id-card mr-1"></i> Cédula
                 </a>
@@ -60,6 +71,7 @@
                 <a href="{{ object.get_croquis }}" target="_blank" class="btn btn-primary btn-sm btn-flat mt-2 w-100">
                     <i class="fas fa-map-marked mr-1"></i> Croquis
                 </a>
+                    
             </div>
         </div>
     </div>

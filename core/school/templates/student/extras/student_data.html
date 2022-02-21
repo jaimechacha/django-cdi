@@ -1,7 +1,15 @@
-<p class="h6 mt-3">Estudiante: {{ object.get_full_name }}</p>
+<p style="font-family: 'Google Sans',Roboto,Arial,sans-serif;font-size: 1.5rem;font-weight: 400;letter-spacing: 0;line-height: 2.25rem;hyphens: auto;word-break: break-word;color: #202124;word-wrap: break-word;" class="h6 mt-3"> {{ object.get_full_name }}</p>
 
-<div class="row mt-4">
-    <div class="col col-lg-5">
+
+<div class="col col-lg-2">
+    <img class="profile-user-img img-fluid img-circle" src="{{ object.user.get_image }}" alt="User profile picture">
+</div>
+
+<div class="row mt-4" style="font-family: "Open Sans", sans-serif;font-size: .7475rem;letter-spacing: .07272727em;hyphens: auto;word-break: break-word;word-wrap: break-word;color: #202124">
+    <div class="col col-lg-6">
+
+        <div class="card card-success">
+            <div class="card-body">
         <p><b>Correo electrónico</b>: {{ object.user.email|default_if_none:"(Vacío)" }}</p>
         <p><b>Cédula</b>: {{ object.user.dni|default_if_none:"(Vacío)" }}</p>
         <p><b>Género</b>: {{ object.gender|default_if_none:"(Vacío)" }}</p>
@@ -11,8 +19,12 @@
         <p><b>Dirección</b>: {{ object.address|default_if_none:"(Vacío)" }}</p>
         <p><b>Fecha de nacimiento</b>: {{ object.birthdate|default_if_none:"(Vacío)" }}</p>
         <p><b>Ubicación</b>: {{ object.parish|default_if_none:"(Vacío)" }}</p>
+            </div>
+        </div>
     </div>
-    <div class="col col-lg-5">
+    <div class="col col-lg-6">
+        <div class="card card-success">
+            <div class="card-body">
         <p><b>País de nacimiento</b>: {{ object.birth_country|default_if_none:"(Vacío)" }}</p>
         <p><b>Provincia de nacimiento</b>: {{ object.birth_province|default_if_none:"(Vacío)" }}</p>
         <p><b>Ciudad de nacimiento</b>: {{ object.birth_city|default_if_none:"(Vacío)" }}</p>
@@ -20,8 +32,10 @@
         <p><b>Edad</b>: {{ object.age|default_if_none:"(Vacío)" }}</p>
         <p><b>Etnia</b>: {{ object.ethnicity|default_if_none:"(Vacío)" }}</p>
         <p><b>Religión</b>: {{ object.religion|default_if_none:"(Vacío)" }}</p>
+        <br><br><br><br>
+        
+            </div>
+        </div>
     </div>
-    <div class="col col-lg-2">
-        <img src="{{ object.user.get_image }}" alt="student profile" class="img-thumbnail">
-    </div>
+    
 </div>
