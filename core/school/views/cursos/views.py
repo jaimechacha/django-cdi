@@ -8,6 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from core.school.forms import CursosForm, Cursos
 from core.security.mixins import PermissionMixin
+from deep_translator import GoogleTranslator
 
 
 class CursosListView(PermissionMixin, ListView):
@@ -112,7 +113,7 @@ class CursosUpdateView(PermissionMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['list_url'] = self.success_url
-        context['title'] = 'Edición de un Tipo de Curriculum Vitae'
+        context['title'] = 'Edición de un Tipo de Nivel'
         context['action'] = 'edit'
         return context
 
@@ -132,7 +133,7 @@ class CursosDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            data['error'] = str(e)
+            data['error'] = GoogleTranslator(source='en', target='es').translate(text=str(e)) 
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):
