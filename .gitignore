@@ -142,11 +142,19 @@ modules.xml
 .Python
 build/
 develop-eggs/
+<<<<<<< HEAD
 #dist/
 downloads/
 eggs/
 .eggs/
 #lib/
+=======
+# dist/
+downloads/
+eggs/
+.eggs/
+# lib/
+>>>>>>> main
 lib64/
 parts/
 sdist/
@@ -230,4 +238,8 @@ venv.bak/
 # KDE Directory file
 .directory
 
+<<<<<<< HEAD
 #static/lib
+=======
+# static/lib
+>>>>>>> main
