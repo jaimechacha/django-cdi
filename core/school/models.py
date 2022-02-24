@@ -763,6 +763,8 @@ class Conferences(AuditMixin, models.Model):
 
 class Period(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
+    initial_date = models.DateField(verbose_name='Fecha de inicio', blank=True, null=True)
+    end_date = models.DateField(verbose_name='Fecha final', blank=True, null=True)
     state = models.BooleanField(default=True, verbose_name='Estado')
 
     def __str__(self):
@@ -770,7 +772,17 @@ class Period(AuditMixin, models.Model):
 
     def toJSON(self):
         item = model_to_dict(self)
+        item['initial_date'] = self.initial_date.strftime('%Y-%m-%d') if self.initial_date else ''
+        item['end_date'] = self.end_date.strftime('%Y-%m-%d') if self.end_date else ''
         return item
+
+    def is_time_over(self):
+        today = datetime.now().date()
+        print('ed', self.end_date)
+        print('td', today)
+        if self.end_date < today:
+            return True
+        return False
 
     class Meta:
         verbose_name = 'Periodo'

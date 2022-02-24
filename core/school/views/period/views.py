@@ -135,6 +135,7 @@ class PeriodUpdateView(PermissionMixin, UpdateView):
         context['list_url'] = self.success_url
         context['title'] = 'Edición de un Periodo'
         context['action'] = 'edit'
+        context['instance'] = self.object
         return context
 
 

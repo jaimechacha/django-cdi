@@ -925,7 +925,7 @@ class ContractsForm(ModelForm):
         model = Contracts
         fields = '__all__'
         exclude = ('start_date', 'end_date', 'base_salary', 'shifts',)
-        
+
         widgets = {
             'teacher': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
             'job': forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 100%;'}),
@@ -995,7 +995,28 @@ class PeriodForm(ModelForm):
                 'class': 'form-control',
                 'autocomplete': 'off'
             }),
+            'initial_date': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'date',
+                }
+            ),
+            'end_date': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'date',
+                }
+            )
         }
+
+    def clean(self):
+        for name, field in self.fields.items():
+            if isinstance(field, StaticField):
+                self.cleaned_data.update({name: self.initial[name]})
+
+        return self.cleaned_data
 
     def save(self, commit=True):
         data = {}
@@ -1391,7 +1412,7 @@ class NoteDetailsForm(ModelForm):
     class Meta:
 
         model = NoteDetails
-        fields = 'name',  'typeactivity', 'date_range', 'desc'
+        fields = 'name', 'typeactivity', 'date_range', 'desc'
         widgets = {
             'name': forms.TextInput(attrs={
                 'placeholder': 'Ingrese un nombre o titulo'
