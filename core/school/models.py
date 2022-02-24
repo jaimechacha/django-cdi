@@ -781,8 +781,6 @@ class Period(AuditMixin, models.Model):
 
     def is_time_over(self):
         today = datetime.now().date()
-        print('ed', self.end_date)
-        print('td', today)
         if self.end_date < today:
             return True
         return False
