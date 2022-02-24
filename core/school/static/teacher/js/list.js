@@ -26,15 +26,18 @@ function getData() {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="/school/teacher/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="/school/teacher/delete/' + row.id + '/" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a> ';
-                    buttons += '<a href="/school/teacher/detail/' + row.id + '/" class="btn btn-info btn-xs btn-flat"><i class="fas fa-file-alt"></i></a>';
+                    var buttons = '<a href="/school/teacher/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
+                    buttons += '<a href="/school/teacher/delete/' + row.id + '/" class="btn btn-danger btn-xs btn-flat" data-toggle="tooltip" title="Eliminar Registro"><i class="fas fa-trash-alt"></i></a> ';
+                    buttons += '<a href="/school/teacher/detail/' + row.id + '/" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Perfil"><i class="fas fa-file-alt"></i></a>';
                     return buttons;
                 }
             },
         ],
-        initComplete: function (settings, json) {
+        rowCallback: function (row, data, index) {
 
+        },
+        initComplete: function (settings, json) {
+            $('[data-toggle="tooltip"]').tooltip();
         }
     });
 }

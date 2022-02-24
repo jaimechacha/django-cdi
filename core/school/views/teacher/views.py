@@ -11,6 +11,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, TemplateVie
 from config import settings
 from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
 from core.security.mixins import ModuleMixin, PermissionMixin
+from deep_translator import GoogleTranslator
 
 
 class TeacherListView(PermissionMixin, TemplateView):
@@ -187,7 +188,7 @@ class TeacherDeleteView(PermissionMixin, DeleteView):
                 instance.delete()
                 user.delete()
         except Exception as e:
-            data['error'] = str(e)
+            data['error'] = GoogleTranslator(source='en', target='es').translate(text=str(e)) 
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):

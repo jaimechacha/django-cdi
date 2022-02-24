@@ -138,6 +138,6 @@ def Suscripcion(request):
         send_mail('Solicitud de Suscripción',
                   message,
                   settings.EMAIL_HOST_USER,
-                  ['jaimechacha256@gmail.com'],
+                  ['cdi.pequenossabios@gmail.com'],
                   fail_silently=False, html_message=message)
     return render(request, 'suscripcion.html')
