@@ -38,6 +38,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         }
                     }
                 },
+                // initial_date: {
+                //     validators: {
+                //         notEmpty: {},
+                //     }
+                // },
+                // end_date: {
+                //     validators: {
+                //         notEmpty: {},
+                //     }
+                // }
             },
         }
     )
