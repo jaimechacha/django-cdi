@@ -13,6 +13,9 @@ from core.school.choices import months, course_level, horary, gender_person, blo
 from core.security.audit_mixin.mixin import AuditMixin
 from core.user.models import User
 
+from django.db import IntegrityError, connections, transaction
+
+
 
 class Company(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Compañia', max_length=50, unique=True)
@@ -149,7 +152,7 @@ class Parish(AuditMixin, models.Model):
 
 class Teacher(AuditMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
+    gender = models.CharField(max_length=10, choices=gender_person,  verbose_name='Género')#default=gender_person[0][0],
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
@@ -250,7 +253,7 @@ class Teacher(AuditMixin, models.Model):
 
 class Student(AuditMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    gender = models.CharField(max_length=10, choices=gender_person, default=gender_person[0][0], verbose_name='Género')
+    gender = models.CharField(max_length=10, choices=gender_person,  verbose_name='Género')#default=gender_person[0][0],
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
     emergency_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono de emergencia')
@@ -694,9 +697,9 @@ class Assistance(AuditMixin, models.Model):
 
 class Cursos(AuditMixin, models.Model):
     name = models.CharField(max_length=23, null=False, blank=False, verbose_name='Nombre')
-    descrip = models.CharField(max_length=70, null=False, blank=False)
-    max_coupon = models.IntegerField(default=0, null=True, blank=True, verbose_name='Cupo máximo')
-    min_coupon = models.IntegerField(default=0, null=True, blank=True, verbose_name='Cupo mínimo')
+    descrip = models.CharField(max_length=70, null=False, blank=False, verbose_name='Descripción')
+    max_coupon = models.IntegerField( null=True, blank=True, verbose_name='Cupo máximo de estudiantes')
+    min_coupon = models.IntegerField( null=True, blank=True, verbose_name='Cupo mínimo de estudiantes')
 
     # state = models.BooleanField(default=False)
 
@@ -1140,3 +1143,67 @@ class Punctuations(AuditMixin, models.Model):
         verbose_name = 'Puntaje'
         verbose_name_plural = 'Puntajes'
         ordering = ['id']
+
+
+
+
+
+class ProtectedError(IntegrityError):
+    def __init__(self, msg, protected_objects):
+        self.protected_objects = protected_objects
+        super().__init__(msg, protected_objects)
+
+
+    def CASCADE(collector, field, sub_objs, using):
+        collector.collect(sub_objs, source=field.remote_field.model,
+                        source_attr=field.name, nullable=field.null)
+        if field.null and not connections[using].features.can_defer_constraint_checks:
+            collector.add_field_update(field, None, sub_objs)
+
+
+
+    def PROTECT(collector, field, sub_objs, using):
+        raise ProtectedError(
+            "xxxxxxxxxxxx '%s' because they are "
+            "referenced through a protected foreign key: '%s.%s'" % (
+                field.remote_field.model.__name__, sub_objs[0].__class__.__name__, field.name
+            ),
+            sub_objs
+        )
+
+
+
+    def SET(value):
+        if callable(value):
+            def set_on_delete(collector, field, sub_objs, using):
+                collector.add_field_update(field, value(), sub_objs)
+        else:
+            def set_on_delete(collector, field, sub_objs, using):
+                collector.add_field_update(field, value, sub_objs)
+        set_on_delete.deconstruct = lambda: ('django.db.models.SET', (value,), {})
+        return set_on_delete
+
+
+
+    def SET_NULL(collector, field, sub_objs, using):
+        collector.add_field_update(field, None, sub_objs)
+
+
+
+    def SET_DEFAULT(collector, field, sub_objs, using):
+        collector.add_field_update(field, field.get_default(), sub_objs)
+
+
+
+    def DO_NOTHING(collector, field, sub_objs, using):
+        pass
+
+
+
+    def get_candidate_relations_to_delete(opts):
+        # The candidate relations are the ones that come from N-1 and 1-1 relations.
+        # N-N  (i.e., many-to-many) relations aren't candidates for deletion.
+        return (
+            f for f in opts.get_fields(include_hidden=True)
+            if f.auto_created and not f.concrete and (f.one_to_one or f.one_to_many)
+        )

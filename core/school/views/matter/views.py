@@ -8,6 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from core.school.forms import MatterForm, Matter
 from core.security.mixins import  PermissionMixin
+from deep_translator import GoogleTranslator
 
 
 class MatterListView(PermissionMixin, ListView):
@@ -136,7 +137,7 @@ class MatterDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            data['error'] = str(e)
+            data['error'] = GoogleTranslator(source='en', target='es').translate(text=str(e)) 
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):

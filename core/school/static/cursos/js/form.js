@@ -34,8 +34,30 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         }
                     }
                 },
+                max_coupon: {
+                    validators: {
+                        stringLength: {
+                            min: 1,
+                        },
+                        notEmpty: {
+                            message: 'Campo obligatorio',
+                        },
+                    }
+                },
+                min_coupon: {
+                    validators: {
+                        stringLength: {
+                            min: 1,
+                        },
+                        notEmpty: {
+                            message: 'Campo obligatorio',
+                        },
+                    }
+                },
+                
             },
         }
+        
     )
         .on('core.element.validated', function (e) {
             if (e.valid) {
@@ -72,3 +94,5 @@ $(function () {
         return validate_form_text('number', e, null);
     });
 });
+
+
