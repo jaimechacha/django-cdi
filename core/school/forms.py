@@ -1011,13 +1011,6 @@ class PeriodForm(ModelForm):
             )
         }
 
-    def clean(self):
-        for name, field in self.fields.items():
-            if isinstance(field, StaticField):
-                self.cleaned_data.update({name: self.initial[name]})
-
-        return self.cleaned_data
-
     def save(self, commit=True):
         data = {}
         try:

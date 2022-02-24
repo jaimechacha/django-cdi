@@ -1,136 +1,132 @@
 {% extends 'form.html' %}
 {% load static %}
 {% block head_form %}
-{#    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/spanish.js' %}"></script>#}
-{#    <script src="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.js' %}"></script>#}
-{#    <link rel="stylesheet" href="{% static 'lib/bootstrap-daterangepicker-3.0.5/daterangepicker.css' %}"/>#}
     <script src="{% static 'period/js/form.js' %}"></script>
 {% endblock %}
 
-{% block content %}
-    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
-          data-url="{{ list_url }}">
-        <div class="card {{ dshboard.card }}">
-            <div class="card-header">
-                <h3 class="card-title">
-                    {% if action == 'add' %}
-                        <i class="fas fa-plus" aria-hidden="true"></i>
-                    {% else %}
-                        <i class="fas fa-edit" aria-hidden="true"></i>
-                    {% endif %}
-                    {{ title }}
-                </h3>
-                <div class="card-tools">
-                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
-                </div>
-            </div>
-            <div class="card-body" style="display: block;">
-                <div class="container-fluid">
-                    {% if instance %}
-                        {% if instance.is_time_over %}
-                            <input type="hidden" name="action" id="action" value="{{ action }}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label>{{ form.name.label }}</label>
-                                <input
-                                    id="id_name"
-                                    name="name"
-                                    class="form-control"
-                                    readonly
-                                    value={{ form.name.value }}
-                                >
-                            </div>
-                            <div class="row">
-                                <div class="col col-6">
-                                    <div class="form-group">
-                                        <label>{{ form.initial_date.label }}</label>
-                                        <input
-                                            id="id_initial_date"
-                                            name="initial_date"
-                                            class="form-control"
-                                            type="date"
-                                            disabled
-                                            value={{ form.initial_date.value|date:"Y-m-d" }}
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col col-6">
-                                    <div class="form-group">
-                                        <label>{{ form.end_date.label }}</label>
-                                        {{ form.end_date }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{ form.state.label }}</label>
-                                {{ form.state }}
-                            </div>
-                        {% else %}
-                            <input type="hidden" name="action" id="action" value="{{ action }}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label>{{ form.name.label }}</label>
-                                {{ form.name }}
-                            </div>
-                            <div class="row">
-                                <div class="col col-6">
-                                    <div class="form-group">
-                                        <label>{{ form.initial_date.label }}</label>
-                                        {{ form.initial_date }}
-                                    </div>
-                                </div>
-                                <div class="col col-6">
-                                    <div class="form-group">
-                                        <label>{{ form.end_date.label }}</label>
-                                        {{ form.end_date }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>{{ form.state.label }}</label>
-                                {{ form.state }}
-                            </div>
-                        {% endif %}
-                    {% else %}
-                        <input type="hidden" name="action" id="action" value="{{ action }}">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label>{{ form.name.label }}</label>
-                            {{ form.name }}
-                        </div>
-                        <div class="row">
-                            <div class="col col-6">
-                                <div class="form-group">
-                                    <label>{{ form.initial_date.label }}</label>
-                                    {{ form.initial_date }}
-                                </div>
-                            </div>
-                            <div class="col col-6">
-                                <div class="form-group">
-                                    <label>{{ form.end_date.label }}</label>
-                                    {{ form.end_date }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>{{ form.state.label }}</label>
-                            {{ form.state }}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-            {% block box_footer %}
-                <div class="card-footer">
-                    {% block buttons %}
-                        <button type="submit" class="btn btn-primary btn-flat">
-                            <i class="fas fa-save" aria-hidden="true"></i> Guardar registro
-                        </button>
-                        <a href="{{ list_url }}" class="btn btn-danger btn-flat">
-                            <i class="fas fa-times"></i> Cancelar
-                        </a>
-                    {% endblock %}
-                </div>
-            {% endblock %}
-        </div>
-    </form>
-{% endblock %}
+{#{% block content %}#}
+{#    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"#}
+{#          data-url="{{ list_url }}">#}
+{#        <div class="card {{ dshboard.card }}">#}
+{#            <div class="card-header">#}
+{#                <h3 class="card-title">#}
+{#                    {% if action == 'add' %}#}
+{#                        <i class="fas fa-plus" aria-hidden="true"></i>#}
+{#                    {% else %}#}
+{#                        <i class="fas fa-edit" aria-hidden="true"></i>#}
+{#                    {% endif %}#}
+{#                    {{ title }}#}
+{#                </h3>#}
+{#                <div class="card-tools">#}
+{#                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card-body" style="display: block;">#}
+{#                <div class="container-fluid">#}
+{#                    {% if instance %}#}
+{#                        {% if instance.is_time_over %}#}
+{#                            <input type="hidden" name="action" id="action" value="{{ action }}">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="form-group">#}
+{#                                <label>{{ form.name.label }}</label>#}
+{#                                <input#}
+{#                                    id="id_name"#}
+{#                                    name="name"#}
+{#                                    class="form-control"#}
+{#                                    readonly#}
+{#                                    value={{ form.name.value }}#}
+{#                                >#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col col-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <label>{{ form.initial_date.label }}</label>#}
+{#                                        <input#}
+{#                                            id="id_initial_date"#}
+{#                                            name="initial_date"#}
+{#                                            class="form-control"#}
+{#                                            type="date"#}
+{#                                            value={{ form.initial_date.value|date:"Y-m-d" }}#}
+{#                                        >#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col col-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <label>{{ form.end_date.label }}</label>#}
+{#                                        {{ form.end_date }}#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label>{{ form.state.label }}</label>#}
+{#                                {{ form.state }}#}
+{#                            </div>#}
+{#                        {% else %}#}
+{#                            <input type="hidden" name="action" id="action" value="{{ action }}">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="form-group">#}
+{#                                <label>{{ form.name.label }}</label>#}
+{#                                {{ form.name }}#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col col-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <label>{{ form.initial_date.label }}</label>#}
+{#                                        {{ form.initial_date }}#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col col-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <label>{{ form.end_date.label }}</label>#}
+{#                                        {{ form.end_date }}#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label>{{ form.state.label }}</label>#}
+{#                                {{ form.state }}#}
+{#                            </div>#}
+{#                        {% endif %}#}
+{#                    {% else %}#}
+{#                        <input type="hidden" name="action" id="action" value="{{ action }}">#}
+{#                        {% csrf_token %}#}
+{#                        <div class="form-group">#}
+{#                            <label>{{ form.name.label }}</label>#}
+{#                            {{ form.name }}#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col col-6">#}
+{#                                <div class="form-group">#}
+{#                                    <label>{{ form.initial_date.label }}</label>#}
+{#                                    {{ form.initial_date }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col col-6">#}
+{#                                <div class="form-group">#}
+{#                                    <label>{{ form.end_date.label }}</label>#}
+{#                                    {{ form.end_date }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label>{{ form.state.label }}</label>#}
+{#                            {{ form.state }}#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#            {% block box_footer %}#}
+{#                <div class="card-footer">#}
+{#                    {% block buttons %}#}
+{#                        <button type="submit" class="btn btn-primary btn-flat">#}
+{#                            <i class="fas fa-save" aria-hidden="true"></i> Guardar registro#}
+{#                        </button>#}
+{#                        <a href="{{ list_url }}" class="btn btn-danger btn-flat">#}
+{#                            <i class="fas fa-times"></i> Cancelar#}
+{#                        </a>#}
+{#                    {% endblock %}#}
+{#                </div>#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    </form>#}
+{#{% endblock %}#}
