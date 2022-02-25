@@ -3,6 +3,7 @@ from logging import exception
 
 from django.db import transaction
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -148,6 +149,9 @@ class PeriodDeleteView(PermissionMixin, DeleteView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        period = self.get_object()
+        if period.is_time_over():
+            return redirect('period_list')
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -174,6 +178,9 @@ class PeriodAssignmentTeacherView(FormView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        period = Period.objects.get(pk=self.kwargs['pk'])
+        if period.is_time_over():
+            return redirect('period_list')
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
