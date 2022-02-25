@@ -1,0 +1,45 @@
+<input type="hidden" name="action" id="action" value="{{ action }}">
+{% csrf_token %}
+<div class="form-group">
+    <label for="id_name">{{ form.name.label }}</label>
+    <input
+        id="id_name"
+        name="name"
+        class="form-control"
+        readonly
+        value={{ form.name.value }}
+    >
+</div>
+<div class="row">
+    <div class="col col-6">
+        <div class="form-group">
+            <label for="id_initial_date">{{ form.initial_date.label }}</label>
+            <input
+                id="id_initial_date"
+                name="initial_date"
+                class="form-control"
+                type="date"
+                readonly
+                value={{ form.initial_date.value|date:"Y-m-d" }}
+            >
+        </div>
+    </div>
+    <div class="col col-6">
+        <div class="form-group">
+            <label>{{ form.end_date.label }}</label>
+            {{ form.end_date }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="id_state">{{ form.state.label }}</label>
+    <input
+        type="checkbox"
+        name="state"
+        id="id_state"
+        onclick="return false"
+        {% if form.state.value %}
+            checked
+        {% endif %}
+    >
+</div>

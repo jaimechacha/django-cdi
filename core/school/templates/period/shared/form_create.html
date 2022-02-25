@@ -1,0 +1,24 @@
+<input type="hidden" name="action" id="action" value="{{ action }}">
+{% csrf_token %}
+<div class="form-group">
+    <label>{{ form.name.label }}</label>
+    {{ form.name }}
+</div>
+<div class="row">
+    <div class="col col-6">
+        <div class="form-group">
+            <label>{{ form.initial_date.label }}</label>
+            {{ form.initial_date }}
+        </div>
+    </div>
+    <div class="col col-6">
+        <div class="form-group">
+            <label>{{ form.end_date.label }}</label>
+            {{ form.end_date }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label>{{ form.state.label }}</label>
+    {{ form.state }}
+</div>
