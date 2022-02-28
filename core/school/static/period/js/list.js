@@ -87,6 +87,19 @@ $(function () {
                 },
                 dataSrc: ""
             },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'print',
+                    text: 'Imprimir datos <i class="fas fa-print"></i>',
+                    titleAttr: 'Imprimir datos s',
+                    className: 'btn btn-success btn-flat btn-xs',
+                    //messageTop: "Detalles del Periodo Académico",
+                    title:  "<h5>Detalles del Periodo Académico</h5>",
+                      
+                    
+                },
+            ],
             columns: [
                 {data: "contract.teacher.user.full_name"},
                 {data: "contract.job.name"},

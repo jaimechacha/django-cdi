@@ -159,9 +159,9 @@ class PeriodDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            a='Acción denegada! Detalle:'
-            e=GoogleTranslator(source='en', target='es').translate(text=str(e)) 
-            data['error'] = a+e
+            a='Imposible realizar esta acción, ya que este periodo se encuentra operativo'
+            #e=GoogleTranslator(source='en', target='es').translate(text=str(e)) 
+            data['error'] = a
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):

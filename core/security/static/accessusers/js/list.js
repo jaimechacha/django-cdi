@@ -24,6 +24,18 @@ function getData(all) {
             data: parameters,
             dataSrc: ""
         },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Imprimir listado <i class="fas fa-print"></i>',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-success btn-flat btn-xs',
+                exportOptions: {
+                    columns: [0,1,2,3,4,5]
+                }
+            },
+        ],
         columns: [
             {data: "id"},
             {data: "user.username"},

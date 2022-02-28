@@ -67,6 +67,8 @@ urlpatterns = [
     path('student/detail/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
     path('student/delete/<int:pk>/', StudentDeleteView.as_view(), name='student_delete'),
     path('student/update/profile/', StudentUpdateProfileView.as_view(), name='student_update_profile'),
+    path('student/data/pdf/<int:pk>/', print_stud_data.as_view(), name='stud_print_pdf'),
+
     # job
     path('job/', JobListView.as_view(), name='job_list'),
     path('job/add/', JobCreateView.as_view(), name='job_create'),
@@ -129,6 +131,8 @@ urlpatterns = [
     path('teacher/detail/<int:pk>/', TeacherDetailView.as_view(), name='teacher_detail'),
     path('teacher/delete/<int:pk>/', TeacherDeleteView.as_view(), name='teacher_delete'),
     path('teacher/update/profile/', TeacherUpdateProfileView.as_view(), name='teacher_update_profile'),
+    path('teacher/data/pdf/<int:pk>/', print_teacher_date.as_view(), name='techer_print_pdf'),
+
     # contracts
     path('contracts/', ContractsListView.as_view(), name='contracts_list'),
     path('contracts/add/', ContractsCreateView.as_view(), name='contracts_create'),

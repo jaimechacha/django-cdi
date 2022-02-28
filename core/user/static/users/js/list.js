@@ -21,7 +21,11 @@ function getData() {
                 extend: 'print',
                 text: 'Imprimir listado <i class="fas fa-print"></i>',
                 titleAttr: 'Imprimir',
-                className: 'btn btn-success btn-flat btn-xs'
+                className: 'btn btn-success btn-flat btn-xs',
+                exportOptions: {
+                    columns: [0,1,2,3,5,]
+                }
+
             },
         ],
         columns: [

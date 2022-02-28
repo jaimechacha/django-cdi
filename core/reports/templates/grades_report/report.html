@@ -10,6 +10,15 @@
 {% endblock %}
 {% block content_report %}
     <div class="row">
+        
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Período:</label>
+                {{ form.period }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
                 <label>Rangos de fechas:</label>
@@ -18,21 +27,13 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="form-group">
-                <label>Período:</label>
-                {{ form.period }}
-            </div>
-        </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label>Nivel:</label>
                 {{ form.course }}
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <div class="form-group">
                 <label>Búsqueda de ámbito:</label>
                 <div class="input-group margin">
