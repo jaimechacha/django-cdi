@@ -1,7 +1,6 @@
 from config import db
 
 import os
-import django_heroku
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -16,7 +15,7 @@ SECRET_KEY = 'sv3bn4w^rir+zz4@jh_cse38bi3sxh#3s-3ro@yybzrmk98=bp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["cdi-upec.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 DJANGO_APPS = [
@@ -80,7 +79,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-DATABASES = db.POSTGRESQL
+DATABASES = db.SQLITE
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -163,5 +162,3 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
-
-django_heroku.settings(locals())

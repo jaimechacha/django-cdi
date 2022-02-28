@@ -81,6 +81,7 @@ function generateReport(all) {
         ],
         columns: [
             {data: "user.dni"},
+            //{data: "repre.ci_rp"},
             {data: "user.first_name"},
             {data: "user.last_name"},
         ],

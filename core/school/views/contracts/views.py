@@ -149,7 +149,8 @@ class ContractsDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            data['error'] = str(e)
+            a='Imposible realizar esta acción, ya que este contrato se encuentra operativo y afectarias la integridad referencial'
+            data['error'] = a
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):

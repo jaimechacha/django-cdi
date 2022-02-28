@@ -1,12 +1,23 @@
+from cgitb import html
 import json
+from multiprocessing import context
+from re import template
+from urllib import response
+from django import views
+import django
 
 from django.contrib.auth.models import Group
 from django.db import transaction
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
+
+#print data test
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.views import View
 
 from config import settings
 from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
@@ -206,6 +217,25 @@ class TeacherDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Información del docente'
         return context
+
+#imprimir hoja PDF de datos 
+class print_teacher_date(View):
+    def get(self, request,*args, **kwargs):
+        try:
+            template = get_template('teacher/print_teacher_dat.html')
+            context= {
+                'data': Teacher.objects.get(pk=self.kwargs['pk'])
+                }
+            html = template.render(context)
+            response = HttpResponse(content_type='aplication.pdf')
+            #para descargar directamente
+            #response['Content-Disposition']  = 'attachment; filename="report.pdf"'
+            pisaStatus = pisa.CreatePDF(
+                html, dest=response)
+            return response
+        except:
+            pass
+        return HttpResponseRedirect(reverse_lazy('dashboard'))
 
 
 class GenericUpdateTeacher(UpdateView):

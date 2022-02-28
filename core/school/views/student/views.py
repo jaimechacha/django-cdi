@@ -8,6 +8,14 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
+#print data test
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.views import View
+from django.http import HttpResponseRedirect
+from core.school.models import LegalRepresentative, StudentMedicalRecord
+
+
 from config import settings
 from core.school.forms import StudentForm, User, Student, Parish, StudentMedicalRecord, LegalRepresentative, Family, \
     StudentMedicalRecordForm, LegalRepresentativeForm, FamilyForm, FamilyGroup
@@ -397,6 +405,27 @@ class StudentUpdateProfileView(ModuleMixin, GenericUpdateStudent):
     title = 'Edición del perfil'
     template_name = 'student/profile.html'
     success_url = reverse_lazy('dashboard')
+
+#imprimir hoja PDF de datos 
+class print_stud_data(View):
+    def get(self, request,*args, **kwargs):
+        try:
+            template = get_template('student/print_stud_dat.html')
+            context= {
+                'data': Student.objects.get(pk=self.kwargs['pk']),
+                'repre': LegalRepresentative.objects.get(student_id=self.kwargs['pk']),
+                'ficha': StudentMedicalRecord.objects.get(student_id=self.kwargs['pk'])
+                }
+            html = template.render(context)
+            response = HttpResponse(content_type='aplication.pdf')
+            #para descargar directamente
+            #response['Content-Disposition']  = 'attachment; filename="report.pdf"'
+            pisaStatus = pisa.CreatePDF(
+                html, dest=response)
+            return response
+        except:
+            pass
+        return HttpResponseRedirect(reverse_lazy('dashboard'))
 
 
 class StudentUpdateView(PermissionMixin, GenericUpdateStudent):
