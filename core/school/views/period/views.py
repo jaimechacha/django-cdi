@@ -159,7 +159,7 @@ class PeriodDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            a='Imposible realizar esta acción, ya que este periodo se encuentra operativo y afectarias la integridad referencial'
+            a='Imposible realizar esta acción, ya que este periodo se encuentra operativo'
             #e=GoogleTranslator(source='en', target='es').translate(text=str(e)) 
             data['error'] = a
         return HttpResponse(json.dumps(data), content_type='application/json')
