@@ -17,6 +17,8 @@ function getData() {
         columns: [
             {"data": "id"},
             {"data": "name"},
+            {"data": "initial_date"},
+            {"data": "end_date"},
             {"data": "state"},
             {"data": "id"},
         ],
@@ -36,7 +38,17 @@ function getData() {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
+                    const part_date = row.end_date?.split('-');
+                    const e_date = new Date(part_date[0], part_date[1]-1, part_date[2]);
+                    const today = new Date()
+                    if (e_date.getTime() < today){
+                        let buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
+                        buttons += '<a class="btn btn-secondary btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a> ';
+                        buttons += '<a class="btn btn-secondary btn-xs btn-flat"><i class="fas fa-chalkboard-teacher"></i></a> ';
+                        buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-book"></i></a> ';
+                        return buttons;
+                    }
+                    let buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
                     buttons += '<a href="/school/period/delete/' + row.id + '/" class="btn btn-danger btn-xs btn-flat" data-toggle="tooltip" title="Eliminar Registro"><i class="fas fa-trash-alt"></i></a> ';
                     buttons += '<a href="/school/period/assignment/teacher/' + row.id + '/" class="btn btn-success btn-xs btn-flat" data-toggle="tooltip" title="Asignación Docente-Nivel"><i class="fas fa-chalkboard-teacher"></i></a> ';
                     buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-book"></i></a> ';
@@ -52,6 +64,7 @@ function getData() {
         }
     });
 }
+
 
 $(function () {
 
@@ -74,6 +87,19 @@ $(function () {
                 },
                 dataSrc: ""
             },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'print',
+                    text: 'Imprimir datos <i class="fas fa-print"></i>',
+                    titleAttr: 'Imprimir datos s',
+                    className: 'btn btn-success btn-flat btn-xs',
+                    //messageTop: "Detalles del Periodo Académico",
+                    title:  "<h5>Detalles del Periodo Académico</h5>",
+                      
+                    
+                },
+            ],
             columns: [
                 {data: "contract.teacher.user.full_name"},
                 {data: "contract.job.name"},

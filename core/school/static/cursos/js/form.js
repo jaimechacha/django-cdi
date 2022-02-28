@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (e) {
     const form = document.getElementById('frmForm');
+    FormValidation.validators.checkMinCoupon = verifyMinCoupon;
     const fv = FormValidation.formValidation(form, {
             locale: 'es_ES',
             localization: FormValidation.locales.es_ES,
@@ -52,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         notEmpty: {
                             message: 'Campo obligatorio',
                         },
+                        checkMinCoupon: {
+                            message: "El cupo mínimo debe ser menor que el cupo máximo"
+                        }
                     }
                 },
                 
@@ -95,4 +99,19 @@ $(function () {
     });
 });
 
+
+const verifyMinCoupon = () => {
+    return {
+        validate: (input) => {
+            const value = input.value;
+            const max_coupon =  document.getElementById('id_max_coupon').value;
+
+            if (Number(value) > Number(max_coupon)) {
+                return { valid: false };
+            }
+
+            return { valid: true };
+        },
+    };
+};
 

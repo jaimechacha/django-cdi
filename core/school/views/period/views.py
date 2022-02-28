@@ -3,6 +3,7 @@ from logging import exception
 
 from django.db import transaction
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -136,6 +137,7 @@ class PeriodUpdateView(PermissionMixin, UpdateView):
         context['list_url'] = self.success_url
         context['title'] = 'Edición de un Periodo'
         context['action'] = 'edit'
+        context['instance'] = self.object
         return context
 
 
@@ -147,6 +149,9 @@ class PeriodDeleteView(PermissionMixin, DeleteView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        period = self.get_object()
+        if period.is_time_over():
+            return redirect('period_list')
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -154,9 +159,9 @@ class PeriodDeleteView(PermissionMixin, DeleteView):
         try:
             self.get_object().delete()
         except Exception as e:
-            a='Acción denegada! Detalle:'
-            e=GoogleTranslator(source='en', target='es').translate(text=str(e)) 
-            data['error'] = a+e
+            a='Imposible realizar esta acción, ya que este periodo se encuentra operativo'
+            #e=GoogleTranslator(source='en', target='es').translate(text=str(e)) 
+            data['error'] = a
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def get_context_data(self, **kwargs):
@@ -173,6 +178,9 @@ class PeriodAssignmentTeacherView(FormView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        period = Period.objects.get(pk=self.kwargs['pk'])
+        if period.is_time_over():
+            return redirect('period_list')
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
