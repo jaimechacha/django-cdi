@@ -168,6 +168,7 @@ class Teacher(AuditMixin, models.Model):
     blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
                                    verbose_name='Grupo sanguíneo')
     disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
+    disability_percentage = models.IntegerField(null=True, blank=True, default=False, verbose_name='Porcentaje de discapacidad')
     disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
     cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
                                         verbose_name='Enfermedades catastróficas')
