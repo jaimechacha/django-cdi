@@ -23,15 +23,16 @@ function getData() {
             {"data": "notedetails.id"},
             {"data": "notedetails.name"},
             {"data": "notedetails.typeactivity.name"},
-            {"data": "notedetails.perioddetail.period.name"},
-            {"data": "notedetails.perioddetail.matter.name"},
-            {"data": "notedetails.perioddetail.matter.level.name"},
+            //{"data": "notedetails.perioddetail.period.name"},
             {"data": "notedetails.start_date"},
             {"data": "notedetails.end_date"},
-            {"data": "note"},
-            {"data": "score.name"},
             {"data": "comment"},
             {"data": "evidence_doc"},
+            {"data": "note"},
+            {"data": "score.name"},
+            {"data": "notedetails.perioddetail.matter.name"},
+            {"data": "notedetails.perioddetail.matter.level.name"},
+            {"data": "notedetails.perioddetail.contract.teacher.user.first_name"},
         ],
         columnDefs: [
             {
@@ -46,7 +47,7 @@ function getData() {
                 orderable: false,
             },
             {
-                targets: [-1],
+                targets: [-6],
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {

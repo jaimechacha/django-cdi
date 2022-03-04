@@ -18,7 +18,7 @@
               
               table {
                   width: 100%;
-                  border: -5px solid #4a4b4b;
+                  border: -10px solid #dadce0;
                   table-layout: fixed;
                   overflow-wrap: break-word;
                   color: #212529;
@@ -38,6 +38,7 @@
         <h1>Datos del Estudiante</h1>
         <div style="padding: 0; margin: 0;">
             <div class="card-body">
+                
                 <table  cellpadding="3">
                     <tr>
                         <td><b>{{ data.user.first_name|default_if_none:"(Vacío)" }} {{ data.user.last_name|default_if_none:"(Vacío)" }}</b></td>
@@ -118,7 +119,7 @@
                 <table cellpadding="3">
                     <tr>
                         <td><b>{{ repre.first_name_rp|default_if_none:"(Vacío)" }} {{ repre.last_name_rp|default_if_none:"(Vacío)" }}</b></td>
-                        <td><img class="imagenx"height="130px" width="90px" src="{{ data.user.image.path }}"></td>
+                        <td><img class="imagenx"height="130px" width="90px" src="{{ repre.image_rp.path }}"></td>
 
                     </tr>
                     <!--<tr>
@@ -216,12 +217,12 @@
                     </tr>
                     <tr>
                         <td><b>Donante</b></td>
-                        <td>{{ ficha.donor|default_if_none:"(No)" }}</td>
+                        <td>{{ ficha.donor|yesno:"Sí,No" }}</td>
                     </tr>
 
                     <tr>
                         <td><b>Discapacidad</b></td>
-                        <td>{{ ficha.disability|default_if_none:"(Vacío)" }}</td>
+                        <td>{{ ficha.disability|yesno:"Sí,No" }}</td>
                     </tr>
                     <tr>
                         <td><b>Tipo de discapacidad</b></td>
@@ -233,51 +234,51 @@
                     </tr>       
                     <tr>
                         <td><b>Alergias</b></td>
-                        <td>{{ ficha.allergies }}</td>
+                        <td>{{ ficha.allergies|yesno:"Sí,No" }}</td>
                     </tr>     
                     <tr>
                         <td><b>Descripciónde  alergias</b></td>
-                        <td>{{ ficha.allergies_desc|default_if_none:"(Vacío)" }}</td>
+                        <td>{{ ficha.allergies_desc|default:"(Sin desc.)" }}</td>
                     </tr>
                     <tr>
                         <td><b>Tratamiento de alergias</b></td>
-                        <td>{{ ficha.allergy_treatment }}</td>
+                        <td>{{ ficha.allergy_treatment|default_if_none:"(Vacío)" }}</td>
                     </tr>
                     <tr>
                         <td><b>Enfermedades padecidas</b></td>
-                        <td>{{ ficha.diseases_suffered }}</td>
+                        <td>{{ ficha.diseases_sufferedi.diseases_suffered|yesno:"Sí,No" }}</td>
                     </tr>
                     <tr>
                         <td><b>Descripción de enfermedades pacecidas</b></td>
-                        <td>{{ repre.diseases_suffered_desc }}</td>
+                        <td>{{ repre.diseases_suffered_desc|default:"(Sin desc.)" }}</td>
                     </tr>
                     <tr>
                         <td><b>Enfermedades preexistentes</b></td>
-                        <td>{{ ficha.pre_diseases }}</td>
+                        <td>{{ ficha.pre_diseases|yesno:"Sí,No"  }}</td>
                     </tr>
                     <tr>
                         <td><b>Descripción enfermedades preexistentes</b></td>
-                        <td>{{ repre.pre_diseases_desc }}</td>
+                        <td>{{ repre.pre_diseases_desc|default:"(Sin desc.)" }}</td>
                     </tr>
                     <tr>
                         <td><b>Enfermedades catastróficas</b></td>
-                        <td>{{ ficha.cat_illnesses }}</td>
+                        <td>{{ ficha.cat_illnesses|yesno:"Sí,No" }}</td>
                     </tr>  
                     <tr>
                         <td><b>Descripción enfermedades catastróficas</b></td>
-                        <td>{{ ficha.cat_illnesses_desc }}</td>
+                        <td>{{ ficha.cat_illnesses_desc|default:"(Sin desc.)" }}</td>
                     </tr>  
                     <tr>
                         <td><b>Medicación</b></td>
-                        <td>{{ ficha.medication }}</td>
+                        <td>{{ ficha.medication|yesno:"Sí,No" }}</td>
                     </tr> 
                     <tr>
                         <td><b>Tipo de medicación</b></td>
-                        <td>{{ ficha.medication_type }}</td>
+                        <td>{{ ficha.medication_type|default_if_none:"(Vacío)" }}</td>
                     </tr>
                     <tr>
                         <td><b>Horario de medicación</b></td>
-                        <td>{{ ficha.medication_schedule }}</td>
+                        <td>{{ ficha.medication_schedule|default_if_none:"(Vacío)" }}</td>
                     </tr>
                     
                     

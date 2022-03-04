@@ -18,6 +18,7 @@ $(function () {
             },
             columns: [
                 {data: "material"},
+                {data: "description"},
                 {data: "bodega_id"},
                 {data: "amount"},
             ],
