@@ -21,6 +21,7 @@ from django.views import View
 
 from config import settings
 from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
+from core.school.models import Contracts
 from core.security.mixins import ModuleMixin, PermissionMixin
 #from deep_translator import GoogleTranslator
 
@@ -91,6 +92,7 @@ class TeacherCreateView(PermissionMixin, CreateView):
     def post(self, request, *args, **kwargs):
         data = {}
         action = request.POST['action']
+        print(request.POST)
         try:
             if action == 'add':
                 with transaction.atomic():
@@ -143,6 +145,13 @@ class TeacherCreateView(PermissionMixin, CreateView):
                     teacher.save()
                     group = Group.objects.get(pk=settings.GROUPS.get('teacher'))
                     user.groups.add(group)
+
+                    contract = Contracts()
+                    contract.job_id = int(request.POST['job'])
+                    contract.teacher_id = teacher.id
+                    contract.start_date = request.POST['start_date']
+                    contract.end_date = request.POST['end_date']
+                    contract.save()
 
             elif action == 'search_parish':
                 data = []

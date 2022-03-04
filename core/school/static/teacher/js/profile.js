@@ -271,6 +271,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         }
                     }
                 },
+                job: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Seleccione un cargo',
+                        },
+                    }
+                }
             },
         }
     )

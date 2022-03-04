@@ -152,9 +152,9 @@ class Parish(AuditMixin, models.Model):
 
 class Teacher(AuditMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    gender = models.CharField(max_length=10, choices=gender_person,  verbose_name='Género')#default=gender_person[0][0],
+    gender = models.CharField(max_length=10, choices=gender_person,  verbose_name='Género')
     mobile = models.CharField(max_length=10, unique=True, verbose_name='Teléfono celular')
-    email_institucional = models.EmailField(max_length=50, null=True, blank=True, default=False,verbose_name="Correo institucional")
+    email_institucional = models.EmailField(max_length=50, null=True, blank=True, verbose_name="Correo institucional")
     phone = models.CharField(max_length=10, null=True, blank=True, verbose_name='Teléfono convencional')
     birthdate = models.DateField(default=datetime.now, verbose_name='Fecha de nacimiento')
     parish = models.ForeignKey(Parish, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Lugar residencia')
@@ -169,7 +169,8 @@ class Teacher(AuditMixin, models.Model):
     blood_group = models.CharField(max_length=5, choices=blood_types, null=True, blank=True,
                                    verbose_name='Grupo sanguíneo')
     disability = models.BooleanField(null=True, blank=True, default=False, verbose_name='Discapacidad')
-    disability_percentage = models.IntegerField(null=True, blank=True, default=False, verbose_name='Porcentaje de discapacidad')
+    disability_percentage = models.IntegerField(null=True, blank=True, default=0,
+                                                verbose_name='Porcentaje de discapacidad')
     disability_type = models.CharField(max_length=30, null=True, blank=True, verbose_name='Tipo de discapacidad')
     cat_illnesses = models.BooleanField(null=True, blank=True, default=False,
                                         verbose_name='Enfermedades catastróficas')

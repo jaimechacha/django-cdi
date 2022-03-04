@@ -621,7 +621,7 @@ class TeacherForm(ModelForm):
                     'autocomplete': 'off',
                 }
             ),
-            
+
             # Additional data
             'reference': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'Ingrese lugar de referencia'
@@ -729,6 +729,27 @@ class TeacherForm(ModelForm):
         'class': 'form-control',
         'autocomplete': 'off'
     }), label='Imagen')
+
+    job = forms.ModelChoiceField(
+        queryset=Job.objects.all(),
+        widget=forms.Select(attrs={
+            'class': 'form-control select2',
+            'style': 'width: 100%;'
+        }),
+        label='Cargo'
+    )
+
+    start_date = forms.DateField(widget=forms.DateInput(attrs={
+        'class': 'form-control',
+        'type': 'date',
+        'autocomplete': 'off'
+    }), label='Fecha de inicio')
+
+    end_date = forms.DateField(widget=forms.DateInput(attrs={
+        'class': 'form-control',
+        'type': 'date',
+        'autocomplete': 'off'
+    }), label='Fecha de finalización')
 
 
 class StudentForm(ModelForm):
