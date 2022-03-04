@@ -14,7 +14,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
-#print data test
+# print data test
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.views import View
@@ -23,7 +23,9 @@ from config import settings
 from core.school.forms import TeacherForm, User, Teacher, Parish, CVitae, CVitaeForm
 from core.school.models import Contracts
 from core.security.mixins import ModuleMixin, PermissionMixin
-#from deep_translator import GoogleTranslator
+
+
+# from deep_translator import GoogleTranslator
 
 
 class TeacherListView(PermissionMixin, TemplateView):
@@ -197,8 +199,8 @@ class TeacherDeleteView(PermissionMixin, DeleteView):
                 instance.delete()
                 user.delete()
         except Exception as e:
-            a='Imposible realizar esta acción, ya que este profesor ya ha sido asignado a un curso'
-            #data['error'] = GoogleTranslator(source='en', target='es').translate(text=str(e)) 
+            a = 'Imposible realizar esta acción, ya que este profesor ya ha sido asignado a un curso'
+            # data['error'] = GoogleTranslator(source='en', target='es').translate(text=str(e))
             data['error'] = a
         return HttpResponse(json.dumps(data), content_type='application/json')
 
@@ -218,18 +220,19 @@ class TeacherDetailView(DetailView):
         context['title'] = 'Información del docente'
         return context
 
-#imprimir hoja PDF de datos 
+
+# imprimir hoja PDF de datos
 class print_teacher_date(View):
-    def get(self, request,*args, **kwargs):
+    def get(self, request, *args, **kwargs):
         try:
             template = get_template('teacher/print_teacher_dat.html')
-            context= {
+            context = {
                 'data': Teacher.objects.get(pk=self.kwargs['pk'])
-                }
+            }
             html = template.render(context)
             response = HttpResponse(content_type='aplication.pdf')
-            #para descargar directamente
-            #response['Content-Disposition']  = 'attachment; filename="report.pdf"'
+            # para descargar directamente
+            # response['Content-Disposition']  = 'attachment; filename="report.pdf"'
             pisaStatus = pisa.CreatePDF(
                 html, dest=response)
             return response
@@ -261,14 +264,23 @@ class GenericUpdateTeacher(UpdateView):
             pass
         return json.dumps(data)
 
+    def get_contract_intance(self):
+        instance = self.object
+        contract = Contracts.objects.get(teacher=instance)
+        return contract
+
     def get_form(self, form_class=None):
         instance = self.object
+        contract = self.get_contract_intance()
         form = TeacherForm(instance=instance, initial={
             'first_name': instance.user.first_name,
             'last_name': instance.user.last_name,
             'dni': instance.user.dni,
             'email': instance.user.email,
             'image': instance.user.image,
+            'job': contract.job.id,
+            'start_date': contract.start_date,
+            'end_date': contract.end_date,
         })
         if instance.parish:
             form.fields['parish'].queryset = Parish.objects.filter(id=instance.parish.id)
@@ -347,6 +359,13 @@ class GenericUpdateTeacher(UpdateView):
                     if 'cv_doc' in request.FILES:
                         teacher.cv_doc = request.FILES['cv_doc']
                     teacher.save()
+
+                    contract = self.get_contract_intance()
+                    contract.job_id = int(request.POST['job'])
+                    contract.teacher_id = teacher.id
+                    contract.start_date = request.POST['start_date']
+                    contract.end_date = request.POST['end_date']
+                    contract.save()
 
             elif action == 'search_parish':
                 data = []
