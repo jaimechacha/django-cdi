@@ -18,7 +18,7 @@
     
     table {
         width: 100%;
-        border: -5px solid #4a4b4b;
+        border: -5px solid #dadce0;
         table-layout: fixed;
         overflow-wrap: break-word;
         color: #212529;
@@ -38,6 +38,7 @@
       <div style="padding: 0; margin: 0;">
         <div style="padding: 0; margin: 0;">
             <br>
+            
             <table cellpadding="10">
                 <tr>
                     <td><b>{{ data.user.first_name|default_if_none:"(Vacío)" }} {{ data.user.last_name|default_if_none:"(Vacío)" }}</b></td>

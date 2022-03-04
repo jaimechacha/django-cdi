@@ -85,6 +85,7 @@ class EntryMaterial(AuditMixin, models.Model):
     def toJSON(self):
         item = model_to_dict(self)
         item['material'] = self.material.name
+        item['description'] = self.material.description
         item['bodega_id'] = self.material.bodega_id.name
         return item
 
@@ -138,5 +139,6 @@ class OutputMaterial(AuditMixin, models.Model):
     def toJSON(self):
         item = model_to_dict(self)
         item['material'] = self.material.name
+        item['description'] = self.material.description
         item['bodega_id'] = self.material.bodega_id.name
         return item

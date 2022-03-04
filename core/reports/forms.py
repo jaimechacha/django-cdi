@@ -1,3 +1,4 @@
+from sre_parse import State
 from django import forms
 from core.inventory.models import Inventory
 from core.inventory.models import Bodega
@@ -11,7 +12,7 @@ class ReportForm(forms.Form):
         attrs={
             'class': 'form-control select2',
             'style': 'width: 100%;'
-        }), queryset=Period.objects.filter())
+        }), queryset=Period.objects.filter(state=1))
 
     date_range = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',

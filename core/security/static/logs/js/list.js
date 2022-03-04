@@ -16,6 +16,12 @@ function getData() {
         dom: 'Bfrtip',
         buttons: [
             {
+                extend: 'excelHtml5',
+                text: 'Descargar Excel <i class="fas fa-file-excel"></i>',
+                titleAttr: 'Excel',
+                className: 'btn btn-primary btn-flat btn-xs'
+            },
+            {
                 extend: 'print',
                 text: 'Imprimir listado <i class="fas fa-print"></i>',
                 titleAttr: 'Imprimir',

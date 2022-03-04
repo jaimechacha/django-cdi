@@ -422,7 +422,7 @@ class print_stud_data(View):
             html = template.render(context)
             response = HttpResponse(content_type='aplication.pdf')
             #para descargar directamente
-            #response['Content-Disposition']  = 'attachment; filename="report.pdf"'
+            response['Content-Disposition']  = 'attachment; filename="report.pdf"'
             pisaStatus = pisa.CreatePDF(
                 html, dest=response)
             return response

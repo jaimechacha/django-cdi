@@ -1,6 +1,8 @@
 {% extends 'inicio.html' %}
 {% load static %}
 {% block content %}
+
+    
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
@@ -106,21 +108,35 @@
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
-                                <h4>Recuerde</h4>
+                                <h4 style="color: #25b750;">Recuerde</h4>
                                 <p>Registre todos los datos correctamente</p>
                             </div>
 
+
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
-                                <h4>Revisar</h4>
+                                <h4 style="color: #25b750;">Revisar</h4>
                                 <p>Revise que todos los datos sean correctos</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
-                                <h4>Enviar</h4>
+                                <h4 style="color: #25b750;">Enviar</h4>
                                 <p>Cuando este seguro de la información, Pulse en enviar</p>
                             </div>
+
+                            <div class="phone">
+                                <i class="bi bi-phone"></i>
+                                <h4 style="color: #25b750;">Cédula</h4>
+                                <p>Recuerde registrar una cédula válida</p>
+                            </div>
+                            <div class="phone">
+                                <i class="bi bi-phone"></i>
+                                <h4 style="color: #25b750;">Cédula</h4>
+                                <p>Recuerde registrar una cédula válida</p>
+                            </div>
+                            
+                            
 
                         </div>
 
@@ -128,19 +144,21 @@
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
                         <h1 class="page-header text-center"
-                            style="font-size: 20px;text-align: justify; color: #5fcf80;">
+                            style="font-size: 20px;text-align: justify; color: #0080ff;">
                             Formulario de Inscripción
                         </h1>
                         <ul class="nav nav-tabs">
-                            <li class="ml-2 nav-item"><a class="nav-link active" data-toggle="tab" href="#estudiante">Estudiante</a>
+                            <li class="ml-2 nav-item"><a class="nav-link active" data-toggle="tab" href="#estudiante" style="color: #0080ff;font-size: larger;" >Estudiante</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docente">Profesor</a></li>
+                            <!--
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docente">Docente</a></li>
+                            -->
                         </ul>
 
                         <div class="tab-content">
                             <div id="estudiante" class="tab-pane container active">
                                 <p class="mt-3 small">Complete los datos del representante legal</p>
-                                <form method="POST" role="form">
+                                <form method="POST" role="form" name="formacedula">
                                     <input type="hidden" name="action" id="action" value="estudiante">
                                     {% csrf_token %}
                                     <div class="row">
@@ -170,32 +188,37 @@
                                         </div>
                                         <div class="col-md-6 form-group mt-3 mt-md-0">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Cédula</label>
-                                            <input type="text" name="ci_rpr" maxlength="10" class="form-control"
-                                                   placeholder="Ingrese la cédula"
-                                                   pattern="[0-9]+"
-                                                   title="Ingrese solo números"
-                                                   required>
+                                            <input type="text" id="textocedula" onchange="validarcedula()" class="form-control"
+                                                    name="ci_rpr" 
+                                                    placeholder="Ingrese su Cédula"
+                                                    required>
                                         </div>
                                     </div>
+                                    
+                                        
+                                      
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Teléfono
                                                 convencional</label>
-                                            <input type="number" class="form-control" name="tlf_conven"
+                                            <input type="text" class="form-control" name="tlf_conven"
                                                    placeholder="Ingrese su teléfono convencional"
                                                    pattern="[0-9]+"
+                                                   maxlength="9" 
+                                                   minlength="9" 
                                                    title="Ingrese solo números"
                                             >
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Teléfono
                                                 celular</label>
-                                            <input type="number" class="form-control" name="tlf_celular"
+                                            <input type="text" class="form-control" name="tlf_celular"
                                                    placeholder="Ingrese su teléfono celular"
                                                    pattern="[0-9]+"
                                                    title="Ingrese solo números"
-                                                   required
-                                            >
+                                                   maxlength="9" 
+                                                   minlength="9"    
+                                                   required>
                                         </div>
                                     </div>
                                     <p class="mt-2 small">Complete los datos del estudiante</p>
@@ -231,15 +254,21 @@
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Cédula</label>
                                             <input type="text" name="ci_est" maxlength="10" class="form-control"
                                                    placeholder="Ingrese la cédula"
+                                                   maxlength="9" 
+                                                   minlength="9" 
                                                    required>
                                         </div>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 form-group">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Dirección
                                                 del domicilio (cuidad, calle principal y secundaria)</label>
-                                            <input type="text" class="form-control" name="direccion"
-                                                   placeholder="Ingrese su dirección" required>
+                                            <input type="text" class="form-control" 
+                                                    name="direccion"
+                                                    autocomplete="off"
+                                                    placeholder="Ingrese su dirección" 
+                                                    required>
                                         </div>
                                     </div>
                                     <label style="font-size: 15px;color: #495057; font-weight: bolder;">¿Cómo desea recibir la respuesta?:</label>
@@ -420,5 +449,52 @@
     <br>
     <br>
     <br>
+
+  
+    
+        <script type="text/javascript">
+        function validarcedula()
+        {
+         var i;
+         var cedula;
+         var acumulado;
+         cedula=document.formacedula.textocedula.value;
+         var instancia;
+         acumulado=0;
+         for (i=1;i<=9;i++)
+         {
+          if (i%2!=0)
+          {
+           instancia=cedula.substring(i-1,i)*2;
+           if (instancia>9) instancia-=9;
+          }
+          else instancia=cedula.substring(i-1,i);
+          acumulado+=parseInt(instancia);
+         }
+         while (acumulado>0)
+          acumulado-=10;
+         if (cedula.substring(9,10)!=(acumulado*-1))
+         {
+            Swal.fire({
+                icon: 'error',
+                text: 'Número de Cédula inválido',
+                footer: '<span >Ingrese un numero de cédula valido</span>'
+              })
+          document.getElementById('textocedula').value = 'Ingrese nueva cédula'
+          document.formacedula.textocedula.setfocus();
+         }
+         Swal.fire({
+            icon: 'success',
+            text: 'Número de cédula válido',
+            
+          })
+        }
+        </script>
+      
+        
+        </body>
+        </html>
+       
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {% endblock content %}
