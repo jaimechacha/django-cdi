@@ -10,7 +10,7 @@ from xhtml2pdf import pisa
 
 from core.school.models import Company
 from core.security.mixins import ModuleMixin
-from core.reports.forms import ReportForm, Student, NoteDetails, Punctuations, Matter, Period, Cursos
+from core.reports.forms import ReportForm, Student, NoteDetails, Punctuations, Matter, Period, Cursos, Teacher
 from core.reports.utils import link_callback_report
 
 
@@ -49,6 +49,7 @@ class GradesReportView(ModuleMixin, FormView):
         end_date = self.request.POST['end_date']
 
         mat = Matter.objects.get(id=int(matter))
+        teacher = Teacher.objects.get(contracts__perioddetail__matter=mat)
 
         if period and level and matter:
             students = Student.objects.filter(
@@ -68,7 +69,8 @@ class GradesReportView(ModuleMixin, FormView):
                 data.append(obj)
             period = Period.objects.get(id=period)
             level = Cursos.objects.get(id=level)
-        return data, period, level, mat
+
+        return data, period, level, mat, teacher
 
     def post(self, request, *args, **kwargs):
         action = request.POST.get('action', None)
@@ -79,7 +81,7 @@ class GradesReportView(ModuleMixin, FormView):
                 for i in self.get_activities():
                     data.append(i.toJSON())
             elif action == 'search_students':
-                students, _, _, _ = self.search_students()
+                students, _, _, _, _ = self.search_students()
                 data = students
             elif action == 'search_materia':
                 level = request.POST.get('level', None)
@@ -87,13 +89,14 @@ class GradesReportView(ModuleMixin, FormView):
                 for m in Matter.objects.filter(level_id=int(level)).order_by('name')[0:10]:
                     data.append(m.toJSON())
             elif action == 'generate_pdf':
-                students, period, lvl, matter = self.search_students()
+                students, period, lvl, matter, teacher = self.search_students()
                 context = {
                     'activities': self.get_activities(),
                     'students': students,
                     'period': period,
                     'level': lvl,
                     'matter': matter,
+                    'teacher': teacher,
                     'start_date': self.request.POST.get('start_date', None),
                     'end_date': self.request.POST.get('end_date', None),
                     'company': Company.objects.first(),

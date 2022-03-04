@@ -39,6 +39,7 @@
         {% if period %} Período: {{ period.name }}<br> {% endif %}
         {% if level %} Nivel: {{ level.name }}<br> {% endif %}
         {% if matter %} Ámbito: {{ matter.name }}<br> {% endif %}
+        {% if teacher %} Docente: {{ teacher.user.first_name }} {{ teacher.user.last_name }}<br> {% endif %}
     </p>
     <p style="font-size: 12px">Rango de fechas: {{ start_date }} - {{ end_date }}</p>
     <table>
