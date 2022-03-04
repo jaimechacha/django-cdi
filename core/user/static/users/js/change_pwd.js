@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         notEmpty: {
                             message: 'El password es requerido'
                         },
+                        regexp: {
+                            regexp: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*.-]).{8,}$/g,
+                            message: 'La contraseña debe tener un número, una letra mayúscula y un caracter especial'
+                        },
                     }
                 },
                 new_password2: {
