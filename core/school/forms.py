@@ -734,22 +734,26 @@ class TeacherForm(ModelForm):
         queryset=Job.objects.all(),
         widget=forms.Select(attrs={
             'class': 'form-control select2',
-            'style': 'width: 100%;'
+            'style': 'width: 100%;',
         }),
         label='Cargo'
     )
 
-    start_date = forms.DateField(widget=forms.DateInput(attrs={
-        'class': 'form-control',
-        'type': 'date',
-        'autocomplete': 'off'
-    }), label='Fecha de inicio')
+    start_date = forms.DateField(widget=forms.DateInput(
+        format='%Y-%m-%d',
+        attrs={
+            'class': 'form-control',
+            'type': 'date',
+            'autocomplete': 'off',
+        }), label='Fecha de inicio')
 
-    end_date = forms.DateField(widget=forms.DateInput(attrs={
-        'class': 'form-control',
-        'type': 'date',
-        'autocomplete': 'off'
-    }), label='Fecha de finalización')
+    end_date = forms.DateField(widget=forms.DateInput(
+        format='%Y-%m-%d',
+        attrs={
+            'class': 'form-control',
+            'type': 'date',
+            'autocomplete': 'off',
+        }), label='Fecha de finalización')
 
 
 class StudentForm(ModelForm):
