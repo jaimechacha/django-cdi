@@ -1,4 +1,5 @@
 # -*- codign: utf-8 -*-
+from datetime import datetime
 import os
 import uuid
 
@@ -16,6 +17,8 @@ class User(AuditMixin, AbstractUser):
     image = models.ImageField(upload_to='users/%Y/%m/%d', verbose_name='Imagen', null=True, blank=True)
     is_change_password = models.BooleanField(default=False)
     token = models.UUIDField(primary_key=False, editable=False, null=True, blank=True, default=uuid.uuid4, unique=True)
+    failed_attempts = models.IntegerField(null=True, blank=True, default=0)
+    last_login_attempt = models.DateField(blank=True, null=True)
 
     def toJSON(self):
         item = model_to_dict(self, exclude=['last_login', 'token', 'password', 'user_permissions'])
@@ -24,6 +27,7 @@ class User(AuditMixin, AbstractUser):
         item['date_joined'] = self.date_joined.strftime('%Y-%m-%d')
         item['groups'] = self.get_groups()
         item['last_login'] = None if self.last_login is None else self.last_login.strftime('%Y-%m-%d')
+        item['last_login_attempt'] = None
         return item
 
     def generate_token(self):
@@ -94,3 +98,21 @@ class User(AuditMixin, AbstractUser):
 
     def __str__(self):
         return '{} / {}'.format(self.get_full_name(), self.dni)
+
+    def increment_failed_attempts(self):
+        today = datetime.now().date()
+        if today != self.last_login_attempt:
+            self.failed_attempts = 0
+            self.save()
+        self.failed_attempts += 1
+        self.last_login_attempt = today
+        self.save()
+
+    def update_last_login_attempt(self):
+        self.last_login_attempt = datetime.now().date()
+        self.save()
+
+    def reset_failed_attempts(self):
+        self.failed_attempts = 0
+        self.last_login_attempt = datetime.now()
+        self.save()
