@@ -1,8 +1,10 @@
 import json
 import smtplib
+import socket
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
@@ -81,12 +83,15 @@ class LoginAuthView(LoginView):
                 user.increment_failed_attempts()
             if user.failed_attempts == 5:
                 self.send_email_reset_password(user)
-                # user.reset_failed_attempts()
-                print('Correo enviado')
-            print(user.failed_attempts)
+                user.reset_failed_attempts()
+                messages.info(
+                    self.request,
+                    'Se ha detectado 5 intentos de sesión inválidos, '
+                    'se ha enviado un correo a esta cuenta para el cambio de contraseña'
+                )
 
     def send_email_reset_password(self, user: User):
-        template_name = 'login/send_email.html'
+        template_name = 'login/email_reset_pwd.html'
         with transaction.atomic():
             url = settings.LOCALHOST if not settings.DEBUG else self.request.META['HTTP_HOST']
             user.is_change_password = True
@@ -96,7 +101,9 @@ class LoginAuthView(LoginView):
         send_mail_thread('Cambio de contraseña', user.email, template_name, {
             'user': user,
             'link_resetpwd': activate_account,
-            'link_home': 'https://test.com'
+            'link_home': f'http://{url}',
+            'host': socket.gethostname(),
+            'ip_address': socket.gethostbyname(socket.gethostname())
         })
 
 
