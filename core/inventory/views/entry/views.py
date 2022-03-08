@@ -67,7 +67,11 @@ class EntryCreateView(PermissionMixin, CreateView):
                 with transaction.atomic():
                     entry_mat = []
                     items = json.loads(request.POST['items'])
-                    entry = Entry(date_entry=items['date_entry'], employee=request.user)
+                    entry = Entry(
+                        date_entry=items['date_entry'],
+                        employee=request.user,
+                        num_doc=request.POST['num_doc']
+                    )
                     entry.save()
 
                     for m in items['materials']:

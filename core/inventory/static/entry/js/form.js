@@ -25,7 +25,6 @@ const items = {
             columns: [
                 {data: "id"},
                 {data: "name"},
-                {data: "bodega_id"},
                 {data: "cantidad"}
             ],
             columnDefs: [
@@ -109,6 +108,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
                             message: 'El campo no puede estar vacío'
                         },
                     }
+                },
+                num_doc: {
+                    validators: {
+                        notEmpty: {
+                            message: 'El campo no puede estar vacío'
+                        },
+                    }
                 }
             },
         }
@@ -153,7 +159,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 pathname,
                 {
                     'action': $('input[name="action"]').val(),
-                    'items': JSON.stringify(items.details)
+                    'items': JSON.stringify(items.details),
+                    'num_doc': $('input[name="num_doc"]').val(),
                 },
                 function () {
                     location.href = url_refresh;

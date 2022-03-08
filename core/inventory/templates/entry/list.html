@@ -7,6 +7,7 @@
 
 {% block columns %}
     <th>Nro</th>
+    <th>Nº documento</th>
     <th>Fecha</th>
     <th>Responsable</th>
     <th class="text-center">Opciones</th>
@@ -16,6 +17,7 @@
     {% for i in object_list %}
         <tr>
             <td>{{ i.id }}</td>
+            <td>{{ i.num_doc }}</td>
             <td>{{ i.date_entry }}</td>
             <td>{{ i.employee }}</td>
             <td class="text-center">
@@ -54,7 +56,6 @@
                                         <tr>
                                             <th>Material</th>
                                             <th>Descripción del material</th>
-                                            <th>Bodega</th>
                                             <th>Cantidad ingresada</th>
                                         </tr>
                                     </thead>
