@@ -37,6 +37,9 @@ function getData(all) {
                 text: 'Imprimir listado <i class="fas fa-print"></i>',
                 titleAttr: 'Imprimir',
                 className: 'btn btn-success btn-flat btn-xs',
+                messageTop: "<h5>Listado de Accesos de Usuarios</h5>",
+                title:  "<h4 style='text-align: center;'>Centro de desarrollo infaltíl 'Pequeños Sabios' </h4>",
+                  
                 exportOptions: {
                     columns: [0,1,2,3,4,5]
                 }

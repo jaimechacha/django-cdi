@@ -1,6 +1,7 @@
 
 function getData() {
     $('#data').DataTable({
+        "order": [[ 1, "desc" ]],
         responsive: true,
         autoWidth: false,
         destroy: true,
@@ -25,7 +26,10 @@ function getData() {
                 extend: 'print',
                 text: 'Imprimir listado <i class="fas fa-print"></i>',
                 titleAttr: 'Imprimir',
-                className: 'btn btn-success btn-flat btn-xs'
+                className: 'btn btn-success btn-flat btn-xs',
+                messageTop: "<h5>Listado de Actividades de Usuarios</h5>",
+                title:  "<h4 style='text-align: center;'>Centro de desarrollo infaltíl 'Pequeños Sabios' </h4>",
+                     
             },
         ],
         columns: [
