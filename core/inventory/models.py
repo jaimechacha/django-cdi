@@ -95,6 +95,7 @@ class EntryMaterial(AuditMixin, models.Model):
             'amount_entry': self.amount,
             'amount_output': '',
             'employee_teacher': self.entry.employee.get_full_name(),
+            'num_doc': self.entry.num_doc
         }
         return item
 
@@ -158,5 +159,6 @@ class OutputMaterial(AuditMixin, models.Model):
             'amount_entry': '',
             'amount_output': self.amount,
             'employee_teacher': self.output.teacher.user.get_full_name(),
+            'num_doc': self.output.num_doc,
         }
         return item

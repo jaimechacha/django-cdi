@@ -58,6 +58,7 @@ function getMovementsData(all) {
         columns: [
             {data: "id_material"},
             {data: "material"},
+            {data: "num_doc"},
             {data: "amount_entry"},
             {data: "amount_output"},
             {data: "employee_teacher"},
