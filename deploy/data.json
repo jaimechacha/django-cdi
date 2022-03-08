@@ -972,7 +972,7 @@
   "pk": "vh458jbay2muzwpa1ewmuffupev8y74h",
   "fields": {
     "session_data": "MjNiMTA5MDA2ZGRkODM4YTk1NzU5MzYxMTY5ZjQ2OTU5ODljMzM4ODqABZWeAgAAAAAAAH2UKIwNX2F1dGhfdXNlcl9pZJSMATKUjBJfYXV0aF91c2VyX2JhY2tlbmSUjClkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZJSMD19hdXRoX3VzZXJfaGFzaJSMKDllMWJmZDQ4MzI2ZjViZjkxNjlkZTJjNjQ0MTZlZDk0Yzc3ZjU0NzGUjAVncm91cJSMFWRqYW5nby5kYi5tb2RlbHMuYmFzZZSMDm1vZGVsX3VucGlja2xllJOUjARhdXRolIwFR3JvdXCUhpSFlFKUfZQojAZfc3RhdGWUaAiMCk1vZGVsU3RhdGWUk5QpgZR9lCiMBmFkZGluZ5SJjAJkYpSMB2RlZmF1bHSUdWKMAmlklEsBjARuYW1llIwNQWRtaW5pc3RyYWRvcpSMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowGbW9kdWxllGgKjAhzZWN1cml0eZSMBk1vZHVsZZSGlIWUUpR9lCiMBl9zdGF0ZZRoEymBlH2UKGgWiWgXaBh1YowCaWSUSzOMA3VybJSMEi9pbnZlbnRvcnkvb3V0cHV0L5SMBG5hbWWUjAdTYWxpZGFzlIwNbW9kdWxldHlwZV9pZJRLCIwLZGVzY3JpcHRpb26UjBNTYWxpZGEgZGUgcHJvZHVjdG9zlIwEaWNvbpSMEmZhcyBmYS1maWxlLWV4cG9ydJSMBWltYWdllIwAlIwLaXNfdmVydGljYWyUiIwJaXNfYWN0aXZllIiMCmlzX3Zpc2libGWUiIwIcG9zaXRpb26USwGMD19kamFuZ29fdmVyc2lvbpSMBjIuMi4xMpR1YowIdXJsX2xhc3SUjBIvaW52ZW50b3J5L291dHB1dC+UdS4=",
-    "expire_date": "2022-03-21T21:36:49.197"
+    "expire_date": "2022-03-22T10:28:43.470"
   }
 },
 {
@@ -17676,7 +17676,7 @@
   "pk": 8,
   "fields": {
     "material": 1,
-    "stock": 6,
+    "stock": 3,
     "fecha_created": "2022-03-07T21:36:07.748"
   }
 },
@@ -17685,7 +17685,7 @@
   "pk": 9,
   "fields": {
     "material": 2,
-    "stock": 1,
+    "stock": 0,
     "fecha_created": "2022-03-07T21:36:07.751"
   }
 },
@@ -17693,10 +17693,30 @@
   "model": "inventory.output",
   "pk": 4,
   "fields": {
-    "num_doc": "001",
+    "num_doc": "S001",
     "date_output": "2022-03-07",
     "teacher": 7,
     "fecha_created": "2022-03-07T21:36:48.851"
+  }
+},
+{
+  "model": "inventory.output",
+  "pk": 5,
+  "fields": {
+    "num_doc": "S002",
+    "date_output": "2022-03-08",
+    "teacher": 7,
+    "fecha_created": "2022-03-08T09:35:53.227"
+  }
+},
+{
+  "model": "inventory.output",
+  "pk": 6,
+  "fields": {
+    "num_doc": "S003",
+    "date_output": "2022-03-08",
+    "teacher": 10,
+    "fecha_created": "2022-03-08T10:04:56.926"
   }
 },
 {
@@ -17717,6 +17737,26 @@
     "material": 3,
     "amount": 5,
     "fecha_created": "2022-03-07T21:36:48.868"
+  }
+},
+{
+  "model": "inventory.outputmaterial",
+  "pk": 8,
+  "fields": {
+    "output": 5,
+    "material": 1,
+    "amount": 3,
+    "fecha_created": "2022-03-08T09:35:53.348"
+  }
+},
+{
+  "model": "inventory.outputmaterial",
+  "pk": 9,
+  "fields": {
+    "output": 6,
+    "material": 2,
+    "amount": 1,
+    "fecha_created": "2022-03-08T10:04:56.941"
   }
 },
 {
@@ -27244,7 +27284,7 @@
   "model": "inventory.entry",
   "pk": 4,
   "fields": {
-    "num_doc": "001",
+    "num_doc": "E001",
     "date_entry": "2022-03-05",
     "employee": 2,
     "fecha_created": "2022-03-07T21:36:07.741"
@@ -40000,6 +40040,110 @@
     "content_type": 52,
     "object_id": "7",
     "object_repr": "Libro de ingl\u00e9s - 5 (inventory)",
+    "action_flag": 2,
+    "change_message": "Edici\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 823,
+  "fields": {
+    "action_time": "2022-03-08T09:35:53.339",
+    "user": 2,
+    "content_type": 54,
+    "object_id": "5",
+    "object_repr": "Mauricio Bola\u00f1os Yar / 1208073864 2022-03-08 (output)",
+    "action_flag": 1,
+    "change_message": "Creaci\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 824,
+  "fields": {
+    "action_time": "2022-03-08T09:35:53.346",
+    "user": 2,
+    "content_type": 52,
+    "object_id": "8",
+    "object_repr": "Mapa mundi - 3 (inventory)",
+    "action_flag": 2,
+    "change_message": "Edici\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 825,
+  "fields": {
+    "action_time": "2022-03-08T09:53:29.715",
+    "user": 2,
+    "content_type": 50,
+    "object_id": "4",
+    "object_repr": "Carlos Miguel Mendez Lomas / 0401798477 2022-03-05 (entry)",
+    "action_flag": 2,
+    "change_message": "Edici\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 826,
+  "fields": {
+    "action_time": "2022-03-08T09:53:29.718",
+    "user": 2,
+    "content_type": 50,
+    "object_id": "4",
+    "object_repr": "Carlos Miguel Mendez Lomas / 0401798477 2022-03-05",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"num_doc\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 827,
+  "fields": {
+    "action_time": "2022-03-08T09:53:41.140",
+    "user": 2,
+    "content_type": 54,
+    "object_id": "4",
+    "object_repr": "Mauricio Bola\u00f1os Yar / 1208073864 2022-03-07 (output)",
+    "action_flag": 2,
+    "change_message": "Edici\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 828,
+  "fields": {
+    "action_time": "2022-03-08T09:53:41.142",
+    "user": 2,
+    "content_type": 54,
+    "object_id": "4",
+    "object_repr": "Mauricio Bola\u00f1os Yar / 1208073864 2022-03-07",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"num_doc\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 829,
+  "fields": {
+    "action_time": "2022-03-08T10:04:56.933",
+    "user": 2,
+    "content_type": 54,
+    "object_id": "6",
+    "object_repr": "Carmen Luz Castro Yepez / 1004234470 2022-03-08 (output)",
+    "action_flag": 1,
+    "change_message": "Creaci\u00f3n"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 830,
+  "fields": {
+    "action_time": "2022-03-08T10:04:56.939",
+    "user": 2,
+    "content_type": 52,
+    "object_id": "9",
+    "object_repr": "Diccionario did\u00e1ctico - 0 (inventory)",
     "action_flag": 2,
     "change_message": "Edici\u00f3n"
   }
