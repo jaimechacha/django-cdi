@@ -4,6 +4,7 @@ from core.inventory.views.material.views import *
 from core.inventory.views.stock.views import *
 from core.inventory.views.entry.views import *
 from core.inventory.views.output.views import *
+from core.inventory.views.movements.views import *
 
 urlpatterns = [
     # Material
@@ -21,4 +22,6 @@ urlpatterns = [
     path('output/', OutputListView.as_view(), name='output_list'),
     path('output/add/', OutputCreateView.as_view(), name='create_output'),
     path('output/delete/<int:pk>', OutputDeleteView.as_view(), name='delete_output'),
+    # Movements
+    path('movements/', MaterialMovements.as_view(), name='material_movements'),
 ]
