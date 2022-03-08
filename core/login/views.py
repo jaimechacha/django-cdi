@@ -63,7 +63,8 @@ class LoginAuthView(LoginView):
         form = self.get_form()
         if form.is_valid():
             user = self.get_user_attempt()
-            user.reset_failed_attempts()
+            if user:
+                user.reset_failed_attempts()
             return self.form_valid(form)
         else:
             self.verify_login_attempts()
@@ -71,7 +72,7 @@ class LoginAuthView(LoginView):
 
     def get_user_attempt(self):
         form = self.get_form()
-        users = User.objects.filter(dni=form.data['username'])
+        users = User.objects.filter(username=form.data['username'])
         if users.exists():
             return users[0]
         return None
