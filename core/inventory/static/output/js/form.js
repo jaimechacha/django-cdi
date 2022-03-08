@@ -1,5 +1,6 @@
 let input_date;
 let fv;
+let select_teacher;
 let tblMaterials;
 
 const items = {
@@ -251,4 +252,9 @@ $(function () {
             items.details.materials.splice(row.pos, 1);
             items.list_materials();
         });
+
+    $('.select2').select2({
+        theme: 'bootstrap4',
+        language: "es",
+    });
 });
