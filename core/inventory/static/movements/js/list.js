@@ -57,15 +57,15 @@ function getMovementsData(all) {
         ],
         columns: [
             {data: "id_material"},
-            {data: "material"},
             {data: "num_doc"},
+            {data: "material"},
             {data: "amount_entry"},
             {data: "amount_output"},
             {data: "employee_teacher"},
         ],
         columnDefs: [
             {
-                targets: [0, -2, -3, -4],
+                targets: [0, -2, -3, -5],
                 orderable: false,
                 class: 'text-center',
                 render: function (data, type, row) {
