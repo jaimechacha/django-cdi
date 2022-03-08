@@ -99,9 +99,6 @@ $(function () {
             getMovementsData();
         });
 
-    // $('.drp-buttons').hide();
-
-    initTable();
 
     select_material.on('change', function () {
         getMovementsData();
@@ -111,11 +108,11 @@ $(function () {
         getMovementsData();
     });
 
-    getMovementsData(true);
-
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es",
     });
 
+    initTable();
+    getMovementsData(true);
 });

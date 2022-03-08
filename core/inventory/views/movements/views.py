@@ -52,13 +52,11 @@ class MaterialMovements(FormView):
                     material_id=material,
                     output__date_output__range=[start_date, end_date]):
                 data.append(out.to_json_movements())
-            return data
         elif user:
             for ent in EntryMaterial.objects.filter(entry__employee_id=user):
                 data.append(ent.to_json_movements())
             for out in OutputMaterial.objects.filter(output__teacher__user_id=user):
                 data.append(out.to_json_movements())
-            return data
         else:
             for ent in EntryMaterial.objects.all():
                 data.append(ent.to_json_movements())
