@@ -88,7 +88,8 @@ class EntryForm(ModelForm):
             'num_doc': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese el número de documento'
+                    'placeholder': 'Ingrese el número de documento',
+                    'readonly': True
                 }
             )
         }
@@ -128,7 +129,8 @@ class OutputForm(ModelForm):
             'num_doc': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese el número de documento'
+                    'placeholder': 'Ingrese el número de documento',
+                    'readonly': True
                 }
             )
         }

@@ -1,5 +1,3 @@
-from pyexpat import model
-from statistics import mode
 from django.conf import settings
 from django.db import models
 from datetime import datetime
@@ -55,8 +53,18 @@ class Material(AuditMixin, models.Model):
         return item
 
 
+def generate_entry_num_doc():
+    last_entry = Entry.objects.all().order_by('id').last()
+    if not last_entry:
+        return 'E001'
+    num_doc = last_entry.num_doc
+    num_doc_int = int(num_doc.split('E')[-1]) + 1
+    new_num_doc = f'E00{num_doc_int}'
+    return new_num_doc
+
+
 class Entry(AuditMixin, models.Model):
-    num_doc = models.CharField('Nº de documento', null=True, blank=True, max_length=30)
+    num_doc = models.CharField('Nº de documento', null=True, blank=True, max_length=30, default=generate_entry_num_doc)
     date_entry = models.DateField('Fecha de ingreso', default=datetime.now)
     employee = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Responsable')
     fecha_created = models.DateTimeField(auto_now_add=True)
@@ -119,8 +127,18 @@ class Inventory(AuditMixin, models.Model):
         return item
 
 
+def generate_output_num_doc():
+    last_output = Output.objects.all().order_by('id').last()
+    if not last_output:
+        return 'S001'
+    num_doc = last_output.num_doc
+    num_doc_int = int(num_doc.split('S')[-1]) + 1
+    new_num_doc = f'S00{ num_doc_int }'
+    return new_num_doc
+
+
 class Output(AuditMixin, models.Model):
-    num_doc = models.CharField('Nº de documento', null=True, blank=True, max_length=30)
+    num_doc = models.CharField('Nº de documento', null=True, blank=True, max_length=30, default=generate_output_num_doc)
     date_output = models.DateField('Fecha de salida', default=datetime.now)
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT, verbose_name='Docente')
     fecha_created = models.DateTimeField(auto_now_add=True)
