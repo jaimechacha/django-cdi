@@ -4,6 +4,24 @@ from django.forms import ModelForm
 from core.inventory.models import *
 
 
+class MaterialMovementsForm(forms.Form):
+
+    date_range = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'autocomplete': 'off'
+    }))
+
+    users = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control select2',
+        'style': 'width: 100%;'
+    }))
+
+    materials = forms.ModelChoiceField(queryset=Material.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control select2',
+        'style': 'width: 100%;'
+    }))
+
+
 class MaterialForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,12 +42,6 @@ class MaterialForm(ModelForm):
                     'class': 'form-control',
                     'autocomplete': 'off'
                 }
-            ),
-            'bodega_id': forms.Select(
-                attrs={
-                    'class': 'form-control select2',
-                    'style': 'width: 100%'
-                },
             ),
             'description': forms.Textarea(
                 attrs={
@@ -72,6 +84,12 @@ class EntryForm(ModelForm):
                     'class': 'form-control',
                     'disabled': True
                 }
+            ),
+            'num_doc': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese el número de documento'
+                }
             )
         }
 
@@ -105,6 +123,12 @@ class OutputForm(ModelForm):
                 attrs={
                     'class': 'form-control select2',
                     'style': 'width: 100%'
+                }
+            ),
+            'num_doc': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese el número de documento'
                 }
             )
         }
