@@ -1,8 +1,10 @@
 import json
 import smtplib
+import socket
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
@@ -18,6 +20,7 @@ from config import settings
 from core.login.forms import ResetPasswordForm, ChangePasswordForm
 from core.security.models import AccessUsers
 from core.user.models import User
+from core.login.utils import send_mail_thread
 
 
 class LoginAuthView(LoginView):
@@ -55,6 +58,53 @@ class LoginAuthView(LoginView):
             self.request.user.set_group_session()
             AccessUsers(user=self.request.user).save()
         return HttpResponseRedirect(self.get_success_url())
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            user = self.get_user_attempt()
+            user.reset_failed_attempts()
+            return self.form_valid(form)
+        else:
+            self.verify_login_attempts()
+            return self.form_invalid(form)
+
+    def get_user_attempt(self):
+        form = self.get_form()
+        users = User.objects.filter(dni=form.data['username'])
+        if users.exists():
+            return users[0]
+        return None
+
+    def verify_login_attempts(self):
+        user: User = self.get_user_attempt()
+        if user:
+            if user.failed_attempts < 5:
+                user.increment_failed_attempts()
+            if user.failed_attempts == 5:
+                self.send_email_reset_password(user)
+                user.reset_failed_attempts()
+                messages.info(
+                    self.request,
+                    'Se ha detectado 5 intentos de sesión inválidos, '
+                    'se ha enviado un correo a esta cuenta para el cambio de contraseña'
+                )
+
+    def send_email_reset_password(self, user: User):
+        template_name = 'login/email_reset_pwd.html'
+        with transaction.atomic():
+            url = settings.LOCALHOST if not settings.DEBUG else self.request.META['HTTP_HOST']
+            user.is_change_password = True
+            user.save()
+            activate_account = '{}{}{}{}'.format('http://', url, '/login/change/password/', user.token)
+
+        send_mail_thread('Cambio de contraseña', user.email, template_name, {
+            'user': user,
+            'link_resetpwd': activate_account,
+            'link_home': f'http://{url}',
+            'host': socket.gethostname(),
+            'ip_address': socket.gethostbyname(socket.gethostname())
+        })
 
 
 class LoginAuthenticatedView(TemplateView):

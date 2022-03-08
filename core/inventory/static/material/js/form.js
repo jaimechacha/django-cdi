@@ -16,13 +16,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 }),
             },
             fields: {
-                bodega_id: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Seleccione una bodega'
-                        },
-                    }
-                },
+                
             },
         }
     )
@@ -60,9 +54,5 @@ $(function () {
     $('.select2').select2({
         theme: 'bootstrap4',
         language: "es"
-    });
-
-    $('select[name="bodega_id"]').on('change', function () {
-        fv.revalidateField('bodega_id');
     });
 });

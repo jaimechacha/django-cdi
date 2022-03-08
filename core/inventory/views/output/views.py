@@ -69,7 +69,11 @@ class OutputCreateView(PermissionMixin, CreateView):
                     output_mat = []
                     items = json.loads(request.POST['items'])
                     teacher = int(request.POST['teacher'])
-                    output = Output(date_output=items['date_output'], teacher_id=teacher)
+                    output = Output(
+                        date_output=items['date_output'],
+                        teacher_id=teacher,
+                        num_doc=request.POST['num_doc']
+                    )
                     output.save()
 
                     for m in items['materials']:
