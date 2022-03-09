@@ -19,6 +19,7 @@ class User(AuditMixin, AbstractUser):
     token = models.UUIDField(primary_key=False, editable=False, null=True, blank=True, default=uuid.uuid4, unique=True)
     failed_attempts = models.IntegerField(null=True, blank=True, default=0)
     last_login_attempt = models.DateField(blank=True, null=True)
+    is_new = models.BooleanField(default=True)
 
     def toJSON(self):
         item = model_to_dict(self, exclude=['last_login', 'token', 'password', 'user_permissions'])
@@ -108,11 +109,7 @@ class User(AuditMixin, AbstractUser):
         self.last_login_attempt = today
         self.save()
 
-    def update_last_login_attempt(self):
-        self.last_login_attempt = datetime.now().date()
-        self.save()
-
     def reset_failed_attempts(self):
         self.failed_attempts = 0
-        self.last_login_attempt = datetime.now()
+        self.last_login_attempt = datetime.now().date()
         self.save()

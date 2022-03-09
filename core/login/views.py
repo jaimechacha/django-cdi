@@ -1,3 +1,4 @@
+import datetime
 import json
 import smtplib
 import socket
@@ -10,6 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.db import transaction
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -53,6 +55,15 @@ class LoginAuthView(LoginView):
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        user = form.get_user()
+        if user.last_login is None:
+            # messages.info(
+            #     self.request,
+            #     'Usted aún no ha cambiado su contraseña'
+            # )
+            user.is_change_password = True
+            user.save()
+            return redirect(f'/login/change/password/{user.token}/')
         login(self.request, form.get_user())
         if self.request.user.is_authenticated:
             self.request.user.set_group_session()
@@ -198,6 +209,8 @@ class ChangePasswordView(FormView):
             if form.is_valid():
                 user = User.objects.get(token=kwargs['pk'])
                 user.is_change_password = False
+                if user.last_login is None:
+                    user.last_login = datetime.datetime.now()
                 user.set_password(request.POST['password'])
                 user.save()
             else:
