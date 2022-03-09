@@ -108,35 +108,21 @@
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
-                                <h4 style="color: #25b750;">Recuerde</h4>
+                                <h4>Recuerde</h4>
                                 <p>Registre todos los datos correctamente</p>
                             </div>
 
-
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
-                                <h4 style="color: #25b750;">Revisar</h4>
+                                <h4>Revisar</h4>
                                 <p>Revise que todos los datos sean correctos</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
-                                <h4 style="color: #25b750;">Enviar</h4>
+                                <h4>Enviar</h4>
                                 <p>Cuando este seguro de la información, Pulse en enviar</p>
                             </div>
-
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4 style="color: #25b750;">Cédula</h4>
-                                <p>Recuerde registrar una cédula válida</p>
-                            </div>
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4 style="color: #25b750;">Cédula</h4>
-                                <p>Recuerde registrar una cédula válida</p>
-                            </div>
-                            
-                            
 
                         </div>
 
@@ -144,11 +130,11 @@
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
                         <h1 class="page-header text-center"
-                            style="font-size: 20px;text-align: justify; color: #0080ff;">
+                            style="font-size: 20px;text-align: justify; color: #5fcf80;">
                             Formulario de Inscripción
                         </h1>
                         <ul class="nav nav-tabs">
-                            <li class="ml-2 nav-item"><a class="nav-link active" data-toggle="tab" href="#estudiante" style="color: #0080ff;font-size: larger;" >Estudiante</a>
+                            <li class="ml-2 nav-item"><a class="nav-link active" data-toggle="tab" href="#estudiante">Estudiante</a>
                             </li>
                             <!--
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docente">Docente</a></li>
@@ -158,7 +144,7 @@
                         <div class="tab-content">
                             <div id="estudiante" class="tab-pane container active">
                                 <p class="mt-3 small">Complete los datos del representante legal</p>
-                                <form method="POST" role="form" name="formacedula">
+                                <form method="POST" role="form" >
                                     <input type="hidden" name="action" id="action" value="estudiante">
                                     {% csrf_token %}
                                     <div class="row">
@@ -180,20 +166,65 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 form-group">
+                                        <div class="col-md-12 form-group">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Correo electrónico</label>
                                             <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                                    class="form-control" name="email_rpr" placeholder="Ingrese su correo electrónico"
                                                    required>
                                         </div>
-                                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                                            <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Cédula</label>
-                                            <input type="text" id="textocedula" onchange="validarcedula()" class="form-control"
-                                                    name="ci_rpr" 
-                                                    placeholder="Ingrese su Cédula"
-                                                    required>
+                                    </div>
+                                    <div class="row">    
+                                    <!--Select documentos oficiales -->                                    
+                                            <div id="selDiv" class="col-md-12 form-group" >
+                                                <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Nacionalidad</label>
+                                                <select class="form-control select2 form-control select2-hidden-accessible" style="width:100%" autocomplete="off" data-style="btn-danger" id="opcion" name="opcion" onchange="seleccionado()" >
+                                                <option value="vacio" selected >---------</option>
+                                                <option  value="cat"  >Ecuatoriano</option>
+                                                <option value="subcat">Extranjero</option>
+                                                </select>
+                                            </div>                                         
+                                    </div>
+                                    <div class="row">                                      
+                                         <!--Show Product Categories List-->                                        
+                                         <div id="categoria" style="display:none;" class="col-md-12 form-group mt-3 mt-md-0">   
+                                                                                 
+                                                    <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Cédula</label>
+                                                    <input type="text"size="20" name="ci_rpr" type="text" id="ci_rpr" onblur="validarDocumento()" class="form-control"
+                                                            >                                                                                                                                                  
                                         </div>
                                     </div>
+
+                                    <div class="row">                                      
+                                        <!--Show Product Categories List-->                                        
+                                        <div id="subcategoria" style="display:none;" class="col-md-12 form-group mt-3 mt-md-0">                                         
+                                                   <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Pasaporte</label>
+                                                   <input type="text"size="20" type="text" id="pasaport_rpr" onblur="validarDocumento2()" class="form-control"
+                                                           name="pasaport_rpr"
+                                                           
+                                                           
+                                                           >   
+                                                    <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;"> RUC</label>
+                                                        <input type="text"size="20" type="text"  onblur="validarDocumento3()" class="form-control"
+                                                            id="ruc_rpr"
+                                                            name="ruc_rpr"
+                                                            
+                                                            
+                                                            >
+                                                    <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Número Cédula</label>
+                                                        <input type="text"size="20" type="text"  class="form-control"
+                                                            name="ci2_rpr"
+                                                            pattern="[0-9]+"
+                                                            maxlength="10"
+                                                            title="Ingrese solo números"
+                                                            placeholder="Ingrese su número de cédula"
+                                                            >                                                                                         
+                                       </div>
+                                   </div>
+                                    
+                                    
+                                    
+
+                                           
                                     
                                         
                                       
@@ -252,10 +283,12 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label style="font-size: 15px;color: #495057; margin-left: 8px;font-weight: bolder;">Cédula</label>
-                                            <input type="text" name="ci_est" maxlength="10" class="form-control"
-                                                   placeholder="Ingrese la cédula"
-                                                   maxlength="9" 
-                                                   minlength="9" 
+                                            <input type="text" name="ci_est" id="ci_est" onblur="validarDocumento5()" maxlength="10" class="form-control"
+                                                   placeholder="Ingrese el número de cédula del niño"
+                                                   pattern="[0-9]+"
+                                                   title="Ingrese solo números"
+                                                   maxlength="10" 
+                                                   minlength="10" 
                                                    required>
                                         </div>
                                         
@@ -450,51 +483,817 @@
     <br>
     <br>
 
-  
+
+
+    <script>
+
+    function seleccionado(){
+        var opt = $('#opcion').val();
+        var ci_rprx = document.getElementById("ci_rpr");
+        var pasaport_rpr = document.getElementById("pasaport_rpr");
+        var ruc_rpr = document.getElementById("ruc_rpr");
+
+       // alert(opt);
+        if(opt=="cat"){
+            $('#categoria').show();
+            $('#subcategoria').hide();
+            ci_rprx.setAttribute("placeholder", "Ingrese su Cédula");
+            ci_rprx.setAttribute("pattern", "[0-9]+");
+            ci_rprx.setAttribute("maxlength", "13");
+            ci_rprx.setAttribute("minlength", "9");
+            ci_rprx.setAttribute("title", "Ingrese solo números");
+            ci_rprx.setAttribute("required", "");
+            
+        }else{
+            if(opt=="subcat"){
+            $('#categoria').hide();
+            $('#subcategoria').show();
+
+            pasaport_rpr.setAttribute("placeholder", "Ingrese su Ingrese su número de Pasaporte");
+            pasaport_rpr.setAttribute("pattern", "[0-9]+");
+            pasaport_rpr.setAttribute("maxlength", "13");
+            pasaport_rpr.setAttribute("minlength", "9");
+            pasaport_rpr.setAttribute("title", "Ingrese solo números");
+            pasaport_rpr.setAttribute("required", "");
+
+            ruc_rpr.setAttribute("placeholder", "Ingrese su Ingrese su número de RUC");
+            ruct_rpr.setAttribute("pattern", "[0-9]+");
+            ruc_rpr.setAttribute("maxlength", "13");
+            ruc_rpr.setAttribute("minlength", "9");
+            ruc_rpr.setAttribute("title", "Ingrese solo números");
+            pruc_rpr.setAttribute("required", "");
+            
+                 
+
+            }
+        else{
+            if (opt=="vacio"){
+                $('#categoria').hide();
+                $('#subcategoria').hide();
+
+            }
+                
+            }
+        }
+    }
+</script>
+
+
+    <script type="text/javascript">
     
-        <script type="text/javascript">
-        function validarcedula()
-        {
-         var i;
-         var cedula;
-         var acumulado;
-         cedula=document.formacedula.textocedula.value;
-         var instancia;
-         acumulado=0;
-         for (i=1;i<=9;i++)
-         {
-          if (i%2!=0)
-          {
-           instancia=cedula.substring(i-1,i)*2;
-           if (instancia>9) instancia-=9;
+    /*
+    * Funcion JavaScript para validar Cedula,Ruc y Pasaporte Ecuatorianos.
+    *
+    * La funcion devuelve verdadero (true) en caso de exito y falso cuando hay
+    * un error en la validacion.
+    *
+    * Creado por: Carlos Julio Perez Q.
+    * cjperez@espol.edu.ec
+    * carlosjulioperez@gmail.com
+    * 093-208265 
+    * Guayaquil-Manta-Ecuador.
+    */
+       validarDocumento  = function() {          
+       
+          numero = document.getElementById('ci_rpr').value;
+        /* alert(numero); */
+    
+          var suma = 0;      
+          var residuo = 0;      
+          var pri = false;      
+          var pub = false;            
+          var nat = false;      
+          var numeroProvincias = 22;                  
+          var modulo = 11;
+                      
+          /* Verifico que el campo no contenga letras */                  
+          var ok=1;
+          for (i=0; i<numero.length && ok==1 ; i++){
+             var n = parseInt(numero.charAt(i));
+             if (isNaN(n)) ok=0;
           }
-          else instancia=cedula.substring(i-1,i);
-          acumulado+=parseInt(instancia);
-         }
-         while (acumulado>0)
-          acumulado-=10;
-         if (cedula.substring(9,10)!=(acumulado*-1))
-         {
-            Swal.fire({
+          if (ok==0){
+             alert("No puede ingresar caracteres en el número"); 
+             document.getElementById('ci_rpr').value = 'Ingrese un número válido'        
+             return false;
+          }
+                      
+          if (numero.length < 10 ){              
+             alert('El número ingresado no es válido');   
+             document.getElementById('ci_rpr').value = 'Ingrese un número válido'               
+             return false;
+          }
+         
+          /* Los primeros dos digitos corresponden al codigo de la provincia */
+          provincia = numero.substr(0,2);      
+          if (provincia < 1 || provincia > numeroProvincias){           
+             alert('El código de la provincia (dos primeros dígitos) es inválido');
+             document.getElementById('ci_rpr').value = 'Ingrese un número válido' 
+         return false;       
+          }
+    
+          /* Aqui almacenamos los digitos de la cedula en variables. */
+          d1  = numero.substr(0,1);         
+          d2  = numero.substr(1,1);         
+          d3  = numero.substr(2,1);         
+          d4  = numero.substr(3,1);         
+          d5  = numero.substr(4,1);         
+          d6  = numero.substr(5,1);         
+          d7  = numero.substr(6,1);         
+          d8  = numero.substr(7,1);         
+          d9  = numero.substr(8,1);         
+          d10 = numero.substr(9,1);                
+             
+          /* El tercer digito es: */                           
+          /* 9 para sociedades privadas y extranjeros   */         
+          /* 6 para sociedades publicas */         
+          /* menor que 6 (0,1,2,3,4,5) para personas naturales */ 
+    
+          if (d3==7 || d3==8){           
+             alert('El tercer dígito ingresado es inválido'); 
+             document.getElementById('ci_rpr').value = 'Ingrese un número válido'                    
+             return false;
+          }         
+             
+          /* Solo para personas naturales (modulo 10) */         
+          if (d3 < 6){           
+             nat = true;            
+             p1 = d1 * 2;  if (p1 >= 10) p1 -= 9;
+             p2 = d2 * 1;  if (p2 >= 10) p2 -= 9;
+             p3 = d3 * 2;  if (p3 >= 10) p3 -= 9;
+             p4 = d4 * 1;  if (p4 >= 10) p4 -= 9;
+             p5 = d5 * 2;  if (p5 >= 10) p5 -= 9;
+             p6 = d6 * 1;  if (p6 >= 10) p6 -= 9; 
+             p7 = d7 * 2;  if (p7 >= 10) p7 -= 9;
+             p8 = d8 * 1;  if (p8 >= 10) p8 -= 9;
+             p9 = d9 * 2;  if (p9 >= 10) p9 -= 9;             
+             modulo = 10;
+          }         
+    
+          /* Solo para sociedades publicas (modulo 11) */                  
+          /* Aqui el digito verficador esta en la posicion 9, en las otras 2 en la pos. 10 */
+          else if(d3 == 6){           
+             pub = true;             
+             p1 = d1 * 3;
+             p2 = d2 * 2;
+             p3 = d3 * 7;
+             p4 = d4 * 6;
+             p5 = d5 * 5;
+             p6 = d6 * 4;
+             p7 = d7 * 3;
+             p8 = d8 * 2;            
+             p9 = 0;            
+          }         
+             
+          /* Solo para entidades privadas (modulo 11) */         
+          else if(d3 == 9) {           
+             pri = true;                                   
+             p1 = d1 * 4;
+             p2 = d2 * 3;
+             p3 = d3 * 2;
+             p4 = d4 * 7;
+             p5 = d5 * 6;
+             p6 = d6 * 5;
+             p7 = d7 * 4;
+             p8 = d8 * 3;
+             p9 = d9 * 2;            
+          }
+                    
+          suma = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;                
+          residuo = suma % modulo;                                         
+    
+          /* Si residuo=0, dig.ver.=0, caso contrario 10 - residuo*/
+          digitoVerificador = residuo==0 ? 0: modulo - residuo;                
+    
+          /* ahora comparamos el elemento de la posicion 10 con el dig. ver.*/                         
+          if (pub==true){           
+             if (digitoVerificador != d9){                          
+                alert('El ruc de la empresa del sector público es incorrecto.');   
+                document.getElementById('ci_rpr').value = 'Ingrese un número válido'
+                      
+                return false;
+             }                  
+             /* El ruc de las empresas del sector publico terminan con 0001*/         
+             if ( numero.substr(9,4) != '0001' ){                    
+                alert('El ruc de la empresa del sector público debe terminar con 0001');
+                document.getElementById('ci_rpr').value = 'Ingrese un número válido'
+                return false;
+             }
+          }         
+          else if(pri == true){         
+             if (digitoVerificador != d10){                          
+                alert('El ruc de la empresa del sector privado es incorrecto.');
+                document.getElementById('ci_rpr').value = 'Ingrese un número válido'
+                return false;
+             }         
+             if ( numero.substr(10,3) != '001' ){                    
+                alert('El ruc de la empresa del sector privado debe terminar con 001');
+                document.getElementById('ci_rpr').value = 'Ingrese un número válido'
+                return false;
+             }
+          }      
+    
+          else if(nat == true){         
+             if (digitoVerificador != d10){                          
+                alert('El número de cédula de la persona natural es incorrecto.');
+                document.getElementById('ci_rpr').value = 'Ingrese un numero valido'
+                return false;
+             }         
+             if (numero.length >10 && numero.substr(10,3) != '001' ){                    
+                alert('El ruc de la persona natural debe terminar con 001');
+                document.getElementById('ci_rpr').value = 'Ingrese un numero valido'
+                return false;
+             }
+          }      
+          return true;             
+       }
+       Swal.fire({
+        icon: 'error',
+        text: 'Número de Cédula inválido',
+        footer: '<span >Ingrese un numero de cédula valido</span>'
+      })            
+    
+    
+    </script>
+    
+      
+        
+
+
+
+
+    <script type="text/javascript">
+    
+        /*
+        * Funcion JavaScript para validar Cedula,Ruc y Pasaporte Ecuatorianos.
+        *
+        * La funcion devuelve verdadero (true) en caso de exito y falso cuando hay
+        * un error en la validacion.
+        *
+        * Creado por: Carlos Julio Perez Q.
+        * cjperez@espol.edu.ec
+        * carlosjulioperez@gmail.com
+        * 093-208265 
+        * Guayaquil-Manta-Ecuador.
+        */
+           validarDocumento2  = function() {          
+           
+              numero = document.getElementById('pasaport_rpr').value;
+            /* alert(numero); */
+        
+              var suma = 0;      
+              var residuo = 0;      
+              var pri = false;      
+              var pub = false;            
+              var nat = false;      
+              var numeroProvincias = 22;                  
+              var modulo = 11;
+                          
+              /* Verifico que el campo no contenga letras */                  
+              var ok=1;
+              for (i=0; i<numero.length && ok==1 ; i++){
+                 var n = parseInt(numero.charAt(i));
+                 if (isNaN(n)) ok=0;
+              }
+              if (ok==0){
+                 alert("No puede ingresar caracteres en el número"); 
+                 document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'        
+                 return false;
+              }
+                          
+              if (numero.length < 10 ){              
+                 alert('El número ingresado no es válido');   
+                 document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'               
+                 return false;
+              }
+             
+              /* Los primeros dos digitos corresponden al codigo de la provincia */
+              provincia = numero.substr(0,2);      
+              if (provincia < 1 || provincia > numeroProvincias){           
+                 alert('El código de la provincia (dos primeros dígitos) es inválido');
+                 document.getElementById('pasaport_rpr').value = 'Ingrese un número válido' 
+             return false;       
+              }
+        
+              /* Aqui almacenamos los digitos de la cedula en variables. */
+              d1  = numero.substr(0,1);         
+              d2  = numero.substr(1,1);         
+              d3  = numero.substr(2,1);         
+              d4  = numero.substr(3,1);         
+              d5  = numero.substr(4,1);         
+              d6  = numero.substr(5,1);         
+              d7  = numero.substr(6,1);         
+              d8  = numero.substr(7,1);         
+              d9  = numero.substr(8,1);         
+              d10 = numero.substr(9,1);                
+                 
+              /* El tercer digito es: */                           
+              /* 9 para sociedades privadas y extranjeros   */         
+              /* 6 para sociedades publicas */         
+              /* menor que 6 (0,1,2,3,4,5) para personas naturales */ 
+        
+              if (d3==7 || d3==8){           
+                 alert('El tercer dígito ingresado es inválido'); 
+                 document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'                    
+                 return false;
+              }         
+                 
+              /* Solo para personas naturales (modulo 10) */         
+              if (d3 < 6){           
+                 nat = true;            
+                 p1 = d1 * 2;  if (p1 >= 10) p1 -= 9;
+                 p2 = d2 * 1;  if (p2 >= 10) p2 -= 9;
+                 p3 = d3 * 2;  if (p3 >= 10) p3 -= 9;
+                 p4 = d4 * 1;  if (p4 >= 10) p4 -= 9;
+                 p5 = d5 * 2;  if (p5 >= 10) p5 -= 9;
+                 p6 = d6 * 1;  if (p6 >= 10) p6 -= 9; 
+                 p7 = d7 * 2;  if (p7 >= 10) p7 -= 9;
+                 p8 = d8 * 1;  if (p8 >= 10) p8 -= 9;
+                 p9 = d9 * 2;  if (p9 >= 10) p9 -= 9;             
+                 modulo = 10;
+              }         
+        
+              /* Solo para sociedades publicas (modulo 11) */                  
+              /* Aqui el digito verficador esta en la posicion 9, en las otras 2 en la pos. 10 */
+              else if(d3 == 6){           
+                 pub = true;             
+                 p1 = d1 * 3;
+                 p2 = d2 * 2;
+                 p3 = d3 * 7;
+                 p4 = d4 * 6;
+                 p5 = d5 * 5;
+                 p6 = d6 * 4;
+                 p7 = d7 * 3;
+                 p8 = d8 * 2;            
+                 p9 = 0;            
+              }         
+                 
+              /* Solo para entidades privadas (modulo 11) */         
+              else if(d3 == 9) {           
+                 pri = true;                                   
+                 p1 = d1 * 4;
+                 p2 = d2 * 3;
+                 p3 = d3 * 2;
+                 p4 = d4 * 7;
+                 p5 = d5 * 6;
+                 p6 = d6 * 5;
+                 p7 = d7 * 4;
+                 p8 = d8 * 3;
+                 p9 = d9 * 2;            
+              }
+                        
+              suma = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;                
+              residuo = suma % modulo;                                         
+        
+              /* Si residuo=0, dig.ver.=0, caso contrario 10 - residuo*/
+              digitoVerificador = residuo==0 ? 0: modulo - residuo;                
+        
+              /* ahora comparamos el elemento de la posicion 10 con el dig. ver.*/                         
+              if (pub==true){           
+                 if (digitoVerificador != d9){                          
+                    alert('El ruc de la empresa del sector público es incorrecto.');   
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'
+                          
+                    return false;
+                 }                  
+                 /* El ruc de las empresas del sector publico terminan con 0001*/         
+                 if ( numero.substr(9,4) != '0001' ){                    
+                    alert('El ruc de la empresa del sector público debe terminar con 0001');
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'
+                    return false;
+                 }
+              }         
+              else if(pri == true){         
+                 if (digitoVerificador != d10){                          
+                    alert('El ruc de la empresa del sector privado es incorrecto.');
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'
+                    return false;
+                 }         
+                 if ( numero.substr(10,3) != '001' ){                    
+                    alert('El ruc de la empresa del sector privado debe terminar con 001');
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un número válido'
+                    return false;
+                 }
+              }      
+        
+              else if(nat == true){         
+                 if (digitoVerificador != d10){                          
+                    alert('El número de cédula de la persona natural es incorrecto.');
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un numero valido'
+                    return false;
+                 }         
+                 if (numero.length >10 && numero.substr(10,3) != '001' ){                    
+                    alert('El ruc de la persona natural debe terminar con 001');
+                    document.getElementById('pasaport_rpr').value = 'Ingrese un numero valido'
+                    return false;
+                 }
+              }      
+              return true;             
+           }
+           Swal.fire({
+            icon: 'error',
+            text: 'Número de Cédula inválido',
+            footer: '<span >Ingrese un numero de cédula valido</span>'
+          })            
+        
+        
+        </script>
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+    
+            /*
+            * Funcion JavaScript para validar Cedula,Ruc y Pasaporte Ecuatorianos.
+            *
+            * La funcion devuelve verdadero (true) en caso de exito y falso cuando hay
+            * un error en la validacion.
+            *
+            * Creado por: Carlos Julio Perez Q.
+            * cjperez@espol.edu.ec
+            * carlosjulioperez@gmail.com
+            * 093-208265 
+            * Guayaquil-Manta-Ecuador.
+            */
+               validarDocumento3  = function() {          
+               
+                  numero = document.getElementById('ruc_rpr').value;
+                /* alert(numero); */
+            
+                  var suma = 0;      
+                  var residuo = 0;      
+                  var pri = false;      
+                  var pub = false;            
+                  var nat = false;      
+                  var numeroProvincias = 22;                  
+                  var modulo = 11;
+                              
+                  /* Verifico que el campo no contenga letras */                  
+                  var ok=1;
+                  for (i=0; i<numero.length && ok==1 ; i++){
+                     var n = parseInt(numero.charAt(i));
+                     if (isNaN(n)) ok=0;
+                  }
+                  if (ok==0){
+                     alert("No puede ingresar caracteres en el número"); 
+                     document.getElementById('ruc_rpr').value = 'Ingrese un número válido'        
+                     return false;
+                  }
+                              
+                  if (numero.length < 10 ){              
+                     alert('El número ingresado no es válido');   
+                     document.getElementById('ruc_rpr').value = 'Ingrese un número válido'               
+                     return false;
+                  }
+                 
+                  /* Los primeros dos digitos corresponden al codigo de la provincia */
+                  provincia = numero.substr(0,2);      
+                  if (provincia < 1 || provincia > numeroProvincias){           
+                     alert('El código de la provincia (dos primeros dígitos) es inválido');
+                     document.getElementById('ruc_rpr').value = 'Ingrese un número válido' 
+                 return false;       
+                  }
+            
+                  /* Aqui almacenamos los digitos de la cedula en variables. */
+                  d1  = numero.substr(0,1);         
+                  d2  = numero.substr(1,1);         
+                  d3  = numero.substr(2,1);         
+                  d4  = numero.substr(3,1);         
+                  d5  = numero.substr(4,1);         
+                  d6  = numero.substr(5,1);         
+                  d7  = numero.substr(6,1);         
+                  d8  = numero.substr(7,1);         
+                  d9  = numero.substr(8,1);         
+                  d10 = numero.substr(9,1);                
+                     
+                  /* El tercer digito es: */                           
+                  /* 9 para sociedades privadas y extranjeros   */         
+                  /* 6 para sociedades publicas */         
+                  /* menor que 6 (0,1,2,3,4,5) para personas naturales */ 
+            
+                  if (d3==7 || d3==8){           
+                     alert('El tercer dígito ingresado es inválido'); 
+                     document.getElementById('ruc_rpr').value = 'Ingrese un número válido'                    
+                     return false;
+                  }         
+                     
+                  /* Solo para personas naturales (modulo 10) */         
+                  if (d3 < 6){           
+                     nat = true;            
+                     p1 = d1 * 2;  if (p1 >= 10) p1 -= 9;
+                     p2 = d2 * 1;  if (p2 >= 10) p2 -= 9;
+                     p3 = d3 * 2;  if (p3 >= 10) p3 -= 9;
+                     p4 = d4 * 1;  if (p4 >= 10) p4 -= 9;
+                     p5 = d5 * 2;  if (p5 >= 10) p5 -= 9;
+                     p6 = d6 * 1;  if (p6 >= 10) p6 -= 9; 
+                     p7 = d7 * 2;  if (p7 >= 10) p7 -= 9;
+                     p8 = d8 * 1;  if (p8 >= 10) p8 -= 9;
+                     p9 = d9 * 2;  if (p9 >= 10) p9 -= 9;             
+                     modulo = 10;
+                  }         
+            
+                  /* Solo para sociedades publicas (modulo 11) */                  
+                  /* Aqui el digito verficador esta en la posicion 9, en las otras 2 en la pos. 10 */
+                  else if(d3 == 6){           
+                     pub = true;             
+                     p1 = d1 * 3;
+                     p2 = d2 * 2;
+                     p3 = d3 * 7;
+                     p4 = d4 * 6;
+                     p5 = d5 * 5;
+                     p6 = d6 * 4;
+                     p7 = d7 * 3;
+                     p8 = d8 * 2;            
+                     p9 = 0;            
+                  }         
+                     
+                  /* Solo para entidades privadas (modulo 11) */         
+                  else if(d3 == 9) {           
+                     pri = true;                                   
+                     p1 = d1 * 4;
+                     p2 = d2 * 3;
+                     p3 = d3 * 2;
+                     p4 = d4 * 7;
+                     p5 = d5 * 6;
+                     p6 = d6 * 5;
+                     p7 = d7 * 4;
+                     p8 = d8 * 3;
+                     p9 = d9 * 2;            
+                  }
+                            
+                  suma = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;                
+                  residuo = suma % modulo;                                         
+            
+                  /* Si residuo=0, dig.ver.=0, caso contrario 10 - residuo*/
+                  digitoVerificador = residuo==0 ? 0: modulo - residuo;                
+            
+                  /* ahora comparamos el elemento de la posicion 10 con el dig. ver.*/                         
+                  if (pub==true){           
+                     if (digitoVerificador != d9){                          
+                        alert('El ruc de la empresa del sector público es incorrecto.');   
+                        document.getElementById('ruc_rpr').value = 'Ingrese un número válido'
+                              
+                        return false;
+                     }                  
+                     /* El ruc de las empresas del sector publico terminan con 0001*/         
+                     if ( numero.substr(9,4) != '0001' ){                    
+                        alert('El ruc de la empresa del sector público debe terminar con 0001');
+                        document.getElementById('ruc_rpr').value = 'Ingrese un número válido'
+                        return false;
+                     }
+                  }         
+                  else if(pri == true){         
+                     if (digitoVerificador != d10){                          
+                        alert('El ruc de la empresa del sector privado es incorrecto.');
+                        document.getElementById('ruc_rpr').value = 'Ingrese un número válido'
+                        return false;
+                     }         
+                     if ( numero.substr(10,3) != '001' ){                    
+                        alert('El ruc de la empresa del sector privado debe terminar con 001');
+                        document.getElementById('ruc_rpr').value = 'Ingrese un número válido'
+                        return false;
+                     }
+                  }      
+            
+                  else if(nat == true){         
+                     if (digitoVerificador != d10){                          
+                        alert('El número de cédula de la persona natural es incorrecto.');
+                        document.getElementById('ruc_rpr').value = 'Ingrese un numero valido'
+                        return false;
+                     }         
+                     if (numero.length >10 && numero.substr(10,3) != '001' ){                    
+                        alert('El ruc de la persona natural debe terminar con 001');
+                        document.getElementById('ruc_rpr').value = 'Ingrese un numero valido'
+                        return false;
+                     }
+                  }      
+                  return true;             
+               }
+               Swal.fire({
                 icon: 'error',
                 text: 'Número de Cédula inválido',
                 footer: '<span >Ingrese un numero de cédula valido</span>'
-              })
-          document.getElementById('textocedula').value = 'Ingrese nueva cédula'
-          document.formacedula.textocedula.setfocus();
-         }
-         Swal.fire({
-            icon: 'success',
-            text: 'Número de cédula válido',
+              })            
             
-          })
-        }
-        </script>
-      
-        
+            
+            </script>
+            
+
+
+
+
+
+
+
+
+            <script type="text/javascript">
+    
+                /*
+                * Funcion JavaScript para validar Cedula,Ruc y Pasaporte Ecuatorianos.
+                *
+                * La funcion devuelve verdadero (true) en caso de exito y falso cuando hay
+                * un error en la validacion.
+                *
+                * Creado por: Carlos Julio Perez Q.
+                * cjperez@espol.edu.ec
+                * carlosjulioperez@gmail.com
+                * 093-208265 
+                * Guayaquil-Manta-Ecuador.
+                */
+                   validarDocumento5  = function() {          
+                   
+                      numero = document.getElementById('ci_est').value;
+                    /* alert(numero); */
+                
+                      var suma = 0;      
+                      var residuo = 0;      
+                      var pri = false;      
+                      var pub = false;            
+                      var nat = false;      
+                      var numeroProvincias = 22;                  
+                      var modulo = 11;
+                                  
+                      /* Verifico que el campo no contenga letras */                  
+                      var ok=1;
+                      for (i=0; i<numero.length && ok==1 ; i++){
+                         var n = parseInt(numero.charAt(i));
+                         if (isNaN(n)) ok=0;
+                      }
+                      if (ok==0){
+                         alert("No puede ingresar caracteres en el número"); 
+                         document.getElementById('ci_est').value = 'Ingrese un número válido'        
+                         return false;
+                      }
+                                  
+                      if (numero.length < 10 ){              
+                         alert('El número ingresado no es válido');   
+                         document.getElementById('ci_est').value = 'Ingrese un número válido'               
+                         return false;
+                      }
+                     
+                      /* Los primeros dos digitos corresponden al codigo de la provincia */
+                      provincia = numero.substr(0,2);      
+                      if (provincia < 1 || provincia > numeroProvincias){           
+                         alert('El código de la provincia (dos primeros dígitos) es inválido');
+                         document.getElementById('ci_est').value = 'Ingrese un número válido' 
+                     return false;       
+                      }
+                
+                      /* Aqui almacenamos los digitos de la cedula en variables. */
+                      d1  = numero.substr(0,1);         
+                      d2  = numero.substr(1,1);         
+                      d3  = numero.substr(2,1);         
+                      d4  = numero.substr(3,1);         
+                      d5  = numero.substr(4,1);         
+                      d6  = numero.substr(5,1);         
+                      d7  = numero.substr(6,1);         
+                      d8  = numero.substr(7,1);         
+                      d9  = numero.substr(8,1);         
+                      d10 = numero.substr(9,1);                
+                         
+                      /* El tercer digito es: */                           
+                      /* 9 para sociedades privadas y extranjeros   */         
+                      /* 6 para sociedades publicas */         
+                      /* menor que 6 (0,1,2,3,4,5) para personas naturales */ 
+                
+                      if (d3==7 || d3==8){           
+                         alert('El tercer dígito ingresado es inválido'); 
+                         document.getElementById('ci_est').value = 'Ingrese un número válido'                    
+                         return false;
+                      }         
+                         
+                      /* Solo para personas naturales (modulo 10) */         
+                      if (d3 < 6){           
+                         nat = true;            
+                         p1 = d1 * 2;  if (p1 >= 10) p1 -= 9;
+                         p2 = d2 * 1;  if (p2 >= 10) p2 -= 9;
+                         p3 = d3 * 2;  if (p3 >= 10) p3 -= 9;
+                         p4 = d4 * 1;  if (p4 >= 10) p4 -= 9;
+                         p5 = d5 * 2;  if (p5 >= 10) p5 -= 9;
+                         p6 = d6 * 1;  if (p6 >= 10) p6 -= 9; 
+                         p7 = d7 * 2;  if (p7 >= 10) p7 -= 9;
+                         p8 = d8 * 1;  if (p8 >= 10) p8 -= 9;
+                         p9 = d9 * 2;  if (p9 >= 10) p9 -= 9;             
+                         modulo = 10;
+                      }         
+                
+                      /* Solo para sociedades publicas (modulo 11) */                  
+                      /* Aqui el digito verficador esta en la posicion 9, en las otras 2 en la pos. 10 */
+                      else if(d3 == 6){           
+                         pub = true;             
+                         p1 = d1 * 3;
+                         p2 = d2 * 2;
+                         p3 = d3 * 7;
+                         p4 = d4 * 6;
+                         p5 = d5 * 5;
+                         p6 = d6 * 4;
+                         p7 = d7 * 3;
+                         p8 = d8 * 2;            
+                         p9 = 0;            
+                      }         
+                         
+                      /* Solo para entidades privadas (modulo 11) */         
+                      else if(d3 == 9) {           
+                         pri = true;                                   
+                         p1 = d1 * 4;
+                         p2 = d2 * 3;
+                         p3 = d3 * 2;
+                         p4 = d4 * 7;
+                         p5 = d5 * 6;
+                         p6 = d6 * 5;
+                         p7 = d7 * 4;
+                         p8 = d8 * 3;
+                         p9 = d9 * 2;            
+                      }
+                                
+                      suma = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;                
+                      residuo = suma % modulo;                                         
+                
+                      /* Si residuo=0, dig.ver.=0, caso contrario 10 - residuo*/
+                      digitoVerificador = residuo==0 ? 0: modulo - residuo;                
+                
+                      /* ahora comparamos el elemento de la posicion 10 con el dig. ver.*/                         
+                      if (pub==true){           
+                         if (digitoVerificador != d9){                          
+                            alert('El ruc de la empresa del sector público es incorrecto.');   
+                            document.getElementById('ci_est').value = 'Ingrese un número válido'
+                                  
+                            return false;
+                         }                  
+                         /* El ruc de las empresas del sector publico terminan con 0001*/         
+                         if ( numero.substr(9,4) != '0001' ){                    
+                            alert('El ruc de la empresa del sector público debe terminar con 0001');
+                            document.getElementById('ci_est').value = 'Ingrese un número válido'
+                            return false;
+                         }
+                      }         
+                      else if(pri == true){         
+                         if (digitoVerificador != d10){                          
+                            alert('El ruc de la empresa del sector privado es incorrecto.');
+                            document.getElementById('ci_est').value = 'Ingrese un número válido'
+                            return false;
+                         }         
+                         if ( numero.substr(10,3) != '001' ){                    
+                            alert('El ruc de la empresa del sector privado debe terminar con 001');
+                            document.getElementById('ci_est').value = 'Ingrese un número válido'
+                            return false;
+                         }
+                      }      
+                
+                      else if(nat == true){         
+                         if (digitoVerificador != d10){                          
+                            alert('El número de cédula de la persona natural es incorrecto.');
+                            document.getElementById('ci_est').value = 'Ingrese un numero valido'
+                            return false;
+                         }         
+                         if (numero.length >10 && numero.substr(10,3) != '001' ){                    
+                            alert('El ruc de la persona natural debe terminar con 001');
+                            document.getElementById('ci_est').value = 'Ingrese un numero valido'
+                            return false;
+                         }
+                      }      
+                      return true;             
+                   }
+                   Swal.fire({
+                    icon: 'error',
+                    text: 'Número de Cédula inválido',
+                    footer: '<span >Ingrese un numero de cédula valido</span>'
+                  })            
+                
+                
+                </script>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
         </body>
         </html>
        
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+
+
+
+
+
+
+
+       
+        
 {% endblock content %}
