@@ -94,9 +94,8 @@ $(function () {
                     text: 'Imprimir datos <i class="fas fa-print"></i>',
                     titleAttr: 'Imprimir datos s',
                     className: 'btn btn-success btn-flat btn-xs',
-                    //messageTop: "Detalles del Periodo Académico",
-                    title:  "<h5>Detalles del Periodo Académico</h5>",
-                      
+                    messageTop: "<h5>Detalles del Periodo Académico</h5>",
+                    title:  "<h4 style='text-align: center;'>Centro de desarrollo infaltíl 'Pequeños Sabios' </h4>",
                     
                 },
             ],
