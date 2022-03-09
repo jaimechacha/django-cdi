@@ -57,4 +57,16 @@
             </div>
         </div>
     </div>
+    <script type="application/javascript">
+        const show_info = (message, title) => {
+            Swal.fire({ icon: 'info', title , text: message })
+        }
+        {% if messages %}
+            let message_html = ''
+            {% for message in messages %}
+                message_html += '{{ message }}'
+            {% endfor %}
+            show_info(message_html, 'Cambio de contraseña');
+        {% endif %}
+    </script>
 {% endblock %}

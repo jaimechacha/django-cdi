@@ -56,11 +56,8 @@ class LoginAuthView(LoginView):
 
     def form_valid(self, form):
         user = form.get_user()
-        if user.last_login is None:
-            # messages.info(
-            #     self.request,
-            #     'Usted aún no ha cambiado su contraseña'
-            # )
+        if user.is_new:
+            messages.info(self.request, 'Antes de ingresar al sistema debe cambiar su contraseña')
             user.is_change_password = True
             user.save()
             return redirect(f'/login/change/password/{user.token}/')
@@ -209,8 +206,8 @@ class ChangePasswordView(FormView):
             if form.is_valid():
                 user = User.objects.get(token=kwargs['pk'])
                 user.is_change_password = False
-                if user.last_login is None:
-                    user.last_login = datetime.datetime.now()
+                if user.is_new:
+                    user.is_new = False
                 user.set_password(request.POST['password'])
                 user.save()
             else:
