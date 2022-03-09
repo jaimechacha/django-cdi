@@ -1,3 +1,4 @@
+import datetime
 import json
 import smtplib
 import socket
@@ -10,6 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.db import transaction
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -53,6 +55,12 @@ class LoginAuthView(LoginView):
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        user = form.get_user()
+        if user.is_new:
+            messages.info(self.request, 'Antes de ingresar al sistema debe cambiar su contraseña')
+            user.is_change_password = True
+            user.save()
+            return redirect(f'/login/change/password/{user.token}/')
         login(self.request, form.get_user())
         if self.request.user.is_authenticated:
             self.request.user.set_group_session()
@@ -63,7 +71,8 @@ class LoginAuthView(LoginView):
         form = self.get_form()
         if form.is_valid():
             user = self.get_user_attempt()
-            user.reset_failed_attempts()
+            if user:
+                user.reset_failed_attempts()
             return self.form_valid(form)
         else:
             self.verify_login_attempts()
@@ -71,7 +80,7 @@ class LoginAuthView(LoginView):
 
     def get_user_attempt(self):
         form = self.get_form()
-        users = User.objects.filter(dni=form.data['username'])
+        users = User.objects.filter(username=form.data['username'])
         if users.exists():
             return users[0]
         return None
@@ -197,6 +206,8 @@ class ChangePasswordView(FormView):
             if form.is_valid():
                 user = User.objects.get(token=kwargs['pk'])
                 user.is_change_password = False
+                if user.is_new:
+                    user.is_new = False
                 user.set_password(request.POST['password'])
                 user.save()
             else:
