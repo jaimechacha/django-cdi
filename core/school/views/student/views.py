@@ -404,10 +404,20 @@ class GenericUpdateStudent(UpdateView):
         return context
 
 
-class StudentUpdateProfileView(ModuleMixin, GenericUpdateStudent):
+class StudentUpdateProfileView(PermissionMixin, GenericUpdateStudent):
     title = 'Edición del perfil'
     template_name = 'student/profile.html'
     success_url = reverse_lazy('dashboard')
+    permission_required = [
+        'add_family',
+        'change_family',
+        'add_legalrepresentative',
+        'change_legalrepresentative',
+        'add_studentmedicalrecord',
+        'change_studentmedicalrecord',
+        'change_student',
+    ]
+
 
 #imprimir hoja PDF de datos 
 class print_stud_data(View):

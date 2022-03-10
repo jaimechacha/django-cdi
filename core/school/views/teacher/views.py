@@ -392,10 +392,11 @@ class GenericUpdateTeacher(UpdateView):
         return context
 
 
-class TeacherUpdateProfileView(ModuleMixin, GenericUpdateTeacher):
+class TeacherUpdateProfileView(PermissionMixin, GenericUpdateTeacher):
     title = 'Edición del perfil'
     template_name = 'teacher/profile.html'
     success_url = reverse_lazy('dashboard')
+    permission_required = 'change_teacher'
 
 
 class TeacherUpdateView(PermissionMixin, GenericUpdateTeacher):
