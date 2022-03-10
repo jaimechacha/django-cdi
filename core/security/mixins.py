@@ -53,10 +53,11 @@ class PermissionMixin(object):
             if 'group' in request.session:
                 group = request.session['group']
                 permits = self.get_permits()
+                print('PERMIS', permits)
                 for p in permits:
                     if not group.grouppermission_set.filter(permission__codename=p).exists():
                         messages.error(request, 'No tiene permiso para ingresar a este módulo')
-                        return HttpResponseRedirect(self.get_last_url())
+                        return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
                 grouppermission = group.grouppermission_set.filter(permission__codename=permits[0])
                 if grouppermission.exists():
                     request.session['url_last'] = request.path
