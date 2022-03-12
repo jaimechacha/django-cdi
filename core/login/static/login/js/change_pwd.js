@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
     const form = document.getElementById('frmChangePassword');
+    FormValidation.validators.validate_password = validatePassword;
     fv = FormValidation.formValidation(form, {
             locale: 'es_ES',
             localization: FormValidation.locales.es_ES,
@@ -56,10 +57,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         notEmpty: {
                             message: 'El password es requerido'
                         },
-                        regexp: {
-                            regexp: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*.-]).{8,}$/g,
-                            message: 'La contraseña debe tener un número, una letra mayúscula y un caracter especial'
-                        },
+                        validate_password: {}
                     }
                 },
                 confirmPassword: {
@@ -140,4 +138,30 @@ $(function () {
         });
 });
 
+
+const validatePassword = () => {
+    return {
+        validate: (input) => {
+            const value = input.value;
+
+            if (value === value.toLowerCase()) {
+                return { valid: false, message: 'Ingrese una letra mayúscula'};
+            }
+
+            if (value === value.toUpperCase()) {
+                return { valid: false, message: 'Ingrese una letra minúscula'};
+            }
+
+            if (value.search(/[0-9]/) < 0) {
+                return { valid: false, message: 'Ingrese un número' };
+            }
+
+            if (value.search(/[\W]/) < 0){
+                return { valid: false, message: 'Ingrese un caracter especial'};
+            }
+
+            return { valid: true };
+        },
+    };
+};
 
