@@ -512,6 +512,10 @@ const validatePassword = () => {
         validate: (input) => {
             const value = input.value;
 
+            if (value.length < 10) {
+                return { valid: false, message: 'La contraseña debe tener un mínimo de de 10 caracteres'};
+            }
+
             if (value === value.toLowerCase()) {
                 return { valid: false, message: 'Ingrese una letra mayúscula'};
             }
