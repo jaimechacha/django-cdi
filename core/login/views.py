@@ -58,9 +58,14 @@ class LoginAuthView(LoginView):
         user = form.get_user()
         if user.is_new:
             messages.info(self.request, 'Antes de ingresar al sistema debe cambiar su contraseña')
-            user.is_change_password = True
-            user.save()
+            user.is_change_password_as_true()
             return redirect(f'/login/change/password/{user.token}/')
+        if user.is_change_password:
+            messages.info(
+                self.request,
+                'Esta cuenta esta temporalmente bloqueada, revise su correo electrónico'
+            )
+            return super().get(self.request, self.args, self.kwargs)
         login(self.request, form.get_user())
         if self.request.user.is_authenticated:
             self.request.user.set_group_session()
@@ -89,9 +94,16 @@ class LoginAuthView(LoginView):
         user: User = self.get_user_attempt()
         if user:
             if user.failed_attempts < 5:
-                user.increment_failed_attempts()
+                if not user.is_change_password:
+                    user.increment_failed_attempts()
+                else:
+                    messages.info(
+                        self.request,
+                        'Esta cuenta esta temporalmente bloqueada, revise su correo electrónico'
+                    )
             if user.failed_attempts == 5:
                 self.send_email_reset_password(user)
+                user.is_change_password_as_true()
                 user.reset_failed_attempts()
                 messages.info(
                     self.request,

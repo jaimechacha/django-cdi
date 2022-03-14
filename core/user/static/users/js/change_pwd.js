@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
     const form = document.getElementById('frmPassword');
+    FormValidation.validators.validate_password = validatePassword;
     fv = FormValidation.formValidation(form, {
             locale: 'es_ES',
             localization: FormValidation.locales.es_ES,

@@ -504,3 +504,31 @@ function validate_dni_ruc(dni) {
     }
     return true;
 }
+
+
+
+const validatePassword = () => {
+    return {
+        validate: (input) => {
+            const value = input.value;
+
+            if (value === value.toLowerCase()) {
+                return { valid: false, message: 'Ingrese una letra mayúscula'};
+            }
+
+            if (value === value.toUpperCase()) {
+                return { valid: false, message: 'Ingrese una letra minúscula'};
+            }
+
+            if (value.search(/[0-9]/) < 0) {
+                return { valid: false, message: 'Ingrese un número' };
+            }
+
+            if (value.search(/[\W]/) < 0){
+                return { valid: false, message: 'Ingrese un caracter especial'};
+            }
+
+            return { valid: true };
+        },
+    };
+};

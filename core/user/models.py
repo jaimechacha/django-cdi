@@ -113,3 +113,7 @@ class User(AuditMixin, AbstractUser):
         self.failed_attempts = 0
         self.last_login_attempt = datetime.now().date()
         self.save()
+
+    def is_change_password_as_true(self):
+        self.is_change_password = True
+        self.save()
