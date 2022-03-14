@@ -27,6 +27,22 @@ class OutputListView(PermissionMixin, ListView):
         context['title'] = 'Listado de salidas'
         return context
 
+    def refund_materials(self):
+        out_materials = self.request.POST.get('out_materials', [])
+        materials = json.loads(out_materials)
+
+        for m in materials:
+            out_m = OutputMaterial.objects.get(id=m['id'])
+            if out_m.amount >= int(m['refund']):
+                new_amount = out_m.amount - int(m['refund'])
+                out_m.amount = new_amount
+                out_m.save()
+                invent = Inventory.objects.get(material_id=m['mat_id'])
+                invent.stock += int(m['refund'])
+                invent.save()
+            else:
+                raise ValueError('Revise que las cantidades sean correctas')
+
     def post(self, request, *args, **kwargs):
         data = {}
         action = request.POST.get('action', None)
@@ -35,6 +51,9 @@ class OutputListView(PermissionMixin, ListView):
                 data = []
                 for ent in OutputMaterial.objects.filter(output_id=request.POST['id']):
                     data.append(ent.toJSON())
+            elif action == 'refund_materials':
+                with transaction.atomic():
+                    self.refund_materials()
             else:
                 data['error'] = 'No ha selecionado una opción'
         except Exception as e:
