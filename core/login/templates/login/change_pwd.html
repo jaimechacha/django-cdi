@@ -12,9 +12,13 @@
             <div class="card">
                 <div class="card-body login-card-body">
                     <div class="contact-image">
+                        <img  height="150px" width="240px" src="/static/img/logo/logo2.png">
+                        <!--
                         <i class="{{ dshboard.get_icon }} fa-5x" style="color: #5fcf80;" aria-hidden="true"></i>
+                        -->
                     </div>
-                    <p class="login-box-msg">Reseteo de contraseña</p>
+                    <hr>
+                    <p class="login-box-msg">Cambio de contraseña</p>
                     <form method="post" autocomplete="off" id="frmChangePassword" data-url="{% url 'login' %}">
                         {% csrf_token %}
                         <div class="form-group">

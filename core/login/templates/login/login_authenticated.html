@@ -3,8 +3,12 @@
 {% block content %}
     <div class="lockscreen-wrapper">
         <div class="lockscreen-logo">
+            <img  height="150px" width="240px" src="/static/img/logo/logo2.png">
+            <!--
             <a><i class="{{ dshboard.get_icon }} fa-3x"style="color: #5fcf80;" aria-hidden="true"></i></a>
+            -->
         </div>
+        <hr>
         <div class="lockscreen-name text-center">{{ request.user.get_short_name }}</div>
         <div class="lockscreen-item" style="width: auto;">
             <div class="lockscreen-image">

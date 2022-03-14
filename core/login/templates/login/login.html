@@ -11,8 +11,12 @@
             <div class="card">
                 <div class="card-body login-card-body">
                     <div class="contact-image">
+                        <img  height="150px" width="240px" src="/static/img/logo/logo2.png">
+                        <!--
                         <i class="{{ dshboard.get_icon }} fa-5x" style="color: #5fcf80;" aria-hidden="true"></i>
+                        -->
                     </div>
+                    <hr>
                     <p class="login-box-msg">Inicio de Sesión</p>
                     <form method="post" autocomplete="off" id="frmLogin">
                         {% csrf_token %}
