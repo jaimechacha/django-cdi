@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block head_list %}
+    <link rel="stylesheet" href="{% static 'lib/bootstrap-touchspin-v4.2.5/css/jquery.bootstrap-touchspin.css' %}"/>
+    <script src="{% static 'lib/bootstrap-touchspin-v4.2.5/js/jquery.bootstrap-touchspin.js' %}"></script>
     <script src="{% static 'output/js/list.js' %}"></script>
 {% endblock %}
 
@@ -58,11 +60,17 @@
                                             <th>Material</th>
                                             <th>Descripción del material</th>
                                             <th>Cantidad retirada</th>
+                                            <th>Devolución</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary btn-flat">
+                                <i class="fas fa-save" aria-hidden="true"></i> Guardar cambios
+                            </button>
                         </div>
                     </div>
                 </div>
