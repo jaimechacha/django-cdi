@@ -18699,8 +18699,8 @@ html.maximized-card {
 }
 
 .btn.btn-flat {
-  border-radius: 5px;
-  border-width: 1px;
+  border-radius: 8px;
+  border-width: 0.0001rem;
   box-shadow: none;
 }
 
@@ -20114,7 +20114,7 @@ html.maximized-card {
 }
 
 .widget-user .card-footer {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .widget-user-2 .widget-user-header {

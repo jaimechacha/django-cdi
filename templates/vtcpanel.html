@@ -7,7 +7,158 @@
 {% load widget_tweaks %}
 {% block breadcrumb %}
 {% endblock %}
+
+
 {% block content %}
+
+<div class="col-md-12">
+
+    <div class="card card-widget widget-user shadow-lg" >
+    
+    <div class="widget-user-header" style="background-color: #04bc94;">
+    <span  style="font-family: 'Google Sans',Roboto,Arial,sans-serif; color:azure;">Bienvenido al:</span>
+
+    <h3 class="widget-user-username" style="font-family: 'Google Sans',Roboto,Arial,sans-serif; color:azure;">{{ company.name }}</h3>
+    </div>
+    <div class="widget-user-image">
+    <img class="img-circle elevation-3" src="{{ company.get_image }}" alt="User Avatar" style="width: 110px; height: 110px;">
+    
+    </div>
+    <div class="card-footer">
+    <div class="row">
+    <div class="col-sm-3 border-right">
+        <div class="description-block">
+            <i style="color: #fff328;" class="fas fa-phone-square-alt fa-2x p-3"></i>
+            
+            <h5 class="description-header font-weight-bold mb-2">
+                Teléfono
+            </h5>
+            <span class="description-text">
+                    {{ company.mobile }} 
+                </span>
+        </div>
+    
+    </div>
+    
+    <div class="col-sm-3 border-right">
+        <div class="description-block">
+            <i style="color: #cf3737;" class='fas fa-mail-bulk fa-2x p-3'></i>
+
+            <h5 class="description-header font-weight-bold mb-2">
+                Correo electrónico
+            </h5>
+            <span class="description-text">
+                    {{ company.email }}
+                </span>
+        </div>
+    
+    </div>
+    
+    <div class="col-sm-3">
+        <div class="description-block border-right">
+            <i  style="color: #5fcf80;" class="fas fa-directions fa-2x p-3"></i>
+            <h5 class="description-header font-weight-bold mb-2">
+                Dirección
+            </h5>
+            <span class="description-text">
+                    {{ company.address }}
+                </span>
+        </div>
+    
+    </div>
+    <div class="col-sm-3">
+        <div class="description-block">
+            <i  <i style="color: #007bff;" class="fas fa-map-marked-alt fa-2x p-3"></i>
+            <h5 class="description-header font-weight-bold mb-2">
+                Ubicación
+            </h5>
+            <span class="description-text">
+                    {{ company.coordinates }}
+                </span>
+        </div>
+    
+    </div>
+    <apan class="widget-user-desc">
+            
+        Tu último acceso fue {{ request.user.last_login }}
+    </span>
+    
+    </div>
+    
+    </div>
+    </div>
+    
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+    {% if request.user.is_superuser %}
+<div class="row">
+    <div class="col-lg-3 col-6">
+    
+    <div class="small-box bg-info">
+    <div class="inner">
+    <h3>150</h3>
+    <p>Estudiantes</p>
+    </div>
+    <div class="icon">
+    <i class="ion ion-bag"></i>
+    </div>
+    </div>
+    </div>
+    
+    <div class="col-lg-3 col-6">
+    
+    <div class="small-box bg-success">
+    <div class="inner">
+    <h3>53<sup style="font-size: 20px">%</sup></h3>
+    <p>Empleados</p>
+    </div>
+    <div class="icon">
+    <i class="ion ion-stats-bars"></i>
+    </div>
+    </div>
+    </div>
+    
+    <div class="col-lg-3 col-6">
+    
+    <div class="small-box bg-warning">
+    <div class="inner">
+    <h3>44</h3>
+    <p>Niveles</p>
+    </div>
+    <div class="icon">
+    <i class="ion ion-person-add"></i>
+    </div>
+    </div>
+    </div>
+    
+    <div class="col-lg-3 col-6">
+    
+    <div class="small-box bg-primary">
+    <div class="inner">
+    <h3>65</h3>
+    <p>Materiales Académcos</p>
+    </div>
+    <div class="icon">
+    <i class="ion ion-pie-graph"></i>
+    </div>
+    </div>
+    </div>
+    
+    </div>
+{% endif %}
+<!--
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 mt-3">
@@ -37,7 +188,7 @@
                                             {{ company.mobile }} 
                                         </span>
                                 </div>
-                                <!-- /.description-block -->
+                               
                             </div>
                             <div class="col-sm-6">
                                 <div class="description-block">
@@ -49,7 +200,7 @@
                                             {{ company.email }}
                                         </span>
                                 </div>
-                                <!-- /.description-block -->
+                                
                             </div>
                         </div>
                         <hr>
@@ -64,7 +215,9 @@
                                             {{ company.address }}
                                         </span>
                                 </div>
-                                <!-- /.description-block -->
+                                
+                                
+
                             </div>
                             <div class="col-sm-6">
                                 <div class="description-block">
@@ -83,4 +236,5 @@
             </div>
         </div>
     </div>
+    -->
 {% endblock %}

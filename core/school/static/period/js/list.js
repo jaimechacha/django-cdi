@@ -50,8 +50,8 @@ function getData() {
                     }
                     let buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
                     buttons += '<a href="/school/period/delete/' + row.id + '/" class="btn btn-danger btn-xs btn-flat" data-toggle="tooltip" title="Eliminar Registro"><i class="fas fa-trash-alt"></i></a> ';
-                    buttons += '<a href="/school/period/assignment/teacher/' + row.id + '/" class="btn btn-success btn-xs btn-flat" data-toggle="tooltip" title="Asignación Docente-Nivel"><i class="fas fa-chalkboard-teacher"></i></a> ';
-                    buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-book"></i></a> ';
+                    buttons += '<a href="/school/period/assignment/teacher/' + row.id + '/" class="btn btn-success btn-xs btn-flat" data-toggle="tooltip" title="Asignación Docente-Nivel"><i class="fas fa-user-tag"></i></a> ';
+                    buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-archive"></i></a> ';
                     return buttons;
                 }
             },

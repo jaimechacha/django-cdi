@@ -13,64 +13,72 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card {{ dshboard.card }}">
-        <div class="card-header">
-            <h3 class="card-title">
-                <i class="fas fa-search"></i>
-                {{ title }}
-            </h3>
-            <div class="card-tools">
-                {% block last_login %}
-                    <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
-                {% endblock %}
-            </div>
-        </div>
-        <div class="card-body" style="display: block;">
-            <div class="container-fluid">
-                {% block navtab %} {% endblock %}
-                <!--Block content list-->
-                {% block content_list %}
-                    <!--Block content list before-->
-                    {% block content_list_before %}
-                        <br>
+<div class="col-md-12">
+
+    <div class="card-widget widget-user shadow-lg" >
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="fas fa-search"></i>
+                    {{ title }}
+                </h5>
+                <div class="card-tools">
+                    {% block last_login %}
+                        <small>Su último acceso al sistema fue el {{ request.user.last_login }}</small>
                     {% endblock %}
-                    <!--Table-->
-                    <table width="100%" class="table table-bordered" id="data">
-                        <thead>
-                        <tr>
-                            <!--Columns-->
-                            {% block columns %}{% endblock %}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--Rows-->
-                        {% block rows %}{% endblock %}
-                        </tbody>
-                    </table>
-                {% endblock %}
+                </div>
             </div>
-        </div>
-        <!--Block box footer-->
-        {% block box_footer %}
-            <div class="card-footer">
-                <!--Block box footer buttons-->
-                {% block box_footer_buttons %}
-                    {% if create_url %}
-                        <a href="{{ create_url }}" class="btn btn-primary btn-flat">
-                            <i class="fas fa-plus"></i> Nuevo Registro
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    {% block navtab %} {% endblock %}
+                    <!--Block content list-->
+                    {% block content_list %}
+                        <!--Block content list before-->
+                        {% block content_list_before %}
+                            <br>
+                        {% endblock %}
+                        <!--Table-->
+                        <table width="100%" class="table" id="data">
+                            <thead style="color: #0d8040 ; font-variant-caps: all-small-caps;font-family: sans-serif;font-weight: 400;">
+                            
+                            <tr>
+                                <!--Columns-->
+                                {% block columns %}{% endblock %}
+                            </tr>
+                            </thead>
+                            <tbody style="color: #343a40 ; ">
+                            <!--Rows-->
+                            {% block rows %}{% endblock %}
+                            </tbody>
+                        </table>
+                    {% endblock %}
+                </div>
+            </div>
+            <!--Block box footer-->
+            {% block box_footer %}
+                <div class="card-footer">
+                    <!--Block box footer buttons-->
+                    {% block box_footer_buttons %}
+                        {% if create_url %}
+                            <a href="{{ create_url }}" class="btn btn-primary btn-flat">
+                                <i class="fas fa-plus-square"></i> Crear Registro 
+                            </a>
+                        {% endif %}
+                        <!--Block box footer add buttons-->
+                        {% block box_footer_add_button %}{% endblock %}
+                        <a href="{{ list_url }}" class="btn btn-success btn-flat">
+                            <i class="fas fa-sync"></i>
                         </a>
-                    {% endif %}
-                    <!--Block box footer add buttons-->
-                    {% block box_footer_add_button %}{% endblock %}
-                    <a href="{{ list_url }}" class="btn btn-success btn-flat">
-                        <i class="fas fa-sync-alt"></i> Actualizar
-                    </a>
-                {% endblock %}
-            </div>
-        {% endblock %}
-        <!--Block box footer after-->
-        {% block box_footer_after %}{% endblock %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            <!--Block box footer after-->
+            {% block box_footer_after %}{% endblock %}
+        </div>
     </div>
+</div>
+
+
     {% block javascript_list %}
         <script type="application/javascript">
             var table;

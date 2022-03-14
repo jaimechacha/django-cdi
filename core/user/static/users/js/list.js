@@ -81,10 +81,8 @@ function getData() {
                 data: null,
                 render: function (data, type, row) {
                     var html = '<a href="/user/admin/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    html += '<a rel="search_access" class="btn bg-navy btn-xs btn-flat" data-toggle="tooltip" title="Accesos"><i class="fas fa-user-secret"></i></a> ';
-                    html += '<a rel="login_with_user" class="btn bg-indigo btn-xs btn-flat" data-toggle="tooltip" title="Loguearse"><i class="fas fa-globe"></i></a> ';
-                    html += '<a rel="reset_password" class="btn bg-teal btn-xs btn-flat" data-toggle="tooltip" title="Resetear clave"><i class="fas fa-unlock-alt"></i></a> ';
-                    html += '<a rel="change_password" class="btn bg-maroon btn-xs btn-flat" data-toggle="tooltip" title="Cambio de clave"><i class="fas fa-lock"></i></a> ';
+                    html += '<a rel="search_access" class="btn bg-info btn-xs btn-flat" data-toggle="tooltip" title="Accesos"><i class="fas fa-calendar-alt"></i></a> ';
+                    html += '<a rel="reset_password" class="btn bg-teal btn-xs btn-flat" data-toggle="tooltip" title="Resetear clave"><i class="fas fa-shield-alt"></i></a> ';
                     html += '<a href="/user/admin/delete/' + row.id + '/" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash"></i></a>'
                     return html;
                 }
