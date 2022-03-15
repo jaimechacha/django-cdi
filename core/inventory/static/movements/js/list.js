@@ -58,6 +58,7 @@ function getMovementsData(all) {
         columns: [
             {data: "id_material"},
             {data: "num_doc"},
+            {data: "date"},
             {data: "material"},
             {data: "amount_entry"},
             {data: "amount_output"},
@@ -65,12 +66,10 @@ function getMovementsData(all) {
         ],
         columnDefs: [
             {
-                targets: [0, -2, -3, -5],
+                targets: [0, 1, -2, -3],
                 orderable: false,
                 class: 'text-center',
-                render: function (data, type, row) {
-                    return data;
-                }
+                render: (data, type, row) => data,
             }
         ],
         rowCallback: function (row, data, index) {

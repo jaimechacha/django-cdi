@@ -100,6 +100,7 @@ class EntryMaterial(AuditMixin, models.Model):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
+            'date': str(self.entry.date_entry),
             'amount_entry': self.amount,
             'amount_output': '',
             'employee_teacher': self.entry.employee.get_full_name(),
@@ -175,6 +176,7 @@ class OutputMaterial(AuditMixin, models.Model):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
+            'date': str(self.output.date_output),
             'amount_entry': '',
             'amount_output': self.amount,
             'employee_teacher': self.output.teacher.user.get_full_name(),
