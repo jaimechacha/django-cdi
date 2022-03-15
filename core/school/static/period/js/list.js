@@ -45,7 +45,7 @@ function getData() {
                         let buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';
                         buttons += '<a class="btn btn-secondary btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a> ';
                         buttons += '<a class="btn btn-secondary btn-xs btn-flat"><i class="fas fa-chalkboard-teacher"></i></a> ';
-                        buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-book"></i></a> ';
+                        buttons += '<a rel="matters" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" title="Detalle Registro" ><i class="fas fa-archive"></i></a> ';
                         return buttons;
                     }
                     let buttons = '<a href="/school/period/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title="Editar Registro"><i class="fas fa-edit"></i></a> ';

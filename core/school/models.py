@@ -559,7 +559,6 @@ class Job(AuditMixin, models.Model):
         verbose_name_plural = 'Puesto de Trabajos'
         ordering = ['id']
 
-
 class ConferenceTheme(AuditMixin, models.Model):
     name = models.CharField(verbose_name='Nombre', max_length=50, unique=True)
 

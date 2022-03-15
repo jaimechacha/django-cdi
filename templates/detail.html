@@ -2,27 +2,31 @@
 {% load static %}
 
 {% block content %}
-    <div class="card {{ dshboard.card }}">
-        <div class="card-header">
-            <h3 class="card-title">
-                <i class="fas fa-file"></i>
-                {{ title }}
-            </h3>
-        </div>
-        <div class="card-body" style="display: block;">
-            <div class="container-fluid">
-                {% block navtab %} {% endblock %}
-                <!--Block content list-->
-                {% block content_card %}
-
-                {% endblock %}
+<div class="col-md-12">
+    <div class="card-widget widget-user shadow-lg" >
+        <div class="card {{ dshboard.card }}">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-file"></i>
+                    {{ title }}
+                </h3>
             </div>
-        </div>
-        <!--Block box footer-->
-        {% block box_footer %}
-            <div class="card-footer">
+            <div class="card-body" style="display: block;">
+                <div class="container-fluid">
+                    {% block navtab %} {% endblock %}
+                    <!--Block content list-->
+                    {% block content_card %}
 
+                    {% endblock %}
+                </div>
             </div>
-        {% endblock %}
+            <!--Block box footer-->
+            {% block box_footer %}
+                <div class="card-footer">
+
+                </div>
+            {% endblock %}
+        </div>
     </div>
+</div>
 {% endblock %}
