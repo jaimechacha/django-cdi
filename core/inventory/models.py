@@ -100,11 +100,12 @@ class EntryMaterial(AuditMixin, models.Model):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
-            'date': str(self.entry.date_entry),
+            'date': self.entry.date_entry.strftime('%d-%m-%Y'),
             'amount_entry': self.amount,
             'amount_output': '',
             'employee_teacher': self.entry.employee.get_full_name(),
-            'num_doc': self.entry.num_doc
+            'num_doc': self.entry.num_doc,
+            'type': 'Entry',
         }
         return item
 
@@ -191,11 +192,13 @@ class OutputMaterial(AuditMixin, models.Model):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
-            'date': str(self.output.date_output),
+            'date': self.output.date_output.strftime('%d-%m-%Y'),
             'amount_entry': '',
             'amount_output': self.amount,
             'employee_teacher': self.output.teacher.user.get_full_name(),
             'num_doc': self.output.num_doc,
+            'type': 'Output',
+            'refunds': self.get_refund_outputmaterial()
         }
         return item
 
