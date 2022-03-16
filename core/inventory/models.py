@@ -170,7 +170,22 @@ class OutputMaterial(AuditMixin, models.Model):
         item['material'] = self.material.name
         item['mat_id'] = self.material.id
         item['description'] = self.material.description
+        item['refunds'] = self.get_refund_outputmaterial()
+        item['remainder_mat'] = self.get_remainder_outputmaterial()
         return item
+
+    def get_refund_outputmaterial(self):
+        refunds = RefundOutputMaterial.objects.filter(output_material_id=self.id)
+        data = []
+        for r in refunds:
+            data.append(r.toJSON())
+        return data
+
+    def get_remainder_outputmaterial(self):
+        last_refund = RefundOutputMaterial.objects.filter(output_material_id=self.id).last()
+        if last_refund:
+            return last_refund.remainder
+        return self.amount
 
     def to_json_movements(self):
         item = {
@@ -200,4 +215,5 @@ class RefundOutputMaterial(AuditMixin, models.Model):
 
     def toJSON(self):
         item = model_to_dict(self)
+        item['date_refund'] = self.date_refund.strftime('%Y-%m-%d')
         return item

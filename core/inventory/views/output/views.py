@@ -33,17 +33,19 @@ class OutputListView(PermissionMixin, ListView):
 
         for m in materials:
             out_m = OutputMaterial.objects.get(id=m['id'])
-            if out_m.amount >= int(m['refund']):
-                if int(m['refund']) >= 1:
+            amount_refund = int(m['refund'])
+            if out_m.get_remainder_outputmaterial() >= amount_refund:
+                if amount_refund >= 1:
                     refund = RefundOutputMaterial()
-                    refund.amount = int(m['refund'])
+                    refund.amount = amount_refund
                     refund.output_material = out_m
-                    rfm = RefundOutputMaterial.objects.filter(output_material=out_m).last()
-                    if rfm is None:
-                        refund.remainder = out_m.amount - int(m['refund'])
+                    ref_mat = RefundOutputMaterial.objects.filter(output_material=out_m).last()
+                    if ref_mat:
+                        refund.remainder = ref_mat.remainder - amount_refund
                     else:
-                        refund.remainder = rfm.remainder - int(m['refund'])
+                        refund.remainder = out_m.amount - amount_refund
                     refund.save()
+
                     invent = Inventory.objects.get(material_id=m['mat_id'])
                     invent.stock += int(m['refund'])
                     invent.save()
@@ -58,6 +60,7 @@ class OutputListView(PermissionMixin, ListView):
                 data = []
                 for ent in OutputMaterial.objects.filter(output_id=request.POST['id']):
                     data.append(ent.toJSON())
+                print(data)
             elif action == 'refund_materials':
                 with transaction.atomic():
                     self.refund_materials()
