@@ -25,6 +25,12 @@ const list_output_materials = () => {
                 }
             },
             columns: [
+                {
+                    "className": 'dt-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
                 {data: "material"},
                 {data: "description"},
                 {data: "amount"},
@@ -32,9 +38,9 @@ const list_output_materials = () => {
             ],
             columnDefs: [
                 {
-                    targets: [0, 1],
+                    targets: [1, 2],
                     render: (data, type, row) => {
-                        if(row.amount === 0){
+                        if(row.remainder_mat === 0){
                             return `<p class="text-black-50">${ data }</p>`
                         }
                         return data
@@ -44,8 +50,8 @@ const list_output_materials = () => {
                     targets: [-2],
                     class: 'text-center',
                     render: (data, type, row) => {
-                        if(row.amount === 0){
-                            return `<p class="text-black-50">${ data } (Devolución)</p>`
+                        if(row.remainder_mat === 0){
+                            return `<p class="text-black-50">${ data } (Agotado)</p>`
                         }
                         return data
                     }
@@ -54,9 +60,9 @@ const list_output_materials = () => {
                     targets: [-1],
                     class: 'text-center',
                     render: (data, type, row) => {
-                        if(row.amount === 0){
+                        if(row.remainder_mat === 0){
                             return `<input 
-                            type="text" 
+                            type="text"
                             class="form-control input-sm" 
                             autocomplete="off"
                             name="refund"
@@ -77,7 +83,7 @@ const list_output_materials = () => {
 
                 frm.find('input[name="refund"]').TouchSpin({
                     min: 0,
-                    max: data.amount,
+                    max: data.remainder_mat,
                 }).keypress(function (e) {
                     return validate_form_text('numbers', e, null);
                 });
@@ -85,6 +91,31 @@ const list_output_materials = () => {
         });
         $('#myModalOutputs').modal('show');
     });
+}
+
+const showRowChilds = (data) => {
+    if (data.refunds.length === 0) return '<b>Sin devoluciones</b>';
+
+    let body = '';
+    body += `<table style="padding-left:50px; border: hidden">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Devolución</th>
+                    <th>Restante</th>
+                </tr>
+            </thead>
+            <tbody>`;
+            data.refunds?.map(ref => {
+                body += `<tr>
+                    <td>${ref.date_refund}</td>
+                    <td>${ref.amount}</td>
+                    <td>${ref.remainder}</td>
+                </tr>`
+            })
+            body += `</tbody>
+            </table>`;
+    return body;
 }
 
 const submit_refund_materials = () => {
@@ -117,7 +148,18 @@ $(function () {
             out_materials.map(om => {
                 if (om.id === row.id){ om.refund = parseInt($(this).val()) }
             })
-        })
+        }).on('click', 'td.dt-control', function () {
+            let tr = $(this).closest('tr');
+            let row = tblMatDetails.row(tr);
+
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                row.child(showRowChilds(row.data())).show();
+                tr.addClass('shown');
+            }
+        });
     list_output_materials()
     submit_refund_materials()
 });
