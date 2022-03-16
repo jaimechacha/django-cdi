@@ -9,7 +9,7 @@ from django.views.generic import ListView, CreateView, DeleteView
 
 from core.security.mixins import PermissionMixin
 
-from core.inventory.forms import Output, OutputForm, Inventory, Material, OutputMaterial
+from core.inventory.forms import Output, OutputForm, Inventory, Material, OutputMaterial, RefundOutputMaterial
 
 
 class OutputListView(PermissionMixin, ListView):
@@ -34,12 +34,19 @@ class OutputListView(PermissionMixin, ListView):
         for m in materials:
             out_m = OutputMaterial.objects.get(id=m['id'])
             if out_m.amount >= int(m['refund']):
-                new_amount = out_m.amount - int(m['refund'])
-                out_m.amount = new_amount
-                out_m.save()
-                invent = Inventory.objects.get(material_id=m['mat_id'])
-                invent.stock += int(m['refund'])
-                invent.save()
+                if int(m['refund']) >= 1:
+                    refund = RefundOutputMaterial()
+                    refund.amount = int(m['refund'])
+                    refund.output_material = out_m
+                    rfm = RefundOutputMaterial.objects.filter(output_material=out_m).last()
+                    if rfm is None:
+                        refund.remainder = out_m.amount - int(m['refund'])
+                    else:
+                        refund.remainder = rfm.remainder - int(m['refund'])
+                    refund.save()
+                    invent = Inventory.objects.get(material_id=m['mat_id'])
+                    invent.stock += int(m['refund'])
+                    invent.save()
             else:
                 raise ValueError('Revise que las cantidades sean correctas')
 
