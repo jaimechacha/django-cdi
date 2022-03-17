@@ -221,6 +221,17 @@ class TeacherDetailView(DetailView):
         return context
 
 
+class TeacherDetailProfileView(TeacherDetailView):
+    def get_object(self, queryset=None):
+        return self.request.user.teacher
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Perfil del docente'
+        context['is_profile'] = True
+        return context
+
+
 # imprimir hoja PDF de datos
 class print_teacher_date(View):
     def get(self, request, *args, **kwargs):
@@ -359,12 +370,14 @@ class GenericUpdateTeacher(UpdateView):
                         teacher.cv_doc = request.FILES['cv_doc']
                     teacher.save()
 
-                    contract = self.get_contract_intance()
-                    contract.job_id = int(request.POST['job'])
-                    contract.teacher_id = teacher.id
-                    contract.start_date = request.POST['start_date']
-                    contract.end_date = request.POST['end_date']
-                    contract.save()
+                    job = request.POST.get('job', None)
+                    if job:
+                        contract = self.get_contract_intance()
+                        contract.job_id = int(request.POST['job'])
+                        contract.teacher_id = teacher.id
+                        contract.start_date = request.POST['start_date']
+                        contract.end_date = request.POST['end_date']
+                        contract.save()
 
             elif action == 'search_parish':
                 data = []
@@ -377,7 +390,6 @@ class GenericUpdateTeacher(UpdateView):
             else:
                 data['error'] = 'No ha seleccionado ninguna opción'
         except Exception as e:
-            print(e)
             data['error'] = str(e)
         return HttpResponse(json.dumps(data), content_type='application/json')
 
@@ -395,7 +407,7 @@ class GenericUpdateTeacher(UpdateView):
 class TeacherUpdateProfileView(PermissionMixin, GenericUpdateTeacher):
     title = 'Edición del perfil'
     template_name = 'teacher/profile.html'
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('teacher_detail_profile')
     permission_required = 'change_teacher'
 
 
