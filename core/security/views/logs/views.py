@@ -24,6 +24,7 @@ class LogsListView(ListView):
                 data = []
                 for a in Logs.objects.all().order_by('-action_time'):
                     data.append(a.toJSON())
+                   
                     
             else:
                 data['error'] = 'No ha ingresado una opción'

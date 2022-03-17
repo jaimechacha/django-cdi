@@ -1,7 +1,7 @@
 
 function getData() {
     $('#data').DataTable({
-        "order": [[ 1, "desc" ]],
+        "order": [[ 0, "desc" ]],
         responsive: true,
         autoWidth: false,
         destroy: true,

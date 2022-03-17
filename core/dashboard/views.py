@@ -5,7 +5,11 @@ from django.views.decorators.csrf import csrf_exempt, requires_csrf_token
 from django.views.generic import TemplateView
 
 from core.security.models import Dashboard
+from core.security.models import Logs
+from core.user.models import User
 
+from core.school.models import Student, Teacher, Period
+from core.inventory.models import *
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'panel.html'
@@ -22,10 +26,70 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             if dashboard[0].layout == 1:
                 return render(request, 'vtcpanel.html', data)
         return render(request, 'hztpanel.html', data)
+    @staticmethod
+    def get_last_logs():
+        try:
+            return Logs.objects.all().order_by('-action_time')[0:7]
+        except Exception as error:
+            print(error)
+        return []
+    @staticmethod
+    def get_last_users():
+        try:
+            return User.objects.filter(last_login__isnull=False).order_by('-last_login')[0:7]
+        except Exception as error:
+            print(error)
+        return []
+    def get_total_students(self):
+        try:
+            return Student.objects.count()
+        except Exception as error:
+            print(error)
+        return []
+
+    def get_total_teachers(self):
+        try:
+            return Teacher.objects.count()
+        except Exception as error:
+            print(error)
+        return []
+    def get_total_periods(self):
+        try:
+            return Period.objects.count()
+        except Exception as error:
+            print(error)
+        return []
+    def get_total_materiales(self):
+        try:
+            return EntryMaterial.objects.count()
+        except Exception as error:
+            print(error)
+        return []
+
+    def get_total_inventory(self):
+        data =[]
+        try:
+            for inv in Inventory.objects.all():
+                data.append({
+                    'name':inv.material.name,
+                    'y': inv.stock
+                })
+        except Exception as error:
+            print(error)
+        return data
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Panel de administración'
+        context['logs'] = self.get_last_logs()
+        context['users'] = self.get_last_users()
+        context['stu_count'] = self.get_total_students()
+        context['teac_count'] = self.get_total_teachers()
+        context['peri_count'] = self.get_total_periods()
+        context['materi_count'] = self.get_total_materiales()
+        context['get_total_inventory'] = self.get_total_inventory()
+
         return context
 
 
