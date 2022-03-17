@@ -302,9 +302,19 @@ class Logs(LogEntry):
         else:
             return 'Eliminado'
 
+    def get_action_color(self):
+        if self.action_flag == 1:
+            return 'timeline-item-marker-indicator bg-green'
+        elif self.action_flag == 2:
+            return 'timeline-item-marker-indicator bg-yellow'
+        else:
+            return 'timeline-item-marker-indicator bg-red'
+
+    
     def toJSON(self):
         item = model_to_dict(self)
         item['user'] = self.user.__str__()
         item['date'] = current_date_format(self.action_time)
+        #item['action_time'] = self.action_time.strftime('%d-%m-%Y')
         item['action_text'] = self.get_action_text()
         return item

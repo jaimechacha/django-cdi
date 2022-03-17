@@ -12,84 +12,88 @@
 {% endblock %}
 
 {% block content %}
-    <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
-          data-url="{{ list_url }}">
-        <div class="card {{ dshboard.card }}">
-            <div class="card-header">
-                <h3 class="card-title">
-                    {% if action == 'add' %}
-                        <i class="fas fa-plus"></i>
-                    {% else %}
-                        <i class="fas fa-edit"></i>
-                    {% endif %}
-                    {{ title }}
-                </h3>
-            </div>
-            <div class="card-body" style="display: block;">
-                <div class="container-fluid">
-                    <input type="hidden" name="action" id="action" value="{{ action }}">
-                    {% csrf_token %}
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#personal">
-                                <i class="fa"></i> Datos personales
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#record">
-                                Ficha médica
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#representative">
-                                Representante Legal
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#family">
-                                Grupo familiar
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#additional">
-                                Datos adicionales
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane container-fluid active" id="personal">
-                            <br>
-                            {% include 'student/shared/tab_personal.html' %}
-                        </div>
-                        <div class="tab-pane container-fluid fade" id="record">
-                            <br>
-                            {% include 'student/shared/tab_record.html' %}
-                        </div>
-                        <div class="tab-pane container-fluid fade" id="representative">
-                            <br>
-                            {% include 'student/shared/tab_representative.html' %}
-                        </div>
-                        <div class="tab-pane container-fluid fade" id="family">
-                            <br>
-                            {% include 'student/shared/tab_family.html' %}
-                        </div>
-                        <div class="tab-pane container-fluid fade" id="additional">
-                            <br>
-                            {% include 'student/shared/tab_additional.html' %}
+<div class="col-md-12">
+    <div class="card-widget widget-user shadow-lg" >
+        <form class="form" autocomplete="off" method="post" action="." enctype="multipart/form-data" id="frmForm"
+            data-url="{{ list_url }}">
+            <div class="card {{ dshboard.card }}">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        {% if action == 'add' %}
+                            <i class="fas fa-plus"></i>
+                        {% else %}
+                            <i class="fas fa-edit"></i>
+                        {% endif %}
+                        {{ title }}
+                    </h3>
+                </div>
+                <div class="card-body" style="display: block;">
+                    <div class="container-fluid">
+                        <input type="hidden" name="action" id="action" value="{{ action }}">
+                        {% csrf_token %}
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#personal">
+                                    <i class="fa"></i> Datos personales
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#record">
+                                    Ficha médica
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#representative">
+                                    Representante Legal
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#family">
+                                    Grupo familiar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#additional">
+                                    Datos adicionales
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane container-fluid active" id="personal">
+                                <br>
+                                {% include 'student/shared/tab_personal.html' %}
+                            </div>
+                            <div class="tab-pane container-fluid fade" id="record">
+                                <br>
+                                {% include 'student/shared/tab_record.html' %}
+                            </div>
+                            <div class="tab-pane container-fluid fade" id="representative">
+                                <br>
+                                {% include 'student/shared/tab_representative.html' %}
+                            </div>
+                            <div class="tab-pane container-fluid fade" id="family">
+                                <br>
+                                {% include 'student/shared/tab_family.html' %}
+                            </div>
+                            <div class="tab-pane container-fluid fade" id="additional">
+                                <br>
+                                {% include 'student/shared/tab_additional.html' %}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-flat">
+                        <i class="fas fa-save"></i> Guardar registro
+                    </button>
+                    <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </div>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-flat">
-                    <i class="fas fa-save"></i> Guardar registro
-                </button>
-                <a href="{{ list_url }}" class="btn btn-danger btn-flat">
-                    <i class="fas fa-times"></i> Cancelar
-                </a>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
+</div>
     {% include 'student/shared/modal_family.html' %}
     <script type="application/javascript">
         student.details.family = {{ family|safe }};

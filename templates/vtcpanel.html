@@ -11,11 +11,12 @@
 
 {% block content %}
 
+
 <div class="col-md-12">
 
     <div class="card card-widget widget-user shadow-lg" >
     
-    <div class="widget-user-header" style="background-color: #04bc94;">
+    <div class="widget-user-header" style="background-color: #04bc94;height: 85px">
     <span  style="font-family: 'Google Sans',Roboto,Arial,sans-serif; color:azure;">Bienvenido al:</span>
 
     <h3 class="widget-user-username" style="font-family: 'Google Sans',Roboto,Arial,sans-serif; color:azure;">{{ company.name }}</h3>
@@ -90,10 +91,6 @@
     
     </div>
 
-    
-
-
-
 
 
 
@@ -102,61 +99,184 @@
 
 
     {% if request.user.is_superuser %}
-<div class="row">
-    <div class="col-lg-3 col-6">
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-graduate"></i></span>
+        <div class="info-box-content">
+        <span class="info-box-text">Estudiantes</span>
+        <span class="info-box-number">{{stu_count}}
+        
+        <small></small>
+        </span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+        <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
+        <div class="info-box-content">
+        <span class="info-box-text">Empleados</span>
+        <span class="info-box-number">{{teac_count}}</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        
+        <div class="clearfix hidden-md-up"></div>
+        <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+        <span class="info-box-icon bg-success elevation-1"><i class="fab fa-buromobelexperte"></i></span>
+        <div class="info-box-content">
+        <span class="info-box-text">Periodos Académicos</span>
+        <span class="info-box-number">{{peri_count}}</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-box-open"></i></span>
+        <div class="info-box-content">
+        <span class="info-box-text">Materiales</span>
+        <span class="info-box-number">{{materi_count}}</span>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div>
     
-    <div class="small-box bg-info">
-    <div class="inner">
-    <h3>150</h3>
-    <p>Estudiantes</p>
-    </div>
-    <div class="icon">
-    <i class="ion ion-bag"></i>
-    </div>
-    </div>
-    </div>
     
-    <div class="col-lg-3 col-6">
+
+
+
+
+    <div class="row" >
+        <div class="col-md-6">
+            <div class="card card-white shadow-lg">            
+                <div class="container-fluid"> </div> 
+                <div id="container-pie"></div>           
+            </div>            
+        </div>
+
+        <div class="col-md-6">
+            <div class="card card-white shadow-lg">
+                <div class="container-fluid"></div>
+                    <div id="container"></div>
+                    
+            </div>
+                
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container-fluid">
+        
+        <div class="row">   
+            <div class="col-md-6" >
+                <div class="card-header" >
+                    <a class="font-weight-bold" style="pointer-events: none; color: #3bbd61;">
+                        Actividades reciente
+                    </a>
+                </div>
+                <div class="timeline" >
+                    {% for lg in logs %}
+                    <div class="timeline-header no-border" style="margin-bottom: -8px;">
+                        {% if lg.action_flag == 1 %}
+                        <i class="fas fa-plus-square bg-primary"></i>
+                        {% elif lg.action_flag == 2 %}
+                        <i class="fas fa-pencil-alt bg-warning"></i>
+                        {% elif lg.action_flag == 3 %}
+                        <i class="fas fa-trash bg-danger"></i>
+                        {% endif %}
+                        <div class="timeline-item" >
+                            <span class="time"><i class="fas fa-clock"></i> {{ lg.action_time }}</span>
+                            <p class="timeline-body">Objeto {{ lg.object_repr }} {{ lg.get_action_text }} por {{ lg.user }} </p>
+                        
+                        
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6" >
+                <div class="card-header" >
+                    <a class="font-weight-bold" style="pointer-events: none; color: #3bbd61;">
+                        Accesos Recientes
+                    </a>
+                </div>
+                <div class="timeline" >
+                    {% for user in users %}
+                    <div class="timeline-header no-border" style="margin-bottom: -8px;">
+                        <i class="fas fa-door-open bg-info"></i>
+                        <div class="timeline-item" >
+                            <span class="time"><i class="fas fa-clock"></i> {{ user.date_joined }}</span>
+                            <p class="timeline-body"> {{ user }} {{ lg.get_action_text }}, HostName {{ hostname }} </p>
+                        
+                        
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-    <div class="small-box bg-success">
-    <div class="inner">
-    <h3>53<sup style="font-size: 20px">%</sup></h3>
-    <p>Empleados</p>
-    </div>
-    <div class="icon">
-    <i class="ion ion-stats-bars"></i>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-lg-3 col-6">
-    
-    <div class="small-box bg-warning">
-    <div class="inner">
-    <h3>44</h3>
-    <p>Niveles</p>
-    </div>
-    <div class="icon">
-    <i class="ion ion-person-add"></i>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-lg-3 col-6">
-    
-    <div class="small-box bg-primary">
-    <div class="inner">
-    <h3>65</h3>
-    <p>Materiales Académcos</p>
-    </div>
-    <div class="icon">
-    <i class="ion ion-pie-graph"></i>
-    </div>
-    </div>
-    </div>
-    
-    </div>
-{% endif %}
+
+
+
+
 <!--
 
     <div class="container">
@@ -237,4 +357,84 @@
         </div>
     </div>
     -->
+
+
+
+    <script src="https://code.highcharts.com/8.1.2/highcharts.js"></script>
+    <script src="https://code.highcharts.com/8.1.2/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/8.1.2/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/8.1.2/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/8.1.2/modules/accessibility.js"></script>
+    <script type="application/javascript">
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Materiales-Stock'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Porcentaje',
+                colorByPoint: true,
+                data: {{ get_total_inventory|safe }}
+            }]
+        });
+        Highcharts.chart('container-pie', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Materiales-Stock'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Porcentaje',
+                colorByPoint: true,
+                data: {{ get_total_inventory|safe }}
+            }]
+        });
+    </script>
 {% endblock %}
+
+

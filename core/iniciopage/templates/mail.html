@@ -292,19 +292,18 @@
                                             <p style="font-size: 14px; line-height: 1.5; text-align: center; word-break: break-word; font-family: Ubuntu, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 21px; margin: 0;">
                                                 <span style="font-size: 14px;">Datos de Solicitud</span>
                                                 {% if action == 'estudiante' %}
-                                                    <h3 >Datos del Representante y Estudiante</h3>
+                                                    <h3 >Datos del Representante</h3>
                                                     <span style="font-size: 14px;"> <p> Nombres del representante: {{nomb_rpr}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Apellidos del representante: {{apell_rpr}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Correo del representante: {{email_rpr}}</p></span>
-                                                    <span style="font-size: 14px;"> <p> Cédula del representante: {{ci_rpr}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Cédula del representante: {{ci_rpr|default_if_none:"(Vacío)"}}</p></span>
-                                                    <span style="font-size: 14px;"> <p> Pasaporte: {{pasaport_rpr}}</p></span>
-                                                    <span style="font-size: 14px;"> <p> Ruc: {{ruc_rpr}}</p></span>
-                                                    <span style="font-size: 14px;"> <p> Cédula del representante: {{ci2_rpr}}</p></span>
+                                                    <h3 >Extrangero</h3>
+                                                    <span style="font-size: 14px;"> <p> Pasaporte: {{pasaport_rpr|default_if_none:"(Vacío)"}}</p></span>
+                                                    <span style="font-size: 14px;"> <p> Cédula del representante: {{ci2_rpr|default_if_none:"(Vacío)"}}</p></span>
+                                                    <h3 >Datos del Estudiante</h3>
                                                     <span style="font-size: 14px;"> <p> Nombres del estudiante: {{nomb_est}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Apellidos del estudiante: {{apell_est}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Cédula del estudiante: {{ci_est}}</p></span>
-
                                                     <span style="font-size: 14px;"> <p> Fecha nacimiento del estudiante: {{fecha_naci}}</p></span>
                                                     <span style="font-size: 14px;"> <p> Dirección: {{direccion}}</p></span>
                                                 {% elif action == 'docente' %}
