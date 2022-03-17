@@ -15,11 +15,9 @@ let student = {
     add_family: function (item) {
         if ($.isEmptyObject(family)) {
             delete item.id
-            console.log({ item })
             this.details.family.push(item);
         } else {
             if (item.id === '') delete item.id
-            console.log({ item })
             this.details.family[family.pos] = item;
         }
         this.list_family();
