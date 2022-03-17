@@ -132,6 +132,7 @@ urlpatterns = [
     path('teacher/detail/<int:pk>/', TeacherDetailView.as_view(), name='teacher_detail'),
     path('teacher/delete/<int:pk>/', TeacherDeleteView.as_view(), name='teacher_delete'),
     path('teacher/update/profile/', TeacherUpdateProfileView.as_view(), name='teacher_update_profile'),
+    path('teacher/detail/profile/', TeacherDetailProfileView.as_view(), name='teacher_detail_profile'),
     path('teacher/data/pdf/<int:pk>/', print_teacher_date.as_view(), name='techer_print_pdf'),
 
     # contracts
