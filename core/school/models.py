@@ -482,6 +482,10 @@ class Family(AuditMixin, models.Model):
         verbose_name_plural = 'Familiares'
         ordering = ['id']
 
+    def delete_family(self):
+        FamilyGroup.objects.filter(family_id=self.id).delete()
+        self.delete()
+
 
 class FamilyGroup(AuditMixin, models.Model):
     student = models.ForeignKey(Student, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Estudiante')

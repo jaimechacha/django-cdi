@@ -1,22 +1,24 @@
 <table width="100%" class="table table-bordered" id="data">
     <thead>
     <tr>
-        <th>Nro</th>
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Cédula</th>
         <th>Parentesco</th>
+        <th>Edad</th>
+        <th>Estado civil</th>
 {#        <th class="text-center">Opciones</th>#}
     </tr>
     </thead>
     <tbody>
     {% for i in family %}
         <tr>
-            <td>{{ i.id }}</td>
             <td>{{ i.first_name }}</td>
             <td>{{ i.last_name }}</td>
             <td>{{ i.ci }}</td>
             <td>{{ i.relationship }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.civil_status|default_if_none:"(Vacío)" }}</td>
 {#            <td class="text-center">#}
 {#                <a href="{% url 'family_update' i.id %}" data-toggle="tooltip" title="Editar registro"#}
 {#                   class="btn btn-warning btn-xs btn-flat">#}

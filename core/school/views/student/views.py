@@ -2,6 +2,7 @@ import json
 
 from django.contrib.auth.models import Group
 from django.db import transaction
+from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -195,9 +196,10 @@ class StudentDeleteView(PermissionMixin, DeleteView):
         return context
 
 
-class StudentDetailView(DetailView):
+class GenericDetailStudent(DetailView):
     model = Student
-    template_name = 'student/detail.html'
+    template_name = ''
+    title = ''
 
     def get_medical_record(self):
         student = self.get_object()
@@ -213,11 +215,32 @@ class StudentDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['create_url'] = reverse_lazy('student_create')
-        context['title'] = 'Información del estudiante'
+        context['title'] = self.title
         context['med_record'] = self.get_medical_record()
         context['repr'] = self.get_legal_representative()
         context['family'] = self.get_family()
+        return context
+
+
+class StudentDetailView(GenericDetailStudent):
+    title = 'Información del estudiante'
+    template_name = 'student/detail.html'
+
+
+class StudentDetailProfileView(GenericDetailStudent):
+    title = 'Perfil del estudiante'
+    template_name = 'student/detail.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user.student
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        context['med_record'] = self.get_medical_record()
+        context['repr'] = self.get_legal_representative()
+        context['family'] = self.get_family()
+        context['is_profile'] = True
         return context
 
 
@@ -363,18 +386,27 @@ class GenericUpdateStudent(UpdateView):
 
                     # Remove docs from med_record and representative
                     self.remove_docs()
-                    Family.objects.filter(familygroup__student=instance).delete()
+
+                    ids_family = json.loads(request.POST['ids_family'])
+                    print(ids_family)
+                    families = Family.objects.filter(~Q(id__in=ids_family) & Q(familygroup__student=student))
+                    for f in families:
+                        f.delete_family()
 
                     familyjson = json.loads(request.POST['family'])
 
                     for fam in familyjson:
-                        fam_form = FamilyForm(fam)
-                        family = fam_form.save()
-
-                        fam_group = FamilyGroup()
-                        fam_group.family = family
-                        fam_group.student = instance
-                        fam_group.save()
+                        if 'id' in fam:
+                            updt_fam = Family.objects.get(id=int(fam['id']))
+                            fam_form = FamilyForm(fam, instance=updt_fam)
+                            fam_form.save()
+                        else:
+                            fam_form = FamilyForm(fam)
+                            family = fam_form.save()
+                            fam_group = FamilyGroup()
+                            fam_group.family = family
+                            fam_group.student = instance
+                            fam_group.save()
             elif action == 'search_parish':
                 data = []
                 term = request.POST['term']
@@ -407,7 +439,7 @@ class GenericUpdateStudent(UpdateView):
 class StudentUpdateProfileView(PermissionMixin, GenericUpdateStudent):
     title = 'Edición del perfil'
     template_name = 'student/profile.html'
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('student_detail_profile')
     permission_required = [
         'add_family',
         'change_family',
