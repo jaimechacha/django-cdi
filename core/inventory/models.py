@@ -100,10 +100,12 @@ class EntryMaterial(AuditMixin, models.Model):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
+            'date': self.entry.date_entry.strftime('%d-%m-%Y'),
             'amount_entry': self.amount,
             'amount_output': '',
             'employee_teacher': self.entry.employee.get_full_name(),
-            'num_doc': self.entry.num_doc
+            'num_doc': self.entry.num_doc,
+            'type': 'Entry',
         }
         return item
 
@@ -169,15 +171,52 @@ class OutputMaterial(AuditMixin, models.Model):
         item['material'] = self.material.name
         item['mat_id'] = self.material.id
         item['description'] = self.material.description
+        item['refunds'] = self.get_refund_outputmaterial()
+        item['remainder_mat'] = self.get_remainder_outputmaterial()
         return item
+
+    def get_refund_outputmaterial(self):
+        refunds = RefundOutputMaterial.objects.filter(output_material_id=self.id)
+        data = []
+        for r in refunds:
+            data.append(r.toJSON())
+        return data
+
+    def get_remainder_outputmaterial(self):
+        last_refund = RefundOutputMaterial.objects.filter(output_material_id=self.id).last()
+        if last_refund:
+            return last_refund.remainder
+        return self.amount
 
     def to_json_movements(self):
         item = {
             'id_material': self.material.id,
             'material': self.material.name,
+            'date': self.output.date_output.strftime('%d-%m-%Y'),
             'amount_entry': '',
             'amount_output': self.amount,
             'employee_teacher': self.output.teacher.user.get_full_name(),
             'num_doc': self.output.num_doc,
+            'type': 'Output',
+            'refunds': self.get_refund_outputmaterial()
         }
+        return item
+
+
+class RefundOutputMaterial(AuditMixin, models.Model):
+    date_refund = models.DateTimeField(blank=True, null=True, auto_now_add=True)
+    amount = models.IntegerField('Cantidad devuelta', blank=True, null=True)
+    remainder = models.IntegerField('Restante', blank=True, null=True)
+    output_material = models.ForeignKey(OutputMaterial, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Devolución'
+        verbose_name_plural = 'Devoluciones'
+
+    def __str__(self):
+        return '{} {}'.format(self.output_material.material.name, self.amount)
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['date_refund'] = self.date_refund.strftime('%Y-%m-%d')
         return item

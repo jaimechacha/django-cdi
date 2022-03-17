@@ -131,3 +131,11 @@ table.table-bordered.dataTable tbody td {
 .nav-info-user .nav-item span {
     font-size: 13px;
 }
+
+td.dt-control {
+    background: url('../img/icons/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.dt-control {
+    background: url('../img/icons/details_close.png') no-repeat center center;
+}

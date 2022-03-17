@@ -9,7 +9,7 @@ from django.views.generic import ListView, CreateView, DeleteView
 
 from core.security.mixins import PermissionMixin
 
-from core.inventory.forms import Output, OutputForm, Inventory, Material, OutputMaterial
+from core.inventory.forms import Output, OutputForm, Inventory, Material, OutputMaterial, RefundOutputMaterial
 
 
 class OutputListView(PermissionMixin, ListView):
@@ -33,13 +33,22 @@ class OutputListView(PermissionMixin, ListView):
 
         for m in materials:
             out_m = OutputMaterial.objects.get(id=m['id'])
-            if out_m.amount >= int(m['refund']):
-                new_amount = out_m.amount - int(m['refund'])
-                out_m.amount = new_amount
-                out_m.save()
-                invent = Inventory.objects.get(material_id=m['mat_id'])
-                invent.stock += int(m['refund'])
-                invent.save()
+            amount_refund = int(m['refund'])
+            if out_m.get_remainder_outputmaterial() >= amount_refund:
+                if amount_refund >= 1:
+                    refund = RefundOutputMaterial()
+                    refund.amount = amount_refund
+                    refund.output_material = out_m
+                    ref_mat = RefundOutputMaterial.objects.filter(output_material=out_m).last()
+                    if ref_mat:
+                        refund.remainder = ref_mat.remainder - amount_refund
+                    else:
+                        refund.remainder = out_m.amount - amount_refund
+                    refund.save()
+
+                    invent = Inventory.objects.get(material_id=m['mat_id'])
+                    invent.stock += int(m['refund'])
+                    invent.save()
             else:
                 raise ValueError('Revise que las cantidades sean correctas')
 
@@ -51,6 +60,7 @@ class OutputListView(PermissionMixin, ListView):
                 data = []
                 for ent in OutputMaterial.objects.filter(output_id=request.POST['id']):
                     data.append(ent.toJSON())
+                print(data)
             elif action == 'refund_materials':
                 with transaction.atomic():
                     self.refund_materials()

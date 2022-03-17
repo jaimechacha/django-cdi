@@ -14,8 +14,10 @@ let student = {
     },
     add_family: function (item) {
         if ($.isEmptyObject(family)) {
+            delete item.id
             this.details.family.push(item);
         } else {
+            if (item.id === '') delete item.id
             this.details.family[family.pos] = item;
         }
         this.list_family();
@@ -58,6 +60,13 @@ let student = {
 
             },
         });
+    },
+    get_familiar_ids: function(){
+        let ids = [];
+        $.each(this.details.family, function (i, item) {
+            if (item.id) ids.push(item.id);
+        });
+        return ids;
     },
 }
 
@@ -267,6 +276,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             parameters.append('action', $('input[name="action"]').val());
             parameters.append('family', JSON.stringify(student.details.family));
+            parameters.append('ids_family', JSON.stringify(student.get_familiar_ids()));
             parameters['birth_country'] = {
                 'id': select_birth_country.val(),
                 'name': $("#id_birth_country option:selected").text()
@@ -415,6 +425,7 @@ $(function () {
         .on('click', 'a[rel="edit"]', function () {
             let tr = tblFamily.cell($(this).closest('td, li')).index();
             family = tblFamily.row(tr.row).data();
+            $(fvFamily.form).find('input[name="id"]').val(family.id);
             $(fvFamily.form).find('input[name="first_name"]').val(family.first_name);
             $(fvFamily.form).find('input[name="last_name"]').val(family.last_name);
             $(fvFamily.form).find('input[name="ci"]').val(family.ci);

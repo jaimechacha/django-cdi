@@ -536,3 +536,28 @@ const validatePassword = () => {
         },
     };
 };
+
+const showRefundsRowChilds = (data) => {
+    if (data.refunds.length === 0) return '<b>Sin devoluciones</b>';
+
+    let body = '';
+    body += `<table style="padding-left:50px; border: hidden">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Devolución</th>
+                    <th>Restante</th>
+                </tr>
+            </thead>
+            <tbody>`;
+            data.refunds?.map(ref => {
+                body += `<tr>
+                    <td>${ref.date_refund}</td>
+                    <td>${ref.amount}</td>
+                    <td>${ref.remainder}</td>
+                </tr>`
+            })
+            body += `</tbody>
+            </table>`;
+    return body;
+}

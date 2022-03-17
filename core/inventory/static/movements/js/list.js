@@ -4,14 +4,6 @@ let tblMovements;
 let select_user;
 let select_material;
 
-function initTable() {
-    tblMovements = $('#tblMovements').DataTable({
-        responsive: true,
-        autoWidth: false,
-        destroy: true,
-    });
-}
-
 function getMovementsData(all) {
     let parameters = {
         'action': 'get_data',
@@ -28,7 +20,9 @@ function getMovementsData(all) {
 
     tblMovements = $('#tblMovements').DataTable({
         destroy: true,
-        responsive: true,
+        responsive: {
+            details: false
+        },
         autoWidth: false,
         ajax: {
             url: pathname,
@@ -36,7 +30,7 @@ function getMovementsData(all) {
             data: parameters,
             dataSrc: ''
         },
-        order: [[0, 'asc']],
+        order: [[2, 'desc']],
         paging: false,
         ordering: true,
         searching: false,
@@ -58,6 +52,7 @@ function getMovementsData(all) {
         columns: [
             {data: "id_material"},
             {data: "num_doc"},
+            {data: "date"},
             {data: "material"},
             {data: "amount_entry"},
             {data: "amount_output"},
@@ -65,12 +60,24 @@ function getMovementsData(all) {
         ],
         columnDefs: [
             {
-                targets: [0, -2, -3, -5],
+                targets: [0],
+                createdCell: (td, cellData, rowData, row, col) => {
+                    if ( rowData.type === 'Output'){
+                        $(td).addClass('dt-control')
+                    }else {
+                        $(td).addClass('text-center')
+                    }
+                },
+                render: (data, type, row) => {
+                    if (row.type === 'Output') return ''
+                    return '-'
+                }
+            },
+            {
+                targets: [1, -2, -3],
                 orderable: false,
                 class: 'text-center',
-                render: function (data, type, row) {
-                    return data;
-                }
+                render: (data, type, row) => data,
             }
         ],
         rowCallback: function (row, data, index) {
@@ -113,6 +120,17 @@ $(function () {
         language: "es",
     });
 
-    initTable();
+    $('#tblMovements tbody').on('click', 'td.dt-control', function () {
+        let tr = $(this).closest('tr');
+        let row = tblMovements.row(tr);
+
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            row.child(showRefundsRowChilds(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
     getMovementsData(true);
 });
