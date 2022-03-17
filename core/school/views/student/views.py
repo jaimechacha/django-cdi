@@ -228,7 +228,7 @@ class StudentDetailView(GenericDetailStudent):
 
 
 class StudentDetailProfileView(GenericDetailStudent):
-    title = 'Perfil de estudiante'
+    title = 'Perfil del estudiante'
     template_name = 'student/detail.html'
 
     def get_object(self, queryset=None):
