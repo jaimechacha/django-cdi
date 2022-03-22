@@ -284,4 +284,13 @@ $(function () {
         .on('select2:clear', function (e) {
             fv.revalidateField('donor');
         });
+
+    $('#donor_area').hide();
+    $('select[name="is_donation"]').change( function () {
+        if ($(this).val() === 'True'){
+            $('#donor_area').show()
+        }else {
+            $('#donor_area').hide()
+        }
+    })
 });
