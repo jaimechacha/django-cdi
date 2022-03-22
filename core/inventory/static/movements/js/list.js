@@ -57,6 +57,7 @@ function getMovementsData(all) {
             {data: "amount_entry"},
             {data: "amount_output"},
             {data: "employee_teacher"},
+            {data: "donor"},
         ],
         columnDefs: [
             {
@@ -74,10 +75,16 @@ function getMovementsData(all) {
                 }
             },
             {
-                targets: [1, -2, -3],
+                targets: [1, -2, -3, -4],
                 orderable: false,
                 class: 'text-center',
                 render: (data, type, row) => data,
+            },
+            {
+                targets: [-1],
+                render: (data, type, row) => {
+                    return data
+                }
             }
         ],
         rowCallback: function (row, data, index) {
