@@ -57,7 +57,7 @@ function getMovementsData(all) {
             {data: "amount_entry"},
             {data: "amount_output"},
             {data: "employee_teacher"},
-            {data: "donor"},
+            {data: "type_entry"},
         ],
         columnDefs: [
             {
@@ -83,6 +83,11 @@ function getMovementsData(all) {
             {
                 targets: [-1],
                 render: (data, type, row) => {
+                    if (row.type_entry === 'Donación'){
+                        return `<span data-toggle="tooltip" title="Repr: ${ row.donor.repres }">
+                                    ${ row.donor.student }
+                                </span>`
+                    }
                     return data
                 }
             }
