@@ -98,6 +98,10 @@ class EntryMaterial(AuditMixin, models.Model):
         item['description'] = self.material.description
         return item
 
+    def return_represent(self):
+        if self.entry.donor:
+            return self.entry.donor.get_repr()
+
     def to_json_movements(self):
         item = {
             'id_material': self.material.id,
@@ -108,7 +112,11 @@ class EntryMaterial(AuditMixin, models.Model):
             'employee_teacher': self.entry.employee.get_full_name(),
             'num_doc': self.entry.num_doc,
             'type': 'Entry',
-            'donor': 'Donación' if self.entry.is_donation else 'Compra',
+            'type_entry': 'Donación' if self.entry.is_donation else 'Compra',
+            'donor': {
+                'student': self.entry.donor.__str__(),
+                'repres': self.return_represent(),
+            }
         }
         return item
 
@@ -202,7 +210,8 @@ class OutputMaterial(AuditMixin, models.Model):
             'num_doc': self.output.num_doc,
             'type': 'Output',
             'refunds': self.get_refund_outputmaterial(),
-            'donor': '',
+            'type_entry': '',
+            'donor': {},
         }
         return item
 
