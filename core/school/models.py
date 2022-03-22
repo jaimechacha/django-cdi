@@ -285,6 +285,10 @@ class Student(AuditMixin, models.Model):
     def get_info_search_student(self):
         return '{}/{}/{}'.format(self.get_full_name(), self.user.dni, self.birthdate_format())
 
+    def get_repr(self):
+        repr = LegalRepresentative.objects.get(student_id=self.id)
+        return repr.__str__()
+
     def toJSON(self):
         item = model_to_dict(self)
         item['user'] = self.user.toJSON()
